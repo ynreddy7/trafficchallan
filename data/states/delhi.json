@@ -1,0 +1,136 @@
+{
+  "slug": "delhi",
+  "name": "Delhi",
+  "target_keyword": "traffic challan in delhi",
+  "portals": [
+    {
+      "label": "MoRTH e-challan portal (Delhi challans) — challan details",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Delhi Traffic Police — Notice Branch, pending notices",
+      "url": "https://traffic.delhipolice.gov.in/notice/pay-notice/",
+      "scope": "both"
+    },
+    {
+      "label": "Delhi Traffic Police — update mobile number for challans in Virtual Court",
+      "url": "https://traffic.delhipolice.gov.in/echallan/index/update-mobile",
+      "scope": "check"
+    },
+    {
+      "label": "Virtual Courts — Delhi (Traffic Department / Notice Department)",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    }
+  ],
+  "check_steps": [
+    "Open the MoRTH e-challan portal at https://echallan.parivahan.gov.in/index/accused-challan. Delhi is not on the newer NextGen portal — the national site's own note routes 27 other states and UTs (AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ, GJ) to echallan.parivahan.nic.in, and Delhi is not in that list.",
+    "In the 'Challan Details' box pick one of the three tabs — Challan Number, Vehicle Number or DL Number — and type the number exactly as issued (vehicle numbers without spaces or dashes).",
+    "Click 'Get Detail'. The table lists Violator Name, DL/RC Number, Challan No, State, Department (Traffic or Transport), Challan Date, Amount, Status and Payment Source, with links for Challan Print and Receipt.",
+    "For a camera-generated Delhi Traffic Police notice, search separately at https://traffic.delhipolice.gov.in/notice/pay-notice/ by Vehicle Number or Notice Number and click 'Search Details' — notices sit in the Notice Branch system, not in the challan list.",
+    "If the challan has been forwarded to court, look it up at https://vcourts.gov.in/virtualcourt/ by selecting Delhi(Traffic Department) or Delhi(Notice Department) and searching by mobile number, CNR number, party name or challan/vehicle number."
+  ],
+  "pay_steps": [
+    "Find the challan on https://echallan.parivahan.gov.in/index/accused-challan and click 'Pay Now' in that row.",
+    "Complete the identity check the portal asks for: an OTP to the mobile number registered on Vahan, or Aadhaar OTP, or (for a DL-based challan) driving licence number with date of birth and mobile.",
+    "If the challan has already gone to court the portal shows a disclaimer — 'This challan has been forwarded to Virtual Court (https://vcourts.gov.in/), but still it can be paid here' — tick the box to proceed, and do not pay the same challan again on vcourts.gov.in.",
+    "Pay by debit card, credit card, net banking or UPI, then download the receipt straight away; the portal also has a 'Payment Verify' action and a pending-transaction check if money is debited but the challan stays open.",
+    "To settle a Notice Branch notice offline instead: pay cash to any Delhi Traffic Police prosecuting officer carrying an e-challan machine, or send an account-payee cheque, demand draft or pay order drawn in favour of DCP/TRAFFIC(HQs) to Delhi Traffic Police Headquarters, Dev Prakash Shastri Marg, Pusa, New Delhi-110012, with the notice number written on the reverse.",
+    "To pay a court challan through Virtual Courts, select the Delhi department, search your case, click 'View', verify by OTP (or by engine and chassis number if the mobile number on the challan is wrong), choose 'Pay Fine' and pay by card, net banking or UPI."
+  ],
+  "sms_app_methods": [
+    "mParivahan, the Ministry of Road Transport and Highways citizen app, listed on https://parivahan.gov.in/ under Other Products & Services with the line 'The wallet weight of documents brought to half', and reachable at https://mparivahan.parivahan.gov.in/.",
+    "Challan and notice SMS go to the mobile number held against the vehicle; if it is wrong or missing, correct it at https://traffic.delhipolice.gov.in/echallan/index/update-mobile before trying to pay a challan that is in Virtual Court.",
+    "Delhi Traffic Police WhatsApp number 8750871493, published in the header of https://traffic.delhipolice.gov.in/.",
+    "Delhi traffic helpline 1095 or 25844444, printed on Delhi Traffic Police notices and shown on the Delhi e-challan update-mobile page."
+  ],
+  "court_challan_process": "Delhi runs two tracks and they behave very differently. Compoundable offences carry a fixed amount in the Delhi Traffic Police 'Traffic Offences and Penalties' schedule, and the force's own FAQ gives the driver two options when stopped: pay up, meaning pay the compounding amount against a receipt, or contest, meaning surrender a document such as the driving licence against a challan receipt and attend court on the date given, where you are either acquitted or fined. Non-compoundable offences never get an on-the-spot amount at all: the schedule marks jumping a red light, violating a stop sign, driving dangerously, wrong overtaking, driving against the authorised flow of traffic and drunken driving as '*Court challan', with the footnote that the final amount is subject to the discretion of the Hon'ble court. Those cases are heard by the Delhi Virtual Courts on https://vcourts.gov.in/virtualcourt/, which carries two Delhi entries — Delhi(Traffic Department) and Delhi(Notice Department). The flow there is: select the department, search by mobile number, CNR number, party name or challan/vehicle number, click 'View' to see the detailed challan, verify by OTP (or by engine and chassis number where the mobile number on the challan is wrong), and then either pay the fine through the ePay gateway or select 'I wish to contest the case', after which the acknowledgement names the physical court and the date assigned. A summons can be viewed only after payment is initiated or contest is requested. Camera detections follow a third path first: a Notice Branch notice is issued under Section 133 of the Motor Vehicles Act asking the registered owner to furnish the name, address and driving licence number of the driver within 60 days, and the notice warns that non-compliance may result in the challan being forwarded to court with Section 187 added, which carries imprisonment up to six months or a fine up to ₹5,000.",
+  "payment_methods": [
+    "Debit card",
+    "Credit card",
+    "Net banking",
+    "UPI",
+    "Cash to a Delhi Traffic Police prosecuting officer carrying an e-challan machine",
+    "Account-payee cheque, demand draft or pay order in favour of DCP/TRAFFIC(HQs)"
+  ],
+  "contacts": [
+    { "label": "Delhi traffic helpline", "value": "1095 or 25844444" },
+    { "label": "Delhi Traffic Police WhatsApp", "value": "8750871493" },
+    { "label": "Delhi Traffic Police email", "value": "info.traffic@delhipolice.gov.in" },
+    { "label": "Notice Branch", "value": "I/C Notice Branch, Office of DCP (HQ), Delhi Traffic Police Headquarters, Dev Prakash Shastri Marg, Pusa, New Delhi-110012 — tinbt-dtp@nic.in" },
+    { "label": "National e-challan helpdesk", "value": "0120-4925505, 6:00 AM to 10:00 PM — helpdesk-echallan@gov.in" },
+    { "label": "Women helpline", "value": "1091" }
+  ],
+  "quirks": [
+    "Delhi stayed on the legacy national portal. echallan.parivahan.gov.in carries a note sending 27 other states and UTs, including Maharashtra, to the NextGen portal at echallan.parivahan.nic.in — Delhi and Telangana are not in that list.",
+    "Delhi issues two different instruments. An e-challan is raised against the driver; a Notice under Section 133 MV Act is raised against the registered owner after a camera detection and is searched on a different page (traffic.delhipolice.gov.in/notice/pay-notice/), with a 60-day deadline to name the driver or pay.",
+    "The same Delhi challan can show up both on echallan.parivahan.gov.in and on vcourts.gov.in. The national portal explicitly warns you to pay in one place only, because it does not stop you paying twice.",
+    "Virtual Courts lists Delhi twice — Delhi(Traffic Department) and Delhi(Notice Department). Pick the wrong one and the case simply will not be found.",
+    "Several common Delhi offences have no online amount at all. Jumping a red light, stop-sign violation, dangerous driving, wrong overtaking, driving against the flow of traffic, plying over-age diesel/petrol vehicles, offences relating to juveniles and drunken driving are all marked '*Court challan' on the official schedule.",
+    "If the mobile number on the challan is wrong you can still act: Virtual Courts accepts verification by engine and chassis number instead of OTP, and Delhi Traffic Police has a dedicated 'update mobile number (for non-consumed challan in virtual court)' page."
+  ],
+  "faqs": [
+    {
+      "q": "Can I pay a Delhi challan that has already gone to the Virtual Court?",
+      "a": "Yes. The MoRTH portal shows a disclaimer saying the challan has been forwarded to Virtual Court but can still be paid there, and asks you to tick a box before proceeding. The one rule is not to pay it in both places — if you have already paid on vcourts.gov.in, do not pay again on the e-challan portal, and vice versa."
+    },
+    {
+      "q": "How long do I have to answer a Delhi traffic notice?",
+      "a": "Sixty days from the date of issue. A Delhi Traffic Police notice is issued under Section 133 of the Motor Vehicles Act and requires the registered owner to furnish the name, address and driving licence number of the person who was driving, or to pay the compounding amount, within 60 days. The notice warns that non-compliance may result in the challan being forwarded to court with Section 187 added, punishable with imprisonment up to six months or a fine up to ₹5,000."
+    },
+    {
+      "q": "Why does my Delhi challan say 'Court challan' with no amount?",
+      "a": "Because the offence is not compoundable. The Delhi Traffic Police schedule marks offences such as jumping a red light, violating a stop sign, driving dangerously and drunken driving as '*Court challan', with the footnote that the final amount is subject to the discretion of the Hon'ble court. There is no on-the-spot figure to pay; the case is decided by the court, in Delhi's case usually the Virtual Court."
+    },
+    {
+      "q": "What if I want to contest a Delhi challan instead of paying?",
+      "a": "Delhi Traffic Police's own FAQ describes the on-road choice as: pay the compounding amount against a receipt, or contest by surrendering a document such as your driving licence against a challan receipt and attending court on the date given, where you are either acquitted or fined. For a case already on Virtual Courts, open it, click 'View', select 'I wish to contest the case', verify by OTP, and submit — the acknowledgement then names the physical court and the date assigned."
+    },
+    {
+      "q": "The mobile number on my challan is not mine. How do I still pay or contest?",
+      "a": "Two routes exist. On Virtual Courts you can verify using the vehicle's engine and chassis number instead of an OTP; the system checks them against RTO data. Separately, Delhi Traffic Police runs an 'update mobile number (for non-consumed challan in virtual court)' page where you search by challan or vehicle number and register a new mobile number after confirming the vehicle's chassis and engine number."
+    }
+  ],
+  "fine_overrides": {
+    "overspeeding": {
+      "amount_text": "₹2,000 for a light motor vehicle and ₹4,000 for a medium or heavy transport vehicle, the same for first and subsequent offences (112.1/183(1) MVA) — Delhi compounds at the top of the statutory band",
+      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+    },
+    "driving-without-puc": {
+      "amount_text": "₹10,000 for the first and any subsequent offence (115 CMVR / 190(2) MVA) — Delhi compounds at the statutory ceiling",
+      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹5,000 for the first offence and ₹10,000 for a subsequent offence, listed as 'RC Violation — 39/192 MVA'; the same amounts apply to a defective, fancy or missing number plate under 50, 51 CMVR / 39 / 192 MVA",
+      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "₹5,000 for the first offence and ₹10,000 for a subsequent offence, listed as 'Use of Hand-Held Communication Devices While Driving — 184 M.V.A'",
+      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "Court challan — Delhi notifies no compounding amount for 'Jumping Red Light', 'Violation of Stop Sign', 'Driving Dangerously' or 'Driving against the authorized flow of traffic' under 184 MVA; the schedule's footnote says the final amount is subject to the discretion of the Hon'ble court",
+      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+    },
+    "drunk-driving": {
+      "amount_text": "Court challan — Delhi notifies no compounding amount for 'Drunken Driving' under 185 MVA; the final amount is subject to the discretion of the Hon'ble court",
+      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+    }
+  },
+  "sources": [
+    "https://traffic.delhipolice.gov.in/traffic-offences",
+    "https://traffic.delhipolice.gov.in/faq",
+    "https://traffic.delhipolice.gov.in/notice/pay-notice/",
+    "https://traffic.delhipolice.gov.in/echallan/index/update-mobile",
+    "https://traffic.delhipolice.gov.in/",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://vcourts.gov.in/virtualcourt/help.php",
+    "https://parivahan.gov.in/",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28406&sectionno=133&orderno=143",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28463&sectionno=187&orderno=207"
+  ],
+  "last_verified": "2026-08-12"
+}

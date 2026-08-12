@@ -1,0 +1,100 @@
+{
+  "slug": "maharashtra",
+  "name": "Maharashtra",
+  "target_keyword": "maharashtra e challan",
+  "portals": [
+    {
+      "label": "Maharashtra Traffic Police e-Challan payment",
+      "url": "https://mahatrafficechallan.gov.in/payechallan/PaymentService.htm",
+      "scope": "both"
+    },
+    {
+      "label": "MoRTH NextGen e-Challan portal (Maharashtra challans)",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "Maharashtra e-Challan grievance (wrongly booked challan or payment issue)",
+      "url": "https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm",
+      "scope": "check"
+    },
+    {
+      "label": "Virtual Courts — Maharashtra (Transport Department / Nashik Traffic Department)",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    }
+  ],
+  "check_steps": [
+    "Open https://mahatrafficechallan.gov.in/. It redirects to https://mahatrafficechallan.gov.in/payechallan/PaymentService.htm with a session token appended, so bookmark the plain domain rather than the tokenised URL. The page is operated by the Additional Director General of Police (Traffic), Maharashtra State, Mumbai.",
+    "Choose the 'Vehicle No.' or 'Challan No.' radio button at the top of the form.",
+    "If you picked Vehicle No., enter the registration number and also the last 4 digits of the chassis or engine number — the portal makes both mandatory, so a plain registration-number search will not return anything.",
+    "Enter the code shown and click Submit to list the pending challans against that vehicle or challan number.",
+    "Cross-check on the MoRTH NextGen e-challan portal at https://echallan.parivahan.nic.in/challan/challan-services. The older national portal now carries a note routing Maharashtra (MH) challans there, and NextGen lets you search by Challan Number, Vehicle Number, DL Number, Mobile Number, E-Ticket number or NBT Notice with a captcha.",
+    "If the challan has gone to court, check https://vcourts.gov.in/virtualcourt/ — but note that only Maharashtra(Transport Department) and Maharashtra(NASHIK TRAFFIC DEPARTMENT) exist there, so most city traffic challans will not be found on Virtual Courts."
+  ],
+  "pay_steps": [
+    "On the NextGen portal, enter the vehicle or challan number together with the captcha — this is the sequence the portal itself documents for paying on the e-Challan Parivahan website.",
+    "Click 'Get Detail' to list the challans against that number.",
+    "Enter the OTP sent to the mobile number registered against the vehicle, then click 'Pay Now'.",
+    "Pay by debit card, credit card, internet banking or UPI, and download the receipt from the RECEIPT column before leaving the page.",
+    "On the state portal, select the challan from the search result and complete the payment on the state gateway instead — either route clears the same challan, so do not pay both.",
+    "If the payment is deducted but the challan stays open, or the challan was booked wrongly, use the grievance link at https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm or the helpdesk on 844 844 8960."
+  ],
+  "sms_app_methods": [
+    "mParivahan, the Ministry of Road Transport and Highways citizen app, listed on https://parivahan.gov.in/ under Other Products & Services and reachable at https://mparivahan.parivahan.gov.in/.",
+    "Link your mobile number to your vehicle number on the state portal — the home page carries a 'Click here to link/unlink mobile number to your vehicle number' link, which is what makes challan SMS reach you.",
+    "The NextGen portal sends a one-time password to the mobile number held against the vehicle before it will take payment, so an out-of-date number blocks payment as well as alerts.",
+    "Keep the Vahan record current at https://vahan.parivahan.gov.in/mobileupdate/ if the number on the RC is wrong."
+  ],
+  "court_challan_process": "Maharashtra's own portal only handles compoundable challans: you find them by vehicle or challan number and pay, and nothing on that site offers a contest route. Non-compoundable offences are a separate track. Section 200 of the Motor Vehicles Act lists which offences may be compounded, and drunken driving under Section 185 is not on the list, nor is any limb of dangerous driving under Section 184 except clause (c) of the Explanation, which covers use of handheld communication devices. Those cases are prosecuted before the jurisdictional magistrate and the accused must appear. Virtual Courts is only a partial answer in Maharashtra: the department list on https://vcourts.gov.in/virtualcourt/ carries exactly two Maharashtra entries, Maharashtra(Transport Department) and Maharashtra(NASHIK TRAFFIC DEPARTMENT), so unlike Delhi — which has both a Traffic Department and a Notice Department on the platform — there is no statewide virtual court covering Mumbai, Pune, Nagpur or Thane city traffic police challans. Where a case is on Virtual Courts, the flow published by the e-Courts project is: select the state and department, search by mobile number, CNR number, party name or challan/vehicle number, click 'View' to open the detailed challan, verify by OTP or, if the mobile number on the challan is wrong, by the vehicle's engine and chassis number checked against RTO data, then either pay the fine through the ePay gateway or select 'I wish to contest the case', after which the acknowledgement names the physical court and the date assigned. The MoRTH portal separately warns that a challan forwarded to Virtual Court can still be paid on the e-challan portal, and asks you not to pay in both places.",
+  "payment_methods": [
+    "Debit card",
+    "Credit card",
+    "Net banking",
+    "UPI"
+  ],
+  "contacts": [
+    { "label": "Maharashtra e-Challan helpdesk", "value": "844 844 8960" },
+    { "label": "Maharashtra e-Challan helpdesk email", "value": "helpdesk@mahatrafficechallan.gov.in" },
+    { "label": "Portal operated by", "value": "Additional Director General of Police (Traffic), Maharashtra State, Mumbai" },
+    { "label": "National e-challan helpdesk", "value": "0120-4925505, 6:00 AM to 10:00 PM — helpdesk-echallan@gov.in" }
+  ],
+  "quirks": [
+    "The state portal will not search on a registration number alone. It also demands the last 4 digits of the chassis or engine number, which you take from the RC — this is the single most common reason a Maharashtra search returns nothing.",
+    "mahatrafficechallan.gov.in redirects to /payechallan/PaymentService.htm with a per-session token in the query string. The token is not stable, so bookmark https://mahatrafficechallan.gov.in/ and let it redirect.",
+    "Maharashtra has moved to the MoRTH NextGen e-challan portal. echallan.parivahan.gov.in now carries a note sending MH (with 26 other states and UTs) to https://echallan.parivahan.nic.in/challan/challan-services, so a challan missing on one portal may still appear on the other — check both.",
+    "Virtual Courts covers only two Maharashtra departments, Transport and Nashik Traffic. There is no virtual court for Mumbai, Pune, Nagpur or Thane traffic police challans, so a court challan in those cities means an actual court date.",
+    "The state portal is a payment counter, not a rulebook. Its only functions are the challan search, a mobile link/unlink page and a grievance form; there is no offence or penalty schedule on it, and its footer reads 'Website last updated on: 15/09/2025'."
+  ],
+  "faqs": [
+    {
+      "q": "Why does the Maharashtra e-challan site show no challans for my vehicle number?",
+      "a": "Almost always because the second field was left blank. The state portal at mahatrafficechallan.gov.in requires the registration number and the last 4 digits of the chassis or engine number together — its own validation message is 'Please enter last 4 digits of Chassis or Engine No'. The other possibility is that the challan is only on the MoRTH NextGen portal, since Maharashtra challans are now routed to echallan.parivahan.nic.in."
+    },
+    {
+      "q": "Which is the official Maharashtra e-challan website?",
+      "a": "https://mahatrafficechallan.gov.in, operated by the Additional Director General of Police (Traffic), Maharashtra State, Mumbai, with a helpdesk on 844 844 8960 and helpdesk@mahatrafficechallan.gov.in. Maharashtra challans are also served by the Ministry of Road Transport and Highways NextGen e-challan portal at https://echallan.parivahan.nic.in/challan/challan-services."
+    },
+    {
+      "q": "Can I pay a Maharashtra traffic challan through Virtual Courts?",
+      "a": "Only for two departments. The Virtual Courts department list carries just Maharashtra(Transport Department) and Maharashtra(NASHIK TRAFFIC DEPARTMENT). City traffic police court challans elsewhere in the state are not on that platform and are heard by the ordinary magistrate's court, so there is no online 'pay fine' or 'request to contest' button for them."
+    },
+    {
+      "q": "How do I dispute a challan booked on my vehicle by mistake?",
+      "a": "The state portal carries a dedicated link, 'Click here to raise a grievance for wrongly booked challan or any payment issue', which opens https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm. The same route handles payments that were debited but did not clear the challan; the helpdesk number 844 844 8960 is published on the same page."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://mahatrafficechallan.gov.in/payechallan/PaymentService.htm",
+    "https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://vcourts.gov.in/virtualcourt/help.php",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
+    "https://parivahan.gov.in/",
+    "https://mparivahan.parivahan.gov.in/"
+  ],
+  "last_verified": "2026-08-12"
+}

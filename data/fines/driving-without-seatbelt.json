@@ -1,0 +1,34 @@
+{
+  "slug": "driving-without-seatbelt",
+  "name": "Driving without a seat belt",
+  "target_keyword": "seat belt fine india",
+  "mva_section": "Section 194B, Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)",
+  "description": "Section 194B was inserted by the Motor Vehicles (Amendment) Act 2019 and has two limbs. Sub-section (1) punishes a driver who drives without wearing a safety belt or who carries passengers not wearing seat belts. Sub-section (2) separately punishes driving, or allowing a vehicle to be driven, with a child under fourteen who is not secured by a safety belt or a child restraint system. Both limbs carry a fine of one thousand rupees, and a State Government may by gazette notification exclude transport vehicles carrying standing passengers from sub-section (1).",
+  "base_fine_text": "₹1,000 for the driver, and ₹1,000 where a child under fourteen is not secured by a seat belt or child restraint system",
+  "base_fine_min": 1000,
+  "base_fine_max": 1000,
+  "repeat_fine_text": "₹1,000 — Section 194B prescribes a flat amount with no separate repeat-offence figure; Delhi's published schedule shows ₹1,000 for both first and subsequent offences",
+  "licence_impact": "None automatically. Section 194B carries no disqualification, and Section 206(4) — which compels an officer to seize the driving licence — does not list Section 194B.",
+  "compoundable_online": true,
+  "faqs": [
+    {
+      "q": "Can rear-seat passengers be fined for not wearing a seat belt?",
+      "a": "Yes. Section 194B(1) covers both the driver who is not belted and the driver who 'carries passengers not wearing seat belts' — the wording is not limited to front seats, so an unbelted rear passenger exposes the driver to the ₹1,000 fine."
+    },
+    {
+      "q": "Is there a separate penalty for a child not in a car seat?",
+      "a": "Yes. Section 194B(2) is a distinct offence: driving, or allowing a vehicle to be driven, with a child who has not attained fourteen years and is not secured by a safety belt or a child restraint system is punishable with a fine of one thousand rupees."
+    },
+    {
+      "q": "Can a seat belt challan be paid online without going to court?",
+      "a": "Yes. Section 200 of the Motor Vehicles Act lists Section 194B among the offences that may be compounded, so state authorities can settle it for the notified compounding amount and it can be cleared on the e-challan portals rather than in court."
+    }
+  ],
+  "sources": [
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=49501&sectionno=194B&orderno=218",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28483&sectionno=206&orderno=237",
+    "https://traffic.delhipolice.gov.in/traffic-offences"
+  ],
+  "last_verified": "2026-08-12"
+}

@@ -1,0 +1,108 @@
+{
+  "slug": "telangana",
+  "name": "Telangana",
+  "target_keyword": "e challan ts",
+  "portals": [
+    {
+      "label": "Telangana Police Integrated e-Challan System (public view)",
+      "url": "https://echallan.tspolice.gov.in/publicview/",
+      "scope": "both"
+    },
+    {
+      "label": "MoRTH e-challan portal — challan details",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Hyderabad Traffic Police — e-challan status and wrong-challan reporting",
+      "url": "https://htp.gov.in/",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Go to https://echallan.tspolice.gov.in/. It is only a redirect page — the working portal is https://echallan.tspolice.gov.in/publicview/, titled 'Telangana Police Integrated e-Challan System'.",
+    "Stay on the first tab, 'Vehicle Number'. It holds three independent searches stacked on one page: Vehicle No, Licence No, and Challan NO/Mobile No.",
+    "Type the number into the relevant box, solve the small arithmetic captcha in the 'Enter Answer' field and click GO. Pending challans load with the challan number, date, section and amount.",
+    "Use the 'Seizure (e-39b)' tab if a document or the vehicle was seized, and the 'Payment Receipt' tab (search by Transaction reference No, or by Licence No with date of birth, or by mobile number) to pull an old receipt again.",
+    "Check the 'DL Penalty Points' tab to see penalty points recorded against a driving licence — Telangana runs this alongside the money fine.",
+    "As a cross-check, run the same vehicle or DL number on the MoRTH portal at https://echallan.parivahan.gov.in/index/accused-challan; Telangana is not among the states routed to the NextGen portal, so it is still served from echallan.parivahan.gov.in."
+  ],
+  "pay_steps": [
+    "On https://echallan.tspolice.gov.in/publicview/ tick the challans you want to clear in the result list.",
+    "Click the Netbanking option. The portal's own note tells you to look for your bank in the list of banks under each gateway and pick the gateway that carries your bank before proceeding.",
+    "Note the Reference number the portal generates before you are handed to the gateway — you need it if the payment goes wrong.",
+    "Pay by internet banking, credit card, debit card, UPI ID or QR code; all gateways on the portal accept these.",
+    "If money is debited but the challan is still showing, use the 'Transaction status' button beside 'Make Payment'. The portal says to wait one day, and that if the challan is still uncleared the amount is refunded within 7 working days.",
+    "Spot challans carry a ₹5 user charge added at the payment page — the total shown will be slightly higher than the challan amount."
+  ],
+  "sms_app_methods": [
+    "mParivahan, the Ministry of Road Transport and Highways citizen app, listed on https://parivahan.gov.in/ under Other Products & Services and reachable at https://mparivahan.parivahan.gov.in/.",
+    "'Register For Violation Alerts' on the Telangana portal — submit owner name, vehicle number, mobile number and captcha, and an SMS is sent to that mobile whenever a challan is booked on the vehicle.",
+    "Genuine Telangana e-challan SMS comes only from the sender header 'ECHALN-*'. The portal carries an explicit warning, in English and Telugu, to trust nothing else and to use only echallan.tspolice.gov.in.",
+    "Keep the mobile number on the vehicle and licence current, otherwise no alert reaches you — https://vahan.parivahan.gov.in/mobileupdate/ for the RC, https://sarathi.parivahan.gov.in/sarathiservice/mobNumUpdpub.do for the DL, and https://tgtransport.net/TGCFSTONLINE/OnlineTransactions/UpdateMobileNumber.aspx for the state transport record — all three are linked from the portal itself."
+  ],
+  "court_challan_process": "Telangana settles compoundable offences entirely on its own portal — you select the challan and pay, and there is no court step. What Telangana does not have is a Virtual Court. The national Virtual Courts platform at https://vcourts.gov.in/virtualcourt/ lists 31 traffic and transport departments across other states and union territories, from Assam to West Bengal, and Telangana appears nowhere in that list, so a Telangana challan cannot be paid or contested online through vcourts.gov.in the way a Delhi one can. That matters most for the offences Section 200 of the Motor Vehicles Act does not allow to be compounded at all: drunken driving under Section 185, and every limb of dangerous driving under Section 184 except clause (c) of the Explanation (use of handheld communication devices). Those are prosecuted before the jurisdictional magistrate's court and the person named has to appear; the e-challan portal will not show a payable amount for them. If you believe a challan was wrongly booked, the portal has a Complaints tab and a User Feedback form with fixed reasons — Manual Error, Double Challan, Fake Vehicle, Theft Vehicle — verified by OTP, and Hyderabad Traffic Police separately directs wrong-challan clarifications to the Traffic Cell at Road No. 12, Banjara Hills, Hyderabad, or online through the same public view portal.",
+  "payment_methods": [
+    "Net banking",
+    "Credit card",
+    "Debit card",
+    "UPI ID",
+    "UPI QR code"
+  ],
+  "contacts": [
+    { "label": "Hyderabad Police Commissionerate", "value": "040-27852721 / 040-27852772 — Commissioner of Police Building, Basheerbagh, Hyderabad 500029; Traffic Cell at Road No. 12, Banjara Hills, Hyderabad 500034" },
+    { "label": "Cyberabad Police Commissionerate", "value": "040-27853416 — 2-48/P/21, Old Mumbai Highway, Gachibowli, Hyderabad 500032" },
+    { "label": "Malkajgiri Police Commissionerate", "value": "040-27853000 — DCP Traffic-1 premises, Court Compound, Sardar Patel Road, Secunderabad 500003" },
+    { "label": "Future City Police Commissionerate", "value": "+91 8712665328 — NH-44 Bangalore Highway, behind Shamshabad Police Station, Peddashapur Village, Shamshabad Mandal 501218" },
+    { "label": "e-challan helpdesk (Hyderabad)", "value": "echallanhelpdesk.hyd@gmail.com" },
+    { "label": "e-challan helpdesk (Cyberabad)", "value": "echallancybhelpdesk@gmail.com" },
+    { "label": "e-challan helpdesk (Rachakonda)", "value": "echallanrckhelpdesk@gmail.com" },
+    { "label": "National e-challan helpdesk", "value": "0120-4925505, 6:00 AM to 10:00 PM — helpdesk-echallan@gov.in" }
+  ],
+  "quirks": [
+    "https://echallan.tspolice.gov.in/ is a bare redirect page. Every real service lives at https://echallan.tspolice.gov.in/publicview/, so bookmark that.",
+    "Telangana is not on the national Virtual Courts platform. The vcourts.gov.in department dropdown carries 31 departments across other states and has no Telangana entry at all.",
+    "Telangana is also not on the NextGen e-challan portal. The MoRTH site routes 27 states and UTs to echallan.parivahan.nic.in and Telangana is not one of them, so Telangana challans stay on echallan.parivahan.gov.in.",
+    "The captcha on the Telangana portal is an arithmetic question, not a distorted image — the field is literally labelled 'Enter Answer' and takes a two-digit number.",
+    "The portal's Contact Us panel lists four commissionerates — Hyderabad, Cyberabad, Malkajgiri and Future City — while the refund text on the same page still names a Rachakonda helpdesk address (echallanrckhelpdesk@gmail.com). If you are unsure which office holds your challan, start from the one named on the challan itself.",
+    "Hyderabad Traffic Police's own 'Road Rules' page at https://htp.gov.in/road_rules.html still lists pre-2019 penalties (₹500 for driving without a licence under Section 181, ₹1,000 for no insurance under Section 196, ₹2,000 for no registration under Section 192(1), ₹200 for Section 177 offences). Those figures were superseded by the Motor Vehicles (Amendment) Act 2019 with effect from 1 September 2019 — go by the amount printed on the challan, not that page.",
+    "Spot challans attract ₹5 extra as user charges, stated on the portal's Netbanking help panel.",
+    "The portal warns in Telugu and English about fake e-challan websites and apps, and says to trust SMS only from the header 'ECHALN-*'."
+  ],
+  "faqs": [
+    {
+      "q": "What is the official website to check a TS e challan?",
+      "a": "https://echallan.tspolice.gov.in, which redirects to the public view at https://echallan.tspolice.gov.in/publicview/. The Telangana Police carry a standing warning on that page about fake e-challan websites and mobile apps, and ask citizens to use only this domain and to trust SMS only from the sender header 'ECHALN-*'."
+    },
+    {
+      "q": "Can I search a Telangana challan by mobile number instead of vehicle number?",
+      "a": "Yes. The first tab of the public view portal holds three searches: Vehicle No, Licence No, and a combined Challan NO/Mobile No box. Each has its own arithmetic captcha and GO button, so you can pull up challans against the mobile number registered on the vehicle without knowing the challan number."
+    },
+    {
+      "q": "What are DL penalty points in Telangana?",
+      "a": "The Telangana e-challan portal carries a dedicated 'DL Penalty Points' tab where you enter a licence number and date of birth to see the points recorded against that licence. It sits alongside the money fine, so a Telangana challan can affect the licence record even after the amount has been paid."
+    },
+    {
+      "q": "My payment went through but the challan is still showing. What now?",
+      "a": "The portal's own note says that if payment is debited but the challans are not cleared you should wait one day, and that if it is still uncleared the amount will be refunded within 7 working days. Before that, use the 'Transaction status' button beside 'Make Payment' with the reference number the portal generated, since a transaction that succeeded at the bank is reflected immediately and produces a receipt."
+    },
+    {
+      "q": "How do I report a wrong challan in Hyderabad?",
+      "a": "Use the User Feedback form on the public view portal, which asks for name, mobile, email and a remark from a fixed list — Manual Error, Double Challan, Fake Vehicle or Theft Vehicle — and verifies you by OTP. Hyderabad Traffic Police also asks you to write to the Traffic Cell at Road No. 12, adjacent to Puri Jagannath Temple, Bhavani Nagar, Banjara Hills, Hyderabad 500034, or phone 040-27852721 or 040-27852772."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://echallan.tspolice.gov.in/",
+    "https://echallan.tspolice.gov.in/publicview/",
+    "https://htp.gov.in/",
+    "https://htp.gov.in/road_rules.html",
+    "https://htp.gov.in/wrong_challan.html",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
+    "https://parivahan.gov.in/",
+    "https://mparivahan.parivahan.gov.in/"
+  ],
+  "last_verified": "2026-08-12"
+}

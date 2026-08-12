@@ -1,0 +1,35 @@
+{
+  "slug": "mobile-phone-while-driving",
+  "name": "Using a mobile phone while driving",
+  "target_keyword": "mobile phone driving fine india",
+  "mva_section": "Section 184, Explanation clause (c), Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)",
+  "description": "Before 2019 phone use while driving was usually booked under the residual Section 177 for a few hundred rupees. The Motor Vehicles (Amendment) Act 2019 inserted an Explanation into Section 184 declaring that 'use of handheld communications devices while driving' amounts to driving in a manner dangerous to the public, which lifts the offence into Section 184's much heavier penalty band. It is also the only limb of Section 184 that Section 200 allows to be compounded, so unlike red-light jumping or dangerous driving it can normally still be settled without a court appearance.",
+  "base_fine_text": "First offence under Section 184: imprisonment for not less than 6 months and up to 1 year, or a fine of not less than ₹1,000 and up to ₹5,000, or both. States that compound it commonly notify the ₹5,000 ceiling — Delhi's schedule shows ₹5,000",
+  "base_fine_min": 1000,
+  "base_fine_max": 5000,
+  "repeat_fine_text": "Second or subsequent offence within three years of a previous similar offence: imprisonment up to 2 years, or a fine of ₹10,000, or both — Delhi's schedule shows ₹10,000 for a subsequent offence",
+  "licence_impact": "Section 206(4) obliges the officer to seize the driving licence of a driver believed to have committed a Section 184 offence and forward it to the licensing authority for disqualification or revocation proceedings under Section 19.",
+  "compoundable_online": true,
+  "faqs": [
+    {
+      "q": "Is using a phone for navigation while driving also an offence?",
+      "a": "The Explanation to Section 184 targets the 'use of handheld communications devices while driving'. What the section penalises is holding and operating the device while driving; a phone fixed in a cradle and not being handled is a different factual situation from a handheld device, and the enforcing officer's case has to rest on handheld use."
+    },
+    {
+      "q": "Why is a phone challan so much bigger than it used to be?",
+      "a": "Until the 2019 amendment phone use was normally charged under the residual Section 177 (₹500 first offence, ₹1,500 for a repeat). The 2019 Explanation moved handheld device use into Section 184, whose first-offence band is a fine of ₹1,000 to ₹5,000, or imprisonment of six months to a year, or both."
+    },
+    {
+      "q": "Can a mobile-phone challan be compounded, or must it go to court?",
+      "a": "It can be compounded. Section 200(1) lists 'clause (c) of the Explanation to section 184' among the compoundable offences — the only part of Section 184 that is compoundable — so handheld device use can be settled for the amount the State Government notifies rather than tried in court."
+    }
+  ],
+  "sources": [
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28460&sectionno=184&orderno=204",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28452&sectionno=177&orderno=194",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28483&sectionno=206&orderno=237",
+    "https://traffic.delhipolice.gov.in/traffic-offences"
+  ],
+  "last_verified": "2026-08-12"
+}
