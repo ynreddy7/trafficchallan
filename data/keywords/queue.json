@@ -2791,7 +2791,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "fines/no-parking",
+      "slug_suggestion": "no-parking",
       "target_keyword": "no parking fine india",
       "cluster_keywords": [
         "no parking fine india"
@@ -2803,7 +2803,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "fines/wrong-side-driving",
+      "slug_suggestion": "wrong-side-driving",
       "target_keyword": "wrong side driving fine",
       "cluster_keywords": [
         "wrong side driving fine"
@@ -2815,7 +2815,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "fines/triple-riding",
+      "slug_suggestion": "triple-riding",
       "target_keyword": "triple riding fine",
       "cluster_keywords": [
         "triple riding fine"
@@ -2827,7 +2827,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "fines/minor-driving",
+      "slug_suggestion": "minor-driving",
       "target_keyword": "minor driving challan",
       "cluster_keywords": [
         "minor driving challan"
@@ -2839,7 +2839,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "fines/overloading",
+      "slug_suggestion": "overloading",
       "target_keyword": "overloading fine india",
       "cluster_keywords": [
         "overloading fine india"
@@ -2851,7 +2851,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "fines/defective-number-plate",
+      "slug_suggestion": "defective-number-plate",
       "target_keyword": "number plate fine",
       "cluster_keywords": [
         "number plate fine"
