@@ -6,6 +6,7 @@ import SourceList from '../../components/SourceList.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import { loadStates, loadOffences } from '../../lib/data';
 import { faqJsonLd } from '../../lib/seo';
+import { shortSection } from '../../lib/format';
 import type { OffenceRecord } from '../../lib/schemas';
 
 export async function getStaticPaths() {
@@ -22,7 +23,7 @@ const path = `/fines/${offence.slug}/`;
 ---
 <Base
   title={`${offence.name}: Fine Amount & Rules`}
-  description={`${offence.name} under the Motor Vehicles Act — current fine (first and repeat offence), licence impact and how to pay. Independently verified.`}
+  description={`${offence.name}: current MV Act fine for first and repeat offences, licence impact and how to pay.`}
   path={path}
   jsonld={[faqJsonLd(offence.faqs)]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }, { name: offence.name, path }]}
@@ -30,7 +31,7 @@ const path = `/fines/${offence.slug}/`;
   <h1>{offence.name}: fine amount and rules</h1>
   <AnswerBox>
     The fine for {offence.name.toLowerCase()} is {offence.base_fine_text} for a first offence
-    ({offence.mva_section}); a repeat offence costs {offence.repeat_fine_text}. {offence.licence_impact}
+    ({shortSection(offence.mva_section)}); a repeat offence costs {offence.repeat_fine_text}. {offence.licence_impact}
   </AnswerBox>
   <LastVerified date={offence.last_verified} />
 

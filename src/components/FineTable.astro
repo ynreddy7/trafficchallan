@@ -1,5 +1,6 @@
 ---
 import type { StateRecord, OffenceRecord } from '../lib/schemas';
+import { shortSection } from '../lib/format';
 interface Props { offences: OffenceRecord[]; state?: StateRecord }
 const { offences, state } = Astro.props;
 ---
@@ -15,7 +16,7 @@ const { offences, state } = Astro.props;
     {offences.map((o) => (
       <tr>
         <td><a href={`/fines/${o.slug}/`}>{o.name}</a></td>
-        <td>{o.mva_section.replace(', Motor Vehicles Act 1988', '').replace(' (as amended 2019)', '')}</td>
+        <td>{shortSection(o.mva_section)}</td>
         <td>{o.base_fine_text}</td>
         <td>{o.repeat_fine_text}</td>
         {state && <td>{state.fine_overrides[o.slug]?.amount_text ?? 'Standard amount'}</td>}
