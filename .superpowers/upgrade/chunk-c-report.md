@@ -218,3 +218,29 @@ distribution cases + 1 `webPageJsonLd`).
 6. **`states.json`'s `source` field** uses the homepage (`ORIGIN + '/'`) since there's no
    dedicated `/states/` hub page — the state grid ("Check your state") lives on the
    homepage, which is the closest analogue to `fines.json`'s `'<ORIGIN>/fines/'`.
+
+## Follow-up fix (2026-08-13) — dateModified/sitemap disagreement on hub pages
+
+Root cause of the gap this report's own item 1 (C1) left open: `fines/index.astro`'s
+`newest` var was computed from **offences only** (`offences.map((o) => o.last_verified)`),
+not the states+offences+guides max that `astro.config.mjs`'s `buildLastmodMap()` assigns
+to `/fines/`'s sitemap `<lastmod>`. `calculator.astro` and `compare.astro` were also short
+one source each (guides). Only `index.astro` already matched the full three-source max.
+Result: `/fines/` shipped JSON-LD `dateModified: 2026-08-12` while its own sitemap entry
+said `2026-08-13` (the max was carried by a state record + a guide, both invisible to the
+offences-only computation).
+
+Fix: added `newestVerifiedDate()` to `src/lib/data.ts` — the single source of truth for
+this max (states + offences + guide frontmatter via `gray-matter`, same three sources and
+same aggregation as `buildLastmodMap()`, with an explicit comment tying the two together
+so they don't drift apart again). Swapped it in for the local ad hoc computations in
+`fines/index.astro`, `calculator.astro`, `compare.astro`, and `index.astro` (both the
+`dateModified` prop and the visible "last verified" text, where present). Added two tests
+to `tests/data.test.ts` running against real repo data: the result is `>=` every
+individual state/offence/guide date, and matches the independently recomputed max.
+
+Verified post-build: `dist/fines/index.html`, `dist/calculator/index.html`,
+`dist/compare/index.html`, and `dist/index.html` all report `dateModified: 2026-08-13`,
+matching their respective `<lastmod>2026-08-13T00:00:00.000Z</lastmod>` entries in
+`dist/sitemap-0.xml`. `npm run gate`, `npm test` (102 passed), `npx tsc --noEmit`, and
+`npm run build` all clean. Commit `7ccdd55`.
