@@ -54,7 +54,8 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 4,
       "type": "state",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-08-13"
     },
     {
       "slug_suggestion": "mumbai",

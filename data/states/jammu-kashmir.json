@@ -1,0 +1,216 @@
+{
+  "slug": "jammu-kashmir",
+  "name": "Jammu and Kashmir",
+  "target_keyword": "e challan jk",
+  "portals": [
+    {
+      "label": "NextGen eChallan – Check Pending Challan Status / Pay Challan (serves Jammu and Kashmir, state code JK)",
+      "url": "https://echallan.parivahan.nic.in/challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – E-Challan Payment Services hub (all 7 citizen services)",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "MoRTH eChallan (legacy portal) – the page J&K Traffic Police still links to; it carries the notice sending JK users to NextGen",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – Grievance Entry Form (wrong / disputed challan)",
+      "url": "https://echallan.parivahan.nic.in/grievance",
+      "scope": "check"
+    },
+    {
+      "label": "NextGen eChallan – Check Grievance Status (by Ticket / Challan / Vehicle / DL number)",
+      "url": "https://echallan.parivahan.nic.in/grievance/search",
+      "scope": "check"
+    },
+    {
+      "label": "Virtual Courts – select \"Jammu and Kashmir(Jammu Traffic Department)\" or \"Jammu and Kashmir(Kashmir Traffic Department)\" for a court-referred challan",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    },
+    {
+      "label": "J&K Traffic Police (official UT traffic wing site, NIC J&K)",
+      "url": "https://trafficpolice.jk.gov.in/",
+      "scope": "check"
+    },
+    {
+      "label": "J&K Traffic Police – Rules & Regulations page hosting the \"Offence/fine\" master and the SOP for e-challaning",
+      "url": "https://trafficpolice.jk.gov.in/rules.html",
+      "scope": "check"
+    },
+    {
+      "label": "J&K Traffic Police – Public Notice page listing vehicles with pending e-court challans (City Srinagar, Rural Kashmir, City Jammu)",
+      "url": "https://trafficpolice.jk.gov.in/Notice.html",
+      "scope": "check"
+    },
+    {
+      "label": "Department of Transport, UT of Jammu and Kashmir (Acts & Rules, notifications)",
+      "url": "https://transport.jk.gov.in/",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Go to the NextGen eChallan services hub at https://echallan.parivahan.nic.in/challan/challan-services and click the \"Check Pending Challan Status\" tile. Jammu and Kashmir is one of the jurisdictions migrated to NextGen — the old echallan.parivahan.gov.in page carries a notice listing JK among the states whose challans must be handled on the NextGen portal.",
+    "On the \"CHECK PENDING CHALLAN STATUS\" screen choose one of the three tabs: \"Challan Number\", \"Vehicle Number\" or \"DL Number\".",
+    "\"Challan Number\" needs only the challan number. \"Vehicle Number\" needs your JK vehicle number PLUS the vehicle's \"Registration Date\". \"DL Number\" needs the DL number PLUS \"Date of Birth\" — the old portal instead asked for the last 5 characters of the chassis/engine number, so pre-migration guides are wrong.",
+    "Fill the \"Enter Captcha\" box (it is case-sensitive) and click \"GET DETAILS\".",
+    "Read the result rows — the portal returns the challan number, offence, challan date, amount and status against your vehicle or licence.",
+    "For the challan copy with the photographic evidence use the \"Download Challan Print\" tile on the services hub; for a settled challan use \"Download Payment Receipt\".",
+    "If nothing shows but you were stopped or sent a notice, check the court route: a J&K challan referred to court leaves the e-challan portal. Open https://vcourts.gov.in/virtualcourt/ and pick \"Jammu and Kashmir(Jammu Traffic Department)\" or \"Jammu and Kashmir(Kashmir Traffic Department)\" depending on which division issued it.",
+    "Srinagar, Rural Kashmir and Jammu traffic police have also published Public Notices listing vehicles with pending e-court challans at https://trafficpolice.jk.gov.in/Notice.html — worth checking if your challan predates the current portal records."
+  ],
+  "pay_steps": [
+    "From https://echallan.parivahan.nic.in/challan/challan-services click the \"Pay Challan\" tile — it opens the same three-tab search screen (Challan Number / Vehicle Number / DL Number).",
+    "Enter your identifier plus the second field that tab demands (Registration Date for a vehicle number, Date of Birth for a DL number), fill the captcha and click \"GET DETAILS\".",
+    "Check the offence description and the amount against the challan before paying — a J&K e-challan states the payable compounding amount, which is what you settle.",
+    "Select the pending challan and proceed to the payment gateway, then complete the payment online.",
+    "Save the receipt immediately using the \"Download Payment Receipt\" service on the services hub.",
+    "If money left your account but the challan still shows pending, do NOT pay again — the portal's own notice board says to use the \"Check Pending Transaction\" service to verify the transaction status. If it stays unresolved, file a grievance at https://echallan.parivahan.nic.in/grievance and track it at https://echallan.parivahan.nic.in/grievance/search.",
+    "If the challan has been referred to court, pay it instead at https://vcourts.gov.in/virtualcourt/ — select the correct J&K department (Jammu or Kashmir Traffic Department), click \"Proceed Now\", then search under \"Mobile Number\", \"CNR Number\", \"Party Name\" or \"Challan/Vehicle No.\", enter the captcha and submit.",
+    "Offences that are not compoundable — drunken driving under s.185 and the s.184 dangerous-driving group (which in J&K's own offence master includes jumping a red light and wrong-side driving) — cannot be settled on the portal at all and must be decided by the court.",
+    "J&K's SOP for e-challaning also provides for on-the-spot payment by credit or debit card on the enforcement officer's device, besides online payment through the internet payment gateway."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the official MoRTH / NIC citizen mobile app, which carries transport records linked to your RC and DL including challan history and links through to online challan payment. The eChallan portal runs a standing warning to use only the official app, as fake look-alike e-challan apps exist.",
+    "J&K's SOP for the e-challan system records that the platform sends alerts through SMS, so a challan booked against your vehicle may reach you as a text — but there is no J&K-only SMS short code you can query. No official J&K Traffic Police or Transport Department page documents a challan-enquiry SMS number as of 13-Aug-2026; treat any SMS number quoted on blogs as unverified."
+  ],
+  "court_challan_process": "Jammu and Kashmir runs Virtual Courts for traffic challans, and it is the only jurisdiction in the Virtual Courts department dropdown that is split into two separate entries — \"Jammu and Kashmir(Jammu Traffic Department)\" and \"Jammu and Kashmir(Kashmir Traffic Department)\" — reflecting the traffic police's two ranges. Pick the one matching the division where the challan was issued; there is no Ladakh entry at all. To settle a case, open https://vcourts.gov.in/virtualcourt/, select the correct J&K department, click \"Proceed Now\", then search under one of four tabs — \"Mobile Number\", \"CNR Number\", \"Party Name\" or \"Challan/Vehicle No.\" — enter the captcha and submit. Where you accept the charge you can plead guilty and pay online without a court visit; the portal cautions that for adjudication a litigant may have to appear in person or through a lawyer. In J&K the traffic court itself is the Court of the Special Mobile Magistrate (Traffic) for Srinagar and for Jammu, and the J&K Traffic Police's SOP for e-challaning provides for \"Challan Dispatch to Court (Court referral)\" directly from the e-challan system. Offences J&K does not compound — drunken driving under s.185 and the s.184 dangerous-driving group, which its offence master marks non-compoundable — go to that court from the outset. Unpaid court challans are pursued: Srinagar City Traffic Police issued a Public Notice circulating a Special Mobile Magistrate (Traffic) list of 7,366 vehicles with pending e-court challans, warning that failure to dispose of them would lead to impounding of vehicles and a recommendation for cancellation of registration.",
+  "payment_methods": [
+    "Online on the NextGen eChallan portal (echallan.parivahan.nic.in) through its integrated payment gateway — the primary route for JK challans",
+    "Online through the mParivahan app, the official MoRTH/NIC citizen app that carries challan history and payment",
+    "Online through the Virtual Court at vcourts.gov.in (Jammu or Kashmir Traffic Department) once the challan has been referred to court",
+    "On the spot by credit or debit card on the enforcement officer's e-challan device, which J&K's SOP for the e-challan system expressly provides for",
+    "In person, before the Court of the Special Mobile Magistrate (Traffic), for offences that are not compoundable"
+  ],
+  "contacts": [
+    {
+      "label": "Traffic / police emergency (round the clock)",
+      "value": "112"
+    },
+    {
+      "label": "IGP Traffic J&K, Srinagar office",
+      "value": "0194-2479871"
+    },
+    {
+      "label": "IGP Traffic J&K, Jammu office",
+      "value": "0191-2467302"
+    },
+    {
+      "label": "IGP Traffic J&K email",
+      "value": "igtraffic[at]jkpolice[dot]gov[dot]in"
+    },
+    {
+      "label": "DIG Traffic Jammu email",
+      "value": "digtfcjmu[at]jkpolice[dot]gov[dot]in"
+    },
+    {
+      "label": "DIG Traffic Kashmir email",
+      "value": "digtrfckmr[at]jkpolice[dot]gov[dot]in"
+    },
+    {
+      "label": "Traffic Control Unit Jammu",
+      "value": "0191-2451192 / 0191-2459048 / 103"
+    },
+    {
+      "label": "Traffic Control Unit Srinagar (SSP Traffic City Srinagar office)",
+      "value": "0194-2455179"
+    },
+    {
+      "label": "Traffic Control Unit Ramban (Jammu–Srinagar National Highway)",
+      "value": "9419993745"
+    },
+    {
+      "label": "Traffic Control Unit Udhampur",
+      "value": "8491928625"
+    },
+    {
+      "label": "eChallan helpdesk email (MoRTH/NIC)",
+      "value": "helpdesk-echallan[at]gov[dot]in"
+    },
+    {
+      "label": "eChallan helpdesk phone (published on the legacy portal, 6:00 AM – 10:00 PM)",
+      "value": "0120-4925505"
+    }
+  ],
+  "quirks": [
+    "Jammu and Kashmir has migrated to the NextGen e-challan portal. The legacy page at echallan.parivahan.gov.in/index/accused-challan displays, verbatim: \"NOTE : Please check and pay your challans of AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ, GJ States on NextGen eChallan Portal\" — JK is Jammu and Kashmir. Use echallan.parivahan.nic.in.",
+    "The J&K Traffic Police's own website (trafficpolice.jk.gov.in) still sends you to the OLD portal — its only e-challan link points at https://echallan.parivahan.gov.in, which is exactly the site that redirects JK users away. Following the state link is the commonest way people conclude they have \"no challans\".",
+    "jktrafficpolice.nic.in, still returned by search engines as the J&K traffic police site, does not resolve at all — DNS lookup failed with ENOTFOUND on 13-Aug-2026. The live official site is trafficpolice.jk.gov.in.",
+    "J&K is the ONLY jurisdiction in the Virtual Courts department dropdown that is split in two: \"Jammu and Kashmir(Jammu Traffic Department)\" and \"Jammu and Kashmir(Kashmir Traffic Department)\". Choosing the wrong one will not find your case. Verified live on 13-Aug-2026.",
+    "Ladakh is no longer part of Jammu and Kashmir. Since the reorganisation of 31-Oct-2019 it is a separate Union Territory and the e-challan system carries LA as a state code distinct from JK — the legacy portal's migration notice lists both separately. A challan issued in Leh or Kargil is not a JK challan, and Ladakh has no Virtual Courts entry at all.",
+    "The traffic court in J&K is the Court of the Special Mobile Magistrate (Traffic), sitting for Srinagar and for Jammu — not an ordinary magistrate's court. J&K's e-challan SOP provides for \"Challan Dispatch to Court (Court referral)\" straight from the system.",
+    "J&K still books a large number of offences under the Jammu & Kashmir Motor Vehicle Rules, 1991, which survived the 2019 reorganisation, alongside the central Motor Vehicle Act 1988 \"as per amended Act No. 32 of 2019\". Its own offence master cites, for example, the seat-belt offence to J&K Motor Vehicle Rules 1991 rule 194-B rather than to the central section. The section quoted on a JK challan may therefore not match a central-Act chart.",
+    "No J&K-specific fine schedule with different amounts could be traced. The UT's Transport Department publishes only the central Motor Vehicles Act 1988 and Central Motor Vehicles Rules 1989 on its Acts and Rules page, its Notifications page carries nothing on compounding or penalties, and the J&K Traffic Police \"Offence/fine\" master mirrors the central Motor Vehicles (Amendment) Act 2019 figures — ₹1,000 helmet, ₹1,000 seat belt, ₹5,000 driving without a licence, ₹2,000 (₹4,000 repeat) uninsured, ₹10,000 without PUC, ₹1,000–2,000 LMV overspeeding. So no state fine overrides are published on this page.",
+    "That J&K \"Offence/fine\" master is a departmental document, not a gazette notification: its own PDF metadata shows it was produced from a spreadsheet named \"Edited offence code. 10-03-22.xlsx\" and printed to PDF on 24-06-2022, and it carries no SRO/SO number or date on its face. It is the offence list the enforcement system uses, but it is not a compounding notification.",
+    "J&K's offence master goes further than the central Act on repeat speeding: for a second and subsequent excessive-speed offence by a medium goods or passenger vehicle it records \"IMPOUND VEHICLE\", where the central Act's section 206(4) impounds the driving licence. Overloading under s.194(1) likewise carries ₹20,000 plus ₹2,000 per extra tonne with the vehicle impounded on repeat.",
+    "A pending J&K challan can freeze your paperwork. The UT's SOP for the e-challan system states that \"Blockage of transactions on concerned vehicle/licence can be done, in case of pending challan\" — so an unpaid challan can hold up RC or DL work at the RTO, not just sit as a debt.",
+    "Srinagar, Rural Kashmir and Jammu traffic police publish PDF Public Notices naming vehicles with pending e-court challans (https://trafficpolice.jk.gov.in/Notice.html). One Srinagar notice circulated a Special Mobile Magistrate (Traffic) list of 7,366 vehicles and warned that non-disposal would lead to impounding of vehicles and recommendation for cancellation of registration.",
+    "The J&K traffic police headquarters moves with the season, and the official SOP letterhead prints two fax lines accordingly — Srinagar for May–Oct and Jammu for Nov–Apr. Which office answers depends on the month you call.",
+    "The NextGen portal publishes no helpdesk contact of its own: its \"Contact Us\" button is a dead JavaScript link that opened nothing on 13-Aug-2026 and its footer carries only the NIC copyright line. The helpline 0120-4925505 (6:00 AM – 10:00 PM) and helpdesk-echallan@gov.in appear only on the legacy portal.",
+    "The NextGen portal runs a standing warning that fraudulent websites and mobile apps impersonate the e-challan service and that it never asks for password, OTP or payment details by call, email, message or link."
+  ],
+  "faqs": [
+    {
+      "q": "Which website actually shows JK e-challans?",
+      "a": "The NextGen portal at echallan.parivahan.nic.in/challan. The older echallan.parivahan.gov.in page itself carries a notice naming JK among the states whose challans must be checked and paid on NextGen — even though the J&K Traffic Police website still links only to that old page."
+    },
+    {
+      "q": "I only have my JK vehicle number — what else does the portal ask for?",
+      "a": "On NextGen the \"Vehicle Number\" tab also demands the vehicle's Registration Date. If you search by driving licence you must supply your Date of Birth instead. Only the \"Challan Number\" tab works with nothing more than the number and the captcha."
+    },
+    {
+      "q": "My challan is not on the portal. Which Virtual Court do I choose for Jammu and Kashmir?",
+      "a": "It has probably been referred to court. J&K is the only jurisdiction with two entries in the Virtual Courts dropdown — \"Jammu and Kashmir(Jammu Traffic Department)\" and \"Jammu and Kashmir(Kashmir Traffic Department)\". Pick the division that issued the challan, then search by Mobile Number, CNR Number, Party Name or Challan/Vehicle No."
+    },
+    {
+      "q": "Are traffic fines in Jammu and Kashmir different from the central Motor Vehicles Act amounts?",
+      "a": "No separate J&K compounding schedule could be traced. The UT Transport Department publishes only the central Motor Vehicles Act 1988 and Central Motor Vehicles Rules 1989, and the J&K Traffic Police offence master mirrors the Motor Vehicles (Amendment) Act 2019 figures — ₹1,000 for no helmet, ₹1,000 for no seat belt, ₹5,000 for driving without a licence and ₹10,000 for no PUC certificate."
+    },
+    {
+      "q": "Does a challan from Leh or Kargil count as a Jammu and Kashmir challan?",
+      "a": "No. Ladakh became a separate Union Territory on 31-Oct-2019 and the e-challan system treats LA as a state code distinct from JK — the legacy portal's migration notice lists them separately. Ladakh also has no entry in the Virtual Courts dropdown, so a Ladakh court challan cannot be settled through the J&K departments."
+    },
+    {
+      "q": "Can I pay a J&K drunken-driving or red-light challan online?",
+      "a": "No. J&K's own offence master marks drunken driving under section 185 and the section 184 dangerous-driving group — which it applies to jumping a red light and wrong-side driving — as non-compoundable. Those have to be decided by the Court of the Special Mobile Magistrate (Traffic), through the Virtual Court or in person."
+    },
+    {
+      "q": "What happens if I simply ignore a pending J&K challan?",
+      "a": "Two things. J&K's e-challan SOP allows \"blockage of transactions on concerned vehicle/licence\" while a challan is pending, so RC and DL work at the RTO can stall. Separately, traffic police have published Public Notices listing vehicles with pending e-court challans and warned that non-disposal leads to impounding of the vehicle and a recommendation for cancellation of registration."
+    },
+    {
+      "q": "The money was debited but my JK challan still shows pending — what do I do?",
+      "a": "Do not pay again. The NextGen notice board says explicitly that if your payment is pending, stuck or deducted from your account you should use the \"Check Pending Transaction\" service to verify the transaction status. If it stays unresolved, file a grievance at echallan.parivahan.nic.in/grievance and track it at /grievance/search."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://echallan.parivahan.gov.in/",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.nic.in/challan",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/grievance",
+    "https://echallan.parivahan.nic.in/grievance/search",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://vcourts.gov.in/virtualcourt/main.php",
+    "https://trafficpolice.jk.gov.in/",
+    "https://trafficpolice.jk.gov.in/rules.html",
+    "https://trafficpolice.jk.gov.in/contact.html",
+    "https://trafficpolice.jk.gov.in/Notice.html",
+    "https://trafficpolice.jk.gov.in/documents/Rules/Rules%20&%20Regulations.pdf",
+    "https://trafficpolice.jk.gov.in/documents/Rules/SOP.pdf",
+    "https://trafficpolice.jk.gov.in/documents/Notice/City%20Srinagar.pdf",
+    "https://www.jkpolice.gov.in/JK-Traffic-Police",
+    "https://transport.jk.gov.in/",
+    "https://transport.jk.gov.in/actandrules.html",
+    "https://transport.jk.gov.in/notifications.html",
+    "https://www.indiacode.nic.in/handle/123456789/12030",
+    "https://www.indiacode.nic.in/bitstream/123456789/15242/1/re-organisation_act,2019.pdf"
+  ],
+  "last_verified": "2026-08-13"
+}
