@@ -1,4 +1,4 @@
-import { execSync } from 'node:child_process';
+import { execSync, execFileSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';
 
 const run = (cmd: string) => execSync(cmd, { stdio: 'inherit' });
@@ -39,7 +39,7 @@ for (const f of changed) {
 
 // 4. Commit + push
 run('git add -A');
-run(`git commit -m "${message.replace(/"/g, '\\"')}"`);
+execFileSync('git', ['commit', '-m', message], { stdio: 'inherit' });
 run('git push origin main');
 
 // 5. IndexNow ping
