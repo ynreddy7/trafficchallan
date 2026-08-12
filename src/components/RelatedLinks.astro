@@ -1,0 +1,9 @@
+---
+import type { LinkItem } from '../lib/links';
+interface Props { items: LinkItem[] }
+const { items } = Astro.props;
+---
+<section>
+  <h2>Related</h2>
+  <ul>{items.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+</section>

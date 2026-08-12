@@ -4,10 +4,12 @@ import AnswerBox from '../components/AnswerBox.astro';
 import LastVerified from '../components/LastVerified.astro';
 import SourceList from '../components/SourceList.astro';
 import FaqSection from '../components/FaqSection.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import StepList from '../components/StepList.astro';
 import FineTable from '../components/FineTable.astro';
 import { loadStates, loadOffences } from '../lib/data';
 import { faqJsonLd, howToJsonLd } from '../lib/seo';
+import { relatedForState } from '../lib/links';
 import type { StateRecord } from '../lib/schemas';
 
 export async function getStaticPaths() {
@@ -72,6 +74,7 @@ const jsonld = [
     <ul>{state.quirks.map((q) => <li>{q}</li>)}</ul>
   </>}
 
+  <RelatedLinks items={relatedForState(state, offences, [])} />
   <FaqSection faqs={state.faqs} />
   <SourceList sources={state.sources} />
 </Base>

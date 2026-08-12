@@ -4,9 +4,11 @@ import AnswerBox from '../../components/AnswerBox.astro';
 import LastVerified from '../../components/LastVerified.astro';
 import SourceList from '../../components/SourceList.astro';
 import FaqSection from '../../components/FaqSection.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
 import { loadStates, loadOffences } from '../../lib/data';
 import { faqJsonLd } from '../../lib/seo';
 import { shortSection } from '../../lib/format';
+import { relatedForOffence } from '../../lib/links';
 import type { OffenceRecord } from '../../lib/schemas';
 
 export async function getStaticPaths() {
@@ -60,6 +62,7 @@ const path = `/fines/${offence.slug}/`;
     </table></div>
   </>}
 
+  <RelatedLinks items={relatedForOffence(offence, states, [])} />
   <FaqSection faqs={offence.faqs} />
   <SourceList sources={offence.sources} />
 </Base>
