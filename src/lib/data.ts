@@ -2,10 +2,11 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import { StateSchema, OffenceSchema, type StateRecord, type OffenceRecord } from './schemas';
 import type { ZodType } from 'zod';
+import { z } from 'zod';
 
-function loadDir<T extends { slug: string }>(dir: string, schema: ZodType<T>): T[] {
+function loadDir<S extends ZodType<{ slug: string }>>(dir: string, schema: S): z.output<S>[] {
   const errors: string[] = [];
-  const records: T[] = [];
+  const records: z.output<S>[] = [];
   const files = readdirSync(dir).filter((f) => f.endsWith('.json')).sort();
   for (const file of files) {
     try {
