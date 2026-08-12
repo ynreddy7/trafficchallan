@@ -1,0 +1,28 @@
+{
+  "name": "trafficchallan",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "gate": "tsx scripts/validate-data.ts",
+    "build": "npm run gate && astro build",
+    "preview": "astro preview",
+    "test": "vitest run",
+    "check:links": "tsx scripts/check-links.ts",
+    "publish:site": "tsx scripts/publish.ts"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.0",
+    "astro": "^5.0.0"
+  },
+  "devDependencies": {
+    "fast-glob": "^3.3.2",
+    "gray-matter": "^4.0.3",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.1.0",
+    "xlsx": "^0.18.5",
+    "zod": "^3.23.8"
+  }
+}
