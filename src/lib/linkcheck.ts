@@ -18,3 +18,16 @@ export function resolveToDistFile(href: string): string {
   if (/\.[a-z0-9]+$/i.test(clean)) return 'dist' + clean;
   return 'dist' + clean.replace(/\/?$/, '/') + 'index.html';
 }
+
+const LEGACY_TLS_CODES = new Set(['UNABLE_TO_GET_ISSUER_CERT_LOCALLY', 'ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED']);
+
+/**
+ * Classifies a Node TLS/network error code from a failed external-link fetch.
+ * Some legacy gov.in servers respond, but with a TLS handshake modern Node
+ * rejects (incomplete cert chain, unsafe legacy renegotiation) while curl and
+ * browsers load them fine — those are warnings, not dead links. Every other
+ * TLS error (expired cert, hostname mismatch, etc.) still fails the check.
+ */
+export function classifyExternalFailure(code: string): 'legacy-tls-warn' | 'fail' {
+  return LEGACY_TLS_CODES.has(code) ? 'legacy-tls-warn' : 'fail';
+}
