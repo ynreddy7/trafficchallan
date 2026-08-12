@@ -20,7 +20,8 @@ if (newPages.size > 5 && !forceVelocity) {
   process.exit(1);
 }
 
-// 2. Gates, build, links
+// 2. Tests, gates, build, links
+run('npm test');
 run('npm run gate');
 run('npx astro build');
 run('npm run check:links -- --external');

@@ -19,7 +19,8 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "homepage"
     },
     {
       "slug_suggestion": "police",
@@ -36,10 +37,11 @@
       "max_cpc": 3.34,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "too vague — mixed traffic-police-department queries, no single coherent page"
     },
     {
-      "slug_suggestion": "jammu-kashmir-e-challan",
+      "slug_suggestion": "jammu-kashmir",
       "target_keyword": "e challan jk",
       "cluster_keywords": [
         "e challan jk",
@@ -63,8 +65,9 @@
       "est_volume": 5400,
       "max_cpc": 6.68,
       "min_seo_difficulty": 32,
-      "type": "guide",
-      "status": "pending"
+      "type": "state",
+      "status": "covered",
+      "covered_by": "maharashtra-e-challan"
     },
     {
       "slug_suggestion": "receipt",
@@ -76,7 +79,8 @@
       "max_cpc": 5.72,
       "min_seo_difficulty": 44,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online"
     },
     {
       "slug_suggestion": "e-challan",
@@ -97,7 +101,8 @@
       "max_cpc": 1.43,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "homepage"
     },
     {
       "slug_suggestion": "e-challan-discount-scheme",
@@ -134,8 +139,9 @@
       "est_volume": 2900,
       "max_cpc": 3.82,
       "min_seo_difficulty": 29,
-      "type": "guide",
-      "status": "pending"
+      "type": "state",
+      "status": "covered",
+      "covered_by": "gujarat-e-challan"
     },
     {
       "slug_suggestion": "jaipur",
@@ -146,8 +152,9 @@
       "est_volume": 1300,
       "max_cpc": 14.31,
       "min_seo_difficulty": 16,
-      "type": "guide",
-      "status": "pending"
+      "type": "state",
+      "status": "covered",
+      "covered_by": "rajasthan-e-challan"
     },
     {
       "slug_suggestion": "odisha",
@@ -170,8 +177,9 @@
       "est_volume": 1300,
       "max_cpc": 11.45,
       "min_seo_difficulty": 25,
-      "type": "guide",
-      "status": "pending"
+      "type": "state",
+      "status": "covered",
+      "covered_by": "gujarat-e-challan"
     },
     {
       "slug_suggestion": "chennai",
@@ -182,8 +190,9 @@
       "est_volume": 880,
       "max_cpc": 3.82,
       "min_seo_difficulty": 20,
-      "type": "guide",
-      "status": "pending"
+      "type": "state",
+      "status": "covered",
+      "covered_by": "tamil-nadu-e-challan"
     },
     {
       "slug_suggestion": "cars24",
@@ -404,7 +413,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "himachal-pradesh-e-challan",
+      "slug_suggestion": "himachal-pradesh",
       "target_keyword": "traffic challan hp",
       "cluster_keywords": [
         "traffic challan hp"
@@ -502,7 +511,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "chhattisgarh-e-challan",
+      "slug_suggestion": "chhattisgarh",
       "target_keyword": "traffic challan cg",
       "cluster_keywords": [
         "traffic challan cg"
@@ -523,7 +532,8 @@
       "max_cpc": 5.72,
       "min_seo_difficulty": 11,
       "type": "state",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "bihar state item / how-to-pay-e-challan-online"
     },
     {
       "slug_suggestion": "tripura",
@@ -897,7 +907,8 @@
       "max_cpc": 3.34,
       "min_seo_difficulty": 7,
       "type": "state",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "bihar state item / how-to-pay-e-challan-online"
     },
     {
       "slug_suggestion": "police-question",
@@ -1911,7 +1922,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "state",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "jharkhand state item / how-to-pay-e-challan-online"
     },
     {
       "slug_suggestion": "jama-karne",
@@ -1971,7 +1983,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "state",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "upload",
@@ -2295,7 +2308,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "state",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "jharkhand state item / how-to-pay-e-challan-online"
     },
     {
       "slug_suggestion": "gst",
@@ -2476,7 +2490,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "state",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "jharkhand state item / how-to-pay-e-challan-online"
     },
     {
       "slug_suggestion": "yamunanagar",
@@ -2767,7 +2782,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "kerala-e-challan",
+      "slug_suggestion": "kerala",
       "target_keyword": "kerala e challan",
       "cluster_keywords": [
         "kerala e challan"
@@ -2779,7 +2794,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "puducherry-e-challan",
+      "slug_suggestion": "puducherry",
       "target_keyword": "puducherry e challan",
       "cluster_keywords": [
         "puducherry e challan"

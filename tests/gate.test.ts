@@ -56,4 +56,18 @@ describe('runGates', () => {
     });
     expect(v.join(' ')).toMatch(/g\.md.*source/i);
   });
+  it('flags a duplicate slug between a guide and a state page', () => {
+    // States claim `${slug}-e-challan`; guides claim their filename minus `.md`.
+    // A guide file named "delhi-e-challan.md" collides with state delhi's page slug.
+    const v = runGates({
+      ...base,
+      guides: [{
+        file: 'delhi-e-challan.md',
+        target_keyword: 'delhi e challan dispute process',
+        last_verified: '2026-08-01',
+        sources: ['https://example.gov.in/']
+      }]
+    });
+    expect(v.join(' ')).toMatch(/duplicate slug/i);
+  });
 });
