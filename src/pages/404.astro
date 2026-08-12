@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Page not found"
+  description="The page you're looking for doesn't exist. Return to TrafficChallan to check your challan status, calculate fines, or explore state guides."
+  path="/404/"
+  breadcrumbs={[{ name: 'Home', path: '/' }]}
+>
+  <h1>Page not found</h1>
+
+  <p>
+    The page you're looking for doesn't exist. Try one of these:
+  </p>
+
+  <ul>
+    <li><a href="/">Home</a> — start here to explore state e-challan guides</li>
+    <li><a href="/fines/">Fines &amp; Penalties</a> — look up the fine for any Motor Vehicles Act offence</li>
+    <li><a href="/calculator/">Calculator</a> — find the exact amount you owe by state and repeat status</li>
+  </ul>
+</Base>
