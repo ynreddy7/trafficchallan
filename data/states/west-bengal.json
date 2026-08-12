@@ -136,7 +136,8 @@
     "vcourts.gov.in has no working deep link for West Bengal - passing state_cd=16 and court_code=WBVC01 in the URL just returns the generic landing page. You must select 'West Bengal(Traffic Department)' from the dropdown and press 'Proceed Now'.",
     "The Transport Department's own website (transport.wb.gov.in) contains no mention of Sanjog, e-challan or challans anywhere on its home page or FAQ, and its 'Offences & Penalties' page lists offence sections with no rupee amounts at all.",
     "Speed limits in West Bengal are fixed locally by Commissioner of Police / district orders (for example C.P. Order No. 30/24 dated 01.04.2024 for the Asansol-Durgapur Commissionerate, issued under Notification No. 2827(A)-WT/3M-80/2002), so the limit you are booked against varies road by road.",
-    "The West Bengal Traffic Police site is on a .com domain (wbtrafficpolice.com), which looks unofficial but is listed as the force's website on wbpolice.gov.in. Its Lok Adalat page is spelled 'loke-adalat.php', and kolkatatrafficpolice.net/Mobile_Lokadalat.aspx - still linked from the Kolkata Traffic Police home page - returns 404."
+    "The West Bengal Traffic Police site is on a .com domain (wbtrafficpolice.com), which looks unofficial but is listed as the force's website on wbpolice.gov.in. Its Lok Adalat page is spelled 'loke-adalat.php', and kolkatatrafficpolice.net/Mobile_Lokadalat.aspx - still linked from the Kolkata Traffic Police home page - returns 404.",
+    "wbtrafficpolice.com is designated as the West Bengal Traffic Police's official website on wbpolice.gov.in's official-websites page (WBP_Important_Websites.aspx), but it is a .com domain, not a .gov.in domain - worth noting for anyone checking whether a WB traffic site is genuine."
   ],
   "faqs": [
     {
@@ -171,7 +172,7 @@
   "fine_overrides": {
     "driving-without-puc": {
       "amount_text": "₹2,000 first offence, ₹5,000 second, ₹10,000 third and subsequent - each also carrying a 3-month licence disqualification. Some official charts still show the ₹10,000 statutory figure - the e-challan states the payable amount.",
-      "source": "http://www.wbtrafficpolice.com/userfiles/file/notification/2024-1553-WT-Notification-reg.-Revision-of-Fine-on-Air-Pollution.pdf"
+      "source": "https://www.wbtrafficpolice.com/userfiles/file/notification/2024-1553-WT-Notification-reg.-Revision-of-Fine-on-Air-Pollution.pdf"
     },
     "overspeeding": {
       "amount_text": "LMV ₹1,000 first offence, ₹2,000 second. MGV/MPV/HGV/HPV ₹2,000 first, ₹4,000 second. On a second offence the driver's licence is also impounded under Section 206(4).",
@@ -209,7 +210,7 @@
     "https://www.wbtrafficpolice.com/grips-payment.php",
     "https://www.wbtrafficpolice.com/online-fine-payments-via-grips.php",
     "https://www.wbtrafficpolice.com/important-contact-numbers.php",
-    "http://www.wbtrafficpolice.com/userfiles/file/notification/2024-1553-WT-Notification-reg.-Revision-of-Fine-on-Air-Pollution.pdf",
+    "https://www.wbtrafficpolice.com/userfiles/file/notification/2024-1553-WT-Notification-reg.-Revision-of-Fine-on-Air-Pollution.pdf",
     "https://wbtrafficpolice.com/userfiles/file/notification/c-p-order-no-30.pdf",
     "https://wbpolice.gov.in/wbp/Common/WBP_Important_Websites.aspx",
     "https://transport.wb.gov.in/",

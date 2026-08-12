@@ -144,7 +144,7 @@
     "Official pages also disagree on the pollution offence. The gazette compounds a breach of air-pollution standards under s.190(2) at Rs 1,500 (2W/3W) and Rs 3,000 (LMV, heavy and others), while the BTP Spot Fines row for 'Emitting Black Smoke' under 190(2) still shows Rs 500 first offence and Rs 1,000 for repeats.",
     "Several offences are not compoundable at all in Karnataka and go straight to court: BTP's Spot Fines list marks drunken driving (s.185), driving without permit and driving without a fitness certificate as 'Court Fine'. The compounding notification also bars police officers from compounding ss. 113/114/115 r/w 194, 182, 62A r/w 182B, 182A(1), 182A(3), 182A(4), 190, 192, 192A, 194 and 194A.",
     "The Rs 500 helmet fine does not remove the central consequence - section 194D also carries disqualification of the driving licence for three months, which the state notification does not and cannot waive.",
-    "Karnataka repeatedly runs limited-window 50 per cent rebate drives on pending e-challans (August-September 2025, November-December 2025, and 21 June to 10 July 2026). None was open on 12 August 2026, and these are announced by press release rather than posted as a standing notice on the police or transport portals - so verify before assuming a discount applies.",
+    "Karnataka has run recurring limited-window challan-discount drives; dates are announced via press - check btp.karnataka.gov.in or ksp.karnataka.gov.in before assuming one is active.",
     "Bengaluru enforcement is largely contactless: AI cameras (ITEMS) at 50 junctions plus safe-city surveillance, with the challan pushed by SMS and a physical IMS/IMV 133 notice posted to the Vahan address. The notice carries a QR code that shows the photo evidence and allows both payment and a dispute.",
     "District police 'Traffic Fines' pages on the karnataka.gov.in network (Mysuru, Raichur, Koppal) silently redirect to the district homepage - the fine schedule they used to host is gone, so the transport department gazette PDF is the only reliable state source."
   ],
@@ -175,7 +175,7 @@
     },
     {
       "q": "Does Karnataka give a discount on old pending traffic fines?",
-      "a": "Periodically, yes - the state has run several limited-window 50 per cent rebate drives on pending e-challans, including August-September 2025, November-December 2025 and 21 June to 10 July 2026. No window was open as of 12 August 2026. These schemes are announced by government press release rather than kept as a standing notice on the police or transport websites, so check current announcements before assuming a rebate; outside a window the full notified amount is payable."
+      "a": "Periodically, yes. Karnataka has run recurring limited-window challan-discount drives; dates are announced via press - check btp.karnataka.gov.in or ksp.karnataka.gov.in before assuming one is active. Outside an active window the full notified amount is payable."
     },
     {
       "q": "I got a printed notice by post with a QR code - is it genuine?",
@@ -204,7 +204,7 @@
       "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
     },
     "dangerous-driving-red-light": {
-      "amount_text": "₹500 for jumping a traffic signal (Rule 119 read with s.177). Bengaluru Traffic Police separately list general dangerous driving under s.184 at ₹1,000 first offence and ₹2,000 for repeats.",
+      "amount_text": "₹500 (Bengaluru Traffic Police schedule; statewide gazette compounds s.184 only for handheld devices), for jumping a signal under Rule 119 read with s.177. BTP separately lists general dangerous driving under s.184 at ₹1,000 first, ₹2,000 repeat.",
       "source": "https://btp.karnataka.gov.in/117/spot-fines/en"
     },
     "mobile-phone-while-driving": {

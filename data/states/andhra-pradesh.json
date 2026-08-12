@@ -66,10 +66,6 @@
       "amount_text": "₹5,035 for driving in contravention of s.3/4 under s.181, which AP groups together with underage driving — ₹35 above the ₹5,000 statutory figure.",
       "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
     },
-    "driving-without-rc": {
-      "amount_text": "₹185 light motor vehicle, ₹335 heavy vehicle for failing to produce RC/DL under s.177. Driving an unregistered vehicle is a separate s.192 offence and does not appear on AP's chart.",
-      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
-    },
     "mobile-phone-while-driving": {
       "amount_text": "₹1,035 light motor vehicle, ₹2,035 heavy vehicle — AP compounds handheld phone use under s.184 dangerous driving, far below the ₹5,000 often quoted for s.184.",
       "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
@@ -131,7 +127,8 @@
     "Challans are posted, not always handed over. Prakasam district police state e-challans are sent to violators by post 'with a demand to pay their respective fine at mee-seva/AP online centers or through internet with in 15 days', and that officers book violations with evidence cameras and MPD devices without stopping the vehicle.",
     "The only AP compounding G.O. still hosted by the transport department is G.O.Ms.No.108 dated 18-08-2011, a scanned PDF that pre-dates the 2019 amendment and whose text layer cannot be extracted. The byte-identical file is also served from the Telangana transport site — a leftover of the 2014 bifurcation — so it should not be read as a current AP schedule.",
     "The contact e-mail printed on AP Police's own Contact Us page, adg_l@apolice.gov.in, is on a domain that does not resolve; only appolice.gov.in (with the double p) exists. It appears to be a typo, so use the DG Control landline instead.",
-    "No AP-specific SMS challan service is documented anywhere official. The Parivahan portal itself warns: 'Please beware of fraudulent websites and mobile apps impersonating our echallan services... We never request your password, OTP, payment details or sensitive personal information via calls, emails, or messages or links.'"
+    "No AP-specific SMS challan service is documented anywhere official. The Parivahan portal itself warns: 'Please beware of fraudulent websites and mobile apps impersonating our echallan services... We never request your password, OTP, payment details or sensitive personal information via calls, emails, or messages or links.'",
+    "The Srikakulam district police fine table used for these compounding amounts carries no visible G.O. number or date on the page itself. A keyword search of the state G.O. register at goir.ap.gov.in under the Transport, Roads and Buildings (TRB01) and Home (HOM01) departments did not surface the underlying notification within a bounded search. The amounts are corroborated across multiple district police pages, but the instrument behind them remains unverified."
   ],
   "slug": "andhra-pradesh",
   "sms_app_methods": [
