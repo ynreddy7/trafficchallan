@@ -56,15 +56,19 @@ export function datasetJsonLd(
 /**
  * WebPage node carrying machine-readable dates — the strongest single AEO
  * lever per the GEO-16 citation-prediction study (see
- * .superpowers/upgrade/research.json, aeo.tactics[0]). datePublished is
- * fixed at the site launch date; dateModified/lastReviewed mirror the
+ * .superpowers/upgrade/research.json, aeo.tactics[0]). datePublished is the
+ * site launch date, EXCEPT when a page's last_verified predates launch (a
+ * source re-verified before the site's own launch date) — clamping to the
+ * earlier date avoids the logical inversion of a page claiming to have been
+ * modified before it was published. dateModified/lastReviewed mirror the
  * page's visible "Last verified" date.
  */
 export function webPageJsonLd(path: string, title: string, dateModified: string) {
+  const datePublished = dateModified < SITE_LAUNCH_DATE ? dateModified : SITE_LAUNCH_DATE;
   return {
     '@context': 'https://schema.org', '@type': 'WebPage',
     url: abs(path), name: title,
-    datePublished: SITE_LAUNCH_DATE,
+    datePublished,
     dateModified,
     lastReviewed: dateModified,
     isPartOf: { '@type': 'WebSite', url: abs('/') }

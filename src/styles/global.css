@@ -199,6 +199,17 @@ li {
   margin: 0 0 0.35rem;
 }
 
+/* Defensive catch-all: state-page step prose and portal data occasionally
+   embed a long unbroken URL as plain text (not a link) — e.g.
+   "https://echallan.tspolice.gov.in/publicview/" inside a StepList <li>.
+   Without this, that single token forces the whole page wider than a
+   390px viewport, clipping the H1 and answer board off-screen. */
+p,
+li,
+td {
+  overflow-wrap: break-word;
+}
+
 small,
 .small {
   font-size: 1rem; /* 16px small print */
@@ -210,6 +221,17 @@ a {
 }
 a:hover {
   color: var(--link-hover);
+}
+
+/* Long portal URLs used as link text (answer board, portal tables, source
+   list) can be a single unbreakable run well past 390px — scoped to
+   content contexts so header/nav labels don't wrap oddly. */
+main p a,
+main li a,
+main td a,
+.answer-board a,
+.sources a {
+  overflow-wrap: anywhere;
 }
 
 :focus-visible {
@@ -1003,6 +1025,12 @@ tbody tr:nth-child(even) {
   height: 20px;
   margin-top: 0.28rem;
   color: var(--danger);
+}
+.caution__body {
+  /* Flex items default to min-width: auto, which refuses to shrink below
+     the content's longest unbreakable run — the real min-width:0 fix for
+     a flex child that might one day carry a long URL. */
+  min-width: 0;
 }
 .caution__body > :last-child {
   margin-bottom: 0;

@@ -43,14 +43,25 @@ describe('seo builders', () => {
     });
   });
 
-  it('webPage jsonld carries fixed datePublished, mirrored dateModified/lastReviewed and isPartOf', () => {
-    const w = webPageJsonLd('/delhi-e-challan/', 'Delhi e-Challan', '2026-08-10') as any;
+  it('webPage jsonld carries site-launch datePublished, mirrored dateModified/lastReviewed and isPartOf, when dateModified is on/after launch', () => {
+    const w = webPageJsonLd('/delhi-e-challan/', 'Delhi e-Challan', '2026-08-14') as any;
     expect(w['@type']).toBe('WebPage');
     expect(w.url).toBe('https://trafficchallan.com/delhi-e-challan/');
     expect(w.name).toBe('Delhi e-Challan');
     expect(w.datePublished).toBe(SITE_LAUNCH_DATE);
-    expect(w.dateModified).toBe('2026-08-10');
-    expect(w.lastReviewed).toBe('2026-08-10');
+    expect(w.dateModified).toBe('2026-08-14');
+    expect(w.lastReviewed).toBe('2026-08-14');
     expect(w.isPartOf).toEqual({ '@type': 'WebSite', url: 'https://trafficchallan.com/' });
+  });
+
+  it('webPage jsonld clamps datePublished to dateModified when a page was last verified before site launch', () => {
+    // A record's last_verified can predate the site's own launch date (e.g.
+    // sourced during pre-launch content prep). datePublished must never
+    // read later than dateModified — that's a logical inversion (a page
+    // claiming to be modified before it was published).
+    const w = webPageJsonLd('/delhi-e-challan/', 'Delhi e-Challan', '2026-08-10') as any;
+    expect(w.datePublished).toBe('2026-08-10');
+    expect(w.dateModified).toBe('2026-08-10');
+    expect(w.datePublished <= w.dateModified).toBe(true);
   });
 });
