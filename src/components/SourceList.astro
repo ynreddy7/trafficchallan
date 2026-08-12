@@ -1,0 +1,8 @@
+---
+interface Props { sources: string[] }
+const { sources } = Astro.props;
+---
+<section>
+  <h2>Sources</h2>
+  <ul>{sources.map((s) => <li><a href={s} rel="noopener nofollow">{new URL(s).hostname}</a> — {s}</li>)}</ul>
+</section>

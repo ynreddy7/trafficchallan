@@ -1,0 +1,6 @@
+---
+interface Props { date: string }
+const { date } = Astro.props;
+const pretty = new Date(date + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+<p class="verified">Last verified: {pretty}</p>

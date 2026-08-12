@@ -1,0 +1,50 @@
+---
+import '../styles/global.css';
+import { orgJsonLd, websiteJsonLd, breadcrumbJsonLd, ORIGIN } from '../lib/seo';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface Props {
+  title: string; description: string; path: string;
+  jsonld?: object[]; breadcrumbs?: { name: string; path: string }[];
+}
+const { title, description, path, jsonld = [], breadcrumbs } = Astro.props;
+const canonical = ORIGIN + path;
+const blocks = [orgJsonLd(), websiteJsonLd(), ...(breadcrumbs ? [breadcrumbJsonLd(breadcrumbs)] : []), ...jsonld];
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} | TrafficChallan</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content={ORIGIN + '/og-default.png'} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a href="/" class="brand">TrafficChallan</a>
+      <a href="/fines/">Fines &amp; Penalties</a>
+      <a href="/calculator/">Calculator</a>
+      <a href="/about/">About</a>
+    </div>
+  </header>
+  <main>
+    {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
+    <slot />
+    <p class="disclaimer">TrafficChallan.com is an independent information website, not affiliated with any government body. Challan payments happen only on official government portals we link to.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="inner">
+      <p>© {new Date().getFullYear()} TrafficChallan · By Team TrafficChallan ·
+        <a href="/editorial-policy/">Editorial policy</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>
+    </div>
+  </footer>
+</body>
+</html>
