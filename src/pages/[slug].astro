@@ -11,70 +11,94 @@ import { loadStates, loadOffences } from '../lib/data';
 import { faqJsonLd, howToJsonLd } from '../lib/seo';
 import { relatedForState } from '../lib/links';
 import type { StateRecord } from '../lib/schemas';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
-  return loadStates().map((state) => ({
+  const statePaths = loadStates().map((state) => ({
     params: { slug: `${state.slug}-e-challan` },
-    props: { type: 'state' as const, state }
+    props: { type: 'state' as const, state, guide: undefined }
   }));
+  const guides = await getCollection('guides');
+  const guidePaths = guides.map((guide) => ({
+    params: { slug: guide.id },
+    props: { type: 'guide' as const, state: undefined, guide }
+  }));
+  return [...statePaths, ...guidePaths];
 }
 
-interface Props { type: 'state'; state: StateRecord }
-const { state } = Astro.props;
+type Props =
+  | { type: 'state'; state: StateRecord; guide: undefined }
+  | { type: 'guide'; state: undefined; guide: CollectionEntry<'guides'> };
+
+const props = Astro.props;
 const offences = loadOffences();
+const guideSlugs = (await getCollection('guides')).map((g) => g.id);
 const year = new Date().getFullYear();
-const path = `/${state.slug}-e-challan/`;
-const primaryPortal = state.portals[0];
-const jsonld = [
-  howToJsonLd(`How to check ${state.name} e-challan`, state.check_steps),
-  faqJsonLd(state.faqs)
-];
+
+const { Content } = props.type === 'guide' ? await render(props.guide) : { Content: null };
 ---
-<Base
-  title={`${state.name} e-Challan ${year}: Check Status & Pay Online`}
-  description={`How to check and pay ${state.name} traffic e-challans online — official portals, step-by-step process, fine amounts and FAQs. Independently verified.`}
-  path={path}
-  jsonld={jsonld}
-  breadcrumbs={[{ name: 'Home', path: '/' }, { name: `${state.name} e-Challan`, path }]}
->
-  <h1>{state.name} e-Challan: Check Status &amp; Pay Online</h1>
-  <AnswerBox>
-    To check a traffic challan in {state.name}, enter your vehicle number on
-    <a href={primaryPortal.url} rel="noopener">{primaryPortal.label}</a> or the national portal
-    <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>.
-    Payment is done on the same official portal via {state.payment_methods.join(', ')}.
-  </AnswerBox>
-  <LastVerified date={state.last_verified} />
+{props.type === 'state' ? (
+  <Base
+    title={`${props.state.name} e-Challan ${year}: Check Status & Pay Online`}
+    description={`How to check and pay ${props.state.name} traffic e-challans online — official portals, step-by-step process, fine amounts and FAQs. Independently verified.`}
+    path={`/${props.state.slug}-e-challan/`}
+    jsonld={[howToJsonLd(`How to check ${props.state.name} e-challan`, props.state.check_steps), faqJsonLd(props.state.faqs)]}
+    breadcrumbs={[{ name: 'Home', path: '/' }, { name: `${props.state.name} e-Challan`, path: `/${props.state.slug}-e-challan/` }]}
+  >
+    <h1>{props.state.name} e-Challan: Check Status &amp; Pay Online</h1>
+    <AnswerBox>
+      To check a traffic challan in {props.state.name}, enter your vehicle number on
+      <a href={props.state.portals[0].url} rel="noopener">{props.state.portals[0].label}</a> or the national portal
+      <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>.
+      Payment is done on the same official portal via {props.state.payment_methods.join(', ')}.
+    </AnswerBox>
+    <LastVerified date={props.state.last_verified} />
 
-  <h2>How to check your {state.name} challan</h2>
-  <StepList steps={state.check_steps} />
+    <h2>How to check your {props.state.name} challan</h2>
+    <StepList steps={props.state.check_steps} />
 
-  <h2>How to pay a {state.name} challan online</h2>
-  <StepList steps={state.pay_steps} />
+    <h2>How to pay a {props.state.name} challan online</h2>
+    <StepList steps={props.state.pay_steps} />
 
-  <h2>Official portals for {state.name}</h2>
-  <div class="table-wrap"><table>
-    <thead><tr><th>Portal</th><th>Use for</th></tr></thead>
-    <tbody>{state.portals.map((p) => <tr><td><a href={p.url} rel="noopener">{p.label}</a></td><td>{p.scope === 'both' ? 'Check & pay' : p.scope}</td></tr>)}</tbody>
-  </table></div>
+    <h2>Official portals for {props.state.name}</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Portal</th><th>Use for</th></tr></thead>
+      <tbody>{props.state.portals.map((p) => <tr><td><a href={p.url} rel="noopener">{p.label}</a></td><td>{p.scope === 'both' ? 'Check & pay' : p.scope}</td></tr>)}</tbody>
+    </table></div>
 
-  {state.sms_app_methods.length > 0 && <>
-    <h2>Check by SMS or app</h2>
-    <ul>{state.sms_app_methods.map((m) => <li>{m}</li>)}</ul>
-  </>}
+    {props.state.sms_app_methods.length > 0 && <>
+      <h2>Check by SMS or app</h2>
+      <ul>{props.state.sms_app_methods.map((m) => <li>{m}</li>)}</ul>
+    </>}
 
-  <h2>Court challans in {state.name}</h2>
-  <p>{state.court_challan_process}</p>
+    <h2>Court challans in {props.state.name}</h2>
+    <p>{props.state.court_challan_process}</p>
 
-  <h2>Traffic fine amounts in {state.name}</h2>
-  <FineTable offences={offences} state={state} />
+    <h2>Traffic fine amounts in {props.state.name}</h2>
+    <FineTable offences={offences} state={props.state} />
 
-  {state.quirks.length > 0 && <>
-    <h2>Things specific to {state.name}</h2>
-    <ul>{state.quirks.map((q) => <li>{q}</li>)}</ul>
-  </>}
+    {props.state.quirks.length > 0 && <>
+      <h2>Things specific to {props.state.name}</h2>
+      <ul>{props.state.quirks.map((q) => <li>{q}</li>)}</ul>
+    </>}
 
-  <RelatedLinks items={relatedForState(state, offences, [])} />
-  <FaqSection faqs={state.faqs} />
-  <SourceList sources={state.sources} />
-</Base>
+    <RelatedLinks items={relatedForState(props.state, offences, guideSlugs)} />
+    <FaqSection faqs={props.state.faqs} />
+    <SourceList sources={props.state.sources} />
+  </Base>
+) : (
+  <Base
+    title={props.guide.data.title}
+    description={props.guide.data.description}
+    path={`/${props.guide.id}/`}
+    jsonld={props.guide.data.faqs.length ? [faqJsonLd(props.guide.data.faqs)] : []}
+    breadcrumbs={[{ name: 'Home', path: '/' }, { name: props.guide.data.title, path: `/${props.guide.id}/` }]}
+  >
+    <h1>{props.guide.data.title}</h1>
+    <LastVerified date={props.guide.data.last_verified} />
+    {Content && <Content />}
+    {props.guide.data.faqs.length > 0 && <FaqSection faqs={props.guide.data.faqs} />}
+    <SourceList sources={props.guide.data.sources} />
+  </Base>
+)}

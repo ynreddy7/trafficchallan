@@ -10,6 +10,7 @@ import { faqJsonLd } from '../../lib/seo';
 import { shortSection } from '../../lib/format';
 import { relatedForOffence } from '../../lib/links';
 import type { OffenceRecord } from '../../lib/schemas';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
   return loadOffences().map((offence) => ({
@@ -22,6 +23,7 @@ const { offence } = Astro.props;
 const states = loadStates();
 const overriding = states.filter((s) => offence.slug in s.fine_overrides);
 const path = `/fines/${offence.slug}/`;
+const guideSlugs = (await getCollection('guides')).map((g) => g.id);
 ---
 <Base
   title={`${offence.name}: Fine Amount & Rules`}
@@ -62,7 +64,7 @@ const path = `/fines/${offence.slug}/`;
     </table></div>
   </>}
 
-  <RelatedLinks items={relatedForOffence(offence, states, [])} />
+  <RelatedLinks items={relatedForOffence(offence, states, guideSlugs)} />
   <FaqSection faqs={offence.faqs} />
   <SourceList sources={offence.sources} />
 </Base>
