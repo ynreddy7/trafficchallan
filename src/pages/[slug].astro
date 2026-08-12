@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import LastVerified from '../components/LastVerified.astro';
+import SourceList from '../components/SourceList.astro';
+import FaqSection from '../components/FaqSection.astro';
+import StepList from '../components/StepList.astro';
+import FineTable from '../components/FineTable.astro';
+import { loadStates, loadOffences } from '../lib/data';
+import { faqJsonLd, howToJsonLd } from '../lib/seo';
+import type { StateRecord } from '../lib/schemas';
+
+export async function getStaticPaths() {
+  return loadStates().map((state) => ({
+    params: { slug: `${state.slug}-e-challan` },
+    props: { type: 'state' as const, state }
+  }));
+}
+
+interface Props { type: 'state'; state: StateRecord }
+const { state } = Astro.props;
+const offences = loadOffences();
+const year = new Date().getFullYear();
+const path = `/${state.slug}-e-challan/`;
+const primaryPortal = state.portals[0];
+const jsonld = [
+  howToJsonLd(`How to check ${state.name} e-challan`, state.check_steps),
+  faqJsonLd(state.faqs)
+];
+---
+<Base
+  title={`${state.name} e-Challan ${year}: Check Status & Pay Online`}
+  description={`How to check and pay ${state.name} traffic e-challans online — official portals, step-by-step process, fine amounts and FAQs. Independently verified.`}
+  path={path}
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: `${state.name} e-Challan`, path }]}
+>
+  <h1>{state.name} e-Challan: Check Status &amp; Pay Online</h1>
+  <AnswerBox>
+    To check a traffic challan in {state.name}, enter your vehicle number on
+    <a href={primaryPortal.url} rel="noopener">{primaryPortal.label}</a> or the national portal
+    <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>.
+    Payment is done on the same official portal via {state.payment_methods.join(', ')}.
+  </AnswerBox>
+  <LastVerified date={state.last_verified} />
+
+  <h2>How to check your {state.name} challan</h2>
+  <StepList steps={state.check_steps} />
+
+  <h2>How to pay a {state.name} challan online</h2>
+  <StepList steps={state.pay_steps} />
+
+  <h2>Official portals for {state.name}</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Portal</th><th>Use for</th></tr></thead>
+    <tbody>{state.portals.map((p) => <tr><td><a href={p.url} rel="noopener">{p.label}</a></td><td>{p.scope === 'both' ? 'Check & pay' : p.scope}</td></tr>)}</tbody>
+  </table></div>
+
+  {state.sms_app_methods.length > 0 && <>
+    <h2>Check by SMS or app</h2>
+    <ul>{state.sms_app_methods.map((m) => <li>{m}</li>)}</ul>
+  </>}
+
+  <h2>Court challans in {state.name}</h2>
+  <p>{state.court_challan_process}</p>
+
+  <h2>Traffic fine amounts in {state.name}</h2>
+  <FineTable offences={offences} state={state} />
+
+  {state.quirks.length > 0 && <>
+    <h2>Things specific to {state.name}</h2>
+    <ul>{state.quirks.map((q) => <li>{q}</li>)}</ul>
+  </>}
+
+  <FaqSection faqs={state.faqs} />
+  <SourceList sources={state.sources} />
+</Base>

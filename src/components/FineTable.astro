@@ -1,0 +1,26 @@
+---
+import type { StateRecord, OffenceRecord } from '../lib/schemas';
+interface Props { offences: OffenceRecord[]; state?: StateRecord }
+const { offences, state } = Astro.props;
+---
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Offence</th><th>Section</th><th>First offence</th><th>Repeat</th>
+      {state && <th>In {state.name}</th>}
+    </tr>
+  </thead>
+  <tbody>
+    {offences.map((o) => (
+      <tr>
+        <td><a href={`/fines/${o.slug}/`}>{o.name}</a></td>
+        <td>{o.mva_section.replace(', Motor Vehicles Act 1988', '').replace(' (as amended 2019)', '')}</td>
+        <td>{o.base_fine_text}</td>
+        <td>{o.repeat_fine_text}</td>
+        {state && <td>{state.fine_overrides[o.slug]?.amount_text ?? 'Standard amount'}</td>}
+      </tr>
+    ))}
+  </tbody>
+</table>
+</div>
