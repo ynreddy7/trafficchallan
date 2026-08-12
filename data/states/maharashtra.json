@@ -114,35 +114,35 @@
   ],
   "fine_overrides": {
     "overspeeding": {
-      "amount_text": "Graded into four vehicle classes by the state compounding notification (Sec 183(1)): ₹1,000 for a two- or three-wheeler, ₹1,500 for a tractor, ₹2,000 for an LMV and ₹4,000 for other vehicles. Maharashtra is finer-grained than the central Act, which knows only 'light motor vehicle' and 'medium or heavy'. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). The Highway Traffic Police 'Acts and Fine' schedule prints the same figures",
+      "amount_text": "₹1,000 for a two/three-wheeler, ₹1,500 for a tractor, ₹2,000 for an LMV and ₹4,000 for other vehicles (183(1)) — four state-notified classes where the central Act has only two",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-rc": {
-      "amount_text": "₹2,000 for a first offence and ₹5,000 for a second or subsequent offence (Sec 192(1)) — note the repeat figure is ₹5,000, not the ₹10,000 ceiling the central section allows. Payable by the person driving the vehicle or the person who causes or allows the driving, so it can be booked on driver and owner alike. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "amount_text": "₹2,000 first offence and ₹5,000 for a second or subsequent one (192(1)) — the repeat figure is ₹5,000, not the ₹10,000 the central section allows",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-puc": {
-      "amount_text": "An order of magnitude below the ₹10,000 central ceiling (Sec 190(2)). First offence: ₹1,000 for a two- or three-wheeler and ₹2,000 for other vehicles, in each case with disqualification from holding a licence for three months. Second or subsequent offence: ₹3,000 and ₹5,000 respectively. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). Separately, merely failing to produce a valid PUC certificate is a much lighter matter at ₹500 / ₹1,500 under CMVR 115(7) read with Sec 177, per the Highway Traffic Police 'Acts and Fine' schedule",
+      "amount_text": "₹1,000 for a two/three-wheeler and ₹2,000 for other vehicles, each with a 3-month licence disqualification, rising to ₹3,000 and ₹5,000 on repeat (190(2)) — far below the ₹10,000 central ceiling. Failing to produce a PUC certificate is a lighter ₹500 / ₹1,500",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "mobile-phone-while-driving": {
-      "amount_text": "Graded by vehicle class: ₹1,000 for a two- or three-wheeler, ₹2,000 for an LMV and ₹4,000 for other vehicles, rising to ₹10,000 for a second or subsequent offence committed within 3 years of the earlier one. The notification's Section 184 entry is expressly limited to 'Person driving the vehicle (only to the extent of use of hand held communication devices)' — the single limb of Section 184 that Section 200 permits to be compounded. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "amount_text": "₹1,000 for a two/three-wheeler, ₹2,000 for an LMV and ₹4,000 for other vehicles, or ₹10,000 for a repeat within 3 years. The state's Section 184 entry is confined to handheld devices — the only limb of 184 that Section 200 lets be compounded",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "dangerous-driving-red-light": {
-      "amount_text": "Not compoundable as dangerous driving. The state compounding notification's Section 184 entry is confined to handheld communication devices, so no other Section 184 conduct — including jumping a signal — can be compounded under that section. In practice Maharashtra books an ordinary signal violation under Rule 239 of the Maharashtra Motor Vehicles Rules read with Section 177, which the Highway Traffic Police schedule prices at ₹500 first offence and ₹1,500 repetitive, matching the notification's residual Section 177 entry of ₹500 / ₹1,500 for 'other offence excluding above'. That is why a red-light challan is often payable online here when the same violation is a court challan in Delhi. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "amount_text": "Not compoundable as dangerous driving — the state's Section 184 entry covers only handheld devices. An ordinary signal violation is instead booked under MMVR 239 with Section 177 at ₹500, or ₹1,500 on repeat, so it usually stays payable online here",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "drunk-driving": {
-      "amount_text": "Not compoundable. Section 185 appears nowhere in the state compounding notification — its schedule runs from Section 177 to Section 198 and steps straight from 184 to 186 — so there is no amount at which a drunken-driving charge can be settled out of court in Maharashtra. The Highway Traffic Police schedule independently lists 'Drunk and Drive — Sec 185 MVA' with a fine of 0, marked Non-Compoundable. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "amount_text": "Not compoundable — Section 185 appears nowhere in the state compounding schedule, which steps straight from 184 to 186. There is no amount at which it can be settled out of court",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-helmet": {
-      "amount_text": "₹500 and disqualification from holding a licence for three months (Sec 194D) — half the ₹1,000 statutory fine, because this is the compounding amount the state has notified. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). Be aware the two official documents disagree: the Highway Traffic Police 'Acts and Fine' schedule prints ₹1,000, which is the statutory figure under the MV Act rather than the notified compounding amount, and an e-challan may show either. It also books the offence four ways — driver and pillion, each against the rider and the owner",
+      "amount_text": "₹500 + 3-month licence disqualification (194D, state-notified; some official charts show the ₹1,000 statutory figure — the e-challan states the payable amount)",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-seatbelt": {
-      "amount_text": "₹200 for the driver (Sec 194B(1)) and ₹200 where a child up to fourteen is not secured by an appropriate child restraint system (Sec 194B(2)), both far below the ₹1,000 statutory fine because these are the notified compounding amounts, and both applying to vehicles covered by Rules 125 and 138 of the Central Motor Vehicles Rules 1989. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). The Highway Traffic Police 'Acts and Fine' schedule prints ₹1,000 for both — the statutory figure, not the compounding amount — and lists unbelted passengers other than the driver as a separate row, so an e-challan may show either figure",
+      "amount_text": "₹200 for the driver and ₹200 where a child up to 14 is not in an appropriate restraint (194B) — state-notified; some official charts show the ₹1,000 statutory figure, and the e-challan states the payable amount",
       "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     }
   },
