@@ -1,7 +1,160 @@
 ---
 import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import FineTable from '../components/FineTable.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LastVerified from '../components/LastVerified.astro';
+import { loadStates, loadOffences } from '../lib/data';
+import { faqJsonLd } from '../lib/seo';
+import { getCollection } from 'astro:content';
+
+const states = [...loadStates()].sort((a, b) => a.name.localeCompare(b.name));
+const allOffences = loadOffences();
+
+const topSlugs = [
+  'driving-without-helmet',
+  'driving-without-insurance',
+  'driving-without-licence',
+  'drunk-driving',
+  'overspeeding',
+  'mobile-phone-while-driving'
+];
+const topOffences = topSlugs
+  .map((slug) => allOffences.find((o) => o.slug === slug))
+  .filter((o): o is (typeof allOffences)[number] => Boolean(o));
+
+const guideOrder = [
+  'how-to-check-e-challan',
+  'how-to-pay-e-challan-online',
+  'unpaid-e-challan-consequences',
+  'wrong-e-challan-dispute',
+  'e-challan-lok-adalat',
+  'court-challan-vs-on-spot-challan'
+];
+const allGuides = await getCollection('guides');
+const guides = guideOrder
+  .map((id) => allGuides.find((g) => g.id === id))
+  .filter((g): g is (typeof allGuides)[number] => Boolean(g));
+
+const newestVerified = [
+  ...states.map((s) => s.last_verified),
+  ...allOffences.map((o) => o.last_verified),
+  ...allGuides.map((g) => g.data.last_verified)
+].sort().at(-1)!;
+
+const year = new Date().getFullYear();
+
+const faqs = [
+  {
+    q: 'Is trafficchallan.com an official government website?',
+    a: 'No. TrafficChallan is an independent information site and is not affiliated with the Ministry of Road Transport, Parivahan, or any state police or transport department. We link directly to the official portals for checking and paying challans.'
+  },
+  {
+    q: 'Can I pay my e-challan on this website?',
+    a: 'No. Payment happens only on the official government portal for your state — usually echallan.parivahan.gov.in, the NextGen portal, or your state transport or police site — which we link to from every state page.'
+  },
+  {
+    q: 'How current is the fine and portal information here?',
+    a: 'Every page states the date it was last checked against its official source. Fine amounts and portal details are re-verified on a rolling cycle and updated as soon as a government notification changes them.'
+  },
+  {
+    q: 'What is an e-challan?',
+    a: 'An e-challan is an electronically generated traffic violation notice issued by police through a traffic camera or handheld device. It records the vehicle number, offence, section of law and fine amount, and can usually be checked and paid online.'
+  }
+];
+
+const description = `Check and pay traffic e-challans online for all ${states.length} Indian states — official portals, current fine amounts and dispute steps. Independently verified ${year}.`;
 ---
-<Base title="Check & Pay Traffic e-Challan Online in India" description="Independent guide to checking and paying Indian traffic e-challans, with sourced state-wise fine schedules." path="/">
-  <h1>TrafficChallan</h1>
-  <p>Launching soon.</p>
+<Base
+  title="Check & Pay Traffic e-Challan Online in India"
+  description={description}
+  path="/"
+  jsonld={[faqJsonLd(faqs)]}
+>
+  <h1>Check &amp; pay traffic e-challan online — every Indian state</h1>
+  <AnswerBox>
+    Most states route e-challans through the national portal
+    <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>, though a growing
+    number now use the newer <a href="https://echallan.parivahan.nic.in/" rel="noopener">NextGen portal</a> or
+    their own state site instead. Enter your vehicle registration number on the right portal to see pending
+    challans and pay online. The two busiest pages on this site are
+    <a href="/telangana-e-challan/">Telangana e-challan</a> and <a href="/delhi-e-challan/">Delhi e-challan</a> —
+    or pick your own state below.
+  </AnswerBox>
+
+  <h2>Check your state</h2>
+  <p>
+    Every state page has its official check-and-pay portals, step-by-step instructions, SMS/app options,
+    court-challan process and any state-specific fine amounts.
+  </p>
+  <ul class="state-grid">
+    {states.map((s) => (
+      <li><a href={`/${s.slug}-e-challan/`}>{s.name}</a></li>
+    ))}
+  </ul>
+
+  <h2>Common traffic fines</h2>
+  <p>
+    The offences drivers look up most often. See the <a href="/fines/">full fine list</a> for every offence, or
+    the <a href="/calculator/">fine calculator</a> to total a multi-offence challan.
+  </p>
+  <FineTable offences={topOffences} />
+
+  <h2>Guides</h2>
+  <ul class="guide-list">
+    {guides.map((g) => (
+      <li>
+        <a href={`/${g.id}/`}>{g.data.title}</a>
+        <p class="verified">{g.data.description}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2>Why trust this site</h2>
+  <p>
+    TrafficChallan is an independent reference, not a government website — we never process payments or collect
+    challan or vehicle data ourselves. Every fine amount, legal section and portal link here is sourced from an
+    official notification or government portal, and every page carries a dated "last verified" line so you can
+    see exactly how current it is. Read our <a href="/editorial-policy/">editorial policy</a> for how we source
+    facts and correct errors.
+  </p>
+  <LastVerified date={newestVerified} />
+
+  <FaqSection faqs={faqs} />
 </Base>
+
+<style>
+  .state-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+    margin: 0.5rem 0 1.5rem;
+    padding: 0;
+  }
+  .state-grid li a {
+    display: block;
+    padding: 0.5rem 0.7rem;
+    background: var(--box);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.95rem;
+  }
+  .state-grid li a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .guide-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 1.5rem;
+  }
+  .guide-list li {
+    margin: 0 0 1rem;
+  }
+  .guide-list li p {
+    margin: 0.15rem 0 0;
+  }
+</style>
