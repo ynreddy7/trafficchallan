@@ -29,6 +29,14 @@ describe('relatedForState', () => {
     expect(items.some((l) => l.href === '/fines/')).toBe(true);
     expect(items[0].href).toBe('/fines/h/');
   });
+
+  it('exercises 8-item cap with guides surviving at tail', () => {
+    const offences = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'].map(mkOffence);
+    const items = relatedForState(mkState('delhi', ['h']), offences, ['guide-one', 'guide-two']);
+    expect(items.length).toBe(8);
+    expect(items.some((l) => l.href === '/guide-one/')).toBe(true);
+    expect(items.some((l) => l.href === '/guide-two/')).toBe(true);
+  });
 });
 
 describe('relatedForOffence', () => {
@@ -37,5 +45,22 @@ describe('relatedForOffence', () => {
     const items = relatedForOffence(mkOffence('x'), states, []);
     expect(items[0].href).toBe('/telangana-e-challan/');
     expect(items.filter((l) => l.href.endsWith('-e-challan/')).length).toBeGreaterThanOrEqual(2);
+    expect(items.some((l) => l.href === '/calculator/')).toBe(true);
+  });
+
+  it('prioritizes override states and verifies ordering: both overrides bubble up', () => {
+    const states = [mkState('delhi'), mkState('telangana', ['x']), mkState('maharashtra', ['x'])];
+    const items = relatedForOffence(mkOffence('x'), states, []);
+    expect(items[0].href).toBe('/telangana-e-challan/');
+    expect(items[1].href).toBe('/maharashtra-e-challan/');
+  });
+
+  it('guarantees ≥2 state links with exactly 2 states and no overrides', () => {
+    const states = [mkState('delhi'), mkState('maharashtra')];
+    const items = relatedForOffence(mkOffence('x'), states, []);
+    const stateLinks = items.filter((l) => l.href.endsWith('-e-challan/'));
+    expect(stateLinks.length).toBeGreaterThanOrEqual(2);
+    expect(stateLinks.some((l) => l.href === '/delhi-e-challan/')).toBe(true);
+    expect(stateLinks.some((l) => l.href === '/maharashtra-e-challan/')).toBe(true);
   });
 });
