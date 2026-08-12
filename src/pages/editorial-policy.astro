@@ -36,10 +36,11 @@ import Base from '../layouts/Base.astro';
   <h2>Update policy</h2>
   <p>
     Fine amounts and procedures change when governments issue new notifications, so pages don't stay
-    accurate on their own. Every page carries a "last verified" date, and we run an automated
-    re-verification cycle against our sources on a rolling basis so no page goes indefinitely without a
-    check. When a fact changes, the page and its date both change together — the date is a claim about
-    the content next to it, not a general timestamp.
+    accurate on their own. Every page carries a "last verified" date. We re-check every page against its
+    sources on a rolling 90-day cycle, and our build process is set up to flag any page whose facts
+    haven't been re-verified inside that window, so stale information doesn't sit published indefinitely.
+    When a fact changes, the page and its date both change together — the date is a claim about the
+    content next to it, not a general timestamp.
   </p>
 
   <h2>AI assistance</h2>
