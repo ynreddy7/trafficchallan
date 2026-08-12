@@ -2765,6 +2765,138 @@
       "min_seo_difficulty": 12,
       "type": "guide",
       "status": "pending"
+    },
+    {
+      "slug_suggestion": "kerala-e-challan",
+      "target_keyword": "kerala e challan",
+      "cluster_keywords": [
+        "kerala e challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "state",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "puducherry-e-challan",
+      "target_keyword": "puducherry e challan",
+      "cluster_keywords": [
+        "puducherry e challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "state",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "fines/no-parking",
+      "target_keyword": "no parking fine india",
+      "cluster_keywords": [
+        "no parking fine india"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "offence",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "fines/wrong-side-driving",
+      "target_keyword": "wrong side driving fine",
+      "cluster_keywords": [
+        "wrong side driving fine"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "offence",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "fines/triple-riding",
+      "target_keyword": "triple riding fine",
+      "cluster_keywords": [
+        "triple riding fine"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "offence",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "fines/minor-driving",
+      "target_keyword": "minor driving challan",
+      "cluster_keywords": [
+        "minor driving challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "offence",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "fines/overloading",
+      "target_keyword": "overloading fine india",
+      "cluster_keywords": [
+        "overloading fine india"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "offence",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "fines/defective-number-plate",
+      "target_keyword": "number plate fine",
+      "cluster_keywords": [
+        "number plate fine"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "offence",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "e-challan-payment-failed",
+      "target_keyword": "e challan payment failed",
+      "cluster_keywords": [
+        "e challan payment failed"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "challan-on-sold-vehicle",
+      "target_keyword": "challan on sold vehicle",
+      "cluster_keywords": [
+        "challan on sold vehicle"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending"
+    },
+    {
+      "slug_suggestion": "e-challan-fake-sms-scam",
+      "target_keyword": "e challan fake sms",
+      "cluster_keywords": [
+        "e challan fake sms"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending"
     }
   ]
 }
