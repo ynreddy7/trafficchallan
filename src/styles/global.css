@@ -389,11 +389,19 @@ time,
   width: min(560px, calc(100vw - 2rem));
   max-height: min(70vh, 640px);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   background: var(--surface);
   color: var(--text);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+}
+/* The UA stylesheet's `dialog:not([open]) { display: none }` only wins
+   against a plain `display` declaration when nothing more specific
+   overrides it — `display: flex` on the bare `.search-dialog` selector
+   above beat that rule and rendered the dialog open on every page load.
+   Scoping the flex layout to `[open]` fixes that while keeping the closed
+   dialog correctly `display: none`. */
+.search-dialog[open] {
+  display: flex;
+  flex-direction: column;
 }
 .search-dialog::backdrop {
   background: rgba(16, 19, 23, 0.55);
