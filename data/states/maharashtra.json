@@ -57,18 +57,34 @@
     "Offline at the nearest traffic division or police station with a copy of the challan or the vehicle details"
   ],
   "contacts": [
-    { "label": "Maharashtra e-Challan helpdesk", "value": "844 844 8960" },
-    { "label": "Maharashtra e-Challan helpdesk email", "value": "helpdesk@mahatrafficechallan.gov.in" },
-    { "label": "Portal operated by", "value": "Additional Director General of Police (Traffic), Maharashtra State, Mumbai" },
-    { "label": "National e-challan helpdesk", "value": "0120-4925505, 6:00 AM to 10:00 PM — helpdesk-echallan@gov.in" }
+    {
+      "label": "Maharashtra e-Challan helpdesk",
+      "value": "844 844 8960"
+    },
+    {
+      "label": "Maharashtra e-Challan helpdesk email",
+      "value": "helpdesk@mahatrafficechallan.gov.in"
+    },
+    {
+      "label": "Portal operated by",
+      "value": "Additional Director General of Police (Traffic), Maharashtra State, Mumbai"
+    },
+    {
+      "label": "National e-challan helpdesk",
+      "value": "0120-4925505, 6:00 AM to 10:00 PM — helpdesk-echallan@gov.in"
+    }
   ],
   "quirks": [
     "The state portal will not search on a registration number alone. It also demands the last 4 digits of the chassis or engine number, which you take from the RC — this is the single most common reason a Maharashtra search returns nothing.",
+    "Maharashtra's compounding amounts come from Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act 'in supersession of all previous notifications' and published in the Maharashtra Government Gazette, Extraordinary Part IV-A No. 205. It is a 33-row schedule covering Sections 177 to 198.",
+    "The gazette is served from the state e-Gazette portal at egazzete.mahaonline.gov.in — note the misspelling, with a double z. The obvious addresses egazette.maharashtra.gov.in and egazette.nic.in do not exist at all. There is no stable link to the PDF: it is delivered by an ASP.NET postback, so it must be retrieved by searching Division 'CENTRAL SECTION', Gazette Type 'Extra - Ordinary', both dates 26/11/2021.",
+    "Two official Maharashtra documents give different numbers for the same offence. Where the Highway Traffic Police 'Acts and Fine' schedule and the 2021 gazette overlap they agree exactly on speeding, phone use, PUC, registration and insurance — but for helmets the gazette says ₹500 and the police schedule ₹1,000, and for seat belts the gazette says ₹200 and the police schedule ₹1,000. In both cases the police figure equals the statutory fine under the MV Act while the gazette figure is the notified compounding amount, so an e-challan may show either.",
+    "The gazette contains no commencement clause — the words 'force', 'commence', 'effect' and 'December' appear nowhere in it. Any claim that these amounts took effect on a particular date in December 2021 comes from press reporting, not from the notification.",
+    "The notification lets very junior officers compound. Police Naiks may do so in the Thane, Pune, Nagpur and Navi Mumbai commissionerates, and ordinary Police Constables may do so in Mumbai city — a wider delegation than most states allow.",
     "mahatrafficechallan.gov.in redirects to /payechallan/PaymentService.htm with a per-session token in the query string. The token is not stable, so bookmark https://mahatrafficechallan.gov.in/ and let it redirect.",
     "Maharashtra has moved to the MoRTH NextGen e-challan portal. echallan.parivahan.gov.in now carries a note sending MH (with 26 other states and UTs) to https://echallan.parivahan.nic.in/challan/challan-services, so a challan missing on one portal may still appear on the other — check both.",
     "Virtual Courts covers only two Maharashtra departments, Transport and Nashik Traffic. There is no virtual court for Mumbai, Pune, Nagpur or Thane traffic police challans, so a court challan in those cities means an actual court date.",
     "The state portal is a payment counter, not a rulebook. Its only functions are the challan search, a mobile link/unlink page and a grievance form; there is no offence or penalty schedule on it, and its footer reads 'Website last updated on: 15/09/2025'.",
-    "Maharashtra's fine schedule is published, but not where you would look for it. It is a 234-row 'Acts and Fine' PDF under Information → Acts & Rules on the Maharashtra Highway Traffic Police site, not on mahatrafficechallan.gov.in, and it lists each offence with a Fine and a separate Repetitive Fine.",
     "Maharashtra books many offences twice — once against the driver and once against the owner or the person in authorised possession of the vehicle. No registration, no insurance, no PUC, no helmet and the child-restraint offence all appear as paired driver and owner rows.",
     "Red light jumping is treated quite differently from Delhi. Maharashtra's schedule marks 'Dangerous driving' under Sec 184 MVA as Non-Compoundable with a fine of 0, but books 'Jumping signal' separately under MMVR 239/177 MVA at ₹500 / ₹1,500 — so an ordinary signal violation stays payable online here.",
     "Maharashtra grades several fines by vehicle class where the central Act does not: overspeeding runs across 2/3-wheeler, tractor, LMV and MMV/HMV, and handheld phone use across 2/3-wheeler, LMV and other vehicles.",
@@ -88,8 +104,8 @@
       "a": "Only for two departments. The Virtual Courts department list carries just Maharashtra(Transport Department) and Maharashtra(NASHIK TRAFFIC DEPARTMENT). City traffic police court challans elsewhere in the state are not on that platform and are heard by the ordinary magistrate's court, so there is no online 'pay fine' or 'request to contest' button for them."
     },
     {
-      "q": "Where can I see Maharashtra's own list of traffic fines?",
-      "a": "Maharashtra Highway Traffic Police publishes a 234-row 'Acts and Fine' document under Information → Acts & Rules at https://highwaypolice.maharashtra.gov.in/info-rules-page/. It lists each offence by section, in English and Marathi, with a Fine and a separate Repetitive Fine column. It is not on mahatrafficechallan.gov.in, which only searches and takes payment, so most people never find it."
+      "q": "Where can I see Maharashtra's own traffic fine amounts?",
+      "a": "Two places, and they do not fully agree. The legally operative one is Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) of the MV Act in supersession of all previous notifications and published in the Maharashtra Government Gazette, Extraordinary Part IV-A No. 205. It sets the amount for which each offence may be compounded, and you retrieve it from the state e-Gazette at https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx by searching Division 'CENTRAL SECTION', Gazette Type 'Extra - Ordinary' and both dates 26/11/2021 — there is no direct link to the file. The more readable one is a 234-row 'Acts and Fine' document under Information → Acts & Rules at https://highwaypolice.maharashtra.gov.in/info-rules-page/. They match on most offences, but for helmets and seat belts the police document prints the statutory MV Act fine rather than the lower notified compounding amount."
     },
     {
       "q": "How do I dispute a challan booked on my vehicle by mistake?",
@@ -98,39 +114,40 @@
   ],
   "fine_overrides": {
     "overspeeding": {
-      "amount_text": "Graded into four vehicle classes, with the repetitive fine equal to the first: ₹1,000 for a 2/3-wheeler, ₹1,500 for a tractor, ₹2,000 for an LMV and ₹4,000 for an MMV/HMV (Sec 112/183(1) MVA). Maharashtra's schedule is finer-grained than the central Act, which knows only 'light motor vehicle' and 'medium or heavy'",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "Graded into four vehicle classes by the state compounding notification (Sec 183(1)): ₹1,000 for a two- or three-wheeler, ₹1,500 for a tractor, ₹2,000 for an LMV and ₹4,000 for other vehicles. Maharashtra is finer-grained than the central Act, which knows only 'light motor vehicle' and 'medium or heavy'. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). The Highway Traffic Police 'Acts and Fine' schedule prints the same figures",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-rc": {
-      "amount_text": "₹2,000 first offence and ₹5,000 repetitive (Sec 39/192(1) MVA), and it is booked twice — once on the driver and once on the owner, as two separate rows of the schedule. Note this repetitive figure is ₹5,000, not the ₹10,000 ceiling the central section allows",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "₹2,000 for a first offence and ₹5,000 for a second or subsequent offence (Sec 192(1)) — note the repeat figure is ₹5,000, not the ₹10,000 ceiling the central section allows. Payable by the person driving the vehicle or the person who causes or allows the driving, so it can be booked on driver and owner alike. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-puc": {
-      "amount_text": "Far below the ₹10,000 central ceiling. For a 2/3-wheeler: ₹1,000 and disqualification from holding a licence for 3 months, rising to ₹3,000 on repetition. For anything other than a 2/3-wheeler: ₹2,000 and a 3-month disqualification, rising to ₹5,000 (Sec 190(2) MVA, booked separately on driver and owner). Merely failing to produce a valid PUCC is a separate and much lighter offence at ₹500 / ₹1,500 under CMVR 115(7)/177 MVA",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "An order of magnitude below the ₹10,000 central ceiling (Sec 190(2)). First offence: ₹1,000 for a two- or three-wheeler and ₹2,000 for other vehicles, in each case with disqualification from holding a licence for three months. Second or subsequent offence: ₹3,000 and ₹5,000 respectively. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). Separately, merely failing to produce a valid PUC certificate is a much lighter matter at ₹500 / ₹1,500 under CMVR 115(7) read with Sec 177, per the Highway Traffic Police 'Acts and Fine' schedule",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "mobile-phone-while-driving": {
-      "amount_text": "Graded by vehicle class: ₹1,000 for a 2/3-wheeler, ₹2,000 for an LMV and ₹4,000 for other vehicles, with a repetitive fine of ₹10,000 within 3 years of the first offence. The schedule labels it 'Sec 184C MVA', its shorthand for clause (c) of the Explanation to Section 184 — the one limb of Section 184 that Section 200 allows to be compounded",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "Graded by vehicle class: ₹1,000 for a two- or three-wheeler, ₹2,000 for an LMV and ₹4,000 for other vehicles, rising to ₹10,000 for a second or subsequent offence committed within 3 years of the earlier one. The notification's Section 184 entry is expressly limited to 'Person driving the vehicle (only to the extent of use of hand held communication devices)' — the single limb of Section 184 that Section 200 permits to be compounded. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "dangerous-driving-red-light": {
-      "amount_text": "Maharashtra splits these. 'Dangerous driving' under Sec 184 MVA is listed with a fine of 0 and marked Non-Compoundable, so it goes to court. But 'Jumping signal' is booked separately under MMVR 239/177 MVA at ₹500 first offence and ₹1,500 repetitive — which is why a red-light challan is often payable online in Maharashtra when the same violation is a court challan in Delhi. 'Police manual signal violation' carries the same ₹500 / ₹1,500",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "Not compoundable as dangerous driving. The state compounding notification's Section 184 entry is confined to handheld communication devices, so no other Section 184 conduct — including jumping a signal — can be compounded under that section. In practice Maharashtra books an ordinary signal violation under Rule 239 of the Maharashtra Motor Vehicles Rules read with Section 177, which the Highway Traffic Police schedule prices at ₹500 first offence and ₹1,500 repetitive, matching the notification's residual Section 177 entry of ₹500 / ₹1,500 for 'other offence excluding above'. That is why a red-light challan is often payable online here when the same violation is a court challan in Delhi. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "drunk-driving": {
-      "amount_text": "Listed as 'Drunk and Drive — Sec 185 MVA' with a fine of 0 and marked Non-Compoundable. There is no amount to pay online; the case goes to court",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "Not compoundable. Section 185 appears nowhere in the state compounding notification — its schedule runs from Section 177 to Section 198 and steps straight from 184 to 186 — so there is no amount at which a drunken-driving charge can be settled out of court in Maharashtra. The Highway Traffic Police schedule independently lists 'Drunk and Drive — Sec 185 MVA' with a fine of 0, marked Non-Compoundable. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205)",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-helmet": {
-      "amount_text": "The amount matches the central figure — ₹1,000 and, in addition, disqualification from holding a motor driving licence for 3 months, identical for the repetitive offence — but Maharashtra notifies it as four separate rows: riding without a helmet by the driver and by the pillion, each booked against both the driver and the owner (Sec 129/194(D) MVA). One bare-headed rider can therefore generate more than one challan",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "₹500 and disqualification from holding a licence for three months (Sec 194D) — half the ₹1,000 statutory fine, because this is the compounding amount the state has notified. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). Be aware the two official documents disagree: the Highway Traffic Police 'Acts and Fine' schedule prints ₹1,000, which is the statutory figure under the MV Act rather than the notified compounding amount, and an e-challan may show either. It also books the offence four ways — driver and pillion, each against the rider and the owner",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     },
     "driving-without-seatbelt": {
-      "amount_text": "₹1,000 first and repetitive, matching the central figure, but notified as separate rows so the exposure adds up: 'Without Seatbelt' (Sec 194B(1)), 'Without seatbelt other than driver' for passengers (Sec 194B(1)), and a child up to 14 not provided a seat with an appropriate child restraint system (Sec 194B(2)) at ₹1,000, booked against the driver and the owner separately",
-      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+      "amount_text": "₹200 for the driver (Sec 194B(1)) and ₹200 where a child up to fourteen is not secured by an appropriate child restraint system (Sec 194B(2)), both far below the ₹1,000 statutory fine because these are the notified compounding amounts, and both applying to vehicles covered by Rules 125 and 138 of the Central Motor Vehicles Rules 1989. Source: Maharashtra Home Department notification No.MVR-0919/C.R.200/TRA-2 dated 26 November 2021, issued under Section 200(1) MV Act in supersession of all previous notifications (Maharashtra Government Gazette, Extraordinary Part IV-A No. 205). The Highway Traffic Police 'Acts and Fine' schedule prints ₹1,000 for both — the statutory figure, not the compounding amount — and lists unbelted passengers other than the driver as a separate row, so an e-challan may show either figure",
+      "source": "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
     }
   },
   "sources": [
+    "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx",
     "https://mahatrafficechallan.gov.in/payechallan/PaymentService.htm",
     "https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm",
     "https://echallan.parivahan.nic.in/challan/challan-services",

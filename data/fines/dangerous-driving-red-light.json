@@ -3,7 +3,7 @@
   "name": "Dangerous driving and jumping a red light",
   "target_keyword": "red light jumping fine india",
   "mva_section": "Section 184, Motor Vehicles Act 1988 (substituted, and Explanation inserted, by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)",
-  "description": "Section 184 punishes driving at a speed or in a manner dangerous to the public, or — after the 2019 amendment — in a manner that causes a sense of alarm or distress to the occupants of the vehicle, other road users and persons near roads. The 2019 Explanation spells out what counts as dangerous: (a) jumping a red light, (b) violating a stop sign, (c) use of handheld communications devices while driving, (d) passing or overtaking contrary to law, (e) driving against the authorised flow of traffic, and (f) driving in a manner far below what would be expected of a competent and careful driver. Because red-light jumping now sits in Section 184, a challan charged under that section is a court matter rather than an on-the-spot compounding. States differ in how they book it: Delhi charges 'Jumping Red Light' under 184 MVA and marks it a court challan, while Maharashtra keeps 'Dangerous driving' under Section 184 non-compoundable but books an ordinary 'Jumping signal' under Rule 239 of the Maharashtra Motor Vehicles Rules read with Section 177, where it remains payable online. Check which section your challan actually cites.",
+  "description": "Section 184 punishes driving at a speed or in a manner dangerous to the public, or — after the 2019 amendment — in a manner that causes a sense of alarm or distress to the occupants of the vehicle, other road users and persons near roads. The 2019 Explanation spells out what counts as dangerous: (a) jumping a red light, (b) violating a stop sign, (c) use of handheld communications devices while driving, (d) passing or overtaking contrary to law, (e) driving against the authorised flow of traffic, and (f) driving in a manner far below what would be expected of a competent and careful driver. Because red-light jumping now sits in Section 184, a challan charged under that section is a court matter rather than an on-the-spot compounding. States differ in how they book it: Delhi charges 'Jumping Red Light' under 184 MVA and marks it a court challan, while Maharashtra's Section 200 compounding notification confines its Section 184 entry to handheld communication devices, so no other Section 184 conduct can be compounded there — and an ordinary signal violation is instead booked under Rule 239 of the Maharashtra Motor Vehicles Rules read with Section 177 at ₹500, where it stays payable online. Check which section your challan actually cites.",
   "base_fine_text": "First offence: imprisonment for not less than 6 months and up to 1 year, or a fine of not less than ₹1,000 and up to ₹5,000, or both",
   "base_fine_min": 1000,
   "base_fine_max": 5000,
@@ -31,7 +31,8 @@
     "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28486&sectionno=209&orderno=240",
     "https://traffic.delhipolice.gov.in/traffic-offences",
     "https://vcourts.gov.in/virtualcourt/",
-    "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf",
+    "https://egazzete.mahaonline.gov.in/Forms/GazetteSearch.aspx"
   ],
   "last_verified": "2026-08-12"
 }
