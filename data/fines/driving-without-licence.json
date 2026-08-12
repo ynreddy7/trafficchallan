@@ -32,5 +32,9 @@
     "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
     "https://traffic.delhipolice.gov.in/traffic-offences"
   ],
-  "last_verified": "2026-08-12"
+  "last_verified": "2026-08-12",
+  "statute_quote": {
+    "text": "Whoever, drives a motor vehicle in contravention of section 3 or section 4 shall be punishable with imprisonment for a term which may extend to three months, or with fine of five thousand rupees, or with both.",
+    "attribution": "Section 181, Motor Vehicles Act 1988 (fine substituted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)"
+  }
 }

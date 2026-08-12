@@ -52,4 +52,25 @@ describe('OffenceSchema', () => {
   it('rejects non-url source', () => {
     expect(() => OffenceSchema.parse({ ...validOffence, sources: ['not a url'] })).toThrow();
   });
+  it('accepts a record without statute_quote (optional)', () => {
+    expect(OffenceSchema.parse(validOffence).statute_quote).toBeUndefined();
+  });
+  it('accepts a valid statute_quote', () => {
+    const withQuote = {
+      ...validOffence,
+      statute_quote: {
+        text: 'E'.repeat(45),
+        attribution: 'Section 194D, Motor Vehicles Act 1988'
+      }
+    };
+    expect(OffenceSchema.parse(withQuote).statute_quote?.attribution).toBe('Section 194D, Motor Vehicles Act 1988');
+  });
+  it('rejects a statute_quote with text under 40 chars', () => {
+    const bad = { ...validOffence, statute_quote: { text: 'short', attribution: 'Section 194D, Motor Vehicles Act 1988' } };
+    expect(() => OffenceSchema.parse(bad)).toThrow();
+  });
+  it('rejects a statute_quote with attribution under 5 chars', () => {
+    const bad = { ...validOffence, statute_quote: { text: 'E'.repeat(45), attribution: 'Sec' } };
+    expect(() => OffenceSchema.parse(bad)).toThrow();
+  });
 });

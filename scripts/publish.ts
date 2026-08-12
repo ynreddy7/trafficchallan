@@ -23,7 +23,7 @@ if (newPages.size > 5 && !forceVelocity) {
 // 2. Tests, gates, build, links
 run('npm test');
 run('npm run gate');
-run('npx astro build');
+run('npm run build');
 run('npm run check:links -- --external');
 
 // 3. Changed URLs for IndexNow (from files about to be committed)

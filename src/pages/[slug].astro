@@ -57,13 +57,13 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
     </AnswerBox>
     <LastVerified date={props.state.last_verified} />
 
-    <h2 id={slugify(`How to check your ${props.state.name} challan`)}>How to check your {props.state.name} challan</h2>
+    <h2 id={slugify(`How to check your ${props.state.name} challan`)}>How do I check a {props.state.name} challan?</h2>
     <StepList steps={props.state.check_steps} />
 
-    <h2 id={slugify(`How to pay a ${props.state.name} challan online`)}>How to pay a {props.state.name} challan online</h2>
+    <h2 id={slugify(`How to pay a ${props.state.name} challan online`)}>How do I pay a {props.state.name} challan online?</h2>
     <StepList steps={props.state.pay_steps} />
 
-    <h2 id={slugify(`Official portals for ${props.state.name}`)}>Official portals for {props.state.name}</h2>
+    <h2 id={slugify(`Official portals for ${props.state.name}`)}>Which official portals serve {props.state.name}?</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Portal</th><th>Use for</th></tr></thead>
       <tbody>{props.state.portals.map((p) => <tr><td><a href={p.url} rel="noopener">{p.label}</a></td><td>{p.scope === 'both' ? 'Check & pay' : p.scope}</td></tr>)}</tbody>
@@ -74,10 +74,10 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
       <ul>{props.state.sms_app_methods.map((m) => <li>{m}</li>)}</ul>
     </>}
 
-    <h2 id={slugify(`Court challans in ${props.state.name}`)}>Court challans in {props.state.name}</h2>
+    <h2 id={slugify(`Court challans in ${props.state.name}`)}>What happens with court challans in {props.state.name}?</h2>
     <p>{props.state.court_challan_process}</p>
 
-    <h2 id={slugify(`Traffic fine amounts in ${props.state.name}`)}>Traffic fine amounts in {props.state.name}</h2>
+    <h2 id={slugify(`Traffic fine amounts in ${props.state.name}`)}>What are the traffic fine amounts in {props.state.name}?</h2>
     <FineTable offences={offences} state={props.state} />
 
     {props.state.quirks.length > 0 && <>

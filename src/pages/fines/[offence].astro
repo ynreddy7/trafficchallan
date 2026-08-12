@@ -5,6 +5,7 @@ import LastVerified from '../../components/LastVerified.astro';
 import SourceList from '../../components/SourceList.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
+import CautionCallout from '../../components/CautionCallout.astro';
 import { loadStates, loadOffences } from '../../lib/data';
 import { faqJsonLd } from '../../lib/seo';
 import { shortSection, slugify } from '../../lib/format';
@@ -40,10 +41,16 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
   </AnswerBox>
   <LastVerified date={offence.last_verified} />
 
-  <h2 id={slugify('What the law says')}>What the law says</h2>
+  <h2 id={slugify('What the law says')}>What does the law say about {offence.name.toLowerCase()}?</h2>
   <p>{offence.description}</p>
+  {offence.statute_quote && (
+    <blockquote class="statute">
+      "{offence.statute_quote.text}"
+      <cite>— {offence.statute_quote.attribution}</cite>
+    </blockquote>
+  )}
 
-  <h2 id={slugify('Fine amounts')}>Fine amounts</h2>
+  <h2 id={slugify('Fine amounts')}>How much is the fine?</h2>
   <div class="table-wrap"><table>
     <thead><tr><th></th><th>Amount</th></tr></thead>
     <tbody>
@@ -54,8 +61,15 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
     </tbody>
   </table></div>
 
+  {!offence.compoundable_online && (
+    <CautionCallout>
+      This is not an online-payable challan in most cases. {offence.name} cases generally go to
+      court — budget for a court appearance, and check your state page for the exact process.
+    </CautionCallout>
+  )}
+
   {overriding.length > 0 && <>
-    <h2 id={slugify('States with different notified amounts')}>States with different notified amounts</h2>
+    <h2 id={slugify('States with different notified amounts')}>Which states charge different amounts?</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>State</th><th>Amount</th></tr></thead>
       <tbody>{overriding.map((s) => <tr>

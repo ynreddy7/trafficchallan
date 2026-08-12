@@ -33,5 +33,9 @@
     "https://traffic.delhipolice.gov.in/traffic-offences",
     "https://vcourts.gov.in/virtualcourt/"
   ],
-  "last_verified": "2026-08-12"
+  "last_verified": "2026-08-12",
+  "statute_quote": {
+    "text": "…shall be punishable for the first offence with imprisonment for a term which may extend to six months, or with fine of ten thousand rupees, or with both;",
+    "attribution": "Section 185, Motor Vehicles Act 1988 (fines substituted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)"
+  }
 }

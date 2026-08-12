@@ -18,3 +18,5 @@
    records takes priority over new content.
 9. HONESTY: If a state's process is genuinely unclear or its portal is down, say so on the
    page rather than inventing certainty.
+10. STATUTE QUOTES: offence records may carry statute_quote — the text must be VERBATIM from the
+    cited official source, verified on the day it is added; never paraphrase inside quotation marks.

@@ -1368,3 +1368,25 @@ details p:last-child {
     overflow-wrap: anywhere;
   }
 }
+
+/* --- Statute quote (verbatim statutory text) ------------------------------ */
+
+.statute {
+  background: var(--surface-tint);
+  color: var(--text);
+  border-left: 3px solid var(--rail-info);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.9rem 1.1rem;
+  margin: 1.2rem 0;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.55;
+}
+.statute cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}

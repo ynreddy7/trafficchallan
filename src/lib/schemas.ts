@@ -42,6 +42,10 @@ export const OffenceSchema = z.object({
   compoundable_online: z.boolean(),
   faqs: z.array(z.object({ q: z.string().min(8), a: z.string().min(40) })).min(2),
   sources: z.array(z.string().url()).min(1),
-  last_verified: isoDate
+  last_verified: isoDate,
+  statute_quote: z.object({
+    text: z.string().min(40),
+    attribution: z.string().min(5)
+  }).optional()
 });
 export type OffenceRecord = z.infer<typeof OffenceSchema>;
