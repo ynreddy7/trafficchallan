@@ -25,7 +25,7 @@ export type PortalFinderResult =
  */
 const KNOWN_UNCOVERED_CODES = new Set([
   'KL', 'PB', 'BR', 'OD', 'CH', 'UK', 'DN', 'LA', 'PY', 'SK', 'GA', 'AS',
-  'ML', 'MN', 'MZ', 'NL', 'TR', 'AR', 'HP', 'JH', 'CG', 'BH'
+  'ML', 'MN', 'MZ', 'NL', 'TR', 'AR', 'HP', 'JH', 'CG', 'BH', 'AN', 'LD', 'DD'
 ]);
 
 export function resolveVehicleInput(input: string, states: RtoStateEntry[]): PortalFinderResult {

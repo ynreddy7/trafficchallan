@@ -217,3 +217,100 @@ Live browser pass (Chrome via claude-in-chrome, console-error-free throughout):
   `src/pages/index.astro`, `src/pages/calculator.astro`, `src/pages/fines/index.astro`,
   `src/styles/global.css`, `tests/fine-calc.test.ts`, `tests/format.test.ts`
 - Ledger: `.superpowers/upgrade/ledger.md` updated with Chunk B completion entry.
+
+---
+
+## Review fix pass (post Chunk-C merge)
+
+A review of this chunk found 2 Important + 2 Minor issues. Before starting, `git pull`
+confirmed Chunk C (`532d291`, site search + AEO plumbing) had landed on top of this
+chunk's commit in the same local repo. Its diff touches `src/lib/format.ts` (appends a new
+`slugify` export after `firstClause`), `src/pages/{compare,calculator,index}.astro` (adds a
+`dateModified` prop to each `<Base>` call) and `tests/format.test.ts` (adds `slugify`
+tests) — all purely additive, no overlap with the lines this fix pass touches. Fixed on top
+of that merged state; only the 7 files below were touched and committed.
+
+### 1. (Important) `firstClause()` truncation — fixed
+
+Confirmed independently before fixing: of the 56 real `fine_overrides` amount_text values
+across `data/states/*.json`, 31 exceeded 90 characters after the old 3-delimiter split (15
+of those had no delimiter match at all, shipping the raw 60–226 char paragraph verbatim).
+Fix in `src/lib/format.ts`:
+- Expanded the delimiter set from `[' (', '—', ';']` to
+  `[' (', ' — ', '—', '; ', '. ', ' – ']` (adds sentence-ending period-space and en dash).
+- After the delimiter split, if the result is still >90 chars, hard-cut at the last space
+  within the first 90 characters (falling back to a hard 90-char cut if there's no space,
+  e.g. one very long unbroken token) and append `…`.
+- Verified the expanded delimiter set doesn't change any of the 5 pre-existing test
+  expectations (checked by hand against each fixture string before touching the function).
+- New tests: period-space delimiter, en-dash delimiter, a synthetic 123-char no-delimiter
+  string (asserts the exact word-boundary cut + `…`), the real 187-char AP
+  dangerous-driving-red-light override (exact expected output), and the requested
+  whole-population test — iterates every state from `loadStates()` (real
+  `data/states/*.json`, validated through the same Zod schema the gate uses) × every
+  `fine_overrides` entry, asserting each `firstClause()` result is non-empty and ≤90 chars,
+  with a sanity floor (`checked >= 50`) so the loop can't silently pass over an empty set.
+  Independently re-verified with a standalone script before writing the test: 56/56 real
+  cells now pass, 0 failures.
+
+### 2. (Important) `leadingAmount()` "/"-delimited dual amount — fixed
+
+Confirmed no real data currently contains this pattern (scanned every `base_fine_text`,
+`repeat_fine_text` and `fine_overrides.amount_text` in both `data/states/` and
+`data/fines/` for a `/` immediately following a parsed leading figure — zero matches), so
+this is a forward-looking correctness fix, not a live bug. `src/lib/fine-calc.ts`'s
+`leadingAmount()` range-continuation check gained a third alternative:
+`/^\s*\/\s*(?:₹\s?)?\d/` — a slash (with optional surrounding spaces) immediately followed
+by a digit or another ₹-figure right after the parsed leading amount. New tests: bare
+`₹5,000/₹10,000`, a space before the slash (`₹5,000 /₹10,000...`), no ₹ on the second
+figure (`₹5,000/10,000...`), and a negative case confirming a slash that is *not*
+immediately after the figure (`₹1,000 for a two/three-wheeler`) still sums correctly —
+this last test matters because the regex is anchored to `rest` (the text immediately
+following the parsed number), so a slash appearing later in descriptive prose was already
+safe; the negative test makes that explicit rather than assumed.
+
+### 3. (Minor) `AN`, `LD`, `DD` added to `KNOWN_UNCOVERED_CODES` — fixed
+
+`src/lib/portal-finder.ts`: added Andaman & Nicobar (`AN`), Lakshadweep (`LD`) and Daman &
+Diu (`DD`, legacy code — the merged UT now issues under `DN`, which was already present)
+to the known-but-uncovered set. Added to the existing "every documented code" loop test
+plus one standalone test exercising a full vehicle-number shape for `AN` (`AN01A1234`) and
+bare codes for `LD`/`DD`, per the review's "+ test one" instruction.
+
+### 4. (Minor) portal-finder input `name` attribute — fixed
+
+`src/pages/index.astro`: removed `name="q"` from `#finder-input`. The form has no
+`action`/`method`, so without a `name`'d field a native (no-JS) submit now does a benign
+GET to the current URL with no query string, instead of appending a dead `?q=...` that the
+page never reads. The JS handler already reads the value by `id`, unaffected.
+
+### Verification (raw output, this fix pass)
+
+```
+$ npx vitest run
+ Test Files  12 passed (12)
+      Tests  96 passed (96)   # 86 baseline after Chunk C's merge (74 from this chunk's
+                               # original commit + Chunk C's own 12: csv.test.ts new file
+                               # +5, seo.test.ts +3, format.test.ts's slugify +4) + 10 new
+                               # from this fix pass: format.test.ts +5 (period-space/en-dash
+                               # delimiters, 2 hard-cap cases, whole-population), fine-
+                               # calc.test.ts +4 ("/" range cases), portal-finder.test.ts +1
+
+$ npx tsc --noEmit
+(no output — clean)
+
+$ npm run build
+gate: all quality gates passed
+...
+[build] 38 page(s) built in 1.39s
+
+$ npm run check:links
+internal: 38 page(s), 1294 link(s) checked, 0 broken
+check-links: all checks passed
+```
+
+Commit: `fix: compare truncation against full data population, range-safe totals` — 7 files
+only (`src/lib/fine-calc.ts`, `src/lib/format.ts`, `src/lib/portal-finder.ts`,
+`src/pages/index.astro`, `tests/fine-calc.test.ts`, `tests/format.test.ts`,
+`tests/portal-finder.test.ts`), no changes to files owned by the concurrent data/publish
+work.

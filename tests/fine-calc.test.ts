@@ -78,4 +78,27 @@ describe('totalFines', () => {
   it('is vacuously determinate with a zero total for no selected offences', () => {
     expect(totalFines([])).toEqual({ total: 0, determinate: true });
   });
+
+  it('returns null when a "/"-delimited dual amount is written as a single field', () => {
+    const r = totalFines([asResult('₹5,000/₹10,000')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('returns null when a "/"-delimited dual amount has a space before the slash', () => {
+    const r = totalFines([asResult('₹5,000 /₹10,000 for a repeat offence')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('returns null when a "/"-delimited dual amount has no rupee sign on the second figure', () => {
+    const r = totalFines([asResult('₹5,000/10,000 depending on vehicle class')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('does not misfire on a slash that is not immediately after the figure', () => {
+    const r = totalFines([asResult('₹1,000 for a two/three-wheeler')]);
+    expect(r).toEqual({ total: 1000, determinate: true });
+  });
 });

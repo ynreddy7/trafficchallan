@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { shortSection, firstSentence, firstClause, slugify } from '../src/lib/format';
+import { loadStates } from '../src/lib/data';
 
 describe('shortSection', () => {
   it('removes statute name and amendment history', () => {
@@ -81,6 +82,49 @@ describe('firstClause', () => {
   it('returns the trimmed whole text when no delimiter is present', () => {
     const input = 'LMV ₹1,000 first offence, ₹2,000 second.';
     expect(firstClause(input)).toBe('LMV ₹1,000 first offence, ₹2,000 second.');
+  });
+
+  it('splits at the first period-space, dropping the terminal punctuation', () => {
+    const input =
+      'First offence: imprisonment up to 3 months, or a fine of ₹2,000, or both. Repeat offence carries the same imprisonment term.';
+    expect(firstClause(input)).toBe('First offence: imprisonment up to 3 months, or a fine of ₹2,000, or both');
+  });
+
+  it('splits at the first en dash', () => {
+    const input = 'Standard amount – varies by vehicle class and is compounded locally';
+    expect(firstClause(input)).toBe('Standard amount');
+  });
+
+  it('hard-caps a clause with no early delimiter at 90 chars, cutting at a word boundary with an ellipsis', () => {
+    const input = 'A'.repeat(30) + ' ' + 'B'.repeat(30) + ' ' + 'C'.repeat(30) + ' ' + 'D'.repeat(30);
+    const result = firstClause(input);
+    expect(result.length).toBeLessThanOrEqual(90);
+    expect(result.endsWith('…')).toBe(true);
+    expect(result).toBe('A'.repeat(30) + ' ' + 'B'.repeat(30) + '…');
+  });
+
+  it('hard-caps a real 187-char override with no early delimiter (AP dangerous-driving-red-light)', () => {
+    const input =
+      "₹1,035 light motor vehicle, ₹2,035 heavy vehicle for dangerous driving under s.184. AP's chart illustrates s.184 only with handheld-device use and does not list signal jumping separately.";
+    const result = firstClause(input);
+    expect(result.length).toBeLessThanOrEqual(90);
+    expect(result).toBe('₹1,035 light motor vehicle, ₹2,035 heavy vehicle for dangerous driving under s.184');
+  });
+
+  it('keeps every real fine_overrides amount_text at or under 90 chars and non-empty, across all states', () => {
+    const states = loadStates();
+    let checked = 0;
+    for (const state of states) {
+      for (const [offenceSlug, override] of Object.entries(state.fine_overrides)) {
+        const result = firstClause(override.amount_text);
+        checked++;
+        expect(result.length, `${state.slug}/${offenceSlug}: "${result}"`).toBeGreaterThan(0);
+        expect(result.length, `${state.slug}/${offenceSlug}: "${result}"`).toBeLessThanOrEqual(90);
+      }
+    }
+    // Sanity check that the loop actually iterated a non-trivial real population,
+    // not an empty or accidentally-filtered set.
+    expect(checked).toBeGreaterThanOrEqual(50);
   });
 });
 

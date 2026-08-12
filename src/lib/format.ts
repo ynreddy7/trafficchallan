@@ -28,20 +28,34 @@ export function firstSentence(text: string): string {
   return m ? m[0] : text;
 }
 
+const FIRST_CLAUSE_MAX = 90;
+
 /**
  * Returns the first clause of a free-text amount, splitting at whichever of
- * " (", "—" or ";" occurs earliest in the string — used to keep the
- * /compare/ table scannable. Returns the trimmed whole text unchanged when
- * none of those delimiters appear.
+ * " (", " — ", "—", "; ", ". " or " – " occurs earliest in the string — used
+ * to keep the /compare/ table scannable. Returns the trimmed whole text
+ * unchanged when none of those delimiters appear.
+ *
+ * Real fine_overrides data proved this isn't enough on its own: 31 of the 56
+ * override cells have no early delimiter at all (or the earliest one lands
+ * past a full descriptive sentence), producing 90–226 character paragraphs
+ * in a table cell. So after the delimiter split, anything still longer than
+ * 90 characters is hard-capped at the last word boundary before that limit
+ * and marked with an ellipsis, so every cell renders as one scannable line.
  */
 export function firstClause(text: string): string {
-  const delimiters = [' (', '—', ';'];
+  const delimiters = [' (', ' — ', '—', '; ', '. ', ' – '];
   let cut = -1;
   for (const d of delimiters) {
     const idx = text.indexOf(d);
     if (idx !== -1 && (cut === -1 || idx < cut)) cut = idx;
   }
-  return cut === -1 ? text.trim() : text.slice(0, cut).trim();
+  const clause = cut === -1 ? text.trim() : text.slice(0, cut).trim();
+  if (clause.length <= FIRST_CLAUSE_MAX) return clause;
+  const window = clause.slice(0, FIRST_CLAUSE_MAX);
+  const lastSpace = window.lastIndexOf(' ');
+  const truncated = lastSpace > 0 ? window.slice(0, lastSpace) : window;
+  return truncated.trim() + '…';
 }
 
 /**

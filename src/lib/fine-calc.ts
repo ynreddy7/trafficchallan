@@ -18,16 +18,21 @@ export interface TotalFinesResult { total: number | null; determinate: boolean }
  * returns null when the text is not a single determinate amount: it does
  * not lead with a rupee figure at all (court-decided, "First offence:
  * imprisonment..." wording), or the figure is immediately continued as a
- * range ("₹1,000-2,000", "₹1,000 to ₹2,000"). A trailing descriptive clause
- * after the figure — "₹500 (Delhi notified)", "₹1,000 fine and
- * disqualification..." — does not disqualify it; only an explicit range
- * marker right after the number does.
+ * range — "₹1,000-2,000", "₹1,000 to ₹2,000", or a "/"-delimited dual
+ * amount such as "₹5,000/₹10,000" (first vs. repeat offence written as a
+ * single field). A trailing descriptive clause after the figure —
+ * "₹500 (Delhi notified)", "₹1,000 fine and disqualification..." — does not
+ * disqualify it; only an explicit range/alternative marker right after the
+ * number does.
  */
 function leadingAmount(text: string): number | null {
   const m = text.match(/^₹\s?([\d,]+)(?:\.\d+)?/);
   if (!m) return null;
   const rest = text.slice(m[0].length);
-  const isRangeContinuation = /^\s*[-–—]\s*(?:₹\s?)?\d/.test(rest) || /^\s+to\s+(?:₹\s?)?\d/i.test(rest);
+  const isRangeContinuation =
+    /^\s*[-–—]\s*(?:₹\s?)?\d/.test(rest) ||
+    /^\s+to\s+(?:₹\s?)?\d/i.test(rest) ||
+    /^\s*\/\s*(?:₹\s?)?\d/.test(rest);
   if (isRangeContinuation) return null;
   return Number(m[1].replace(/,/g, ''));
 }

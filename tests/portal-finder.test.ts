@@ -63,7 +63,7 @@ describe('resolveVehicleInput', () => {
   });
 
   it('flags every documented known-but-uncovered code', () => {
-    const codes = ['KL', 'PB', 'BR', 'OD', 'CH', 'UK', 'DN', 'LA', 'PY', 'SK', 'GA', 'AS', 'ML', 'MN', 'MZ', 'NL', 'TR', 'AR', 'HP', 'JH', 'CG', 'BH'];
+    const codes = ['KL', 'PB', 'BR', 'OD', 'CH', 'UK', 'DN', 'LA', 'PY', 'SK', 'GA', 'AS', 'ML', 'MN', 'MZ', 'NL', 'TR', 'AR', 'HP', 'JH', 'CG', 'BH', 'AN', 'LD', 'DD'];
     for (const code of codes) {
       expect(resolveVehicleInput(code, states)).toEqual({ kind: 'unknown-code', code });
     }
@@ -71,5 +71,11 @@ describe('resolveVehicleInput', () => {
 
   it('is case-insensitive for a known-but-uncovered code', () => {
     expect(resolveVehicleInput('kl', states)).toEqual({ kind: 'unknown-code', code: 'KL' });
+  });
+
+  it('flags the Andaman & Nicobar / Lakshadweep / Daman & Diu codes as known-but-uncovered', () => {
+    expect(resolveVehicleInput('AN01A1234', states)).toEqual({ kind: 'unknown-code', code: 'AN' });
+    expect(resolveVehicleInput('LD', states)).toEqual({ kind: 'unknown-code', code: 'LD' });
+    expect(resolveVehicleInput('DD', states)).toEqual({ kind: 'unknown-code', code: 'DD' });
   });
 });
