@@ -11,7 +11,7 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
    - offence → data/fines/<slug>.json (OffenceSchema)
    - guide → src/content/guides/<slug>.md (frontmatter per src/content.config.ts)
    For state items, slug_suggestion is the bare data slug (the page URL adds -e-challan automatically); never append -e-challan to the filename.
-5. Mark the queue item status "done" with today's date.
+5. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" + "covered_by" were retired during curation — never produce them; skip to the next "pending" item.)
 6. `npm test` must pass. Then `npm run publish:site -- --message "content: <what you added>"`.
    If the gate, tests, links or velocity cap fail: fix the cause or stop WITHOUT pushing;
    never bypass a gate.
