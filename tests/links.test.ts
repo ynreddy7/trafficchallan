@@ -28,6 +28,7 @@ describe('relatedForState', () => {
     expect(items.length).toBeLessThanOrEqual(8);
     expect(items.some((l) => l.href === '/fines/')).toBe(true);
     expect(items[0].href).toBe('/fines/h/');
+    expect(items[1].href).toBe('/fines/i/');
   });
 
   it('exercises 8-item cap with guides surviving at tail', () => {
