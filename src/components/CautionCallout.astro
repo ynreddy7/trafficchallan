@@ -1,0 +1,16 @@
+---
+/**
+ * Red-triangle caution callout — the correct Indian warning idiom (IRC:67
+ * cautionary: white ground, red triangle), NOT an amber diamond.
+ * Reserve for legal consequences of action or inaction; if it appears on
+ * ordinary tips it stops working.
+ */
+---
+<div class="caution">
+  <svg class="caution__icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+    <path d="M10 1.6 19 17.4H1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+    <path d="M10 7v4.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    <circle cx="10" cy="14.4" r="1.05" fill="currentColor" />
+  </svg>
+  <div class="caution__body"><span class="sr-only">Warning: </span><slot /></div>
+</div>

@@ -4,12 +4,30 @@ import AnswerBox from '../components/AnswerBox.astro';
 import FineTable from '../components/FineTable.astro';
 import FaqSection from '../components/FaqSection.astro';
 import LastVerified from '../components/LastVerified.astro';
+import PlateBadge from '../components/PlateBadge.astro';
 import { loadStates, loadOffences } from '../lib/data';
 import { faqJsonLd } from '../lib/seo';
 import { getCollection } from 'astro:content';
 
 const states = [...loadStates()].sort((a, b) => a.name.localeCompare(b.name));
 const allOffences = loadOffences();
+
+/** RTO series prefix per state slug — state code only, never a full plate. */
+const STATE_CODES: Record<string, string> = {
+  delhi: 'DL',
+  telangana: 'TS',
+  maharashtra: 'MH',
+  'uttar-pradesh': 'UP',
+  karnataka: 'KA',
+  'tamil-nadu': 'TN',
+  'andhra-pradesh': 'AP',
+  haryana: 'HR',
+  rajasthan: 'RJ',
+  gujarat: 'GJ',
+  'west-bengal': 'WB',
+  'madhya-pradesh': 'MP',
+  'jammu-kashmir': 'JK'
+};
 
 const topSlugs = [
   'driving-without-helmet',
@@ -71,27 +89,63 @@ const description = `Check and pay traffic e-challans online for all ${states.le
   path="/"
   jsonld={[faqJsonLd(faqs)]}
 >
-  <h1>Check &amp; pay traffic e-challan online — every Indian state</h1>
-  <AnswerBox>
-    Most states route e-challans through the national portal
-    <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>, though a growing
-    number now use the newer <a href="https://echallan.parivahan.nic.in/" rel="noopener">NextGen portal</a> or
-    their own state site instead. Enter your vehicle registration number on the right portal to see pending
-    challans and pay online. The two busiest pages on this site are
-    <a href="/telangana-e-challan/">Telangana e-challan</a> and <a href="/delhi-e-challan/">Delhi e-challan</a> —
-    or pick your own state below.
-  </AnswerBox>
+  <div class="hero">
+    <h1>Check &amp; pay traffic e-challan online — every Indian state</h1>
+    <AnswerBox>
+      Most states route e-challans through the national portal
+      <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>, though a growing
+      number now use the newer <a href="https://echallan.parivahan.nic.in/" rel="noopener">NextGen portal</a> or
+      their own state site instead. Enter your vehicle registration number on the right portal to see pending
+      challans and pay online. The two busiest pages on this site are
+      <a href="/telangana-e-challan/">Telangana e-challan</a> and <a href="/delhi-e-challan/">Delhi e-challan</a> —
+      or pick your own state below.
+    </AnswerBox>
+
+    <div class="actions">
+      <a class="action action--primary" href="#portal-finder">
+        Find your challan portal
+        <svg class="action__chev" width="11" height="15" viewBox="0 0 13 17" aria-hidden="true" focusable="false"><path d="M0 0h5.4L13 8.5 5.4 17H0l7.6-8.5z" fill="currentColor"/></svg>
+      </a>
+      <a class="action action--secondary" href="/calculator/">
+        Know your fine
+        <svg class="action__chev" width="11" height="15" viewBox="0 0 13 17" aria-hidden="true" focusable="false"><path d="M0 0h5.4L13 8.5 5.4 17H0l7.6-8.5z" fill="currentColor"/></svg>
+      </a>
+    </div>
+
+    <ul class="stat-strip">
+      <li><b>{states.length}</b> states</li>
+      <li><b>{allOffences.length}</b> offences</li>
+      <li>Sourced &amp; dated</li>
+    </ul>
+  </div>
+
+  <section id="portal-finder" class="panel">
+    <h2>Find your challan portal</h2>
+    <p>
+      Most states check and pay through <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>;
+      the rest have moved to the <a href="https://echallan.parivahan.nic.in/" rel="noopener">NextGen portal</a> or run their own
+      state site — pick your state below for the exact one.
+    </p>
+  </section>
 
   <h2>Check your state</h2>
   <p>
     Every state page has its official check-and-pay portals, step-by-step instructions, SMS/app options,
     court-challan process and any state-specific fine amounts.
   </p>
-  <ul class="state-grid">
-    {states.map((s) => (
-      <li><a href={`/${s.slug}-e-challan/`}>{s.name}</a></li>
-    ))}
-  </ul>
+  <div class="gantry">
+    <ul class="state-grid">
+      {states.map((s) => (
+        <li>
+          <a href={`/${s.slug}-e-challan/`}>
+            {STATE_CODES[s.slug] && <PlateBadge code={STATE_CODES[s.slug]} />}
+            <span class="state-name">{s.name}</span>
+            <svg class="action__chev" width="8" height="11" viewBox="0 0 13 17" aria-hidden="true" focusable="false"><path d="M0 0h5.4L13 8.5 5.4 17H0l7.6-8.5z" fill="currentColor"/></svg>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 
   <h2>Common traffic fines</h2>
   <p>
@@ -122,39 +176,3 @@ const description = `Check and pay traffic e-challans online for all ${states.le
 
   <FaqSection faqs={faqs} />
 </Base>
-
-<style>
-  .state-grid {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 0.5rem;
-    margin: 0.5rem 0 1.5rem;
-    padding: 0;
-  }
-  .state-grid li a {
-    display: block;
-    padding: 0.5rem 0.7rem;
-    background: var(--box);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    text-decoration: none;
-    color: var(--ink);
-    font-size: 0.95rem;
-  }
-  .state-grid li a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .guide-list {
-    list-style: none;
-    padding: 0;
-    margin: 0.5rem 0 1.5rem;
-  }
-  .guide-list li {
-    margin: 0 0 1rem;
-  }
-  .guide-list li p {
-    margin: 0.15rem 0 0;
-  }
-</style>

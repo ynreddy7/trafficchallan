@@ -1,0 +1,11 @@
+---
+/**
+ * RTO plate badge. Renders the state code ONLY — never a full plate string,
+ * because any realistic full plate is somebody's actual vehicle registration.
+ * The 14px blue "IND" tab is the HSRP left-tab detail that makes it read as a
+ * plate rather than a rounded rectangle.
+ */
+interface Props { code: string }
+const { code } = Astro.props;
+---
+<span class="plate"><span class="plate__tab" aria-hidden="true">IND</span><span class="plate__code">{code}</span></span>

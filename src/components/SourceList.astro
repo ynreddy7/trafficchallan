@@ -2,7 +2,7 @@
 interface Props { sources: string[] }
 const { sources } = Astro.props;
 ---
-<section>
+<section class="sources">
   <h2>Sources</h2>
-  <ul>{sources.map((s) => <li><a href={s} rel="noopener nofollow">{new URL(s).hostname}</a> — {s}</li>)}</ul>
+  <ul>{sources.map((s) => <li><a class="source-host" href={s} rel="noopener nofollow">{new URL(s).hostname}</a> — {s}</li>)}</ul>
 </section>

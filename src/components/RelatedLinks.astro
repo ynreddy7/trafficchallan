@@ -5,5 +5,5 @@ const { items } = Astro.props;
 ---
 <section>
   <h2>Related</h2>
-  <ul>{items.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
+  <ul class="related-links">{items.map((l) => <li><a href={l.href}>{l.label}</a></li>)}</ul>
 </section>

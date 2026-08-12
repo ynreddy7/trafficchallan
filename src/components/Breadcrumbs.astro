@@ -2,9 +2,14 @@
 interface Props { items: { name: string; path: string }[] }
 const { items } = Astro.props;
 ---
-<nav class="breadcrumbs" aria-label="Breadcrumb">
-  {items.map((it, i) => <>
-    {i > 0 && ' › '}
-    {i < items.length - 1 ? <a href={it.path}>{it.name}</a> : <span>{it.name}</span>}
-  </>)}
+<nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    {items.map((it, i) => (
+      <li>
+        {i < items.length - 1
+          ? <a href={it.path}>{it.name}</a>
+          : <span aria-current="page">{it.name}</span>}
+      </li>
+    ))}
+  </ol>
 </nav>

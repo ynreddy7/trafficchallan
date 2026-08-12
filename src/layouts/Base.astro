@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import { orgJsonLd, websiteJsonLd, breadcrumbJsonLd, ORIGIN } from '../lib/seo';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { loadStates } from '../lib/data';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title: string; description: string; path: string;
@@ -10,6 +12,11 @@ interface Props {
 const { title, description, path, jsonld = [], breadcrumbs } = Astro.props;
 const canonical = ORIGIN + path;
 const blocks = [orgJsonLd(), websiteJsonLd(), ...(breadcrumbs ? [breadcrumbJsonLd(breadcrumbs)] : []), ...jsonld];
+
+const footerStates = [...loadStates()].sort((a, b) => a.name.localeCompare(b.name));
+const footerGuides = (await getCollection('guides'))
+  .map((g) => ({ href: `/${g.id}/`, label: g.data.title }))
+  .sort((a, b) => a.label.localeCompare(b.label));
 ---
 <html lang="en">
 <head>
@@ -24,15 +31,28 @@ const blocks = [orgJsonLd(), websiteJsonLd(), ...(breadcrumbs ? [breadcrumbJsonL
   <meta property="og:type" content="website" />
   <meta property="og:image" content={ORIGIN + '/og-default.png'} />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/anek-latin-var.woff2" as="font" type="font/woff2" crossorigin />
   {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}
 </head>
 <body>
+  <!-- Anti-impersonation notice. Deliberately plain: no board, no blue, no
+       crest. It must not read as an official notice. -->
+  <div class="notice-strip">
+    <p><strong>Independent guide</strong> — not a government website. Challans are paid only on official government portals.</p>
+  </div>
+
   <header class="site-header">
     <div class="inner">
-      <a href="/" class="brand">TrafficChallan</a>
-      <a href="/fines/">Fines &amp; Penalties</a>
-      <a href="/calculator/">Calculator</a>
-      <a href="/about/">About</a>
+      <a href="/" class="brand">
+        <svg class="brand__chev" width="13" height="17" viewBox="0 0 13 17" aria-hidden="true" focusable="false"><path d="M0 0h5.4L13 8.5 5.4 17H0l7.6-8.5z" fill="currentColor"/></svg>
+        TrafficChallan
+      </a>
+      <div id="search-slot"></div>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="/fines/">Fines &amp; Penalties</a>
+        <a href="/calculator/">Calculator</a>
+        <a href="/about/">About</a>
+      </nav>
     </div>
   </header>
   <main>
@@ -42,7 +62,30 @@ const blocks = [orgJsonLd(), websiteJsonLd(), ...(breadcrumbs ? [breadcrumbJsonL
   </main>
   <footer class="site-footer">
     <div class="inner">
-      <p>© {new Date().getFullYear()} TrafficChallan · By Team TrafficChallan ·
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <h2>States</h2>
+          <ul>{footerStates.map((s) => <li><a href={`/${s.slug}-e-challan/`}>{s.name}</a></li>)}</ul>
+        </div>
+        <div>
+          <h2>Fines &amp; tools</h2>
+          <ul>
+            <li><a href="/fines/">Fines &amp; Penalties</a></li>
+            <li><a href="/calculator/">Fine calculator</a></li>
+            {footerGuides.map((g) => <li><a href={g.href}>{g.label}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h2>About this site</h2>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/editorial-policy/">Editorial policy</a></li>
+            <li><a href="/privacy/">Privacy</a></li>
+            <li><a href="/contact/">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p class="colophon">© {new Date().getFullYear()} TrafficChallan · By Team TrafficChallan ·
         <a href="/editorial-policy/">Editorial policy</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>
     </div>
   </footer>
