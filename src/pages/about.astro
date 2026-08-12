@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="About TrafficChallan"
+  description="TrafficChallan is an independent, non-government reference on Indian traffic e-challans: fine amounts, portals, and how to check or pay."
+  path="/about/"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }]}
+>
+  <h1>About TrafficChallan</h1>
+
+  <p>
+    TrafficChallan is an independent reference site for Indian traffic e-challans. We explain what a
+    fine actually costs under the Motor Vehicles Act, how the amount changes from state to state, and
+    which official portal to use to check a challan or pay it. We built the site because the rules are
+    scattered across parivahan.gov.in, a dozen state transport and police portals, and periodic gazette
+    notifications — and most people just want a straight answer to "what will this cost me" or "where do
+    I pay this."
+  </p>
+
+  <h2>What we are not</h2>
+  <p>
+    We are not a government website, and we are not run by or affiliated with the Ministry of Road
+    Transport and Highways, any state police department, or any transport authority. We do not check the
+    status of your challan against a live government database, and we never collect a payment from you.
+    When it's time to actually check or pay a challan, every page on this site points you to the correct
+    official portal — that's where the transaction happens, not here.
+  </p>
+
+  <h2>How we keep the facts straight</h2>
+  <p>
+    Every fine amount, section reference, and procedural step on this site is sourced to an official
+    document — a government portal, a police department notice, or a gazette notification — and that
+    source is linked on the page it appears on. Each page also carries a "last verified" date. We re-check
+    every page against its sources on a rolling 90-day cycle, and our build process is set up to flag any
+    page whose facts haven't been re-verified inside that window, so stale information doesn't sit
+    published indefinitely. Fines change when states issue new notifications; when we find a change, we
+    update the page and the date changes with it.
+  </p>
+
+  <h2>Who runs this</h2>
+  <p>
+    TrafficChallan is built and maintained by Team TrafficChallan. We don't publish under individual
+    bylines because the site's job is to be a consistent, sourced reference — not a personal blog. If you
+    spot something wrong, out of date, or missing, see our
+    <a href="/editorial-policy/">editorial policy</a> or just <a href="/contact/">contact us</a> directly.
+  </p>
+</Base>

@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Privacy Policy"
+  description="TrafficChallan has no accounts and collects no personal data. The fine calculator runs entirely in your browser."
+  path="/privacy/"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Privacy', path: '/privacy/' }]}
+>
+  <h1>Privacy policy</h1>
+
+  <p>
+    TrafficChallan has no user accounts, no sign-up, and no login. We do not ask for your name, phone
+    number, email address, or any other personal detail to use the site, and we don't collect any of that
+    ourselves.
+  </p>
+
+  <h2>The fine calculator</h2>
+  <p>
+    Our <a href="/calculator/">fine calculator</a> doesn't ask for a vehicle registration number or any
+    personal detail — you only pick an offence and a state from a dropdown. The offence and fine data for
+    every state is loaded onto the page when it renders, and the calculation itself runs entirely in your
+    browser's JavaScript. Nothing you select in the calculator is sent to our servers or to anyone else;
+    there's no server-side lookup involved at all.
+  </p>
+
+  <h2>Official portals</h2>
+  <p>
+    TrafficChallan links to official government portals for actually checking or paying a challan — for
+    example echallan.parivahan.gov.in or your state's traffic police site. Those are independent
+    government systems with their own privacy practices, and this policy doesn't cover them. Once you
+    click through to a government portal, whatever data-handling rules that portal has apply, not ours.
+  </p>
+
+  <h2>Analytics</h2>
+  <p>
+    We may enable Cloudflare Web Analytics on this site. It is cookieless and privacy-respecting by
+    design — it doesn't use tracking cookies or fingerprinting, and it doesn't collect any information
+    that identifies you personally. If we turn it on, it's only ever used to see aggregate things like
+    which pages get traffic, not to track individual visitors.
+  </p>
+
+  <h2>Advertising</h2>
+  <p>
+    This site does not currently run advertising. If we introduce advertising in the future, it may
+    involve third-party ad networks that use cookies or similar technology, and we will update this
+    policy to describe exactly what's involved before that happens — not after.
+  </p>
+
+  <h2>Questions</h2>
+  <p>
+    If you have any question about privacy on this site, email
+    <a href="mailto:contact@trafficchallan.com">contact@trafficchallan.com</a> and we'll answer directly.
+  </p>
+</Base>

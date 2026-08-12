@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base
+  title="Contact Us"
+  description="Report a wrong fine amount, a dead portal link, or a correction to Team TrafficChallan. We reply within 7 days."
+  path="/contact/"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }]}
+>
+  <h1>Contact us</h1>
+
+  <p>
+    Email <a href="mailto:contact@trafficchallan.com">contact@trafficchallan.com</a>. A real person on
+    Team TrafficChallan reads every message, and we aim to reply within 7 days.
+  </p>
+
+  <h2>What to write in about</h2>
+  <ul>
+    <li>A fine amount that looks wrong for a state or offence.</li>
+    <li>A section reference, penalty, or procedural step that's out of date.</li>
+    <li>A portal link that's dead, redirects somewhere wrong, or has moved.</li>
+    <li>Any correction request — tell us the page, what's wrong, and, if you have it, the source that shows the correct figure.</li>
+  </ul>
+  <p>
+    We take correction requests seriously and check them against official sources before changing
+    anything, per our <a href="/editorial-policy/">editorial policy</a>. Include a link to the page in
+    question and, where possible, a link to the government notification or portal that backs up what
+    you're reporting — it lets us verify and fix things faster.
+  </p>
+
+  <h2>What we can't do</h2>
+  <p>
+    We can't check your challan status, process a payment on your behalf, or cancel or dispute a challan
+    for you — TrafficChallan is an independent information site, not a government portal, and we never
+    handle payments. For those actions, use the official portal for your state, or the national portal at
+    <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>. Every state
+    page on this site links to the correct official portal for checking and paying challans in that state.
+  </p>
+
+  <p>
+    General feedback, partnership questions, and anything else about the site are also welcome at the
+    same address.
+  </p>
+</Base>
