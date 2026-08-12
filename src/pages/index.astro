@@ -5,7 +5,7 @@ import FineTable from '../components/FineTable.astro';
 import FaqSection from '../components/FaqSection.astro';
 import LastVerified from '../components/LastVerified.astro';
 import PlateBadge from '../components/PlateBadge.astro';
-import { loadStates, loadOffences } from '../lib/data';
+import { loadStates, loadOffences, newestVerifiedDate } from '../lib/data';
 import { faqJsonLd } from '../lib/seo';
 import { firstSentence } from '../lib/format';
 import { getCollection } from 'astro:content';
@@ -92,11 +92,7 @@ const guides = guideOrder
   .map((id) => allGuides.find((g) => g.id === id))
   .filter((g): g is (typeof allGuides)[number] => Boolean(g));
 
-const newestVerified = [
-  ...states.map((s) => s.last_verified),
-  ...allOffences.map((o) => o.last_verified),
-  ...allGuides.map((g) => g.data.last_verified)
-].sort().at(-1)!;
+const newestVerified = newestVerifiedDate();
 
 const year = new Date().getFullYear();
 

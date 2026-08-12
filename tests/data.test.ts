@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { mkdtempSync, writeFileSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { loadStates } from '../src/lib/data';
+import matter from 'gray-matter';
+import { loadStates, loadOffences, newestVerifiedDate } from '../src/lib/data';
 
 function tmpDataDir(files: Record<string, unknown>): string {
   const dir = mkdtempSync(join(tmpdir(), 'tc-data-'));
@@ -44,5 +45,40 @@ describe('loadStates', () => {
   it('rejects filename/slug mismatch', () => {
     const dir = tmpDataDir({ 'notdelhi.json': goodState });
     expect(() => loadStates(dir)).toThrow(/notdelhi\.json.*slug/);
+  });
+});
+
+describe('newestVerifiedDate', () => {
+  // Runs against the real repo data (states, fines, guides) rather than a
+  // fixture, so it doubles as a regression check that the function still
+  // agrees with astro.config.mjs's buildLastmodMap(), which computes the
+  // same max from the same three sources for the sitemap.
+  it('is at least as new as every state, offence and guide last_verified date', () => {
+    const newest = newestVerifiedDate();
+
+    for (const s of loadStates()) expect(newest >= s.last_verified).toBe(true);
+    for (const o of loadOffences()) expect(newest >= o.last_verified).toBe(true);
+
+    const guidesDir = join(process.cwd(), 'src', 'content', 'guides');
+    for (const file of readdirSync(guidesDir).filter((f) => f.endsWith('.md'))) {
+      const { data } = matter(readFileSync(join(guidesDir, file), 'utf-8'));
+      if (data.last_verified) expect(newest >= data.last_verified).toBe(true);
+    }
+  });
+
+  it('matches the known max across states, offences and guides', () => {
+    const guidesDir = join(process.cwd(), 'src', 'content', 'guides');
+    const guideDates = readdirSync(guidesDir)
+      .filter((f) => f.endsWith('.md'))
+      .map((file) => matter(readFileSync(join(guidesDir, file), 'utf-8')).data.last_verified)
+      .filter((d): d is string => Boolean(d));
+
+    const expected = [
+      ...loadStates().map((s) => s.last_verified),
+      ...loadOffences().map((o) => o.last_verified),
+      ...guideDates
+    ].sort().at(-1);
+
+    expect(newestVerifiedDate()).toBe(expected);
   });
 });

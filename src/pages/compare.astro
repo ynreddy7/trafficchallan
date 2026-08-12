@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import AnswerBox from '../components/AnswerBox.astro';
 import LastVerified from '../components/LastVerified.astro';
-import { loadStates, loadOffences } from '../lib/data';
+import { loadStates, loadOffences, newestVerifiedDate } from '../lib/data';
 import { datasetJsonLd } from '../lib/seo';
 import { firstClause } from '../lib/format';
 
@@ -27,7 +27,7 @@ const compareStates = [...withOverrides].sort((a, b) => {
 });
 const noOverrideStates = allStates.filter((s) => Object.keys(s.fine_overrides).length === 0);
 
-const newestVerified = [...allStates, ...offences].map((r) => r.last_verified).sort().at(-1)!;
+const newestVerified = newestVerifiedDate();
 
 const description =
   'Side-by-side traffic fine amounts for common offences across Delhi, Maharashtra, Karnataka and 7 more states with state-notified variations, sourced and dated.';

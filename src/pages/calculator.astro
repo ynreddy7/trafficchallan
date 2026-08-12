@@ -2,11 +2,11 @@
 import Base from '../layouts/Base.astro';
 import AnswerBox from '../components/AnswerBox.astro';
 import FineTable from '../components/FineTable.astro';
-import { loadStates, loadOffences } from '../lib/data';
+import { loadStates, loadOffences, newestVerifiedDate } from '../lib/data';
 
 const states = loadStates();
 const offences = loadOffences();
-const newestVerified = [...states, ...offences].map((r) => r.last_verified).sort().at(-1)!;
+const newestVerified = newestVerifiedDate();
 const calcData = {
   offences: offences.map((o) => ({
     slug: o.slug, name: o.name, mva_section: o.mva_section, licence_impact: o.licence_impact,

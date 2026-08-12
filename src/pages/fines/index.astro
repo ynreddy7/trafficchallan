@@ -2,11 +2,11 @@
 import Base from '../../layouts/Base.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import FineTable from '../../components/FineTable.astro';
-import { loadOffences } from '../../lib/data';
+import { loadOffences, newestVerifiedDate } from '../../lib/data';
 import { datasetJsonLd } from '../../lib/seo';
 
 const offences = loadOffences();
-const newest = offences.map((o) => o.last_verified).sort().at(-1)!;
+const newest = newestVerifiedDate();
 const year = new Date().getFullYear();
 ---
 <Base
