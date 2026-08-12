@@ -7,7 +7,7 @@ import FaqSection from '../../components/FaqSection.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import { loadStates, loadOffences } from '../../lib/data';
 import { faqJsonLd } from '../../lib/seo';
-import { shortSection } from '../../lib/format';
+import { shortSection, slugify } from '../../lib/format';
 import { relatedForOffence } from '../../lib/links';
 import type { OffenceRecord } from '../../lib/schemas';
 import { getCollection } from 'astro:content';
@@ -31,6 +31,7 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
   path={path}
   jsonld={[faqJsonLd(offence.faqs)]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }, { name: offence.name, path }]}
+  dateModified={offence.last_verified}
 >
   <h1>{offence.name}: fine amount and rules</h1>
   <AnswerBox>
@@ -39,10 +40,10 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
   </AnswerBox>
   <LastVerified date={offence.last_verified} />
 
-  <h2>What the law says</h2>
+  <h2 id={slugify('What the law says')}>What the law says</h2>
   <p>{offence.description}</p>
 
-  <h2>Fine amounts</h2>
+  <h2 id={slugify('Fine amounts')}>Fine amounts</h2>
   <div class="table-wrap"><table>
     <thead><tr><th></th><th>Amount</th></tr></thead>
     <tbody>
@@ -54,7 +55,7 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
   </table></div>
 
   {overriding.length > 0 && <>
-    <h2>States with different notified amounts</h2>
+    <h2 id={slugify('States with different notified amounts')}>States with different notified amounts</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>State</th><th>Amount</th></tr></thead>
       <tbody>{overriding.map((s) => <tr>

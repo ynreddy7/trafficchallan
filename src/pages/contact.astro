@@ -1,11 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE_LAUNCH_DATE } from '../lib/seo';
 ---
 <Base
   title="Contact Us"
   description="Report a wrong fine amount, a dead portal link, or a correction to Team TrafficChallan. We reply within 7 days."
   path="/contact/"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact/' }]}
+  dateModified={SITE_LAUNCH_DATE}
 >
   <h1>Contact us</h1>
 

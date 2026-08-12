@@ -1,4 +1,6 @@
 export const ORIGIN = 'https://trafficchallan.com';
+/** Site launch date — the fixed datePublished for every page's WebPage node. */
+export const SITE_LAUNCH_DATE = '2026-08-13';
 const abs = (path: string) => ORIGIN + (path.startsWith('/') ? path : '/' + path);
 
 export function orgJsonLd() {
@@ -34,9 +36,37 @@ export function howToJsonLd(name: string, steps: string[]) {
     step: steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, text: s }))
   };
 }
-export function datasetJsonLd(name: string, description: string, path: string) {
+export interface DatasetDistribution { url: string; encodingFormat: string }
+
+export function datasetJsonLd(
+  name: string,
+  description: string,
+  path: string,
+  distributions?: DatasetDistribution[]
+) {
   return {
     '@context': 'https://schema.org', '@type': 'Dataset',
-    name, description, url: abs(path), creator: orgJsonLd(), isAccessibleForFree: true, inLanguage: 'en-IN'
+    name, description, url: abs(path), creator: orgJsonLd(), isAccessibleForFree: true, inLanguage: 'en-IN',
+    ...(distributions && distributions.length
+      ? { distribution: distributions.map((d) => ({ '@type': 'DataDownload', contentUrl: abs(d.url), encodingFormat: d.encodingFormat })) }
+      : {})
+  };
+}
+
+/**
+ * WebPage node carrying machine-readable dates — the strongest single AEO
+ * lever per the GEO-16 citation-prediction study (see
+ * .superpowers/upgrade/research.json, aeo.tactics[0]). datePublished is
+ * fixed at the site launch date; dateModified/lastReviewed mirror the
+ * page's visible "Last verified" date.
+ */
+export function webPageJsonLd(path: string, title: string, dateModified: string) {
+  return {
+    '@context': 'https://schema.org', '@type': 'WebPage',
+    url: abs(path), name: title,
+    datePublished: SITE_LAUNCH_DATE,
+    dateModified,
+    lastReviewed: dateModified,
+    isPartOf: { '@type': 'WebSite', url: abs('/') }
   };
 }

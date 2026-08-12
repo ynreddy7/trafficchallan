@@ -10,6 +10,7 @@ import FineTable from '../components/FineTable.astro';
 import { loadStates, loadOffences } from '../lib/data';
 import { faqJsonLd, howToJsonLd } from '../lib/seo';
 import { relatedForState } from '../lib/links';
+import { slugify } from '../lib/format';
 import type { StateRecord } from '../lib/schemas';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -45,6 +46,7 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
     path={`/${props.state.slug}-e-challan/`}
     jsonld={[howToJsonLd(`How to check ${props.state.name} e-challan`, props.state.check_steps), faqJsonLd(props.state.faqs)]}
     breadcrumbs={[{ name: 'Home', path: '/' }, { name: `${props.state.name} e-Challan`, path: `/${props.state.slug}-e-challan/` }]}
+    dateModified={props.state.last_verified}
   >
     <h1>{props.state.name} e-Challan: Check Status &amp; Pay Online</h1>
     <AnswerBox>
@@ -55,31 +57,31 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
     </AnswerBox>
     <LastVerified date={props.state.last_verified} />
 
-    <h2>How to check your {props.state.name} challan</h2>
+    <h2 id={slugify(`How to check your ${props.state.name} challan`)}>How to check your {props.state.name} challan</h2>
     <StepList steps={props.state.check_steps} />
 
-    <h2>How to pay a {props.state.name} challan online</h2>
+    <h2 id={slugify(`How to pay a ${props.state.name} challan online`)}>How to pay a {props.state.name} challan online</h2>
     <StepList steps={props.state.pay_steps} />
 
-    <h2>Official portals for {props.state.name}</h2>
+    <h2 id={slugify(`Official portals for ${props.state.name}`)}>Official portals for {props.state.name}</h2>
     <div class="table-wrap"><table>
       <thead><tr><th>Portal</th><th>Use for</th></tr></thead>
       <tbody>{props.state.portals.map((p) => <tr><td><a href={p.url} rel="noopener">{p.label}</a></td><td>{p.scope === 'both' ? 'Check & pay' : p.scope}</td></tr>)}</tbody>
     </table></div>
 
     {props.state.sms_app_methods.length > 0 && <>
-      <h2>Check by SMS or app</h2>
+      <h2 id={slugify('Check by SMS or app')}>Check by SMS or app</h2>
       <ul>{props.state.sms_app_methods.map((m) => <li>{m}</li>)}</ul>
     </>}
 
-    <h2>Court challans in {props.state.name}</h2>
+    <h2 id={slugify(`Court challans in ${props.state.name}`)}>Court challans in {props.state.name}</h2>
     <p>{props.state.court_challan_process}</p>
 
-    <h2>Traffic fine amounts in {props.state.name}</h2>
+    <h2 id={slugify(`Traffic fine amounts in ${props.state.name}`)}>Traffic fine amounts in {props.state.name}</h2>
     <FineTable offences={offences} state={props.state} />
 
     {props.state.quirks.length > 0 && <>
-      <h2>Things specific to {props.state.name}</h2>
+      <h2 id={slugify(`Things specific to ${props.state.name}`)}>Things specific to {props.state.name}</h2>
       <ul>{props.state.quirks.map((q) => <li>{q}</li>)}</ul>
     </>}
 
@@ -94,6 +96,7 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
     path={`/${props.guide.id}/`}
     jsonld={props.guide.data.faqs.length ? [faqJsonLd(props.guide.data.faqs)] : []}
     breadcrumbs={[{ name: 'Home', path: '/' }, { name: props.guide.data.title, path: `/${props.guide.id}/` }]}
+    dateModified={props.guide.data.last_verified}
   >
     <h1>{props.guide.data.title}</h1>
     <LastVerified date={props.guide.data.last_verified} />

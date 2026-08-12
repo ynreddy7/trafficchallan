@@ -13,8 +13,18 @@ const year = new Date().getFullYear();
   title={`Traffic Fine List India ${year}: All Challan Amounts (MV Act)`}
   description={`Complete list of Indian traffic fines under the Motor Vehicles Act ${year} — offence, section, first and repeat penalty. Sourced and independently verified.`}
   path="/fines/"
-  jsonld={[datasetJsonLd('Indian traffic fine schedule (MV Act, as amended)', 'Offence-wise penalties under the Motor Vehicles Act with state variations, sourced from official notifications.', '/fines/')]}
+  jsonld={[datasetJsonLd(
+    'Indian traffic fine schedule (MV Act, as amended)',
+    'Offence-wise penalties under the Motor Vehicles Act with state variations, sourced from official notifications.',
+    '/fines/',
+    [
+      { url: '/api/fines.json', encodingFormat: 'application/json' },
+      { url: '/api/fines.csv', encodingFormat: 'text/csv' },
+      { url: '/api/states.json', encodingFormat: 'application/json' }
+    ]
+  )]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }]}
+  dateModified={newest}
 >
   <h1>Traffic fine list: every challan amount in India</h1>
   <AnswerBox>
@@ -26,4 +36,8 @@ const year = new Date().getFullYear();
   <p class="verified">Table last verified: {newest}</p>
   <FineTable offences={offences} />
   <p>Select any offence for the exact legal section, repeat-offence penalty, licence consequences and state-wise variations.</p>
+  <p class="verified">
+    Download this data: <a href="/api/fines.json">JSON</a> · <a href="/api/fines.csv">CSV</a> ·
+    <a href="/api/states.json">state records (JSON)</a>. Free to reuse with attribution to TrafficChallan.
+  </p>
 </Base>

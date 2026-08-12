@@ -43,3 +43,17 @@ export function firstClause(text: string): string {
   }
   return cut === -1 ? text.trim() : text.slice(0, cut).trim();
 }
+
+/**
+ * Slugifies visible heading text into a stable id for anchor links —
+ * lowercase, non-alphanumeric runs collapsed to a single hyphen, leading/
+ * trailing hyphens trimmed. Used to give server-rendered .astro headings the
+ * same kind of `id` Astro's markdown pipeline already gives Markdown
+ * headings, so they are deep-linkable and indexable as Pagefind sub-results.
+ */
+export function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}

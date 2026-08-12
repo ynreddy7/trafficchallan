@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { breadcrumbJsonLd, faqJsonLd, howToJsonLd, orgJsonLd, websiteJsonLd, datasetJsonLd } from '../src/lib/seo';
+import { breadcrumbJsonLd, faqJsonLd, howToJsonLd, orgJsonLd, websiteJsonLd, datasetJsonLd, webPageJsonLd, SITE_LAUNCH_DATE } from '../src/lib/seo';
 
 describe('seo builders', () => {
   it('org has name and url', () => {
@@ -27,5 +27,30 @@ describe('seo builders', () => {
   });
   it('dataset carries absolute url', () => {
     expect((datasetJsonLd('Fines', 'desc', '/fines/') as any).url).toBe('https://trafficchallan.com/fines/');
+  });
+  it('dataset omits distribution when none given', () => {
+    const d = datasetJsonLd('Fines', 'desc', '/fines/') as any;
+    expect(d.distribution).toBeUndefined();
+  });
+  it('dataset carries DataDownload distributions with absolute contentUrl', () => {
+    const d = datasetJsonLd('Fines', 'desc', '/fines/', [
+      { url: '/api/fines.json', encodingFormat: 'application/json' },
+      { url: '/api/fines.csv', encodingFormat: 'text/csv' }
+    ]) as any;
+    expect(d.distribution).toHaveLength(2);
+    expect(d.distribution[0]).toEqual({
+      '@type': 'DataDownload', contentUrl: 'https://trafficchallan.com/api/fines.json', encodingFormat: 'application/json'
+    });
+  });
+
+  it('webPage jsonld carries fixed datePublished, mirrored dateModified/lastReviewed and isPartOf', () => {
+    const w = webPageJsonLd('/delhi-e-challan/', 'Delhi e-Challan', '2026-08-10') as any;
+    expect(w['@type']).toBe('WebPage');
+    expect(w.url).toBe('https://trafficchallan.com/delhi-e-challan/');
+    expect(w.name).toBe('Delhi e-Challan');
+    expect(w.datePublished).toBe(SITE_LAUNCH_DATE);
+    expect(w.dateModified).toBe('2026-08-10');
+    expect(w.lastReviewed).toBe('2026-08-10');
+    expect(w.isPartOf).toEqual({ '@type': 'WebSite', url: 'https://trafficchallan.com/' });
   });
 });

@@ -6,6 +6,7 @@ import { loadStates, loadOffences } from '../lib/data';
 
 const states = loadStates();
 const offences = loadOffences();
+const newestVerified = [...states, ...offences].map((r) => r.last_verified).sort().at(-1)!;
 const calcData = {
   offences: offences.map((o) => ({
     slug: o.slug, name: o.name, mva_section: o.mva_section, licence_impact: o.licence_impact,
@@ -19,6 +20,7 @@ const calcData = {
   description="Pick one or more offences and your state to see the current challan amount under the Motor Vehicles Act, including state-notified variations, repeat-offence penalties and a running total."
   path="/calculator/"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fine calculator', path: '/calculator/' }]}
+  dateModified={newestVerified}
 >
   <h1>Traffic fine calculator</h1>
   <AnswerBox>

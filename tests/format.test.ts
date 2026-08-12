@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { shortSection, firstSentence, firstClause } from '../src/lib/format';
+import { shortSection, firstSentence, firstClause, slugify } from '../src/lib/format';
 
 describe('shortSection', () => {
   it('removes statute name and amendment history', () => {
@@ -81,5 +81,23 @@ describe('firstClause', () => {
   it('returns the trimmed whole text when no delimiter is present', () => {
     const input = 'LMV ₹1,000 first offence, ₹2,000 second.';
     expect(firstClause(input)).toBe('LMV ₹1,000 first offence, ₹2,000 second.');
+  });
+});
+
+describe('slugify', () => {
+  it('lowercases and hyphenates a plain heading', () => {
+    expect(slugify('How to check your Delhi challan')).toBe('how-to-check-your-delhi-challan');
+  });
+
+  it('collapses punctuation and multiple spaces into a single hyphen', () => {
+    expect(slugify('Court challans in Jammu & Kashmir')).toBe('court-challans-in-jammu-kashmir');
+  });
+
+  it('trims leading and trailing hyphens', () => {
+    expect(slugify('  -- What is Section 194D? --  ')).toBe('what-is-section-194d');
+  });
+
+  it('handles a short example matching the spec illustration', () => {
+    expect(slugify('How to check')).toBe('how-to-check');
   });
 });

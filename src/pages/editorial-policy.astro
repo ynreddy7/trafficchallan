@@ -1,11 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE_LAUNCH_DATE } from '../lib/seo';
 ---
 <Base
   title="Editorial Policy"
   description="How TrafficChallan sources facts, corrects errors, and keeps fine and procedure pages up to date — including our AI-assistance disclosure."
   path="/editorial-policy/"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Editorial policy', path: '/editorial-policy/' }]}
+  dateModified={SITE_LAUNCH_DATE}
 >
   <h1>Editorial policy</h1>
 

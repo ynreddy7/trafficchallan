@@ -1,11 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE_LAUNCH_DATE } from '../lib/seo';
 ---
 <Base
   title="Privacy Policy"
   description="TrafficChallan has no accounts and collects no personal data. The fine calculator runs entirely in your browser."
   path="/privacy/"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Privacy', path: '/privacy/' }]}
+  dateModified={SITE_LAUNCH_DATE}
 >
   <h1>Privacy policy</h1>
 
