@@ -7,6 +7,7 @@ import LastVerified from '../components/LastVerified.astro';
 import PlateBadge from '../components/PlateBadge.astro';
 import { loadStates, loadOffences } from '../lib/data';
 import { faqJsonLd } from '../lib/seo';
+import { firstSentence } from '../lib/format';
 import { getCollection } from 'astro:content';
 
 const states = [...loadStates()].sort((a, b) => a.name.localeCompare(b.name));
@@ -27,6 +28,43 @@ const STATE_CODES: Record<string, string> = {
   'west-bengal': 'WB',
   'madhya-pradesh': 'MP',
   'jammu-kashmir': 'JK'
+};
+
+/** RTO series code → state slug, for the vehicle-number portal finder.
+ * One entry per code — Telangana carries both TS (legacy) and TG (current). */
+const RTO_CODE_TO_SLUG: Record<string, string> = {
+  AP: 'andhra-pradesh',
+  DL: 'delhi',
+  GJ: 'gujarat',
+  HR: 'haryana',
+  JK: 'jammu-kashmir',
+  KA: 'karnataka',
+  MP: 'madhya-pradesh',
+  MH: 'maharashtra',
+  RJ: 'rajasthan',
+  TN: 'tamil-nadu',
+  TS: 'telangana',
+  TG: 'telangana',
+  UP: 'uttar-pradesh',
+  WB: 'west-bengal'
+};
+
+const stateBySlug = new Map(states.map((s) => [s.slug, s]));
+const rtoStates = Object.entries(RTO_CODE_TO_SLUG)
+  .map(([code, slug]) => {
+    const s = stateBySlug.get(slug);
+    return s ? { code, slug, name: s.name } : null;
+  })
+  .filter((x): x is { code: string; slug: string; name: string } => x !== null);
+
+const finderData = {
+  rtoStates,
+  states: states.map((s) => ({
+    slug: s.slug,
+    name: s.name,
+    portals: s.portals.map((p) => ({ label: p.label, url: p.url, scope: p.scope })),
+    courtNote: firstSentence(s.court_challan_process)
+  }))
 };
 
 const topSlugs = [
@@ -122,11 +160,137 @@ const description = `Check and pay traffic e-challans online for all ${states.le
   <section id="portal-finder" class="panel">
     <h2>Find your challan portal</h2>
     <p>
-      Most states check and pay through <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>;
-      the rest have moved to the <a href="https://echallan.parivahan.nic.in/" rel="noopener">NextGen portal</a> or run their own
-      state site — pick your state below for the exact one.
+      Type your vehicle number (e.g. <strong>MH12AB1234</strong>) or your state name — nothing you type here leaves
+      your browser — to see the exact official portal for your state, whether it covers checking, paying or both,
+      and how court challans work there.
     </p>
+
+    <form id="finder-form" class="finder-form">
+      <label for="finder-input">Your vehicle number or state</label>
+      <input type="text" id="finder-input" name="q" autocomplete="off" placeholder="MH12AB1234 or Maharashtra" />
+      <button type="submit" class="action action--primary">Find portal</button>
+    </form>
+
+    <div id="finder-result" class="finder-result" aria-live="polite"></div>
+
+    <noscript>
+      <p>
+        Most states check and pay through <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>;
+        the rest have moved to the <a href="https://echallan.parivahan.nic.in/" rel="noopener">NextGen portal</a> or run their own
+        state site — pick your state below for the exact one.
+      </p>
+    </noscript>
   </section>
+
+  <script type="application/json" id="finder-data" set:html={JSON.stringify(finderData)} />
+  <script>
+    import { resolveVehicleInput, type RtoStateEntry } from '../lib/portal-finder';
+
+    interface FinderPortal { label: string; url: string; scope: 'check' | 'pay' | 'both' }
+    interface FinderState { slug: string; name: string; portals: FinderPortal[]; courtNote: string }
+    interface FinderData { rtoStates: RtoStateEntry[]; states: FinderState[] }
+
+    const data: FinderData = JSON.parse(document.getElementById('finder-data')!.textContent!);
+    const stateBySlug = new Map(data.states.map((s) => [s.slug, s]));
+    const form = document.getElementById('finder-form') as HTMLFormElement;
+    const input = document.getElementById('finder-input') as HTMLInputElement;
+    const result = document.getElementById('finder-result') as HTMLDivElement;
+
+    const SCOPE_LABEL: Record<FinderPortal['scope'], string> = { check: 'Check', pay: 'Pay', both: 'Both' };
+
+    function externalLink(href: string, label: string): HTMLAnchorElement {
+      const a = document.createElement('a');
+      a.href = href;
+      a.rel = 'noopener';
+      a.textContent = label + ' ';
+      const ext = document.createElement('span');
+      ext.className = 'ext';
+      ext.setAttribute('aria-hidden', 'true');
+      ext.textContent = '↗';
+      a.appendChild(ext);
+      return a;
+    }
+
+    function renderState(state: FinderState) {
+      result.replaceChildren();
+      const wrap = document.createElement('div');
+      wrap.className = 'panel';
+
+      const h3 = document.createElement('h3');
+      h3.textContent = state.name;
+      wrap.appendChild(h3);
+
+      const ul = document.createElement('ul');
+      for (const p of state.portals) {
+        const li = document.createElement('li');
+        li.appendChild(externalLink(p.url, p.label));
+        const chip = document.createElement('span');
+        chip.className = `chip chip--${p.scope}`;
+        chip.textContent = SCOPE_LABEL[p.scope];
+        li.appendChild(chip);
+        ul.appendChild(li);
+      }
+      wrap.appendChild(ul);
+
+      const note = document.createElement('p');
+      note.className = 'verified';
+      note.textContent = state.courtNote;
+      wrap.appendChild(note);
+
+      const full = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = `/${state.slug}-e-challan/`;
+      a.className = 'action action--secondary';
+      a.textContent = `Full ${state.name} e-challan guide`;
+      full.appendChild(a);
+      wrap.appendChild(full);
+
+      result.appendChild(wrap);
+    }
+
+    function renderUnknownCode(code: string) {
+      result.replaceChildren();
+      const wrap = document.createElement('div');
+      wrap.className = 'panel';
+      const p = document.createElement('p');
+      p.textContent = `We don't have a dedicated ${code} guide yet — use the national portal:`;
+      wrap.appendChild(p);
+      const ul = document.createElement('ul');
+      const li1 = document.createElement('li');
+      li1.appendChild(externalLink('https://echallan.parivahan.gov.in/', 'echallan.parivahan.gov.in'));
+      ul.appendChild(li1);
+      const li2 = document.createElement('li');
+      li2.appendChild(externalLink('https://echallan.parivahan.nic.in/', 'echallan.parivahan.nic.in (NextGen)'));
+      ul.appendChild(li2);
+      wrap.appendChild(ul);
+      result.appendChild(wrap);
+    }
+
+    function renderInvalid() {
+      result.replaceChildren();
+      const wrap = document.createElement('div');
+      wrap.className = 'panel';
+      const p = document.createElement('p');
+      p.textContent = "We couldn't recognise that — try a vehicle number like MH12AB1234, or type your state name.";
+      wrap.appendChild(p);
+      result.appendChild(wrap);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = input.value;
+      const resolved = resolveVehicleInput(value, data.rtoStates);
+      if (resolved.kind === 'state') {
+        const state = stateBySlug.get(resolved.slug);
+        if (state) renderState(state);
+        else renderInvalid();
+      } else if (resolved.kind === 'unknown-code') {
+        renderUnknownCode(resolved.code);
+      } else {
+        renderInvalid();
+      }
+    });
+  </script>
 
   <h2>Check your state</h2>
   <p>
@@ -149,10 +313,11 @@ const description = `Check and pay traffic e-challans online for all ${states.le
 
   <h2>Common traffic fines</h2>
   <p>
-    The offences drivers look up most often. See the <a href="/fines/">full fine list</a> for every offence, or
-    the <a href="/calculator/">fine calculator</a> to total a multi-offence challan.
+    The offences drivers look up most often. See the <a href="/fines/">full fine list</a> for every offence, the
+    <a href="/calculator/">fine calculator</a> to total a multi-offence challan, or
+    <a href="/compare/">compare fines across states</a> where amounts differ from the central Motor Vehicles Act.
   </p>
-  <FineTable offences={topOffences} />
+  <FineTable offences={topOffences} compact />
 
   <h2>Guides</h2>
   <ul class="guide-list">

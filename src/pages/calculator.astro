@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import AnswerBox from '../components/AnswerBox.astro';
+import FineTable from '../components/FineTable.astro';
 import { loadStates, loadOffences } from '../lib/data';
 
 const states = loadStates();
@@ -15,22 +16,29 @@ const calcData = {
 ---
 <Base
   title="Traffic Fine Calculator: What Will Your Challan Cost?"
-  description="Pick an offence and state to see the current challan amount under the Motor Vehicles Act, including state-notified variations and repeat-offence penalties."
+  description="Pick one or more offences and your state to see the current challan amount under the Motor Vehicles Act, including state-notified variations, repeat-offence penalties and a running total."
   path="/calculator/"
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fine calculator', path: '/calculator/' }]}
 >
   <h1>Traffic fine calculator</h1>
   <AnswerBox>
-    Choose the offence and your state to see the current fine amount, including any state-notified
-    variation and the repeat-offence penalty. Amounts come from our sourced fine dataset.
+    Tick every offence on your challan and pick your state to see each fine amount, including any state-notified
+    variation and the repeat-offence penalty, plus a total when every selected amount is a single figure. Amounts
+    come from our sourced fine dataset.
   </AnswerBox>
 
   <form id="calc" class="answer-box" style="display:grid;gap:0.8rem;">
-    <label>Offence
-      <select id="offence" style="width:100%;padding:0.4rem;">
-        {calcData.offences.map((o) => <option value={o.slug}>{o.name}</option>)}
-      </select>
-    </label>
+    <fieldset style="border:0;padding:0;margin:0;">
+      <legend class="label">Offences on your challan</legend>
+      <div style="display:grid;gap:0.45rem;margin-top:0.5rem;">
+        {calcData.offences.map((o) => (
+          <label style="display:flex;align-items:center;gap:0.5rem;min-height:32px;">
+            <input type="checkbox" class="offence-check" value={o.slug} />
+            {o.name}
+          </label>
+        ))}
+      </div>
+    </fieldset>
     <label>State
       <select id="state" style="width:100%;padding:0.4rem;">
         <option value="">All-India standard</option>
@@ -38,24 +46,133 @@ const calcData = {
       </select>
     </label>
     <label><input type="checkbox" id="repeat" /> Repeat offence</label>
-    <output id="result" style="font-size:1.15rem;font-weight:600;"></output>
-    <p id="note" class="verified"></p>
+
+    <div id="results" aria-live="polite"></div>
+
+    <div style="display:flex;align-items:center;gap:0.7rem;">
+      <button type="button" id="copy-link" class="action action--secondary" style="flex:0 0 auto;">Copy link</button>
+    </div>
   </form>
+
+  <h2>Every fine at a glance</h2>
+  <p class="verified">
+    A static reference table for every offence — no JavaScript required. Use the calculator above to total a
+    multi-offence challan for your state.
+  </p>
+  <FineTable offences={offences} />
 
   <script type="application/json" id="calc-data" set:html={JSON.stringify(calcData)} />
   <script>
-    import { computeFine } from '../lib/fine-calc';
-    const data = JSON.parse(document.getElementById('calc-data')!.textContent!);
-    const $ = (id: string) => document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
-    function update() {
-      const offence = data.offences.find((o: any) => o.slug === $('offence').value);
-      const state = data.states.find((s: any) => s.slug === $('state').value) ?? null;
-      const r = computeFine(offence, state, ($('repeat') as HTMLInputElement).checked);
-      document.getElementById('result')!.textContent = r.text;
-      document.getElementById('note')!.textContent =
-        r.sectionNote + (r.overridden ? ' State-notified amount.' : '');
+    import { computeFine, totalFines, type FineResult } from '../lib/fine-calc';
+
+    interface CalcOffence {
+      slug: string; name: string; mva_section: string; licence_impact: string;
+      base_fine_text: string; repeat_fine_text: string;
     }
-    ['offence', 'state', 'repeat'].forEach((id) => $(id).addEventListener('change', update));
-    update();
+    interface CalcState { slug: string; name: string; fine_overrides: Record<string, { amount_text: string; source: string }> }
+    interface CalcData { offences: CalcOffence[]; states: CalcState[] }
+
+    const data: CalcData = JSON.parse(document.getElementById('calc-data')!.textContent!);
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+    const results = document.getElementById('results') as HTMLDivElement;
+    const checkboxes = Array.from(document.querySelectorAll<HTMLInputElement>('.offence-check'));
+    const stateSelect = $('state') as HTMLSelectElement;
+    const repeatBox = $('repeat') as HTMLInputElement;
+    const inr = new Intl.NumberFormat('en-IN');
+
+    function selectedSlugs(): string[] {
+      return checkboxes.filter((c) => c.checked).map((c) => c.value);
+    }
+
+    function syncUrl(slugs: string[], stateSlug: string, repeat: boolean) {
+      const params = new URLSearchParams();
+      if (slugs.length) params.set('o', slugs.join(','));
+      if (stateSlug) params.set('s', stateSlug);
+      if (repeat) params.set('r', '1');
+      const qs = params.toString();
+      const url = location.pathname + (qs ? `?${qs}` : '');
+      history.replaceState(null, '', url);
+    }
+
+    function render() {
+      const slugs = selectedSlugs();
+      const stateSlug = stateSelect.value;
+      const state = data.states.find((s) => s.slug === stateSlug) ?? null;
+      const repeat = repeatBox.checked;
+      syncUrl(slugs, stateSlug, repeat);
+
+      results.replaceChildren();
+      if (slugs.length === 0) {
+        const p = document.createElement('p');
+        p.className = 'verified';
+        p.textContent = 'Tick at least one offence above to see the fine amount.';
+        results.appendChild(p);
+        return;
+      }
+
+      const lines: { offence: CalcOffence; r: FineResult }[] = [];
+      for (const slug of slugs) {
+        const offence = data.offences.find((o) => o.slug === slug);
+        if (!offence) continue;
+        const r = computeFine(offence as any, state as any, repeat);
+        lines.push({ offence, r });
+      }
+
+      const ul = document.createElement('ul');
+      for (const { offence, r } of lines) {
+        const li = document.createElement('li');
+        const strong = document.createElement('strong');
+        strong.textContent = `${offence.name}: `;
+        li.appendChild(strong);
+        li.appendChild(document.createTextNode(r.text));
+        if (r.overridden) {
+          const tag = document.createElement('span');
+          tag.className = 'tag tag--attention';
+          tag.textContent = 'State-notified';
+          li.appendChild(tag);
+        }
+        ul.appendChild(li);
+      }
+      results.appendChild(ul);
+
+      const totals = totalFines(lines.map((l) => l.r));
+      const totalLine = document.createElement('p');
+      totalLine.className = 'amount';
+      if (totals.determinate && totals.total !== null) {
+        totalLine.textContent = `Total: ₹${inr.format(totals.total)}`;
+      } else {
+        totalLine.className = 'verified';
+        totalLine.textContent = 'Total: not a single figure — includes court-decided or range amounts';
+      }
+      results.appendChild(totalLine);
+    }
+
+    function initFromUrl() {
+      const params = new URLSearchParams(location.search);
+      const offenceSlugs = new Set((params.get('o') ?? '').split(',').filter(Boolean));
+      for (const c of checkboxes) c.checked = offenceSlugs.has(c.value);
+      const s = params.get('s');
+      if (s && data.states.some((st) => st.slug === s)) stateSelect.value = s;
+      repeatBox.checked = params.get('r') === '1';
+    }
+
+    checkboxes.forEach((c) => c.addEventListener('change', render));
+    stateSelect.addEventListener('change', render);
+    repeatBox.addEventListener('change', render);
+
+    const copyBtn = document.getElementById('copy-link') as HTMLButtonElement;
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(location.href);
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => { copyBtn.textContent = original; }, 1500);
+      } catch {
+        copyBtn.textContent = 'Copy failed — copy the address bar instead';
+      }
+    });
+
+    initFromUrl();
+    render();
   </script>
 </Base>

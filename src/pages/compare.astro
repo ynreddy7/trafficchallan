@@ -1,0 +1,99 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import LastVerified from '../components/LastVerified.astro';
+import { loadStates, loadOffences } from '../lib/data';
+import { datasetJsonLd } from '../lib/seo';
+import { firstClause } from '../lib/format';
+
+const allStates = loadStates();
+const offences = loadOffences();
+
+// Column order: the ten states that carry at least one state-notified fine
+// override, in the order specified by the feature spec, with any future
+// state that gains an override falling in alphabetically after it.
+const CANONICAL_ORDER = [
+  'delhi', 'maharashtra', 'karnataka', 'gujarat', 'tamil-nadu',
+  'andhra-pradesh', 'west-bengal', 'uttar-pradesh', 'rajasthan', 'haryana'
+];
+const withOverrides = allStates.filter((s) => Object.keys(s.fine_overrides).length > 0);
+const compareStates = [...withOverrides].sort((a, b) => {
+  const ai = CANONICAL_ORDER.indexOf(a.slug);
+  const bi = CANONICAL_ORDER.indexOf(b.slug);
+  if (ai === -1 && bi === -1) return a.name.localeCompare(b.name);
+  if (ai === -1) return 1;
+  if (bi === -1) return -1;
+  return ai - bi;
+});
+const noOverrideStates = allStates.filter((s) => Object.keys(s.fine_overrides).length === 0);
+
+const newestVerified = [...allStates, ...offences].map((r) => r.last_verified).sort().at(-1)!;
+
+const description =
+  'Side-by-side traffic fine amounts for common offences across Delhi, Maharashtra, Karnataka and 7 more states with state-notified variations, sourced and dated.';
+---
+<Base
+  title="Compare Traffic Fines Across Indian States"
+  description={description}
+  path="/compare/"
+  jsonld={[
+    datasetJsonLd(
+      'Traffic fine comparison across Indian states',
+      'State-notified fine amounts for common traffic offences compared against the central Motor Vehicles Act figure, state by state.',
+      '/compare/'
+    )
+  ]}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Compare', path: '/compare/' }]}
+>
+  <h1>Traffic fines by state: side-by-side</h1>
+  <AnswerBox>
+    Most Indian traffic fines follow the central Motor Vehicles Act, but {compareStates.length} states have
+    notified their own amounts for some offences — sometimes higher, sometimes graded by vehicle class. This table
+    lines up the central figure against every state that has a notified variation, offence by offence.
+  </AnswerBox>
+  <LastVerified date={newestVerified} />
+
+  <div class="table-wrap">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Offence</th>
+          <th>Central (MV Act)</th>
+          {compareStates.map((s) => <th>{s.name}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {offences.map((o) => (
+          <tr>
+            <td><a href={`/fines/${o.slug}/`}>{o.name}</a></td>
+            <td>{firstClause(o.base_fine_text)}</td>
+            {compareStates.map((s) => {
+              const override = s.fine_overrides[o.slug];
+              return override ? (
+                <td>
+                  {firstClause(override.amount_text)}
+                  <a class="details" href={`/fines/${o.slug}/`}>details</a>
+                </td>
+              ) : (
+                <td>Standard</td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p class="verified">
+    "Standard" means the state has not notified its own amount for that offence — the central Motor Vehicles Act
+    figure applies. {noOverrideStates.map((s) => s.name).join(', ')} have no notified variations for any offence in
+    this table, so every one of their amounts is the national default. Every fine amount here links through to its
+    offence page for the section of law, licence impact and official source.
+  </p>
+
+  <p>
+    Looking up a single offence or state instead? See the <a href="/fines/">full fine list</a>, pick your
+    <a href="/#portal-finder">state's challan portal</a>, or use the <a href="/calculator/">fine calculator</a> to
+    total a multi-offence challan.
+  </p>
+</Base>

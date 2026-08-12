@@ -15,3 +15,31 @@ export function shortSection(mvaSection: string): string {
   }
   return mvaSection.substring(0, actIndex);
 }
+
+/**
+ * Returns the first sentence of a long text field (e.g. a state's
+ * court_challan_process narrative), for a one-line summary. Cuts at the
+ * first period that is followed by whitespace or the end of the string, so
+ * it does not break mid-URL on domains like "vcourts.gov.in" where periods
+ * are never followed by a space.
+ */
+export function firstSentence(text: string): string {
+  const m = text.match(/^.*?\.(?=\s|$)/);
+  return m ? m[0] : text;
+}
+
+/**
+ * Returns the first clause of a free-text amount, splitting at whichever of
+ * " (", "—" or ";" occurs earliest in the string — used to keep the
+ * /compare/ table scannable. Returns the trimmed whole text unchanged when
+ * none of those delimiters appear.
+ */
+export function firstClause(text: string): string {
+  const delimiters = [' (', '—', ';'];
+  let cut = -1;
+  for (const d of delimiters) {
+    const idx = text.indexOf(d);
+    if (idx !== -1 && (cut === -1 || idx < cut)) cut = idx;
+  }
+  return cut === -1 ? text.trim() : text.slice(0, cut).trim();
+}

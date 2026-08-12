@@ -751,6 +751,105 @@ tbody tr:nth-child(even) {
   }
 }
 
+/* --- Scope chip (portal finder result panel) ------------------------------ */
+/* Text-only, never a fill — colour is always paired with the Check/Pay/Both
+   word itself, and green stays inline-only per the signage colour rules. */
+
+.chip {
+  display: inline-block;
+  font-stretch: var(--width-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  line-height: 1;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.chip--check {
+  color: var(--link);
+}
+.chip--pay {
+  color: var(--ink-attention);
+}
+.chip--both {
+  color: var(--status-ok);
+}
+
+/* Decorative "leaves the site" marker on external portal links. */
+.ext {
+  display: inline-block;
+  margin-left: 0.15em;
+}
+
+/* --- Portal finder result panel ------------------------------------------- */
+
+.finder-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: end;
+  margin: 0.8rem 0;
+}
+.finder-form label {
+  flex: 1 1 240px;
+}
+.finder-form input[type='text'] {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 0.3rem;
+  padding: 0.5rem 0.6rem;
+  font: inherit;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--text);
+}
+.finder-form button {
+  flex: 0 0 auto;
+}
+.finder-result {
+  margin-top: 1rem;
+}
+.finder-result:empty {
+  display: none;
+}
+.finder-result ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+}
+.finder-result li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* --- Compare table (sticky first column) ----------------------------------- */
+
+.compare-table th:first-child,
+.compare-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+.compare-table thead th:first-child {
+  background: var(--surface-board);
+}
+.compare-table tbody td:first-child {
+  background: var(--surface);
+}
+.compare-table tbody tr:nth-child(even) td:first-child {
+  background: var(--surface-tint);
+}
+.compare-table .details {
+  font-size: 0.8125rem;
+  margin-left: 0.3rem;
+}
+
 /* --- Last-verified hazard plate ------------------------------------------ */
 
 .verified-plate {

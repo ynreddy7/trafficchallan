@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { computeFine } from '../src/lib/fine-calc';
+import { computeFine, totalFines, type FineResult } from '../src/lib/fine-calc';
 import type { StateRecord, OffenceRecord } from '../src/lib/schemas';
 
 const offence = {
@@ -30,5 +30,52 @@ describe('computeFine', () => {
     expect(r.text).toBe('₹500 (Delhi notified)');
     expect(r.overridden).toBe(true);
     expect(r.overrideSource).toBe('https://d.gov.in/');
+  });
+});
+
+const asResult = (text: string): FineResult => ({ text, overridden: false, sectionNote: 'x' });
+
+describe('totalFines', () => {
+  it('sums two determinate single-figure amounts', () => {
+    const r = totalFines([asResult('₹1,000'), asResult('₹500 (Delhi notified)')]);
+    expect(r).toEqual({ total: 1500, determinate: true });
+  });
+
+  it('parses a leading amount past a trailing descriptive clause (override text)', () => {
+    const r = totalFines([asResult('₹500 (Delhi notified)')]);
+    expect(r).toEqual({ total: 500, determinate: true });
+  });
+
+  it('parses a leading amount past a trailing prose clause', () => {
+    const r = totalFines([asResult('₹1,000 fine and disqualification from holding a driving licence for three months')]);
+    expect(r).toEqual({ total: 1000, determinate: true });
+  });
+
+  it('returns null when any line is a dash-connected range', () => {
+    const r = totalFines([asResult('₹1,000'), asResult('₹1,000-2,000 depending on vehicle class')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('returns null when any line is a "to"-connected range', () => {
+    const r = totalFines([asResult('₹1,000 to ₹2,000')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('returns null when any line is a court-decided amount with no leading figure', () => {
+    const r = totalFines([asResult('₹1,000'), asResult('Court challan — subject to the discretion of the Hon\'ble court')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('returns null when any line does not lead with a rupee figure', () => {
+    const r = totalFines([asResult('First offence: imprisonment up to 3 months, or a fine of ₹2,000, or both')]);
+    expect(r.total).toBeNull();
+    expect(r.determinate).toBe(false);
+  });
+
+  it('is vacuously determinate with a zero total for no selected offences', () => {
+    expect(totalFines([])).toEqual({ total: 0, determinate: true });
   });
 });
