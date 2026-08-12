@@ -1,0 +1,218 @@
+{
+  "slug": "gujarat",
+  "name": "Gujarat",
+  "target_keyword": "gujarat e challan",
+  "last_verified": "2026-08-12",
+  "portals": [
+    {
+      "label": "NextGen eChallan (MoRTH) — citizen services, the portal Gujarat now runs on",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "eChallan Parivahan (legacy MoRTH) — Challan Details / accused challan",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Gujarat Police eChallan Online Payment System (legacy SAS-Gujarat) — challans dated before 13/06/2023 only",
+      "url": "https://echallanpayment.gujarat.gov.in/sasguj/AccusedChallan/NewAccusedChallan",
+      "scope": "both"
+    },
+    {
+      "label": "Virtual Courts (eCommittee, Supreme Court of India) — Gujarat Traffic & Transport Department benches",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    },
+    {
+      "label": "Commissionerate of Transport, Gujarat — official Penalty Structure (state compounding amounts)",
+      "url": "https://cot.gujarat.gov.in/penalty-structure.htm",
+      "scope": "check"
+    },
+    {
+      "label": "Gujarat Police eChallan portal — Contact Us (district NETRAM centres + designated police stations for cash payment)",
+      "url": "https://echallanpayment.gujarat.gov.in/sasguj/AccusedChallan/ContactUS",
+      "scope": "pay"
+    }
+  ],
+  "check_steps": [
+    "Open the NextGen eChallan portal at https://echallan.parivahan.nic.in/challan/challan-services. Gujarat has migrated here: the notice board on the older echallan.parivahan.gov.in explicitly lists GJ among the states whose challans must be checked and paid on the NextGen portal.",
+    "Choose the 'Check Pending Challan Status' tile. Selecting it narrows the search-type selector to exactly three options — Challan Number, Vehicle Number and DL Number (the Mobile Number and NBT Notice options disappear for this service).",
+    "Enter the value for the type you picked. A DL search additionally asks for Date of Birth, and a vehicle search can ask for Registration Date or Challan Date. Then fill the captcha.",
+    "Verify yourself in the OTP modal titled 'Choose Option To Verify'. You can use either 'Vahan Registered Mobile No' or 'By Aadhaar OTP' — the latter accepts a 12-digit Aadhaar number or a 16-digit Virtual Aadhaar ID and requires ticking 'I hereby accept the Aadhaar authentication terms'. Enter the 6-digit OTP.",
+    "Read the results table: Violator Name, DL/RC Number, Challan Number, Transaction Number, State, Challan Date, Amount and Status, plus Challan Print and Receipt links. A status of 'Disposed' means the challan is already settled.",
+    "For an older challan, use the legacy Gujarat Police portal at https://echallanpayment.gujarat.gov.in/sasguj/AccusedChallan/NewAccusedChallan — enter the vehicle registration number (format hint on the page is 'Eg. AB12CD3456') plus the captcha and press SUBMIT. That site now carries a bilingual notice that challans dated 13/06/2023 or later must be handled on the Parivahan portal instead.",
+    "To see whether a challan has gone to court rather than remaining payable, open the 'Sent To Court' status view from the challan row — it reports Sent To Court On, Court Name, Court Address, Court Number, CL Number and the amount."
+  ],
+  "pay_steps": [
+    "From the NextGen results table, use the 'Pay Challan' service or the payment control on the challan row. Gujarat has its own dedicated payment routes on the portal — gj-payment for Traffic Department challans and gj-payment-transport for Transport Department challans.",
+    "If the challan has already been forwarded to a Virtual Court, a disclaimer modal appears first: 'This challan has been forwarded to Virtual Court (https://vcourts.gov.in/), but still it can be paid here. If you choose to pay here, do not pay at Virtual Court. Similarly, if you have paid at Virtual Court, please do not pay here again.' Tick the acknowledgement to proceed.",
+    "Complete the mobile/Aadhaar OTP verification, then pay by debit card, credit card, internet banking or UPI — these are the four methods printed on the Gujarat e-challan itself.",
+    "Alternatively pay from a UPI or banking app, a route printed on every Gujarat challan: open Bills & Recharge / Recharge & Bills / Bill Payment, tap Traffic challan / eChallan, select 'Gujarat E-Challan' or 'State Traffic Branch Gujarat', enter the vehicle number and confirm to pay.",
+    "Download proof from the 'Download Payment Receipt' tile, and keep the challan print from 'Download Challan Print'. If money left your account but the challan still shows pending, use 'Check Pending Transaction' to reconcile before paying a second time.",
+    "To pay in cash, visit one of the designated police stations listed on the Gujarat Police portal's Contact Us page (each district lists specific stations with phone numbers). The Gujarat challan instructs you to produce a photocopy of the driving licence, or show it in DigiLocker, at the time of payment.",
+    "If the challan sits with the Virtual Court, pay there instead: vcourts.gov.in/virtualcourt/, select Gujarat (Traffic Department) or Gujarat (Transport Department), use the Challan/Vehicle No. tab, click View, verify the OTP and choose 'Accept & Pay'. Court payments are processed through pay.ecourts.gov.in."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the national MoRTH app (mparivahan.parivahan.gov.in); it carries challan lookup alongside virtual DL and RC, which MoRTH has notified as legally valid documents.",
+    "Gujarat e-challans are pushed by SMS to the mobile number registered against the vehicle in Vahan — the challan itself records a 'Violator's Contact No.' field. There is no officially documented pull-SMS shortcode for Gujarat: you cannot text a code to retrieve your challan.",
+    "UPI / banking apps (GPay, PhonePe, YONO and similar): Bills & Recharge → Traffic challan / eChallan → select 'Gujarat E-Challan' or 'State Traffic Branch Gujarat' → enter vehicle number → confirm. This route is printed as an official payment option on the Gujarat e-challan.",
+    "DigiLocker — the Gujarat challan expressly accepts documents shown in DigiLocker in place of paper, and the Commissionerate of Transport penalty schedule states that documents produced in electronic form (DigiLocker) are valid, with 15 days allowed to produce documents after a demand."
+  ],
+  "court_challan_process": "Gujarat is one of the states wired into the national Virtual Courts system, and unusually it has two separate establishments on vcourts.gov.in/virtualcourt/: \"Gujarat(Traffic Department)\" (code GJVC02) and \"Gujarat(Transport Department)\" (code GJVC01). A challan reaches a court in two ways. First, offences that section 200 of the Motor Vehicles Act does not permit to be compounded cannot be settled by paying a fine at all — drunken driving under section 185 is the clearest example, and it is conspicuously absent from the Gujarat Commissionerate of Transport's published penalty schedule. Section 184 dangerous driving is compoundable \"only to the extent of use of handheld communication devices\", so other dangerous-driving allegations are court matters too. Second, an unpaid or contested challan is forwarded to court by the enforcement department. The NextGen eChallan portal exposes a \"Sent To Court\" status view showing Sent To Court On, Court Name, Court Address, Court Number, CL Number and the amount; it also distinguishes \"Consumption by Virtual Court / Proceeding is pending\", \"Transferred to Regular Court\" (with the note that the challan will then be disposed in the named regular court) and cases where it explains why the challan was not sent to the virtual court. To settle at the Virtual Court, select Gujarat and the relevant department, search on the Challan/Vehicle No. tab, click View, verify the OTP and choose \"Accept & Pay\"; payment runs through pay.ecourts.gov.in by card, internet banking or UPI. Critically, a challan forwarded to the Virtual Court can still be paid on the Parivahan portal, and the portal warns in terms not to pay in both places. Beyond the Virtual Court, the Gujarat State Legal Services Authority runs National Lok Adalats (held quarterly, on the second Saturday of the scheduled months, with the year's calendar published by GSLSA) at which pending traffic challan cases are taken up in bulk. A Lok Adalat award is deemed a decree of a civil court, is final and binding on the parties and carries no right of appeal; court fee already paid is refunded on settlement. Note the statutory limit: NALSA states that any matter relating to an offence not compoundable under the law cannot be settled in a Lok Adalat, so a drunk-driving prosecution must still run its course in the regular court.",
+  "payment_methods": [
+    "UPI",
+    "Debit card",
+    "Credit card",
+    "Internet banking",
+    "UPI / banking apps via Bills & Recharge → Traffic challan → 'Gujarat E-Challan' / 'State Traffic Branch Gujarat' (GPay, PhonePe, YONO and similar)",
+    "Cash at designated police stations listed district-wise on the Gujarat Police eChallan portal's Contact Us page",
+    "Virtual Court payment through pay.ecourts.gov.in for challans forwarded to court"
+  ],
+  "contacts": [
+    {
+      "label": "MoRTH eChallan helpdesk (email)",
+      "value": "helpdesk-echallan[at]gov[dot]in"
+    },
+    {
+      "label": "MoRTH eChallan helpdesk (phone)",
+      "value": "0120-4925505, 6:00 AM – 10:00 PM"
+    },
+    {
+      "label": "Gujarat Police — Traffic Related Issue helpline",
+      "value": "1800 233 1122"
+    },
+    {
+      "label": "Gujarat Police — emergency",
+      "value": "100 / 112"
+    },
+    {
+      "label": "Gujarat Police — cyber crime (useful for e-challan fraud APKs and fake payment links)",
+      "value": "1930"
+    },
+    {
+      "label": "Commissionerate of Transport, Gujarat — driving licence printing and dispatch",
+      "value": "079-29914473 / 079-29914474"
+    },
+    {
+      "label": "Commissionerate of Transport, Gujarat — registration certificate printing and dispatch",
+      "value": "1800 121 1900"
+    },
+    {
+      "label": "District NETRAM Command and Control Centres (e-challan enforcement), e.g. Ahmedabad Rural",
+      "value": "ccc-ahd@gujarat.gov.in — full district-wise list of ccc-*@gujarat.gov.in addresses on the Gujarat Police portal's Contact Us page"
+    },
+    {
+      "label": "Gujarat Police Citizen Portal (traffic-related complaints)",
+      "value": "https://gujhome.gujarat.gov.in/portal/"
+    }
+  ],
+  "quirks": [
+    "Three portals, one state — and they contradict each other. The Gujarat Police portal (echallanpayment.gujarat.gov.in) tells you to go to echallan.parivahan.gov.in; that legacy Parivahan portal's own notice board then lists GJ among the states whose challans must be checked and paid on the NextGen portal at echallan.parivahan.nic.in. NextGen is where Gujarat actually lives — it carries dedicated gj-challan, gj-challan-transport, gj-payment and gj-payment-transport routes.",
+    "Hard cutover date of 13 June 2023. The Gujarat Police portal carries a bilingual notice: challans dated 13/06/2023 or later must be checked and paid on the Parivahan portal. The old state portal is therefore only useful for legacy challans predating that date.",
+    "The legacy Gujarat Police portal is visibly unmaintained: its root URL returns HTTP 500 (only the deep /sasguj/AccusedChallan/ paths work), its TLS chain fails to verify in strict clients, a modal reading 'Payment Service Unavailable (Online e-Challan Payment Portal shall be active in 10 Minutes)' is baked into every page, the General Instructions page is blank, the Contact Us page is titled 'DISCLAIMER', the nav has a 'Feedabck' typo and a permanent 'COMING SOON', and the footer still reads 'Copyright © 2019 Gujarat Police'.",
+    "Gujarat notified sharply reduced compounding amounts after the Motor Vehicles (Amendment) Act 2019 took effect in the state on 16 September 2019. The current schedule is published by the Commissionerate of Transport at cot.gujarat.gov.in/penalty-structure.htm (page last updated 4 August 2026). No standalone gazette notification PDF is exposed on the Transport Department's own Notifications and Circulars page — that page lists only PUC rates, One Time Waiver tax items and ATS minutes.",
+    "Not every offence was reduced. Driving an uninsured vehicle (s.196) is ₹2,000 first / ₹4,000 subsequent in Gujarat — identical to the central figure, not a discount. Over-speeding for an LMV is ₹2,000, which is the top of the central ₹1,000–₹2,000 band rather than a reduction.",
+    "There is no Gujarat compounding amount for drunken driving. Section 185 does not appear in the state penalty schedule at all, because section 200 of the MV Act does not list it as compoundable. You cannot settle a drunk-driving challan by paying online — it goes to court. Gujarat is also a prohibition state, so alcohol offences can attract separate liability under state prohibition law.",
+    "Section 200 makes section 184 compoundable 'only to the extent of use of handheld communication devices'. So a mobile-phone charge can be compounded, but other dangerous-driving allegations under s.184 — including red-light jumping when booked under that section — are strictly court matters, even though the state chart prints compounding amounts against s.184 generally.",
+    "Gujarat's notified figure for a two-wheeler used without registration is ₹1,000, which sits below the statutory floor in section 192(1) of ₹2,000 (a provision the 2019 amendment left untouched). Some official charts show the statutory figure — the e-challan states the payable amount.",
+    "PUC is charged two different ways on the same official page: 'PUC certificate not obtained' sits under s.177 at ₹500 (₹1,000 on repeat), while a measured breach of emission standards under s.190(2) is ₹1,000 for two/three-wheelers and LMVs and ₹3,000 for other vehicles. Which one you get depends on how the officer books it.",
+    "The Transport Department's own Act & Rules page still serves the pre-2019 text of the Motor Vehicles Act 1988 (Mvact1988.pdf), which contains no sections 194B or 194D at all — while the department's penalty page prices those very sections. Do not use that PDF to check current penalties.",
+    "Gujarat runs two separate Virtual Court establishments, not one: Gujarat(Traffic Department) and Gujarat(Transport Department). Pick the wrong one and your challan will not be found.",
+    "A challan already forwarded to the Virtual Court can still be paid on the Parivahan portal, and the portal warns explicitly not to pay in both places — double payment is a real risk here, and refunds are governed by High Court rules, not by MoRTH.",
+    "Every Gujarat e-challan carries a Gujarati-language cyber-fraud warning telling recipients not to click suspicious links and never to download traffic-challan APK files arriving over WhatsApp or social media. MoRTH separately warns about a cloned site at echallanparivahan.in that mimics the official portal to collect payments for fake violations.",
+    "There is no dedicated Gujarat e-challan helpline. Traffic issues route to the general Gujarat Police traffic line 1800 233 1122; portal and payment problems go to the national MoRTH helpdesk on 0120-4925505.",
+    "No Gujarat-specific discount, amnesty or one-time-settlement scheme for pending traffic challans could be found on any official state source. The practical route to a reduced amount is a National Lok Adalat sitting, scheduled quarterly by the Gujarat State Legal Services Authority."
+  ],
+  "faqs": [
+    {
+      "q": "Which portal should I actually use for a Gujarat e-challan?",
+      "a": "For any challan dated 13 June 2023 or later, use the NextGen eChallan portal at echallan.parivahan.nic.in/challan/challan-services — the legacy Parivahan site's own notice board lists GJ among the states that moved there, and NextGen carries Gujarat-specific payment routes for both the Traffic and Transport departments. Only use the old Gujarat Police site, echallanpayment.gujarat.gov.in, for challans predating 13 June 2023; that site itself now redirects everyone else to Parivahan."
+    },
+    {
+      "q": "Why is my helmet fine ₹500 when the Motor Vehicles Act says ₹1,000?",
+      "a": "Because Gujarat notified its own, lower compounding amounts after the Motor Vehicles (Amendment) Act 2019 came into force in the state on 16 September 2019. The Commissionerate of Transport's official penalty schedule prices section 194D (not wearing a helmet) at ₹500 and section 194B (no seat belt) at ₹500, against ₹1,000 each in the central Act — and Gujarat's schedule does not carry the three-month licence disqualification that section 194D attaches to the central figure. The amount your e-challan states is the amount payable."
+    },
+    {
+      "q": "Can I pay a drunk-driving challan online in Gujarat?",
+      "a": "No. Section 200 of the Motor Vehicles Act does not list section 185 (drunken driving) as a compoundable offence, which is why it does not appear anywhere in Gujarat's official penalty schedule. The case goes to court, and because it is non-compoundable it also cannot be settled at a Lok Adalat. Gujarat is additionally a prohibition state, so a separate liability under state prohibition law may arise on the same facts."
+    },
+    {
+      "q": "My challan says it was sent to the Virtual Court. Do I still pay on Parivahan?",
+      "a": "You can pay in either place, but never both. The Parivahan portal shows a disclaimer stating that the challan has been forwarded to the Virtual Court at vcourts.gov.in and that if you pay on the portal you must not pay at the Virtual Court, and vice versa. If you go the court route, select Gujarat(Traffic Department) or Gujarat(Transport Department) on vcourts.gov.in/virtualcourt/, search on the Challan/Vehicle No. tab, click View, verify the OTP and choose 'Accept & Pay'. Refunds for a double payment are governed by High Court rules, not by MoRTH, so they are slow."
+    },
+    {
+      "q": "Can I pay a Gujarat traffic challan from GPay or PhonePe?",
+      "a": "Yes, and this route is printed as an official option on the Gujarat e-challan itself. In the app, open Bills & Recharge (or Recharge & Bills / Bill Payment), choose Traffic challan or eChallan, select 'Gujarat E-Challan' or 'State Traffic Branch Gujarat', enter the vehicle number and confirm to pay. The same challan carries a Gujarati warning never to download traffic-challan APK files sent over WhatsApp or social media — those are fraud."
+    },
+    {
+      "q": "Do I have to carry paper documents when paying or when stopped?",
+      "a": "No. The Commissionerate of Transport's penalty schedule states that documents produced in electronic form through DigiLocker are valid, and that documents may be produced within 15 days from the date of demand. The Gujarat challan likewise accepts a driving licence shown in DigiLocker in place of a photocopy at the time of payment. Not having a document with you is charged under section 177 at ₹500, rising to ₹1,000 for a repeat offence."
+    },
+    {
+      "q": "Is there a discount scheme for old pending challans in Gujarat?",
+      "a": "No official Gujarat discount, amnesty or one-time-settlement scheme for traffic challans is published on any state source as of August 2026. The realistic route to a reduced amount is a National Lok Adalat, which the Gujarat State Legal Services Authority schedules quarterly (second Saturday of the scheduled months, calendar published by GSLSA). A Lok Adalat award is deemed a decree of a civil court, is final and binding, and carries no right of appeal — and non-compoundable offences cannot be taken up there at all."
+    },
+    {
+      "q": "Can I pay a Gujarat challan in cash?",
+      "a": "Yes. The Gujarat Police eChallan portal's Contact Us page lists designated police stations district by district, with addresses and phone numbers, specifically for offline and cash payment — for example the Traffic Branch opposite the Municipal Corporation in Bhavnagar (0278-2518090) or Gandhinagar Traffic opposite Swaminarayan Gurukul, Sector-22 (079-23230684). Carry a driving licence photocopy, or show it in DigiLocker."
+    }
+  ],
+  "fine_overrides": {
+    "driving-without-helmet": {
+      "amount_text": "₹500 under s.194D. Gujarat's notified schedule lists no repeat-offence figure and no licence disqualification.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "driving-without-seatbelt": {
+      "amount_text": "₹500 under s.194B for failure to use safety belts while driving, with no separate repeat-offence figure listed.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "driving-without-licence": {
+      "amount_text": "₹2,000 for a two-wheeler and ₹3,000 for other vehicles under s.181, which also covers under-age driving and breach of learner-licence conditions.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "overspeeding": {
+      "amount_text": "₹1,500 two/three-wheeler and tractor, ₹2,000 LMV, ₹4,000 other vehicles. On repeat: ₹2,000, ₹2,000 and ₹3,000 respectively, while other vehicles face six months' disqualification from holding a licence instead of a fine.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "₹1,500 two/three-wheeler, ₹3,000 LMV, ₹5,000 other vehicles under s.184 — Gujarat repeats the identical amounts for a second or subsequent offence rather than escalating.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "₹1,500 two/three-wheeler, ₹3,000 LMV, ₹5,000 other vehicles — handheld-device use is compounded under s.184, which Gujarat's chart does not break out as a separate mobile-phone line.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹1,000 two-wheeler, ₹2,000 three-wheeler, ₹3,000 four-wheel LMV, ₹5,000 other vehicles under s.192; a registration mark displayed in breach of rule 50/51 is ₹300 to ₹1,000 by vehicle type.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "driving-without-puc": {
+      "amount_text": "₹500, rising to ₹1,000 on repeat, where no PUC certificate has been obtained (s.177); a measured breach of emission standards under s.190(2) is ₹1,000 for two/three-wheelers and LMVs and ₹3,000 for other vehicles.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    }
+  },
+  "sources": [
+    "https://cot.gujarat.gov.in/penalty-structure.htm",
+    "https://cot.gujarat.gov.in/act-rules.htm",
+    "https://cot.gujarat.gov.in/notifications.htm",
+    "https://cot.gujarat.gov.in/helpline-number.htm",
+    "https://cot.gujarat.gov.in/writereaddata/Portal/images/pdf/Mvact1988.pdf",
+    "https://echallanpayment.gujarat.gov.in/sasguj/AccusedChallan/NewAccusedChallan",
+    "https://echallanpayment.gujarat.gov.in/sasguj/AccusedChallan/ContactUS",
+    "https://echallanpayment.gujarat.gov.in/sasguj/AccusedChallan/GeneralInstructions",
+    "https://echallan.parivahan.gov.in/",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.gov.in/index/check-challan-status",
+    "https://echallan.parivahan.nic.in/",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/assets/i18n/en.json",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://gujhome.gujarat.gov.in/portal/web?requestType=ApplicationRH&actionVal=showCenterContent&screenId=115&targetPage=helpLineNo",
+    "https://www.indiacode.nic.in/repealedfileopen?rfilename=A2019-32.pdf",
+    "https://static.pib.gov.in/WriteReadData/userfiles/MVA.pdf",
+    "https://nalsa.gov.in/lok-adalats",
+    "https://gujarat.nalsa.gov.in/en/schedule-of-national-lok-adalat-2026/",
+    "https://mparivahan.parivahan.gov.in/"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "slug": "rajasthan",
+  "name": "Rajasthan",
+  "target_keyword": "rajasthan e challan",
+  "last_verified": "2026-08-12",
+  "portals": [
+    {
+      "label": "NextGen eChallan – Challan Services (the portal that actually serves Rajasthan/RJ challans)",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "National eChallan portal (MoRTH) – now redirects RJ users to NextGen",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Virtual Courts – Rajasthan (Traffic Department)",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    },
+    {
+      "label": "Rajasthan Transport Department – Compounding Notifications (official fine schedule)",
+      "url": "https://transport.rajasthan.gov.in/content/transportportal/en/transport/notifications1/CompoundingNotification.html",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Open the NextGen eChallan portal at https://echallan.parivahan.nic.in/challan/challan-services. Rajasthan is one of the states migrated to NextGen, so the older echallan.parivahan.gov.in search will not return RJ challans — that portal now carries a notice telling RJ users to come here.",
+    "On the landing page choose the 'Check Pending Challan Status' service tile. The other tiles are Pay Challan, Download Challan Print, Download Payment Receipt, Check Pending Transaction, Raise Grievance and Check Grievance Status.",
+    "Pick your search type. The form opens on Challan Number by default; you can switch to Vehicle Number, DL Number or Mobile Number.",
+    "Enter the identifier in the box ('Enter Challan Number' / 'Enter Vehicle Number' / 'Enter DL Number'). A Vehicle Number search may additionally ask for Registration Date, and a DL Number search for Date of Birth — both have a calendar picker beside the field.",
+    "Type the code from the captcha image into 'Enter Captcha'. It is numeric and six digits; use the refresh icon ('Click to refresh captcha') if the image is unreadable.",
+    "Tick the disclaimer box, 'I have read the above disclaimer and agree to proceed further.' The form will not submit until this is checked.",
+    "Press GET DETAILS. Results appear in a table with Violator Name, DL/RC Number, Challan Number, State, Challan Date, Amount, Status, Challan Print and Payment columns."
+  ],
+  "pay_steps": [
+    "In the results table read the Status column first. Only challans still shown as pending can be paid on the portal — anything already referred to court shows court details in place of a Pay button.",
+    "Click Pay against the challan you want to clear (or start from the 'Pay Challan' tile on the landing page).",
+    "If the portal asks you to verify a mobile number, enter a 10-digit Indian number beginning 6-9, press Send OTP, then enter the 6-digit OTP and press Verify.",
+    "Complete the transaction on the NIC payment gateway using net banking, a debit or credit card, or UPI.",
+    "Let the 'Your payment is verifying' step finish on its own — closing or refreshing the browser here is what leaves transactions stuck in a pending state.",
+    "Download proof of payment through the 'Download Payment Receipt' service, and keep the challan print as well.",
+    "If money was debited but the challan still shows unpaid, use the 'Check Pending Transaction' service to reconcile it before paying a second time."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the official MoRTH/NIC mobile app (official page: https://mparivahan.parivahan.gov.in/), available for Android and iOS, is the nationally documented app route for checking challan status against a vehicle or driving licence. The NextGen eChallan web app is built from the same NIC codebase.",
+    "No Rajasthan-specific SMS challan-enquiry service is documented on any official Rajasthan Government or Parivahan page — treat any SMS shortcode circulating on third-party sites as unverified."
+  ],
+  "court_challan_process": "Rajasthan is a live Virtual Court state. vcourts.gov.in lists \"Rajasthan(Traffic Department)\" in its Select Department dropdown (internal code 9~RJVC01), so traffic challans referred to court are largely handled online. Referral is not optional for certain offences: anything Rajasthan has not notified as compoundable cannot be settled on the e-challan portal at all. The two that matter most to ordinary drivers are drunk driving under section 185 — which section 200 of the MV Act excludes from compounding altogether — and dangerous driving under section 184, which the 2019 amendment made compoundable \"only to the extent of use of handheld communication devices\". So a red-light or rash-driving charge framed under section 184 in Rajasthan goes to a court, not to a payment page. On the NextGen portal such a challan stops showing a Pay button and instead displays a \"Sent To Court Data\" block with Sent To Court On, Court Name, Court Address and Amount. If the Virtual Court could not consume the case the portal shows \"Transferred to Regular Court\" with a CL Number and Court Number, and gives the reason — the portal's own listed reasons include an invalid or missing mobile number and a payment already initiated. To settle online, go to vcourts.gov.in, choose Rajasthan(Traffic Department) from the Select Department dropdown and press Proceed Now, then search by Challan/Vehicle Number, CNR, party name or mobile number, open the case, verify the OTP and pay; payment disposes the case immediately. If you want to contest rather than pay, the portal is explicit that for adjudication the litigant may have to appear in person or through a lawyer. Separately, traffic matters already pending in regular courts can be taken up and compromised at the National Lok Adalats that the Rajasthan State Legal Services Authority organises statewide several times a year; a Lok Adalat award is deemed a civil-court decree and is final, with no appeal.",
+  "payment_methods": [
+    "Net banking",
+    "Debit card",
+    "Credit card",
+    "UPI"
+  ],
+  "contacts": [
+    {
+      "label": "eChallan national helpdesk (email) — for technical problems with the e-challan portal",
+      "value": "helpdesk-echallan@gov.in"
+    },
+    {
+      "label": "eChallan national helpdesk (phone), 6:00 AM – 10:00 PM",
+      "value": "0120-4925505"
+    },
+    {
+      "label": "Rajasthan Transport Department, Parivahan Bhawan, Sahkar Marg, Jaipur-302005",
+      "value": "0141-2740021, 0141-2850600 (fax 0141-2740177)"
+    },
+    {
+      "label": "Rajasthan Transport Department (email)",
+      "value": "transport@rajasthan.gov.in"
+    },
+    {
+      "label": "Nodal Officer ATC (IT), Transport and Road Safety Department, Rajasthan",
+      "value": "0141-2850605, addl.it.tdr@rajasthan.gov.in"
+    },
+    {
+      "label": "Police control room / emergency",
+      "value": "100 or 112"
+    }
+  ],
+  "quirks": [
+    "Rajasthan has migrated to the NextGen eChallan portal. echallan.parivahan.gov.in now carries a notice listing RJ among the states whose challans must be checked and paid at echallan.parivahan.nic.in/challan/challan-services — searching the old portal for an RJ challan is a dead end.",
+    "echallanjaipur.rajasthan.gov.in, still named by many third-party guides as the Jaipur traffic challan site, does not serve traffic challans at all. Checked on 12 August 2026 it returns an RVPNL (Rajasthan Rajya Vidyut Prasaran Nigam) vendor 'Bill Tracking Portal' login screen.",
+    "The operative fine schedule is the Transport Department notification dated 24 February 2021 (No. F.7(47)/Pari/Rules/H.Q./87/part/1/1), which expressly supersedes the 8 July 2020 notification (S.O.295). The department's Compounding Notification page still lists 2016, 2020 and 2021 side by side with no indication of which is current.",
+    "The 2021 notification cut several 2020 amounts sharply — refusing to submit a vehicle for weighing (s.194(2)) fell from ₹40,000 to ₹10,000, failing to give way to an ambulance or fire vehicle (s.194E) from ₹10,000 to ₹1,000, triple-riding (s.194C) from ₹1,000 to ₹100, and overloading (s.194(1)) from ₹20,000 plus ₹2,000/tonne to ₹5,000 plus ₹1,000/tonne. Any chart built from the 2020 notification overstates these.",
+    "Rajasthan compounds several offences far below the central figures. The starkest is emission/PUC and road-safety standards under s.190(2) at ₹500–₹2,000 against a central ceiling of ₹10,000, and general rule violations under s.177 at ₹100 (two/three-wheeler) or ₹200 against the central ₹500 first offence.",
+    "Repeat over-speeding cannot be bought off in Rajasthan. The schedule sets ₹1,000 (LMV) and ₹2,000 (medium/heavy) for a first offence but for a second or subsequent one says the driving licence 'shall be impounded as per the provisions of section 206(4)' — no money figure at all.",
+    "Who may compound is restricted. Police and Traffic Police officers are expressly not authorised to compound offences under s.182A(1),(3),(4), s.182B, s.192A, s.194(1) read with ss.113-114, s.194(1A) and s.194(2). Rank thresholds also differ by area: Head Constable inside Jaipur and Jodhpur Commissionerate areas, Assistant Sub-Inspector elsewhere, and Motor Vehicle Sub-Inspector for Transport Department officers statewide.",
+    "Drunk driving (s.185) does not appear in Rajasthan's compounding schedule and is excluded from s.200 of the MV Act, so it can never be paid off online — it is a court matter. The same is true of dangerous driving under s.184 except the handheld-phone limb.",
+    "The Jodhpur Police 'Traffic Penalty Amount' page (jodhpurpolice.rajasthan.gov.in/traffic_penalty) loads but renders with no penalty table at all — a stale official page that search engines still surface as a fine schedule.",
+    "NIC has published an official warning that echallanparivahan.in is a fake lookalike site collecting payments for non-existent violations, and the NextGen portal carries a standing notice that it never asks for passwords, OTPs or payment details by call, email or link.",
+    "Two small UI traps on NextGen: the search form will not submit until you tick the disclaimer checkbox, and the captcha is numeric (six digits) rather than alphanumeric."
+  ],
+  "fine_overrides": {
+    "driving-without-puc": {
+      "amount_text": "₹500 for a two/three-wheeler or e-rickshaw, ₹1,000 for other non-transport vehicles, ₹1,500 for LMV transport and ₹2,000 for medium/heavy transport; doubled on a repeat offence (₹1,000 / ₹2,000 / ₹3,000 / ₹4,000).",
+      "source": "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/C%20F%20notification%2024.02.2021.pdf"
+    },
+    "driving-without-insurance": {
+      "amount_text": "₹1,000 for a two-wheeler or three-wheeler and ₹2,000 for any other vehicle. Rajasthan notifies no separate higher figure for a repeat offence.",
+      "source": "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/C%20F%20notification%2024.02.2021.pdf"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹2,000 for a two/three-wheeler or agricultural tractor-trailer and ₹5,000 for a passenger or goods vehicle on a first offence; ₹5,000 and ₹10,000 respectively on a repeat offence.",
+      "source": "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/C%20F%20notification%2024.02.2021.pdf"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "₹1,000 for a first offence and ₹10,000 for a subsequent one — Rajasthan compounds section 184 only for use of a handheld communication device.",
+      "source": "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/C%20F%20notification%2024.02.2021.pdf"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "Rajasthan compounds section 184 only for handheld-phone use, so a red-light charge framed under section 184 must go to court; signal disobedience booked under section 177 compounds at ₹100 (two/three-wheeler, e-rickshaw) or ₹200 (other vehicles).",
+      "source": "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/C%20F%20notification%2024.02.2021.pdf"
+    }
+  },
+  "faqs": [
+    {
+      "q": "Why can't I find my Rajasthan challan on echallan.parivahan.gov.in?",
+      "a": "Because Rajasthan has been migrated. The old national portal now shows a notice listing RJ among the states whose challans must be checked and paid on the NextGen eChallan portal at echallan.parivahan.nic.in/challan/challan-services. Search there with your challan, vehicle or DL number instead."
+    },
+    {
+      "q": "Is echallanjaipur.rajasthan.gov.in still the Jaipur traffic challan website?",
+      "a": "No. Checked on 12 August 2026, that address serves an RVPNL (Rajasthan Rajya Vidyut Prasaran Nigam) vendor 'Bill Tracking Portal' login page and has nothing to do with traffic challans, even though many third-party guides still recommend it. Use the NextGen eChallan portal."
+    },
+    {
+      "q": "How much is the fine for driving without a PUC certificate in Rajasthan?",
+      "a": "Rajasthan's notified compounding amount under section 190(2) is ₹500 for a two/three-wheeler or e-rickshaw, ₹1,000 for other non-transport vehicles, ₹1,500 for LMV transport and ₹2,000 for medium/heavy transport, doubling on a repeat offence. That is well below the central ceiling of ₹10,000."
+    },
+    {
+      "q": "Can I pay a drunk-driving challan online in Rajasthan?",
+      "a": "No. Section 185 is not among the offences that section 200 of the Motor Vehicles Act allows to be compounded, and it does not appear in Rajasthan's compounding schedule at all, so the case must be decided by a court. Track it on vcourts.gov.in under Rajasthan(Traffic Department)."
+    },
+    {
+      "q": "What happens if I simply ignore a Rajasthan e-challan?",
+      "a": "It gets referred to court. On the NextGen portal the Pay button disappears and the record instead shows a 'Sent To Court Data' block with the date sent, court name and court address — after which you settle it through the Virtual Court at vcourts.gov.in or in the regular court named on the record."
+    },
+    {
+      "q": "Why is the amount on my challan lower than the fine list I read online?",
+      "a": "Most online charts quote the central Motor Vehicles (Amendment) Act 2019 figures. Rajasthan notified its own compounding schedule on 24 February 2021, and it is lower for several offences including PUC, insurance, mobile-phone use and registration. The e-challan itself states the amount actually payable."
+    },
+    {
+      "q": "I was caught over-speeding a second time — what will I have to pay?",
+      "a": "Nothing, in the sense of a compounding fee: Rajasthan's schedule sets ₹1,000 (LMV) or ₹2,000 (medium/heavy) only for a first offence, and for a second or subsequent one it directs that the driving licence be impounded under section 206(4) of the Motor Vehicles Act instead."
+    }
+  ],
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.gov.in/index/check-challan-status",
+    "https://echallan.parivahan.nic.in/",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/assets/i18n/en.json",
+    "https://vcourts.gov.in/",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://vcourts.gov.in/virtualcourt/index.php?p=home/index&state_cd=9&est_code=RJVC01",
+    "https://transport.rajasthan.gov.in/content/transportportal/en/transport/notifications1/CompoundingNotification.html",
+    "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/C%20F%20notification%2024.02.2021.pdf",
+    "https://transport.rajasthan.gov.in/content/dam/transport/transport-dept/pdf/notificationrule/penalty%20notification.pdf",
+    "https://transport.rajasthan.gov.in/content/transportportal/en/transport/RajasthanActAndrules.html.html",
+    "https://transport.rajasthan.gov.in/content/transportportal/en/transport/contactus.html",
+    "https://egazette.gov.in/WriteReadData/2019/210413.pdf",
+    "https://echallanjaipur.rajasthan.gov.in/",
+    "https://jodhpurpolice.rajasthan.gov.in/traffic_penalty",
+    "https://police.rajasthan.gov.in/",
+    "https://mparivahan.parivahan.gov.in/",
+    "https://rajasthan.nalsa.gov.in/mega-national-lok-adalat/"
+  ]
+}

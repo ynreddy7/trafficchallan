@@ -1,0 +1,159 @@
+{
+  "check_steps": [
+    "Open https://echallan.parivahan.gov.in/index/accused-challan — this is the exact page the AP Police portal (appolice.gov.in) and Prakasam district police link their e-Challan menu to. Andhra Pradesh is NOT on the NextGen portal, so do not use echallan.parivahan.nic.in.",
+    "Pick one of the three radio options above the input box: 'Challan Number', 'Vehicle Number' or 'DL Number'. Selecting one clears whatever you typed in the other two.",
+    "Type the value into the single text box. It auto-uppercases as you type and rejects anything that is not a letter or digit, so enter the registration as AP39XX1234 with no spaces or hyphens (max 20 characters; challan number max 32).",
+    "Enter the 6-character Captcha shown beside the box (there is a refresh icon if it is unreadable), then click 'Get Detail'.",
+    "Read the results table, whose columns are Violator Name, DL/RC Number, Challan No, Transaction ID, State, Department, Challan Date, Amount, Status and Payment Source, plus 'Challan Print' and 'Receipt' actions.",
+    "If the portal asks you to authenticate before showing full details, choose 'By Mobile Number Registered at Vahan' or 'By Aadhaar OTP' (12-digit Aadhaar or 16-digit Virtual Aadhaar ID); a DL number with date of birth also works. Enter the 6-digit OTP and click Verify OTP.",
+    "Watch for the red note 'This challan has been forwarded to Virtual Court ... but still it can be paid here.' Andhra Pradesh has no Virtual Court department onboarded, so for an AP challan this note should not normally appear."
+  ],
+  "contacts": [
+    {
+      "label": "NIC eChallan helpdesk (email)",
+      "value": "helpdesk-echallan@gov.in"
+    },
+    {
+      "label": "NIC eChallan helpdesk (phone, 6:00 AM – 10:00 PM)",
+      "value": "0120-4925505"
+    },
+    {
+      "label": "AP Police DG Control room, state headquarters",
+      "value": "0863-2340471"
+    }
+  ],
+  "court_challan_process": "Andhra Pradesh has no Virtual Court for traffic challans. The department dropdown on vcourts.gov.in/virtualcourt/ was read in full on 12 August 2026 and lists only Assam, Chandigarh, Chhattisgarh, Delhi, Gujarat, Haryana, Himachal Pradesh, Jammu and Kashmir, Karnataka, Kerala, Madhya Pradesh, Maharashtra, Manipur, Meghalaya, Odisha, Punjab, Rajasthan, Tamil Nadu, Tripura, Uttarakhand, Uttar Pradesh and West Bengal — neither Andhra Pradesh nor Telangana appears. So an AP challan that cannot be compounded (typically drunk driving under s.185, or a repeat or aggravated offence where the officer books a case rather than a compoundable challan) is filed before the ordinary jurisdictional magistrate's court for the place of the offence, and you must appear or be represented on the summons date rather than settling it on a portal. The Parivahan eChallan page does carry a generic Virtual Court banner reading \"This challan has been forwarded to Virtual Court (https://vcourts.gov.in/), but still it can be paid here. If you choose to pay here, do not pay at Virtual Court. Similarly, If you have paid at Virtual Court, please do not pay here again.\" — but because no AP department is onboarded, that banner should not fire for an Andhra Pradesh challan; if it does, treat it as an anomaly and confirm with the issuing unit before paying twice. The realistic route to a reduced settlement in AP is the National Lok Adalat: the Andhra Pradesh State Legal Services Authority has notified on andhrapradesh.nalsa.gov.in that a National Lok Adalat will be held on 12-09-2026 throughout Andhra Pradesh, and states that \"Litigant public may approach the Legal Services Institution in the nearest court compound for settling their cases through National Lok Adalat.\" A Lok Adalat award has the status of a civil court decree and is final and binding. Pending case status can be tracked through eCourts services, which district police sites such as Kadapa link to directly.",
+  "faqs": [
+    {
+      "a": "Use https://echallan.parivahan.gov.in/index/accused-challan. That is the exact URL the Andhra Pradesh Police portal at appolice.gov.in opens from its e-Challan menu item, and Prakasam district police's 'Pay your E-Challan' button points to the same page. Andhra Pradesh is not one of the 27 states and UTs the legacy portal redirects to the NextGen eChallan site, so AP challans stay on the legacy Parivahan portal.",
+      "q": "Which website do I actually use to check and pay an Andhra Pradesh e-challan?"
+    },
+    {
+      "a": "No. As of 12 August 2026 apechallan.org does not resolve in DNS at all, and neither does the older echallan.appolice.gov.in. Both are dead. This matters because some official pages have not caught up — the Kadapa (YSR) district police Traffic page still links its 'EChallan status' button to apechallan.org — and a great many blogs still recommend it. Since the domain is unregistered or unresolving, anything that later appears on it should be treated as untrusted. Use the Parivahan portal instead.",
+      "q": "Is apechallan.org still the official AP e-challan website?"
+    },
+    {
+      "a": "No. The department dropdown on vcourts.gov.in was checked on 12 August 2026 and lists 22 states and union territories; Andhra Pradesh is not among them, and neither is Telangana. An AP challan that goes to court is heard by the ordinary jurisdictional magistrate on a summons date. The practical way to get a reduction is a National Lok Adalat — APSLSA has notified one for 12-09-2026 across Andhra Pradesh.",
+      "q": "Does Andhra Pradesh have a Virtual Court for traffic challans?"
+    },
+    {
+      "a": "Yes. Kadapa district police state that the e-Challan system was launched to 'collect compounding fee from the defaulters through A.P. Online and Mee Seva centers', and Prakasam district police state that e-challans are sent to violators by post 'with a demand to pay their respective fine at mee-seva/AP online centers or through internet with in 15 days'. So a counter payment at a Mee Seva or AP Online centre is an officially documented alternative to paying online.",
+      "q": "Can I pay an Andhra Pradesh e-challan in cash instead of online?"
+    },
+    {
+      "a": "Because AP police fine charts consistently add ₹35 to the statutory figure. The Srikakulam district police schedule shows ₹1,035 for no helmet, ₹2,035 for no insurance, ₹5,035 for driving without a licence, ₹185 and ₹335 for not producing documents, ₹785 for LMV overspeeding and ₹235 per head for overloading — every single figure ends in 35. That pattern is consistent with a fixed user or service charge on top of the compounding amount, but no Andhra Pradesh notification confirming the ₹35 component could be located. Always pay the amount the challan itself states.",
+      "q": "Why does my AP challan say ₹1,035 when the helmet fine is supposed to be ₹1,000?"
+    },
+    {
+      "a": "There is no Andhra Pradesh state SMS challan service documented on any official AP page. The only officially documented app route is mParivahan, the MoRTH and NIC national app, which carries challan history alongside virtual RC and DL pulled from the Vahan and Sarathi databases. Anything advertising an AP-specific challan SMS shortcode should be treated with suspicion — the Parivahan portal itself warns to 'beware of fraudulent websites and mobile apps impersonating our echallan services'.",
+      "q": "Is there an official AP SMS service or app to check challans?"
+    }
+  ],
+  "fine_overrides": {
+    "dangerous-driving-red-light": {
+      "amount_text": "₹1,035 light motor vehicle, ₹2,035 heavy vehicle for dangerous driving under s.184. AP's chart illustrates s.184 only with handheld-device use and does not list signal jumping separately.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    },
+    "driving-without-helmet": {
+      "amount_text": "₹1,035 for riding a motorcycle without protective headgear (s.194D) — AP police charts show ₹1,035 as payable, ₹35 above the ₹1,000 statutory figure.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    },
+    "driving-without-insurance": {
+      "amount_text": "₹2,035 for driving without an insurance certificate (s.196) — ₹35 above the ₹2,000 statutory figure.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    },
+    "driving-without-licence": {
+      "amount_text": "₹5,035 for driving in contravention of s.3/4 under s.181, which AP groups together with underage driving — ₹35 above the ₹5,000 statutory figure.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹185 light motor vehicle, ₹335 heavy vehicle for failing to produce RC/DL under s.177. Driving an unregistered vehicle is a separate s.192 offence and does not appear on AP's chart.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "₹1,035 light motor vehicle, ₹2,035 heavy vehicle — AP compounds handheld phone use under s.184 dangerous driving, far below the ₹5,000 often quoted for s.184.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    },
+    "overspeeding": {
+      "amount_text": "₹785 for a light motor vehicle and ₹2,035 for a heavy vehicle (s.183). The LMV rate sits below the ₹1,000 central figure for the same offence.",
+      "source": "https://srikakulampolice.ap.gov.in/Traffic%20fines.html"
+    }
+  },
+  "last_verified": "2026-08-12",
+  "name": "Andhra Pradesh",
+  "pay_steps": [
+    "Find the challan using the check steps above, then click the 'Pay Now' button on that challan's row in the results table.",
+    "Tick the disclaimer checkbox reading 'I have read the above Disclaimer and agree to proceed further.' before the portal will let you continue.",
+    "Complete OTP verification if prompted — 'By Mobile Number Registered at Vahan', or 'By Aadhaar OTP' using a 12-digit Aadhaar number or a 16-digit Virtual Aadhaar ID.",
+    "You are handed off to the payment gateway. Pay by UPI, net banking, debit card or credit card. Do not refresh or use the browser back button while the gateway is loading.",
+    "Once payment succeeds, use the 'Receipt' action in the results table to download proof, and 'Challan Print' for the challan itself. Keep the Transaction ID.",
+    "If money was debited but the challan still shows unpaid, use 'Check Pending Transaction' from the eChallan home page before paying again, and only then contact the NIC helpdesk on 0120-4925505 or helpdesk-echallan@gov.in.",
+    "To pay offline instead, take the posted challan to a Mee Seva or AP Online centre — Kadapa and Prakasam district police both document compounding-fee collection at these counters, with a 15-day demand period stated on the posted notice."
+  ],
+  "payment_methods": [
+    "UPI",
+    "Net banking",
+    "Debit card",
+    "Credit card",
+    "Cash or card at Mee Seva centres",
+    "Cash or card at AP Online centres"
+  ],
+  "portals": [
+    {
+      "label": "Parivahan eChallan — check and pay challan (the page AP Police links to)",
+      "scope": "both",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan"
+    },
+    {
+      "label": "Parivahan eChallan home — pending transaction check, receipts, grievance",
+      "scope": "both",
+      "url": "https://echallan.parivahan.gov.in/"
+    },
+    {
+      "label": "AP Police citizen services — e-Challan menu item (opens the Parivahan page)",
+      "scope": "check",
+      "url": "https://appolice.gov.in/"
+    },
+    {
+      "label": "AP Mee Seva — assisted counters that collect compounding fees",
+      "scope": "pay",
+      "url": "https://ap.meeseva.gov.in/IMeeSeva2/IMeesevaHome.aspx"
+    }
+  ],
+  "quirks": [
+    "Andhra Pradesh is NOT on the NextGen eChallan portal. The legacy portal's notice board lists AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ and GJ as the states to use echallan.parivahan.nic.in — Andhra Pradesh is absent, so AP challans remain on the legacy echallan.parivahan.gov.in.",
+    "AP no longer runs its own challan portal. Both historic state URLs are dead: apechallan.org returns a DNS SERVFAIL and echallan.appolice.gov.in has no A record (both re-tested 12-Aug-2026). AP Police's own site now sends the e-Challan menu item out to echallan.parivahan.gov.in/index/accused-challan.",
+    "Stale official page: the Kadapa (YSR) district police Traffic page still links its 'EChallan status' button to the dead apechallan.org. Because that domain no longer resolves, it is also a squatting and phishing risk if anyone re-registers it — a live-looking 'AP e-challan' site on that domain would not be official.",
+    "Andhra Pradesh has no Virtual Court. The vcourts.gov.in department dropdown, read in full on 12-Aug-2026, contains 22 states and UTs and lists neither Andhra Pradesh nor Telangana, so AP court challans go to the ordinary jurisdictional magistrate rather than an online court.",
+    "The AP Transport Department publishes no current fine schedule. Its 'Penalties' page (aptransport.org/html/penalties.html) contains only the sentence 'This page will be updated soon...!', and its G.Os & Circulars page (taxation_notifications.php?id=1) returns HTTP 500. There is no consolidated state-notified post-2019 compounding chart on any AP transport or home department site found.",
+    "Every published AP police fine figure ends in 35 — ₹1,035, ₹2,035, ₹185, ₹335, ₹785, ₹5,035, ₹235 — a uniform ₹35 add-on over the statutory amount. This is consistent with a fixed user or service charge on top of the compounding fee, but no AP notification confirming the ₹35 component could be found, so the composition is inferred, not verified.",
+    "AP's overspeeding compounding rate for light motor vehicles, ₹785 (i.e. ₹750 plus the ₹35 add-on), sits below the ₹1,000 central figure for s.183 under the MV (Amendment) Act 2019. Some official charts show the statutory figure — the e-challan states the payable amount.",
+    "Challans are posted, not always handed over. Prakasam district police state e-challans are sent to violators by post 'with a demand to pay their respective fine at mee-seva/AP online centers or through internet with in 15 days', and that officers book violations with evidence cameras and MPD devices without stopping the vehicle.",
+    "The only AP compounding G.O. still hosted by the transport department is G.O.Ms.No.108 dated 18-08-2011, a scanned PDF that pre-dates the 2019 amendment and whose text layer cannot be extracted. The byte-identical file is also served from the Telangana transport site — a leftover of the 2014 bifurcation — so it should not be read as a current AP schedule.",
+    "The contact e-mail printed on AP Police's own Contact Us page, adg_l@apolice.gov.in, is on a domain that does not resolve; only appolice.gov.in (with the double p) exists. It appears to be a typo, so use the DG Control landline instead.",
+    "No AP-specific SMS challan service is documented anywhere official. The Parivahan portal itself warns: 'Please beware of fraudulent websites and mobile apps impersonating our echallan services... We never request your password, OTP, payment details or sensitive personal information via calls, emails, or messages or links.'"
+  ],
+  "slug": "andhra-pradesh",
+  "sms_app_methods": [
+    "mParivahan — the MoRTH/NIC national mobile app (Android and iOS). It carries challan history for a vehicle or licence alongside virtual RC and virtual DL pulled live from the Vahan and Sarathi databases, which MoRTH has notified as legally valid documents.",
+    "No Andhra Pradesh-specific SMS challan service is documented on any official AP police or transport page; use the Parivahan portal or mParivahan rather than any third-party shortcode."
+  ],
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.gov.in/",
+    "https://echallan.parivahan.nic.in/",
+    "https://appolice.gov.in/",
+    "https://appolice.gov.in/main-FCESBURP.js",
+    "https://prakasampolice.ap.gov.in/CommandControl.html",
+    "https://kadapapolice.ap.gov.in/Traffic.html",
+    "https://srikakulampolice.ap.gov.in/Traffic%20fines.html",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://andhrapradesh.nalsa.gov.in/",
+    "https://www.aptransport.org/html/penalties.html",
+    "https://aptransport.org/html/taxation_notifications.php?id=1",
+    "https://www.aptransport.org/pdf_uploads/2011TRB-MS1081314363786.PDF",
+    "https://ap.meeseva.gov.in/IMeeSeva2/IMeesevaHome.aspx",
+    "https://goir.ap.gov.in/"
+  ],
+  "target_keyword": "ap e challan"
+}

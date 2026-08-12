@@ -1,0 +1,222 @@
+{
+  "slug": "west-bengal",
+  "name": "West Bengal",
+  "target_keyword": "west bengal e challan",
+  "last_verified": "2026-08-12",
+  "portals": [
+    {
+      "label": "Sanjog - West Bengal unified pending challan portal (Kolkata Traffic Police + WB Traffic Police + Transport Dept)",
+      "url": "https://sanjog.wb.gov.in/payFine",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan (MoRTH/NIC) - the national portal West Bengal has been migrated to",
+      "url": "https://echallan.parivahan.nic.in/challan",
+      "scope": "both"
+    },
+    {
+      "label": "Legacy Parivahan eChallan 'accused challan' page (still linked from WB police sites; redirects WB users to NextGen)",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Virtual Courts - select 'West Bengal(Traffic Department)' for court-forwarded challans",
+      "url": "https://vcourts.gov.in/",
+      "scope": "both"
+    },
+    {
+      "label": "Kolkata Traffic Police eNOC / case details by vehicle number",
+      "url": "https://kolkatatrafficpolice.net/CasedDetailsWithNOC.aspx",
+      "scope": "check"
+    },
+    {
+      "label": "Kolkata Traffic Police eNOC / case details by driving licence number",
+      "url": "https://kolkatatrafficpolice.net/OLDLNOC.aspx",
+      "scope": "check"
+    },
+    {
+      "label": "West Bengal Traffic Police - Schedule II offences and compounding amounts",
+      "url": "https://www.wbtrafficpolice.com/offences-and-penalties.php",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Open Sanjog at https://sanjog.wb.gov.in/payFine - this is West Bengal's own unified portal and the only one that shows Kolkata Traffic Police, West Bengal Traffic Police and Transport Department challans in a single search.",
+    "Type the registration number into the 'Vehicle number' box. The field force-uppercases your input and blocks spaces, dashes and other special characters, so enter it as one unbroken string (e.g. WB02AB1234).",
+    "Enter the last five characters of the chassis number into 'Chassis number (Last 5 Digits)' - the field is capped at 5 characters and Sanjog will not search on the vehicle number alone. Take it from your Registration Certificate.",
+    "Click the magnifier search button next to the chassis field. Pending and already-paid challans for all three agencies load in a table below the form. There is no captcha and no OTP on this search.",
+    "To cross-check the national record, open https://echallan.parivahan.nic.in/challan and pick the 'Check Pending Challan Status' tile.",
+    "On that form choose one of the three tabs - 'Challan Number', 'Vehicle Number' or 'DL Number'. The Vehicle Number tab also demands the vehicle's 'Registration Date' (DD/MM/YYYY); the DL Number tab demands 'Date of Birth'.",
+    "Type the on-screen captcha into 'Enter Captcha Here' (there is an audio-playback icon and a refresh icon if it is unreadable), then click 'GET DETAILS' - the button stays greyed out until every field is filled.",
+    "If the challan was sent to court, search it separately at https://vcourts.gov.in/ : choose 'West Bengal(Traffic Department)' from the department dropdown, click 'Proceed Now', then use the 'Challan/Vehicle No.' tab."
+  ],
+  "pay_steps": [
+    "On the Sanjog results table, tick the challans you want to clear. Challans raised by Kolkata Traffic Police, West Bengal Traffic Police and the Transport Department can be settled together in a single transaction.",
+    "Proceed to the payment gateway from Sanjog and complete the payment, then save or print the receipt before closing the browser.",
+    "Alternative route - on NextGen (https://echallan.parivahan.nic.in/challan) click 'GET DETAILS', then 'Pay' against the challan you want to settle.",
+    "Verify the 6-digit OTP sent to the mobile number registered against the vehicle or licence, then complete payment. NextGen's own instructions say to 'Pay by Debit/Credit Card/Internet Banking/UPI'.",
+    "Download the receipt using 'Download Payment Receipt', and 'Download Challan Print' if you need the challan itself.",
+    "If money was debited but the challan still shows as pending, use the 'Check Pending Transaction' service on the NextGen portal to reconcile the transaction before paying a second time.",
+    "For a Kolkata case that still shows pending after payment at a bank or through GRIPS, the official instruction is to get the record updated at the Traffic Computer Cell, Lalbazar (033 2214-1048).",
+    "Never pay the same challan on both the e-challan portal and the Virtual Court - NextGen warns explicitly that a court-forwarded challan can still be paid on the portal and that you must choose one venue only."
+  ],
+  "sms_app_methods": [
+    "Prosecution SMS with challan link (Kolkata Traffic Police): open the e-challan link sent in the prosecution SMS and enter the mobile number you gave the prosecuting officer as the password to download the challan PDF - documented in the official Kolkata Traffic Police FAQ (answer 13).",
+    "mParivahan, the Ministry of Road Transport & Highways national app (official site mparivahan.parivahan.gov.in), carries virtual RC/DL and vehicle challan history nationally, so it also covers West Bengal vehicles.",
+    "No West Bengal-specific SMS shortcode or state challan app was found documented on any official state page - use the Sanjog web portal instead."
+  ],
+  "court_challan_process": "West Bengal has a live Virtual Court for traffic challans: vcourts.gov.in lists \"West Bengal(Traffic Department)\" (court code WBVC01) among its departments. When an officer marks a challan for court rather than on-the-spot compounding, it is forwarded there and the citizen can look it up at vcourts.gov.in by choosing that department, clicking \"Proceed Now\", and then searching under one of four tabs - \"Mobile Number\", \"CNR Number\", \"Party Name\" or \"Challan/Vehicle No.\" - each protected by a captcha before \"Submit\". There is no working deep link for West Bengal; the dropdown must be used. A court-forwarded challan can still be paid on the NextGen eChallan portal, which displays an explicit warning that the challan \"has been forwarded to Virtual Court ... but still it can be paid here. If you choose to pay here, do not pay at Virtual Court\" - so pay in exactly one venue. NextGen also tracks cases \"Transferred to Regular Court\", showing the court name, court address and CL number, in which case the matter is disposed in that regular court and the amount is subject to adjudication rather than a fixed compounding figure. Offences outside West Bengal's Schedule II compoundable list - most notably drunk driving under Section 185 - cannot be closed by paying a challan at all and must go before a court. Separately, the West Bengal Traffic Police Branch Headquarters organises traffic Lok Adalats for \"disposal of long pending cases/prosecutions\", arranged by district traffic units and Commissionerate branches \"in consultation with the Ld. District and Sessions judges and Ld. Addl. District Judges\", covering cases under the Motor Vehicles Act 1988, the Central Motor Vehicles Rules 1989 and the West Bengal Motor Vehicles Rules; the site publishes a table of past sittings by district with fines realised. On refunds, the Kolkata Traffic Police FAQ states that money taken as a compounding fee is non-refundable because the case is disposed of on the spot under Section 200 of the MV Act, whereas a sum recovered as cash bail may be refunded or adjusted by court order if you appear. For court-pending Kolkata cases the official instruction is to visit the police office attached to the concerned Ld. Court.",
+  "payment_methods": [
+    "UPI",
+    "Debit card",
+    "Credit card",
+    "Internet banking",
+    "Single combined online payment on Sanjog covering Kolkata Traffic Police, WB Traffic Police and Transport Department challans together",
+    "GRIPS / designated bank counters (older West Bengal channel, still referenced in the Kolkata Traffic Police FAQ)",
+    "On-the-spot compounding to the enforcing officer against a compound slip / T.R. Form-7 deposit"
+  ],
+  "contacts": [
+    {
+      "label": "Kolkata Traffic Police helpline (toll free, any subscriber)",
+      "value": "1073"
+    },
+    {
+      "label": "Kolkata Traffic Control Room (mobile)",
+      "value": "98300-10000, 98308-11111"
+    },
+    {
+      "label": "Kolkata Traffic Control Room (WhatsApp only)",
+      "value": "99035-88888"
+    },
+    {
+      "label": "Kolkata Traffic Control Room (landline)",
+      "value": "+91 33 2214-3644, +91 33 2242-7248, +91 33 2214-1475, +91 33 2214-1476"
+    },
+    {
+      "label": "Kolkata Traffic Computer Cell (payment not reflected / record update)",
+      "value": "+91 33 2214-1048, +91 33 2250-5092"
+    },
+    {
+      "label": "Kolkata DC Traffic (email)",
+      "value": "dctp@kolkatatrafficpolice.gov.in"
+    },
+    {
+      "label": "Kolkata Traffic Police (alternate emails)",
+      "value": "dctp@kolkatapolice.gov.in, dctraffickol@gmail.com"
+    },
+    {
+      "label": "West Bengal Traffic Police HQ Control Room",
+      "value": "033 2359-8289, 033 2359-4015, +91 9147890120"
+    },
+    {
+      "label": "West Bengal Traffic Police HQ Control Room (email, as printed on the official page)",
+      "value": "wbtcr_07@yahoo.co.in"
+    },
+    {
+      "label": "NextGen eChallan national helpdesk (NIC/MoRTH)",
+      "value": "0120-4925505, helpdesk-echallan@gov.in"
+    },
+    {
+      "label": "Kolkata Police Headquarters",
+      "value": "+91 33 2214 5000"
+    }
+  ],
+  "quirks": [
+    "West Bengal has TWO live official challan portals running side by side. The state's own Sanjog portal (sanjog.wb.gov.in) is mandated across Kolkata Police, West Bengal Police and the Transport Department, while the national NextGen portal (echallan.parivahan.nic.in) also lists WB among the migrated states and has dedicated wb-traffic-challan / wb-payment routes. Check both; only Sanjog aggregates all three WB agencies in one search.",
+    "Sanjog will not search on a registration number alone - the form requires the last 5 characters of the chassis number as a second field, which you can only read off the Registration Certificate. The trade-off is that there is no captcha and no OTP on the search.",
+    "kolkatatrafficpolice.net, the old Kolkata Traffic Police payment site, now 302-redirects its root to https://sanjog.wb.gov.in/. Its individual deep pages (eNOC by vehicle, eNOC by driving licence) still work if you go to them directly.",
+    "The Kolkata Traffic Police FAQ still documents the pre-migration payment flow - vehicle number, last 5 chassis characters, Email ID, Mobile No., 'Get OTP' then 'Confirm' - which no longer matches what Sanjog actually asks for.",
+    "The West Bengal Traffic Police page titled 'Online payment of Traffic Fines via e-Challan' (its GRIPS page) no longer explains GRIPS at all: it simply points at the LEGACY echallan.parivahan.gov.in/index/accused-challan URL, even though WB has since been moved to the NextGen portal.",
+    "Kolkata Traffic Police's 'Offence & Penalties' page returns HTTP 200 but the body is only the sentence 'kolkatatrafficpolice.gov.in under routine maintenance work'. The Kolkata fine schedule is effectively offline; use the West Bengal Traffic Police Schedule II page instead.",
+    "West Bengal adopted the Motor Vehicles (Amendment) Act 2019 penalties late. The operative state compounding schedule is Notification No. 208-WT/3M-128/97 (Pt. III)(D) dated 24 January 2022 of the Transport Department - roughly two and a half years after the central amendment.",
+    "The PUC / air-pollution fine was cut by Notification No. 1553-WT/TPT-18011/47/2024 dated 9 August 2024, which partially modified serial 14 of Schedule II to ₹2,000 / ₹5,000 / ₹10,000 by offence count. The Schedule II table published on the same West Bengal Traffic Police website still shows the superseded flat ₹10,000 - the 2024 notification is the current one.",
+    "Drunk driving under Section 185 does not appear anywhere in West Bengal's Schedule II list of compoundable offences, so it cannot be settled by paying a challan online or on the spot - it goes to court.",
+    "Red-light jumping is not booked under Section 184 in West Bengal. The Transport Department's own offence list maps 'Not stopping at Red Light' to rule 119 / Section 177, which is the residual ₹500 slab, not the ₹5,000 dangerous-driving slab.",
+    "If a challan has been forwarded to the Virtual Court, the NextGen portal still lets you pay it and pops a warning telling you not to pay in both places. Double payment is a real risk here.",
+    "vcourts.gov.in has no working deep link for West Bengal - passing state_cd=16 and court_code=WBVC01 in the URL just returns the generic landing page. You must select 'West Bengal(Traffic Department)' from the dropdown and press 'Proceed Now'.",
+    "The Transport Department's own website (transport.wb.gov.in) contains no mention of Sanjog, e-challan or challans anywhere on its home page or FAQ, and its 'Offences & Penalties' page lists offence sections with no rupee amounts at all.",
+    "Speed limits in West Bengal are fixed locally by Commissioner of Police / district orders (for example C.P. Order No. 30/24 dated 01.04.2024 for the Asansol-Durgapur Commissionerate, issued under Notification No. 2827(A)-WT/3M-80/2002), so the limit you are booked against varies road by road.",
+    "The West Bengal Traffic Police site is on a .com domain (wbtrafficpolice.com), which looks unofficial but is listed as the force's website on wbpolice.gov.in. Its Lok Adalat page is spelled 'loke-adalat.php', and kolkatatrafficpolice.net/Mobile_Lokadalat.aspx - still linked from the Kolkata Traffic Police home page - returns 404."
+  ],
+  "faqs": [
+    {
+      "q": "Should I use Sanjog or the Parivahan portal to check a West Bengal challan?",
+      "a": "Start with Sanjog (sanjog.wb.gov.in/payFine). It is West Bengal's own unified portal and the only one that shows Kolkata Traffic Police, West Bengal Traffic Police and Transport Department challans together, payable in a single transaction. Then cross-check the national NextGen portal at echallan.parivahan.nic.in/challan, which now also serves West Bengal and carries dedicated WB routes."
+    },
+    {
+      "q": "Why does Sanjog ask for my chassis number as well as the vehicle number?",
+      "a": "Sanjog's search requires both the registration number and the last 5 characters of the chassis number, and will not return anything on the vehicle number alone. The chassis number is printed on your Registration Certificate. In return, the Sanjog search has no captcha and no OTP step, unlike the national portal."
+    },
+    {
+      "q": "What is the fine for driving without a PUC certificate in West Bengal?",
+      "a": "Under Notification No. 1553-WT dated 9 August 2024 it is ₹2,000 for the first offence, ₹5,000 for the second and ₹10,000 for the third and subsequent offences, and in every case the driver is disqualified from holding a licence for three months. Older official charts still show a flat ₹10,000, which that notification superseded."
+    },
+    {
+      "q": "Can a drunk-driving challan be paid online in West Bengal?",
+      "a": "No. Section 185 is not in West Bengal's Schedule II list of compoundable offences, so a drunk-driving case cannot be closed by paying a challan on Sanjog or the Parivahan portal. It is placed before a court and the outcome, including any fine, is decided there."
+    },
+    {
+      "q": "My challan says it was forwarded to the Virtual Court. Where do I pay it?",
+      "a": "Pay in one place only. Go to vcourts.gov.in, choose 'West Bengal(Traffic Department)', click 'Proceed Now' and search under the 'Challan/Vehicle No.' tab. The NextGen eChallan portal also still accepts payment for court-forwarded challans, and warns explicitly that if you pay there you must not pay at the Virtual Court as well."
+    },
+    {
+      "q": "I paid my fine but the challan still shows as pending. What should I do?",
+      "a": "On the NextGen portal use the 'Check Pending Transaction' service to reconcile the transaction before paying again. For a Kolkata case paid at a bank counter or through GRIPS, the official Kolkata Traffic Police instruction is to visit the Traffic Computer Cell at Lalbazar (033 2214-1048) and have the record updated."
+    },
+    {
+      "q": "How much is the helmet and seatbelt fine in West Bengal?",
+      "a": "Both are ₹1,000 under West Bengal's Schedule II - Section 194D for not wearing protective headgear and Section 194B for seat belts. The helmet offence additionally disqualifies the offender from holding a driving licence for three months. These match the central Motor Vehicles (Amendment) Act 2019 figures, so there is no separate state rate."
+    }
+  ],
+  "fine_overrides": {
+    "driving-without-puc": {
+      "amount_text": "₹2,000 first offence, ₹5,000 second, ₹10,000 third and subsequent - each also carrying a 3-month licence disqualification. Some official charts still show the ₹10,000 statutory figure - the e-challan states the payable amount.",
+      "source": "http://www.wbtrafficpolice.com/userfiles/file/notification/2024-1553-WT-Notification-reg.-Revision-of-Fine-on-Air-Pollution.pdf"
+    },
+    "overspeeding": {
+      "amount_text": "LMV ₹1,000 first offence, ₹2,000 second. MGV/MPV/HGV/HPV ₹2,000 first, ₹4,000 second. On a second offence the driver's licence is also impounded under Section 206(4).",
+      "source": "https://www.wbtrafficpolice.com/offences-and-penalties.php"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "Dangerous driving (s.184) compounds at ₹5,000, rising to ₹10,000 if repeated within three years. Red-light jumping is booked separately in West Bengal under rule 119 / s.177, the ₹500 slab (₹1,500 on repeat).",
+      "source": "https://www.wbtrafficpolice.com/offences-and-penalties.php"
+    }
+  },
+  "sources": [
+    "https://echallan.parivahan.gov.in/",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.nic.in/challan",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/assets/i18n/en.json",
+    "https://echallan.parivahan.nic.in/main.db63879fb0a70e64.js",
+    "https://sanjog.wb.gov.in/",
+    "https://sanjog.wb.gov.in/payFine",
+    "https://sanjog.wb.gov.in/activateaccount",
+    "https://sanjog.wb.gov.in/resources/assets/js/vehicleSearch_User.js",
+    "https://kolkatatrafficpolice.gov.in/",
+    "https://kolkatatrafficpolice.gov.in/faqs.html",
+    "https://kolkatatrafficpolice.gov.in/helpline.html",
+    "https://kolkatatrafficpolice.gov.in/contact_us.html",
+    "https://kolkatatrafficpolice.gov.in/offence_and_penalties.html",
+    "https://kolkatatrafficpolice.net/",
+    "https://kolkatatrafficpolice.net/CasedDetailsWithNOC.aspx",
+    "https://kolkatatrafficpolice.net/OLDLNOC.aspx",
+    "https://www.wbtrafficpolice.com/",
+    "https://www.wbtrafficpolice.com/offences-and-penalties.php",
+    "https://www.wbtrafficpolice.com/acts-and-rules.php",
+    "https://www.wbtrafficpolice.com/loke-adalat.php",
+    "https://www.wbtrafficpolice.com/notification.php",
+    "https://www.wbtrafficpolice.com/grips-payment.php",
+    "https://www.wbtrafficpolice.com/online-fine-payments-via-grips.php",
+    "https://www.wbtrafficpolice.com/important-contact-numbers.php",
+    "http://www.wbtrafficpolice.com/userfiles/file/notification/2024-1553-WT-Notification-reg.-Revision-of-Fine-on-Air-Pollution.pdf",
+    "https://wbtrafficpolice.com/userfiles/file/notification/c-p-order-no-30.pdf",
+    "https://wbpolice.gov.in/wbp/Common/WBP_Important_Websites.aspx",
+    "https://transport.wb.gov.in/",
+    "https://transport.wb.gov.in/acts-rules/offences-penalties/",
+    "https://transport.wb.gov.in/references/faq/",
+    "https://vcourts.gov.in/",
+    "https://vcourts.gov.in/virtualcourt/main.php",
+    "https://mparivahan.parivahan.gov.in/"
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "slug": "karnataka",
+  "name": "Karnataka",
+  "target_keyword": "karnataka e challan",
+  "last_verified": "2026-08-12",
+  "portals": [
+    {
+      "label": "NextGen eChallan (Parivahan) - services home, the portal that now serves Karnataka",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan - Check Pending Challan Status / Pay Challan form",
+      "url": "https://echallan.parivahan.nic.in/challan",
+      "scope": "both"
+    },
+    {
+      "label": "Legacy eChallan Parivahan 'Challan Details' page (carries the notice redirecting KA users to NextGen)",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "check"
+    },
+    {
+      "label": "Bengaluru Traffic Police - Traffic Challan Payment (hosted on KSP app server, mobile+OTP)",
+      "url": "https://kspapp.ksp.gov.in/ksp/api/traffic-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Bengaluru Traffic Police official site (Pay Traffic Fine link, e-challan info)",
+      "url": "https://btp.karnataka.gov.in/",
+      "scope": "both"
+    },
+    {
+      "label": "Karnataka One - Bangalore Police Services (traffic fine check & pay)",
+      "url": "https://www.karnatakaone.gov.in/Info/Public/BangalorePoliceServices",
+      "scope": "both"
+    },
+    {
+      "label": "Virtual Courts - Karnataka (Traffic Department), for challans referred to court",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    }
+  ],
+  "check_steps": [
+    "Open the NextGen eChallan portal at https://echallan.parivahan.nic.in/challan/challan-services. Karnataka has migrated here: the older echallan.parivahan.gov.in 'Challan Details' page now carries a notice listing KA among the states whose challans must be checked and paid on the NextGen eChallan Portal.",
+    "Click the 'Check Pending Challan Status' tile (first of seven tiles: Check Pending Challan Status, Pay Challan, Download Challan Print, Download Payment Receipt, Check Pending Transaction, Raise Grievance, Check Grievance Status).",
+    "On the 'CHECK PENDING CHALLAN STATUS' card pick one of the three tabs: 'Challan Number', 'Vehicle Number' or 'DL Number'.",
+    "Fill the tab's fields. 'Challan Number' needs only the challan number. 'Vehicle Number' needs Vehicle Number plus Registration Date in DD/MM/YYYY. 'DL Number' needs DL Number plus Date of Birth in DD/MM/YYYY.",
+    "Type the code shown in the 'Enter Captcha' box into 'Enter Captcha Here'. A speaker icon reads the captcha aloud and a refresh icon regenerates it. Then press 'GET DETAILS' ('GO BACK' returns to the tile menu).",
+    "For a Bengaluru city challan you can instead use the Bengaluru Traffic Police page at https://kspapp.ksp.gov.in/ksp/api/traffic-challan: enter your number in 'Mobile / ಮૌಬೈಲ઼', press 'Get OTP', type the code into 'OTP / ಒ.ಟೀ.ಪಿ' and press 'Verify / ಪರಿಶೀಲಸಿ'. It lists challans linked to that mobile number, so the number must be the one recorded in Vahan.",
+    "If a challan does not appear as payable online it may already have been referred to court. Check it at https://vcourts.gov.in/virtualcourt/ by selecting 'Karnataka(Traffic Department)' and searching by Mobile Number, CNR Number, Party Name or Challan/Vehicle No."
+  ],
+  "pay_steps": [
+    "After 'GET DETAILS' on the NextGen portal returns your pending challans, select the challans you want to clear and continue to payment; the 'Pay Challan' tile on the services page is the direct entry point for the same step.",
+    "Complete payment on the gateway using UPI, net banking, debit card or credit card.",
+    "Download proof from the services page: 'Download Payment Receipt' for the receipt and 'Download Challan Print' for the challan copy.",
+    "If money left your account but the challan still shows unpaid, use 'Check Pending Transaction' on the NextGen services page before paying a second time - the portal's own Notice Board directs stuck or deducted payments to this service.",
+    "For Bengaluru challans on https://kspapp.ksp.gov.in/ksp/api/traffic-challan, after OTP verification review the listed challans and pay through the offered gateway (Karnataka One documents NTT DATA and Razorpay as the gateways) by UPI, net banking or card; a receipt is issued immediately.",
+    "To pay in person, Bengaluru Traffic Police list these counters: all Traffic Police Stations of Bengaluru, the Fine Collection Centre in the Traffic Management Centre, any traffic police officer carrying a PDA device, and Bengaluru One or Karnataka One centres.",
+    "A challan already sent to court cannot be cleared on the e-challan portal - settle it through the Karnataka Virtual Court at https://vcourts.gov.in/virtualcourt/ or before the magistrate."
+  ],
+  "sms_app_methods": [
+    "NextGen mParivahan app (MoRTH / NIC) - listed as an official MoRTH product on parivahan.gov.in; the national app for RC, DL and eChallan check and payment, and the app counterpart of the NextGen eChallan portal that serves Karnataka.",
+    "KSP App (Karnataka State Police) - named by Bengaluru Traffic Police as a channel where contactless-enforcement challans can be paid.",
+    "BTP ASTraM app (Bengaluru Traffic Police) - named by BTP as a challan payment channel; the app's own official page describes it as a traffic-management engine and a route for the public to report violations by photo.",
+    "No SMS query service is documented for Karnataka. SMS is outbound only: BTP states the e-challan system fetches owner data from Vahan and 'sends the challan via SMS and a physical copy of the IMS 133 notice is sent to the violator's address'.",
+    "QR code on the printed IMV 133 notice - scanning it shows the photographic evidence, offers a payment option and lets the recipient raise a dispute."
+  ],
+  "court_challan_process": "Karnataka runs a Virtual Court for traffic cases. On https://vcourts.gov.in/virtualcourt/ the department dropdown carries an entry \"Karnataka(Traffic Department)\" (internal code KAVC01); selecting it and pressing \"Proceed Now\" opens a search screen with four tabs - Mobile Number, CNR Number, Party Name and Challan/Vehicle No. - each protected by a captcha with an audio option. Cases can be searched, the plea entered and the fine paid online, so most compoundable traffic matters never require a physical appearance. Which offences reach court is set by the state's own compounding notification. Karnataka's gazette notification TD 250 TDO 2019 (21-09-2019) compounds only the offences in its table, and Bengaluru Traffic Police's Spot Fines list expressly marks drunken driving (s.185), driving without permit and driving without a fitness certificate as \"Court Fine\". The BTP FAQ is blunt about drunk driving: \"you will be issued a police notice for the appearance in the Court. There is no provision of paying the fine on the spot. Only court is empowered to impose the fine,\" and it adds that the vehicle may be left at the police station and the driving licence retained by police until the case is disposed of. The notification also withholds compounding power from police officers for several sections (113/114/115 r/w 194, 182, 62A r/w 182B, 182A(1), 182A(3), 182A(4), 190, 192, 192A, 194 and 194A), which for those offences leaves the transport authorities or the court. Where a spot fine is refused, the driving licence is surrendered and the matter proceeds through the police station or the court. Long-pending compoundable challans are also routinely cleared through National Lok Adalat sittings organised by the Karnataka State Legal Services Authority, and the state separately runs periodic 50 per cent rebate windows on pending e-challans (the most recent ran 21 June to 10 July 2026; no window was open on the verification date).",
+  "payment_methods": [
+    "UPI",
+    "Net banking",
+    "Debit card",
+    "Credit card",
+    "NextGen eChallan portal (echallan.parivahan.nic.in)",
+    "NextGen mParivahan app",
+    "KSP App",
+    "BTP ASTraM app",
+    "Bengaluru Traffic Police payment page (kspapp.ksp.gov.in)",
+    "Karnataka One / Bengaluru One citizen service centres",
+    "Traffic police stations in Bengaluru",
+    "Fine Collection Centre at the Traffic Management Centre, Bengaluru",
+    "Cash or card to a traffic police officer carrying a PDA device (spot fine)",
+    "Virtual Court online payment for court-referred challans"
+  ],
+  "contacts": [
+    {
+      "label": "NextGen eChallan helpdesk (email)",
+      "value": "helpdesk-echallan[at]gov[dot]in"
+    },
+    {
+      "label": "NextGen eChallan helpdesk (phone, 06:00 AM - 12:00 Midnight)",
+      "value": "0120-4925505"
+    },
+    {
+      "label": "Karnataka One helpdesk (8 AM to 7 PM)",
+      "value": "080-49203888 / 8904085030"
+    },
+    {
+      "label": "Karnataka One helpdesk (email)",
+      "value": "onehelpdesk@karnataka.gov.in"
+    },
+    {
+      "label": "Bengaluru Traffic Police general helpline",
+      "value": "080-22943381"
+    },
+    {
+      "label": "Bengaluru Traffic Police email (also used for citizen violation reports)",
+      "value": "automationpubbcp@ksp.gov.in"
+    },
+    {
+      "label": "Bengaluru Traffic Police control room / WhatsApp",
+      "value": "9480801800"
+    },
+    {
+      "label": "DCP Traffic East, Bengaluru",
+      "value": "080-22942346"
+    },
+    {
+      "label": "DCP Traffic West, Bengaluru",
+      "value": "080-22942318"
+    },
+    {
+      "label": "DCP Traffic North, Bengaluru",
+      "value": "080-22942411"
+    },
+    {
+      "label": "DCP Traffic South, Bengaluru",
+      "value": "080-22942346"
+    },
+    {
+      "label": "Police emergency (Karnataka State Police)",
+      "value": "112"
+    }
+  ],
+  "quirks": [
+    "Karnataka has migrated to the NextGen eChallan portal. The legacy echallan.parivahan.gov.in 'Challan Details' page still loads and still shows its Challan Number / Vehicle Number / DL Number radio buttons, but its Notice Board lists KA among the states whose challans must be handled on the NextGen eChallan Portal - so searching there for a Karnataka challan is a wasted trip.",
+    "The NextGen search is stricter than the old one. Searching by vehicle number now demands the Registration Date (DD/MM/YYYY), and searching by DL demands the Date of Birth; the old portal asked only for the number plus a captcha.",
+    "NextGen is a single-page app and its Karnataka routes (/challan/ka-challan, /challan/ka-payment, /challan/vehicle-release-karnataka) render blank if opened directly - you must click through from the services page, which sets the router state.",
+    "The Bengaluru payment page is gated behind a mobile OTP rather than a vehicle number, so it only surfaces challans tied to the mobile number recorded in Vahan. If your Vahan mobile is stale, use the NextGen portal instead.",
+    "The widely circulated legacy domain bangaloretrafficpolice.gov.in is dead - it refuses connections outright. The live Bengaluru Traffic Police site is btp.karnataka.gov.in, whose 'Pay Traffic Fine' button points at kspapp.ksp.gov.in.",
+    "Karnataka notified its own compounding amounts under section 200 MV Act, sharply below the central MV (Amendment) Act 2019 figures - helmet and seat belt at Rs 500 instead of Rs 1,000, and failure to give way to an emergency vehicle at Rs 1,000 instead of Rs 10,000. The operative instrument is gazette notification TD 250 TDO 2019 dated 21-09-2019 (Karnataka Gazette Part IVA No. 781), which itself supersedes an earlier TD 250 TDO 2019 dated 03-09-2019.",
+    "The Bengaluru Traffic Police 'Spot Fines' page is of mixed vintage. Its heading still cites Government Order No. TRD.309.SAEPA.2006 dated 29.10.2007, yet several rows carry post-2019 amounts that match the 2019 gazette. Treat the gazette as the notified authority and the printed challan as the payable figure.",
+    "Official Karnataka pages disagree on the mobile-phone fine. The gazette sets Rs 1,500 (2W/3W), Rs 3,000 (LMV) and Rs 5,000 (others), and the BTP Spot Fines table agrees; but the BTP FAQ states 'Rs.1,500/- for Two / Three Wheeler, Rs.1,500/- for LMV and Rs.5,000/- for other Vehicles'. The FAQ's LMV figure appears to be an error.",
+    "Official pages also disagree on the pollution offence. The gazette compounds a breach of air-pollution standards under s.190(2) at Rs 1,500 (2W/3W) and Rs 3,000 (LMV, heavy and others), while the BTP Spot Fines row for 'Emitting Black Smoke' under 190(2) still shows Rs 500 first offence and Rs 1,000 for repeats.",
+    "Several offences are not compoundable at all in Karnataka and go straight to court: BTP's Spot Fines list marks drunken driving (s.185), driving without permit and driving without a fitness certificate as 'Court Fine'. The compounding notification also bars police officers from compounding ss. 113/114/115 r/w 194, 182, 62A r/w 182B, 182A(1), 182A(3), 182A(4), 190, 192, 192A, 194 and 194A.",
+    "The Rs 500 helmet fine does not remove the central consequence - section 194D also carries disqualification of the driving licence for three months, which the state notification does not and cannot waive.",
+    "Karnataka repeatedly runs limited-window 50 per cent rebate drives on pending e-challans (August-September 2025, November-December 2025, and 21 June to 10 July 2026). None was open on 12 August 2026, and these are announced by press release rather than posted as a standing notice on the police or transport portals - so verify before assuming a discount applies.",
+    "Bengaluru enforcement is largely contactless: AI cameras (ITEMS) at 50 junctions plus safe-city surveillance, with the challan pushed by SMS and a physical IMS/IMV 133 notice posted to the Vahan address. The notice carries a QR code that shows the photo evidence and allows both payment and a dispute.",
+    "District police 'Traffic Fines' pages on the karnataka.gov.in network (Mysuru, Raichur, Koppal) silently redirect to the district homepage - the fine schedule they used to host is gone, so the transport department gazette PDF is the only reliable state source."
+  ],
+  "faqs": [
+    {
+      "q": "Which portal actually shows Karnataka challans - parivahan.gov.in or the NextGen site?",
+      "a": "The NextGen portal at echallan.parivahan.nic.in. The old echallan.parivahan.gov.in 'Challan Details' page still works for some states, but its Notice Board explicitly lists KA among the states whose challans must be checked and paid on the NextGen eChallan Portal. Bengaluru city challans can additionally be paid on the Bengaluru Traffic Police page at kspapp.ksp.gov.in, which is OTP-based."
+    },
+    {
+      "q": "Why does the portal ask for a registration date when I search by vehicle number?",
+      "a": "The NextGen 'Check Pending Challan Status' screen requires Vehicle Number plus Registration Date in DD/MM/YYYY on the Vehicle Number tab, and DL Number plus Date of Birth on the DL tab. It is an identity check so that anyone cannot pull up challans from a number plate alone. The date must match the registration date in Vahan - it is printed on your RC. If you only have the challan number, the Challan Number tab needs nothing but that number and the captcha."
+    },
+    {
+      "q": "Is the helmet fine in Karnataka Rs 1,000 or Rs 500?",
+      "a": "Rs 500. Karnataka used its power under section 200 of the Motor Vehicles Act to notify its own compounding amounts, and gazette notification TD 250 TDO 2019 dated 21-09-2019 sets Rs 500 for not wearing protective head gear under section 194-D, against the Rs 1,000 in the central MV (Amendment) Act 2019. Bengaluru Traffic Police list the same Rs 500 for both rider and pillion. Note that section 194D also carries a three-month licence disqualification, which the state cannot waive."
+    },
+    {
+      "q": "Can I pay a drunk-driving challan online in Karnataka?",
+      "a": "No. Drunken driving under section 185 is not compoundable in Karnataka - Bengaluru Traffic Police's Spot Fines table marks it 'Court Fine'. The BTP FAQ states you will be issued a police notice to appear in court, that there is no provision to pay on the spot and only the court can impose the fine, and that your driving licence may be held by police until the case is disposed of. Punishment is up to six months' imprisonment or up to Rs 10,000 for a first offence, and up to two years or Rs 15,000 for a repeat. Driving without a permit and without a fitness certificate are likewise court matters."
+    },
+    {
+      "q": "My challan is not showing on the e-challan portal - where has it gone?",
+      "a": "It has most likely been referred to court. Karnataka has a Virtual Court for traffic matters: go to vcourts.gov.in/virtualcourt, choose 'Karnataka(Traffic Department)' from the department dropdown and press Proceed Now, then search by Mobile Number, CNR Number, Party Name or Challan/Vehicle No. You can enter your plea and pay the fine online there. Long-pending compoundable challans are also cleared in bulk at National Lok Adalat sittings organised by the Karnataka State Legal Services Authority."
+    },
+    {
+      "q": "I paid but the challan still shows as pending - what should I do?",
+      "a": "Use 'Check Pending Transaction' on the NextGen services page before paying again. The portal's own Notice Board says that if your payment is pending, stuck or deducted from your account, this service is the one to verify transaction status. Do not repeat the payment first, or you risk a double debit that then needs a refund. If it still does not resolve, raise it through 'Raise Grievance' on the same page, or call the eChallan helpdesk on 0120-4925505 (06:00 to midnight)."
+    },
+    {
+      "q": "Does Karnataka give a discount on old pending traffic fines?",
+      "a": "Periodically, yes - the state has run several limited-window 50 per cent rebate drives on pending e-challans, including August-September 2025, November-December 2025 and 21 June to 10 July 2026. No window was open as of 12 August 2026. These schemes are announced by government press release rather than kept as a standing notice on the police or transport websites, so check current announcements before assuming a rebate; outside a window the full notified amount is payable."
+    },
+    {
+      "q": "I got a printed notice by post with a QR code - is it genuine?",
+      "a": "Very likely yes. Bengaluru's contactless enforcement uses AI cameras (ITEMS) at 50 junctions plus safe-city surveillance; once a violation image is validated, the e-challan system pulls owner details from Vahan and sends the challan by SMS along with a physical IMS/IMV 133 notice to the registered address. BTP has added a QR code to that notice - scanning it shows the photographic evidence of the violation, offers a payment option, and lets you raise a dispute if the challan is wrong."
+    }
+  ],
+  "fine_overrides": {
+    "driving-without-helmet": {
+      "amount_text": "₹500 for the rider and ₹500 for the pillion under s.194-D, half the ₹1,000 central figure. The central three-month licence disqualification still applies.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "driving-without-seatbelt": {
+      "amount_text": "₹500 under s.194-B, against ₹1,000 in the central MV (Amendment) Act 2019.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "driving-without-licence": {
+      "amount_text": "₹1,000 for two- and three-wheelers, ₹2,000 for LMV and ₹5,000 for other vehicles under s.181, instead of the flat ₹5,000 in the central Act.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "driving-without-insurance": {
+      "amount_text": "₹1,000 for two- and three-wheelers, ₹2,000 for LMV and ₹4,000 for HGV and others under s.196; the central first-offence figure is ₹2,000.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "overspeeding": {
+      "amount_text": "Fixed at ₹1,000 for 2W/3W/LMV and ₹2,000 for MGV/MPV/HGV/HPV and others under s.183, rather than the central ₹1,000-2,000 and ₹2,000-4,000 ranges.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "₹500 for jumping a traffic signal (Rule 119 read with s.177). Bengaluru Traffic Police separately list general dangerous driving under s.184 at ₹1,000 first offence and ₹2,000 for repeats.",
+      "source": "https://btp.karnataka.gov.in/117/spot-fines/en"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "₹1,500 for 2W/3W, ₹3,000 for LMV and ₹5,000 for other vehicles on a first offence, and ₹10,000 for a second or later offence under s.184(c); the central figure is ₹5,000 rising to ₹10,000.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹2,000 for 2W/3W, ₹3,000 for LMV and ₹5,000 for MGV/MPV/HGV/HPV and others under s.192(1), instead of a single ₹5,000 slab.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    },
+    "driving-without-puc": {
+      "amount_text": "₹1,500 for 2W/3W and ₹3,000 for LMV, heavy and other vehicles for breaching prescribed air-pollution standards under s.190(2); the central Act sets ₹10,000.",
+      "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
+    }
+  },
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/challan",
+    "https://transport.karnataka.gov.in/47/notifications/en",
+    "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf",
+    "https://btp.karnataka.gov.in/",
+    "https://btp.karnataka.gov.in/117/spot-fines/en",
+    "https://btp.karnataka.gov.in/212/e-challan-system/en",
+    "https://btp.karnataka.gov.in/105/contactless-enforcement/en",
+    "https://btp.karnataka.gov.in/220/faq/en",
+    "https://btp.karnataka.gov.in/btp_map_locations/en",
+    "https://btp.karnataka.gov.in/209/astram/en",
+    "https://kspapp.ksp.gov.in/ksp/api/traffic-challan",
+    "https://www.karnatakaone.gov.in/Info/Public/BangalorePoliceServices",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://ksp.karnataka.gov.in/page/FAQ/Traffic/en",
+    "https://parivahan.gov.in/"
+  ]
+}

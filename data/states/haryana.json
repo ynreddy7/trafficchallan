@@ -1,0 +1,184 @@
+{
+  "slug": "haryana",
+  "name": "Haryana",
+  "target_keyword": "haryana e challan",
+  "portals": [
+    {
+      "label": "NextGen eChallan – Check Pending Challan Status / Pay Challan (serves Haryana)",
+      "url": "https://echallan.parivahan.nic.in/challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – E-Challan Payment Services hub (all 7 citizen services)",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "MoRTH eChallan (legacy portal) – Challan Details page still linked by Haryana Traffic Police",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – Grievance Entry Form (wrong / disputed challan)",
+      "url": "https://echallan.parivahan.nic.in/grievance",
+      "scope": "check"
+    },
+    {
+      "label": "Virtual Courts – select \"Haryana(Traffic Department)\" to settle a court-referred challan",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    },
+    {
+      "label": "Haryana Traffic Police (state traffic wing; carries the \"Pay Traffic Violation\" link)",
+      "url": "https://traffic.haryanapolice.gov.in/",
+      "scope": "check"
+    },
+    {
+      "label": "Gurugram Police – Offences & Penalties table (Haryana district fine schedule)",
+      "url": "https://gurgaon.haryanapolice.gov.in/offences-penalties",
+      "scope": "check"
+    },
+    {
+      "label": "e-GRAS Haryana (Treasuries & Accounts, Finance Dept) – verify challan / verify payment / forgot GRN",
+      "url": "https://egrashry.nic.in/",
+      "scope": "pay"
+    }
+  ],
+  "check_steps": [
+    "Go to the NextGen eChallan services hub at https://echallan.parivahan.nic.in/challan/challan-services and click the \"Check Pending Challan Status\" tile. Haryana (HR) is one of the states migrated to NextGen — the old echallan.parivahan.gov.in page carries a notice listing HR among the states that must use the NextGen portal.",
+    "On the \"CHECK PENDING CHALLAN STATUS\" screen pick one of the three tabs: \"Challan Number\", \"Vehicle Number\" or \"DL Number\".",
+    "\"Challan Number\" needs only the challan number. \"Vehicle Number\" needs the vehicle number PLUS the \"Registration Date\" in DD/MM/YYYY. \"DL Number\" needs the DL number PLUS \"Date of Birth\" in DD/MM/YYYY — a change from the old portal, which asked for the last 5 characters of the chassis/engine number.",
+    "Type the code shown in the \"Enter Captcha\" box (it is case-sensitive; use the circular arrow to refresh it or the speaker icon for an audio captcha), then click \"GET DETAILS\".",
+    "Read the result rows — the portal shows Violator Name, DL/RC Number, Challan No, Transaction ID, State (HR for Haryana), Department, Challan Date, Amount, Status and Payment Source.",
+    "For the challan copy with the photographic evidence, go back to the services hub and use the \"Download Challan Print\" tile; for an old payment use \"Download Payment Receipt\".",
+    "If the challan no longer appears on the e-challan portal it has probably been sent to court — check it on https://vcourts.gov.in/virtualcourt/ by choosing \"Haryana(Traffic Department)\"."
+  ],
+  "pay_steps": [
+    "From https://echallan.parivahan.nic.in/challan/challan-services click the \"Pay Challan\" tile — it opens the same three-tab search screen (Challan Number / Vehicle Number / DL Number) headed \"PAY CHALLAN\".",
+    "Enter your identifier plus the second field the tab demands (Registration Date for a vehicle number, Date of Birth for a DL number), fill the \"Enter Captcha\" box and click \"GET DETAILS\".",
+    "Check the offence description and the amount against the challan before paying — Haryana e-challans state the payable compounding amount, which is what you settle.",
+    "Select the pending challan and proceed to the payment gateway, then complete the payment online.",
+    "Save the receipt immediately using the \"Download Payment Receipt\" service on the services hub.",
+    "If money left your account but the challan still shows pending, do NOT pay again — use the \"Check Pending Transaction\" service the NextGen notice board points to, which verifies stuck or deducted transactions.",
+    "If the challan is already before the court, pay it instead on https://vcourts.gov.in/virtualcourt/ — select \"Haryana(Traffic Department)\", search under the \"Challan/Vehicle No.\" tab, enter the captcha and submit.",
+    "Offences Haryana does not compound online (drunken driving is shown as \"Court\" with no compounding amount in Haryana's own offence master) cannot be paid on the portal at all and must be settled through the court."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the official MoRTH / NIC citizen mobile app, which carries transport records linked to your RC and DL including challan history, and links through to online challan payment. The eChallan portal warns to install it only from the official app store, as fake look-alike e-challan apps exist.",
+    "There is no Haryana-only SMS short code or state challan-enquiry SMS service documented on any official Haryana Police or Haryana Transport page as of 12-Aug-2026 — treat any SMS number quoted on blogs as unverified."
+  ],
+  "court_challan_process": "Haryana has a functioning Virtual Court for traffic challans. PIB (Ministry of Law & Justice, 05 Dec 2024) confirms Haryana among the 21 States/UTs with operationalised Virtual Courts handling traffic challan cases, and the Virtual Courts portal's department dropdown carries a live entry \"Haryana(Traffic Department)\" (court code HRVC01, state code 14). Challans that Haryana does not compound on the spot — notably drunken driving, which Haryana's own e-challan offence master lists with no compounding amount and which Gurugram Police's schedule marks simply as \"Court\" — go to court from the outset, and compoundable challans left unpaid also migrate there. To settle one, open https://vcourts.gov.in/virtualcourt/, select \"Haryana(Traffic Department)\", click \"Proceed Now\", then search under one of four tabs — \"Mobile Number\", \"CNR Number\", \"Party Name\" or \"Challan/Vehicle No.\" — enter the captcha and submit. Where you accept the charge you can plead guilty and pay the fine online and the case is disposed without any court visit; the portal itself cautions that \"for adjudication purpose the Litigant may have to appear in person or through the Lawyer in the Court\", so a contested challan still goes before the concerned Judicial Magistrate in the district. Pending compoundable traffic cases in Haryana courts are also routinely listed for settlement at National Lok Adalats — the Haryana State Legal Services Authority lists 2026 dates of 14.03.2026, 09.05.2026, 12.09.2026 and 12.12.2026, and the Punjab & Haryana High Court Legal Services Committee has notified the 12.09.2026 National Lok Adalat.",
+  "payment_methods": [
+    "Online on the NextGen eChallan portal (echallan.parivahan.nic.in) through its integrated payment gateway — the primary route for Haryana challans",
+    "Online through the mParivahan app, the official MoRTH/NIC citizen app that carries challan history and payment",
+    "Online through the Virtual Court at vcourts.gov.in (\"Haryana(Traffic Department)\") once the challan has gone to court",
+    "e-GRAS Haryana (egrashry.nic.in), the Finance Department's Government Receipts Accounting System, which supports online and manual collection of state dues and provides Verify Challan / Verify Payment / Forgot GRN tools (guest login: user-id \"guest\", password \"guest\")",
+    "In person, before the issuing traffic police unit or the court, for offences Haryana does not compound online (e.g. drunken driving)"
+  ],
+  "contacts": [
+    {
+      "label": "Traffic toll-free / emergency (Haryana Traffic Police, round the clock)",
+      "value": "112"
+    },
+    {
+      "label": "Haryana Traffic Police (SP Traffic office)",
+      "value": "0184-2255028"
+    },
+    {
+      "label": "Haryana Traffic Police (alternate line)",
+      "value": "0184-2283199"
+    },
+    {
+      "label": "Haryana Traffic Police email (AIG Traffic)",
+      "value": "aigtraffic[at]gmail[dot]com"
+    },
+    {
+      "label": "Haryana Traffic Police email (SP Traffic)",
+      "value": "sp.traffic[at]hry[dot]nic[dot]in"
+    },
+    {
+      "label": "NextGen eChallan helpdesk email (MoRTH/NIC)",
+      "value": "helpdesk-echallan[at]gov[dot]in"
+    },
+    {
+      "label": "NextGen eChallan helpdesk phone (06:00 AM – 12:00 Midnight)",
+      "value": "0120-4925505"
+    },
+    {
+      "label": "Haryana Police organised-crime tip line (not for challans)",
+      "value": "0124-2265900 / 0124-2265903"
+    }
+  ],
+  "quirks": [
+    "Haryana has migrated to the NextGen e-challan portal. The legacy page at echallan.parivahan.gov.in/index/accused-challan displays, verbatim: \"NOTE : Please check and pay your challans of AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ, GJ States on NextGen eChallan Portal\" — HR is Haryana. Use echallan.parivahan.nic.in.",
+    "The Haryana Traffic Police website's own \"Pay Traffic Violation\" quick link still points at the OLD portal (https://echallan.parivahan.gov.in/index/accused-challan), which is exactly the page that redirects Haryana users away. Following the state link is the commonest way people conclude they have \"no challans\".",
+    "The NextGen search fields changed: the \"Vehicle Number\" tab now asks for the vehicle's Registration Date (DD/MM/YYYY) and the \"DL Number\" tab for Date of Birth. The old portal asked for the last 5 characters of the chassis/engine number instead — guides written before the migration are wrong.",
+    "Official Haryana Police fine tables contradict each other. faridabad.haryanapolice.gov.in/RR_OffenceandPenlates still shows pre-2019 amounts (helmet ₹100, driving without licence ₹500, seat belt ₹100), while the same district's \"New Rate of Traffic Chalaan\" PDF and gurgaon.haryanapolice.gov.in/offences-penalties (page last updated 26/11/2019) show the post-amendment ₹1,000 / ₹5,000 figures. The e-challan itself states the payable amount.",
+    "haryanatransport.gov.in — which hosts the department's \"OFFENCES & PENALTIES\" and \"Regarding compounding of offences\" pages — was completely unreachable on 12-Aug-2026 (connection refused on both port 80 and port 443 from an Indian connection and from the fetch service). Any Haryana compounding notification hosted only there could not be read.",
+    "Drunken driving is not settleable online in Haryana. Haryana's e-challan offence master (State: HR) shows drunken driving with a penalty of 0/0, and the Gurugram Police schedule records \"185/188 — Court — Court\". Same for a few other serious offences.",
+    "Where the MV (Amendment) Act 2019 gives a range, Haryana compounds at the TOP of the range — ₹5,000 for red-light jumping and for mobile-phone use while driving (s.184, range ₹1,000–5,000), ₹2,000 for overspeeding in an LMV (s.183, range ₹1,000–2,000) and ₹4,000 for excess speed in an HMV/MMV passenger vehicle. So a Haryana e-challan can look higher than a \"minimum fine\" chart while still being the central figure.",
+    "The two Parivahan portals publish different helpdesk hours for the same helpline (0120-4925505): the legacy site's footer says 6:00 AM–10:00 PM, the NextGen site says 06:00 AM–12:00 Midnight.",
+    "The NextGen portal runs a standing warning that fraudulent websites and mobile apps impersonate the e-challan service and that it never asks for password, OTP or payment details by call, email, message or link — relevant in Haryana's NCR belt where such scams are common.",
+    "Haryana's enforcement volume is large: the Haryana Traffic Police site records \"Total 43,49,043 challans have been issued and Rs. 69,36,41,972/- have been compounded w.e.f 01.01.2025 to 31.12.2025\", so portal queues and stuck payments are frequent — the \"Check Pending Transaction\" service exists for exactly this."
+  ],
+  "faqs": [
+    {
+      "q": "Which website actually shows Haryana (HR) e-challans?",
+      "a": "The NextGen portal at echallan.parivahan.nic.in/challan. The older echallan.parivahan.gov.in page itself carries a notice naming HR among the states whose challans must be checked and paid on NextGen, even though the Haryana Traffic Police website still links to the old page."
+    },
+    {
+      "q": "I only have my HR vehicle number — what else does the portal ask for?",
+      "a": "On NextGen the \"Vehicle Number\" tab also demands the vehicle's Registration Date in DD/MM/YYYY. If you search by DL you must supply your Date of Birth. Only the \"Challan Number\" tab works with nothing more than the captcha."
+    },
+    {
+      "q": "The money was debited but my Haryana challan still shows as pending — what do I do?",
+      "a": "Do not pay again. The NextGen notice board says explicitly that if your payment is pending, stuck or deducted from your account you should use the \"Check Pending Transaction\" service to verify the transaction status. If it stays unresolved, file a grievance at echallan.parivahan.nic.in/grievance and track it at /grievance/search."
+    },
+    {
+      "q": "My challan has disappeared from the e-challan portal. Where did it go?",
+      "a": "It has most likely been sent to court. Haryana runs an operational Virtual Court for traffic challan cases — open vcourts.gov.in/virtualcourt, pick \"Haryana(Traffic Department)\", click Proceed Now and search by Mobile Number, CNR Number, Party Name or Challan/Vehicle No."
+    },
+    {
+      "q": "Can I pay a Haryana drunken-driving challan online?",
+      "a": "No. Haryana's own e-challan offence master lists drunken driving with no compounding amount, and the Gurugram Police offences table records it under sections 185/188 as \"Court\". It has to be decided by the court, either the Virtual Court or the Judicial Magistrate."
+    },
+    {
+      "q": "Are Haryana's traffic fines different from the central Motor Vehicles Act amounts?",
+      "a": "No separate Haryana compounding schedule could be traced. Haryana's e-challan offence master (State: HR) mirrors the MV (Amendment) Act 2019 figures — ₹1,000 for riding without a helmet, ₹1,000 for no seat belt, ₹5,000 for driving without a licence, ₹2,000 (₹4,000 repeat) for no third-party insurance and ₹5,000 (₹10,000 repeat) for no registration certificate."
+    },
+    {
+      "q": "Can a pending Haryana traffic case be settled at a Lok Adalat?",
+      "a": "Compoundable cases pending in court can be taken up at National Lok Adalat sittings; the Haryana State Legal Services Authority lists 2026 dates of 14.03.2026, 09.05.2026, 12.09.2026 and 12.12.2026, and the Punjab & Haryana High Court Legal Services Committee has notified the 12.09.2026 sitting. Offences that are not compoundable under law cannot be settled there."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://echallan.parivahan.gov.in/",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.nic.in/challan",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/challan/payment",
+    "https://echallan.parivahan.nic.in/grievance",
+    "https://traffic.haryanapolice.gov.in/",
+    "https://traffic.haryanapolice.gov.in/contactus",
+    "https://traffic.haryanapolice.gov.in/challan",
+    "https://traffic.haryanapolice.gov.in/Rules",
+    "https://haryanapolice.gov.in/",
+    "https://gurgaon.haryanapolice.gov.in/offences-penalties",
+    "https://faridabad.haryanapolice.gov.in/Document/Traffic%20Chalaan.pdf",
+    "https://faridabad.haryanapolice.gov.in/RR_OffenceandPenlates",
+    "https://hansi.haryanapolice.gov.in/writereaddata/Document/Motor_vehicel_section_&_fine.pdf",
+    "https://rohtak.haryanapolice.gov.in/challaninf",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://vcourts.gov.in/virtualcourt/index.php",
+    "https://vcourts.gov.in/virtualcourt/main.php",
+    "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2081106",
+    "https://haryana.nalsa.gov.in/lok-adalat/",
+    "https://highcourtchd.gov.in/hclscc/?trs=lokadalat",
+    "https://nalsa.gov.in/lok-adalats",
+    "https://egrashry.nic.in/",
+    "https://www.egazetteharyana.gov.in/",
+    "https://parivahan.gov.in/sites/default/files/FAQDOCS/Echallan/eChallan-brochure-ver-1.0.pdf"
+  ],
+  "last_verified": "2026-08-12"
+}

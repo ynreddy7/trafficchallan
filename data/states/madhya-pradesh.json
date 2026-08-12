@@ -1,0 +1,135 @@
+{
+  "slug": "madhya-pradesh",
+  "name": "Madhya Pradesh",
+  "target_keyword": "mp e challan",
+  "last_verified": "2026-08-12",
+  "portals": [
+    {
+      "label": "Madhya Pradesh Police e-Challan (MPOnline) — state traffic-police challans",
+      "url": "https://echallan.mponline.gov.in/",
+      "scope": "both"
+    },
+    {
+      "label": "MoRTH eChallan (legacy Parivahan portal) — the portal that still serves MP",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Virtual Courts (e-Challan) — for MP challans referred to court",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    }
+  ],
+  "check_steps": [
+    "Open https://echallan.mponline.gov.in/ — the 'Madhya Pradesh Police e-Challan' portal, served by MPOnline Limited. This is the state's own traffic-police challan system.",
+    "On the 'Search Challan Detail' card there is exactly ONE search input: 'Vehicle Number *' (placeholder shows the format 'Vehicle Number (i.e. MP00XX0000)'). There is no challan-number or DL search on this portal.",
+    "Type the vehicle number, read the distorted-text captcha image into the 'Enter Captcha Text' box (use the recycle/refresh icon beside it if the text is unreadable), then click the red 'Search' button.",
+    "Cross-check on the national portal at https://echallan.parivahan.gov.in/index/accused-challan — in the 'Challan Details' card choose one of the three radio options 'Challan Number', 'Vehicle Number' or 'DL Number', fill the single field plus the black-box captcha, then click 'GET DETAIL'. Use this route when you know the challan number or DL number.",
+    "Do NOT use the NextGen portal (echallan.parivahan.nic.in) for MP. Its migration notice, read on the legacy portal today, lists only AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ, GJ — Madhya Pradesh is not among them.",
+    "If a challan does not appear on either portal, it may already have gone to court: search https://vcourts.gov.in/virtualcourt/ and pick 'Madhya Pradesh (Traffic Department)' from the department dropdown."
+  ],
+  "pay_steps": [
+    "On https://echallan.mponline.gov.in/ run the Vehicle Number + captcha search, select the pending challan from the result list, and continue to the MPOnline payment gateway (net banking / debit / credit card / UPI). MPOnline kiosks across the state also accept challan payments over the counter.",
+    "On https://echallan.parivahan.gov.in/index/accused-challan, after 'GET DETAIL' returns the challan, tick the challan you want to clear and proceed to pay. The portal asks for a mobile number and verifies it by OTP ('Get OTP' then 'Submit') before opening the payment gateway.",
+    "Always download and keep the receipt. On the MPOnline portal the button 'Click here for payment duplicate receipt' (below the search card) re-issues a receipt you have lost.",
+    "If money was debited but no receipt or acknowledgement appeared, use the yellow banner link on the MPOnline home page: 'In case of payment deducted from your bank account but you had not received the acknowledgement. Kindly Click here for payment double verification.' On the Parivahan portal the equivalent is 'Check Pending Transaction' / 'Check Vahan PGI Transaction Status' on the Notice Board.",
+    "For a challan already referred to court, pay through https://vcourts.gov.in/virtualcourt/ under 'Madhya Pradesh (Traffic Department)' — paying the fine there disposes the case immediately, without a personal appearance."
+  ],
+  "sms_app_methods": [
+    "mParivahan app (MoRTH / NIC, national): check pending challans and pay them, and carry the legally valid virtual RC and DL. This is the only officially documented app route for MP, since MP has no separate state challan app documented on an official page.",
+    "Challan intimation SMS: MP Police e-challans are notified to the mobile number registered against the vehicle. This is an outbound alert only — there is no officially documented inbound SMS keyword/shortcode for Madhya Pradesh."
+  ],
+  "court_challan_process": "Madhya Pradesh is live on the Supreme Court e-Committee's Virtual Court system: the department dropdown at https://vcourts.gov.in/virtualcourt/ carries an entry for \"Madhya Pradesh (Traffic Department)\". When an MP traffic challan is not paid at the police stage, or the offence is one the officer refers to court, the challan is pushed from the eChallan system into the Virtual Court, where it becomes a case. The official eChallan portal itself redirects users for these: challan-status pages state that for the status of challans sent to virtual court one should visit vcourts.gov.in. On the Virtual Court you can locate the case by challan number, vehicle number, CNR number, party name or mobile number. You may then either pay the fine online — which disposes the case the same moment, with no appearance and no lawyer — or contest it, in which case the matter is taken out of the virtual court and listed before the regular magistrate's court having jurisdiction, where you must appear. Separately, MP traffic cases already pending before regular courts are routinely taken up in National Lok Adalats organised by the Madhya Pradesh State Legal Services Authority (MPSLSA, Jabalpur), which sit on a single day across all courts from taluka level upward; MPSLSA's official position is that any pending case may be settled there, but that \"any matter relating to an offence not compoundable under the law shall not be settled\" — petty MV Act offences are compoundable, so they qualify. MPSLSA publishes a National Lok Adalat schedule; the concessional settlement amounts are decided by the bench on the day and are not published in advance as a fixed statewide discount.",
+  "payment_methods": [
+    "Net banking",
+    "Debit card",
+    "Credit card",
+    "UPI",
+    "MPOnline kiosks (offline, over the counter)",
+    "Cashless card/UPI payment on the officer's POS machine at the roadside",
+    "Virtual Court online payment gateway (for court-referred challans)"
+  ],
+  "contacts": [
+    {
+      "label": "National eChallan helpdesk (phone, 6:00 AM – 10:00 PM)",
+      "value": "0120-4925505"
+    },
+    {
+      "label": "National eChallan helpdesk (email)",
+      "value": "helpdesk-echallan@gov.in"
+    },
+    {
+      "label": "MP Police emergency (Police)",
+      "value": "112 / 100"
+    },
+    {
+      "label": "MP Police Headquarters exchange, Bhopal",
+      "value": "0755-2501000"
+    },
+    {
+      "label": "MP Police SSR (State Situation Room)",
+      "value": "0755-2443655"
+    },
+    {
+      "label": "Fire",
+      "value": "101"
+    },
+    {
+      "label": "Ambulance",
+      "value": "102 / 108"
+    }
+  ],
+  "quirks": [
+    "Madhya Pradesh has NOT migrated to the NextGen eChallan portal. The migration notice displayed on echallan.parivahan.gov.in today lists AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ, GJ — MP is absent. MP challans stay on the legacy portal. (CG in that list is Chhattisgarh, not MP — easy to misread.)",
+    "MP effectively runs two challan lookups. The state traffic-police system is echallan.mponline.gov.in (MP Police branding, 'Served By: MPOnline'), while the national system is echallan.parivahan.gov.in. A challan visible on one is not guaranteed to be visible on the other, so check both before concluding you are clear.",
+    "The MP Police / MPOnline portal searches by VEHICLE NUMBER ONLY. There is no challan-number and no driving-licence search on it. If you only have a challan number or DL number you must use the Parivahan portal, which offers all three radio options.",
+    "The official MP Transport Department fine table at transport.mp.gov.in/offences-penalties is badly out of date: it still lists pre-2019 Motor Vehicles Act maxima (helmet ₹100/₹300, driving without licence 3 months or ₹500, uninsured vehicle ₹1,000, drunk driving ₹2,000, mobile phone ₹100/₹300). These are the un-amended 1988 Act figures and are described on the page as 'Maximum of punishment', not as compounding amounts. Do not quote them as current payable fines.",
+    "Because that stale table is the only MP-branded fine list online, virtually every insurance and RTO blog copies it — which is why so many 'MP traffic fine 2026' pages show ₹100 helmet fines. The amount actually demanded is the one printed on the e-challan.",
+    "mptrafficpolice.gov.in does not resolve (DNS NXDOMAIN), and echallan.mptrafficpolice.com — cited by several blogs as 'the official MP Traffic Police website' — also does not resolve. There is no separate live MP Traffic Police e-challan domain; treat any such link as dead or unsafe.",
+    "Lookalike fraud domains are an active problem: mparivahan-echallan.net, m-parivahan.co and mparivaahan.com all surface in search results imitating Parivahan. Both official portals carry a standing red-banner warning that they never request password, OTP or payment details via calls, emails, messages or links.",
+    "MP publicly refused to adopt the Motor Vehicles (Amendment) Act 2019 penalty hikes in September 2019, calling the amounts beyond common people's capacity. No official page could be found today either confirming a later MP compounding schedule or restating the state's current position, so the state-notified position is genuinely opaque.",
+    "MPOnline is a paid service-delivery agency and its payment screens generally display a portal/user charge on top of the fine. The exact amount is not disclosed anywhere on the landing page and could not be verified on an official page today — check the figure shown on the payment screen before confirming.",
+    "The Madhya Pradesh state gazette portal govtpressmp.nic.in refused HTTPS connections today (ECONNREFUSED), so the primary gazette route for verifying any state notification was unavailable."
+  ],
+  "faqs": [
+    {
+      "q": "Which portal actually works for a Madhya Pradesh e-challan — Parivahan, NextGen, or the MP Police site?",
+      "a": "For MP you use the MP Police portal at echallan.mponline.gov.in and/or the legacy MoRTH portal at echallan.parivahan.gov.in. Do NOT use the NextGen portal (echallan.parivahan.nic.in): its own migration notice lists 27 states/UTs and Madhya Pradesh is not one of them. Check both MP-serving portals, because a challan raised by city traffic police may show on the MPOnline system while an RTO/transport-enforcement challan shows on Parivahan."
+    },
+    {
+      "q": "I only have my challan number, but the MP Police portal won't accept it. What do I do?",
+      "a": "The echallan.mponline.gov.in portal deliberately offers a single search field — 'Vehicle Number' in the format MP00XX0000 — plus a captcha. It has no challan-number or DL lookup at all. To search by challan number or driving-licence number, go instead to echallan.parivahan.gov.in/index/accused-challan, where the 'Challan Details' card gives you three radio options: Challan Number, Vehicle Number and DL Number."
+    },
+    {
+      "q": "Why do MP fine lists show a ₹100 helmet fine when I was charged far more?",
+      "a": "Because the MP Transport Department's own 'Offences & Penalties' page at transport.mp.gov.in/offences-penalties has never been updated past the pre-2019 Motor Vehicles Act, and it lists old statutory maxima (helmet ₹100 first offence / ₹300 repeat, drunk driving ₹2,000, no licence ₹500). Those are not current payable compounding amounts, and the page labels them 'Maximum of punishment' rather than fines to be paid. Blogs copy that stale table wholesale. The binding figure is the amount printed on your actual e-challan."
+    },
+    {
+      "q": "My money was debited but I never got a receipt. How do I fix it?",
+      "a": "On echallan.mponline.gov.in there is a yellow banner across the top of the home page for exactly this: 'In case of payment deducted from your bank account but you had not received the acknowledgement. Kindly Click here for payment double verification.' Use that link first. If you simply mislaid a receipt for a successful payment, use the separate 'Click here for payment duplicate receipt' button below the search card. On the Parivahan portal the equivalents are 'Check Pending Transaction' and 'Check Vahan PGI Transaction Status' on the Notice Board."
+    },
+    {
+      "q": "What happens if I ignore an MP challan and it goes to court?",
+      "a": "It is pushed into the Virtual Court system, where Madhya Pradesh appears as 'Madhya Pradesh (Traffic Department)'. Search for it at vcourts.gov.in/virtualcourt/ by challan number, vehicle number, CNR number, party name or mobile number. Paying the fine there disposes the case at once, with no appearance and no lawyer needed. If you contest instead, the case leaves the virtual court and is listed before the regular magistrate, where you must appear in person. Cases already pending in regular courts can also be settled at a National Lok Adalat organised by MPSLSA."
+    },
+    {
+      "q": "Is there an official MP Traffic Police website or app for challans?",
+      "a": "No. mptrafficpolice.gov.in and echallan.mptrafficpolice.com are both dead — neither domain resolves — despite being widely cited by blogs. The only officially documented app route is the national mParivahan app from MoRTH/NIC, which lets you check and pay challans and carry a valid virtual RC and DL. Madhya Pradesh has no separate state challan app or inbound SMS shortcode documented on any official page."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.mponline.gov.in/",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.gov.in/index/contact-us",
+    "https://transport.mp.gov.in/offences-penalties",
+    "https://transport.mp.gov.in/e-governance/important-circulars",
+    "https://transport.mp.gov.in/",
+    "https://www.mppolice.gov.in/en/helpline-numbers",
+    "https://vcourts.gov.in/",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://damoh.nic.in/en/e-challan/",
+    "https://madhyapradesh.nalsa.gov.in/lok-adalat/"
+  ]
+}
