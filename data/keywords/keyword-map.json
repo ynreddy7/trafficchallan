@@ -1,4 +1,6 @@
 {
+  "_curated": true,
+  "_curation_note": "hand-curated after generation — do NOT regenerate blindly; re-run with --force to overwrite",
   "assigned": {
     "delhi-e-challan": [
       {
@@ -222,7 +224,7 @@
         "volume": 0
       }
     ],
-    "karnataka": [
+    "karnataka-e-challan": [
       {
         "keyword": "traffic challan karnataka",
         "volume": 1000
@@ -252,7 +254,7 @@
         "volume": 0
       }
     ],
-    "haryana": [
+    "haryana-e-challan": [
       {
         "keyword": "traffic challan haryana",
         "volume": 1000
@@ -262,7 +264,7 @@
         "volume": 0
       }
     ],
-    "rajasthan": [
+    "rajasthan-e-challan": [
       {
         "keyword": "traffic challan rajasthan",
         "volume": 480
@@ -368,7 +370,7 @@
         "volume": 0
       }
     ],
-    "gujarat": [
+    "gujarat-e-challan": [
       {
         "keyword": "traffic challan gujarat",
         "volume": 320
@@ -378,7 +380,7 @@
         "volume": 0
       }
     ],
-    "andhra-pradesh": [
+    "andhra-pradesh-e-challan": [
       {
         "keyword": "traffic challan andhra pradesh",
         "volume": 260
@@ -388,7 +390,7 @@
         "volume": 20
       }
     ],
-    "west-bengal": [
+    "west-bengal-e-challan": [
       {
         "keyword": "traffic challan west bengal",
         "volume": 260
@@ -402,7 +404,7 @@
         "volume": 50
       }
     ],
-    "tamil-nadu": [
+    "tamil-nadu-e-challan": [
       {
         "keyword": "traffic challan tamil nadu",
         "volume": 210
@@ -468,7 +470,7 @@
         "volume": 20
       }
     ],
-    "uttar-pradesh": [
+    "uttar-pradesh-e-challan": [
       {
         "keyword": "traffic challan uttar pradesh online",
         "volume": 10
@@ -482,7 +484,7 @@
         "volume": 480
       }
     ],
-    "madhya-pradesh": [
+    "madhya-pradesh-e-challan": [
       {
         "keyword": "traffic challan mp",
         "volume": 210
