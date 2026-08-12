@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import { loadStates, loadOffences } from '../lib/data';
+
+const states = loadStates();
+const offences = loadOffences();
+const calcData = {
+  offences: offences.map((o) => ({
+    slug: o.slug, name: o.name, mva_section: o.mva_section, licence_impact: o.licence_impact,
+    base_fine_text: o.base_fine_text, repeat_fine_text: o.repeat_fine_text
+  })),
+  states: states.map((s) => ({ slug: s.slug, name: s.name, fine_overrides: s.fine_overrides }))
+};
+---
+<Base
+  title="Traffic Fine Calculator: What Will Your Challan Cost?"
+  description="Pick an offence and state to see the current challan amount under the Motor Vehicles Act, including state-notified variations and repeat-offence penalties."
+  path="/calculator/"
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fine calculator', path: '/calculator/' }]}
+>
+  <h1>Traffic fine calculator</h1>
+  <AnswerBox>
+    Choose the offence and your state to see the current fine amount, including any state-notified
+    variation and the repeat-offence penalty. Amounts come from our sourced fine dataset.
+  </AnswerBox>
+
+  <form id="calc" class="answer-box" style="display:grid;gap:0.8rem;">
+    <label>Offence
+      <select id="offence" style="width:100%;padding:0.4rem;">
+        {calcData.offences.map((o) => <option value={o.slug}>{o.name}</option>)}
+      </select>
+    </label>
+    <label>State
+      <select id="state" style="width:100%;padding:0.4rem;">
+        <option value="">All-India standard</option>
+        {calcData.states.map((s) => <option value={s.slug}>{s.name}</option>)}
+      </select>
+    </label>
+    <label><input type="checkbox" id="repeat" /> Repeat offence</label>
+    <output id="result" style="font-size:1.15rem;font-weight:600;"></output>
+    <p id="note" class="verified"></p>
+  </form>
+
+  <script type="application/json" id="calc-data" set:html={JSON.stringify(calcData)} />
+  <script>
+    import { computeFine } from '../lib/fine-calc';
+    const data = JSON.parse(document.getElementById('calc-data')!.textContent!);
+    const $ = (id: string) => document.getElementById(id) as HTMLInputElement | HTMLSelectElement;
+    function update() {
+      const offence = data.offences.find((o: any) => o.slug === $('offence').value);
+      const state = data.states.find((s: any) => s.slug === $('state').value) ?? null;
+      const r = computeFine(offence, state, ($('repeat') as HTMLInputElement).checked);
+      document.getElementById('result')!.textContent = r.text;
+      document.getElementById('note')!.textContent =
+        r.sectionNote + (r.overridden ? ' State-notified amount.' : '');
+    }
+    ['offence', 'state', 'repeat'].forEach((id) => $(id).addEventListener('change', update));
+    update();
+  </script>
+</Base>
