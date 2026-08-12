@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import FineTable from '../../components/FineTable.astro';
+import { loadOffences, loadStates } from '../../lib/data';
+import { datasetJsonLd } from '../../lib/seo';
+
+const offences = loadOffences();
+const newest = offences.map((o) => o.last_verified).sort().at(-1)!;
+const year = new Date().getFullYear();
+---
+<Base
+  title={`Traffic Fine List India ${year}: All Challan Amounts (MV Act)`}
+  description={`Complete list of Indian traffic fines under the Motor Vehicles Act ${year} — offence, section, first and repeat penalty. Sourced and independently verified.`}
+  path="/fines/"
+  jsonld={[datasetJsonLd('Indian traffic fine schedule (MV Act, as amended)', 'Offence-wise penalties under the Motor Vehicles Act with state variations, sourced from official notifications.', '/fines/')]}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }]}
+>
+  <h1>Traffic fine list: every challan amount in India</h1>
+  <AnswerBox>
+    Traffic fines in India are set by the Motor Vehicles Act (amended 2019). Common penalties: riding
+    without a helmet or driving without a licence or insurance run from ₹1,000 to ₹5,000 for a first
+    offence. Some states have notified different amounts — each offence page lists them.
+  </AnswerBox>
+  <p class="verified">Table last verified: {newest}</p>
+  <FineTable offences={offences} />
+  <p>Select any offence for the exact legal section, repeat-offence penalty, licence consequences and state-wise variations.</p>
+</Base>

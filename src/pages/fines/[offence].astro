@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import SourceList from '../../components/SourceList.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { loadStates, loadOffences } from '../../lib/data';
+import { faqJsonLd } from '../../lib/seo';
+import type { OffenceRecord } from '../../lib/schemas';
+
+export async function getStaticPaths() {
+  return loadOffences().map((offence) => ({
+    params: { offence: offence.slug },
+    props: { offence }
+  }));
+}
+interface Props { offence: OffenceRecord }
+const { offence } = Astro.props;
+const states = loadStates();
+const overriding = states.filter((s) => offence.slug in s.fine_overrides);
+const path = `/fines/${offence.slug}/`;
+---
+<Base
+  title={`${offence.name}: Fine Amount & Rules`}
+  description={`${offence.name} under the Motor Vehicles Act — current fine (first and repeat offence), licence impact and how to pay. Independently verified.`}
+  path={path}
+  jsonld={[faqJsonLd(offence.faqs)]}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }, { name: offence.name, path }]}
+>
+  <h1>{offence.name}: fine amount and rules</h1>
+  <AnswerBox>
+    The fine for {offence.name.toLowerCase()} is {offence.base_fine_text} for a first offence
+    ({offence.mva_section}); a repeat offence costs {offence.repeat_fine_text}. {offence.licence_impact}
+  </AnswerBox>
+  <LastVerified date={offence.last_verified} />
+
+  <h2>What the law says</h2>
+  <p>{offence.description}</p>
+
+  <h2>Fine amounts</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th></th><th>Amount</th></tr></thead>
+    <tbody>
+      <tr><td>First offence</td><td>{offence.base_fine_text}</td></tr>
+      <tr><td>Repeat offence</td><td>{offence.repeat_fine_text}</td></tr>
+      <tr><td>Licence impact</td><td>{offence.licence_impact}</td></tr>
+      <tr><td>Payable online</td><td>{offence.compoundable_online ? 'Yes, on official e-challan portals' : 'Usually requires court appearance'}</td></tr>
+    </tbody>
+  </table></div>
+
+  {overriding.length > 0 && <>
+    <h2>States with different notified amounts</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>State</th><th>Amount</th></tr></thead>
+      <tbody>{overriding.map((s) => <tr>
+        <td><a href={`/${s.slug}-e-challan/`}>{s.name}</a></td>
+        <td>{s.fine_overrides[offence.slug].amount_text}</td>
+      </tr>)}</tbody>
+    </table></div>
+  </>}
+
+  <FaqSection faqs={offence.faqs} />
+  <SourceList sources={offence.sources} />
+</Base>
