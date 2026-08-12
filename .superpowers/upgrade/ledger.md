@@ -9,3 +9,4 @@ Chunk D: complete (78b7601, 100/100; 5 verbatim statute quotes live-verified vs 
 Final-fix (dates): complete (7ccdd55, 102/102, JSON-LD dateModified == sitemap lastmod verified on all 4 hub pages).
 FINAL REVIEW (fable): SHIP. 0 Critical, 1 Important (datePublished 08-13 postdates dateModified 08-12 on 22/23 pages — clamp folding into current fix round), minors: dup date constants, double gate in publish (harmless), '/' modifier keys.
 CONTROLLER VISUAL PASS found 2 Criticals the reviews missed: (1) search dialog visible-by-default (display:flex overrides dialog:not([open]) — fix in flight); (2) mobile 390px horizontal overflow from long unbreakable portal URLs (queued to same fixer).
+SHIPPED 06:35 IST: pushed ab9d39a..74a107e (10 commits); Cloudflare deployed in ~60s; live checks green (anek font, search dialog, /compare/ 200, /api/fines.json 200, /pagefind/ 200). 103/103 tests, 1294 links/0 broken, 38 pages. Done before the 07:07 IST content run.
