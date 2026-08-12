@@ -44,6 +44,8 @@
     "mParivahan, the Ministry of Road Transport and Highways citizen app, listed on https://parivahan.gov.in/ under Other Products & Services and reachable at https://mparivahan.parivahan.gov.in/.",
     "Link your mobile number to your vehicle number on the state portal — the home page carries a 'Click here to link/unlink mobile number to your vehicle number' link, which is what makes challan SMS reach you.",
     "The NextGen portal sends a one-time password to the mobile number held against the vehicle before it will take payment, so an out-of-date number blocks payment as well as alerts.",
+    "The Maha Traffic App — named alongside the portal in the Maharashtra Highway Traffic Police FAQ as an official way to check challan status and pay.",
+    "For Nashik City the same FAQ points users to mParivahan or https://echallan.parivahan.gov.in instead of the state portal.",
     "Keep the Vahan record current at https://vahan.parivahan.gov.in/mobileupdate/ if the number on the RC is wrong."
   ],
   "court_challan_process": "Maharashtra's own portal only handles compoundable challans: you find them by vehicle or challan number and pay, and nothing on that site offers a contest route. Non-compoundable offences are a separate track. Section 200 of the Motor Vehicles Act lists which offences may be compounded, and drunken driving under Section 185 is not on the list, nor is any limb of dangerous driving under Section 184 except clause (c) of the Explanation, which covers use of handheld communication devices. Those cases are prosecuted before the jurisdictional magistrate and the accused must appear. Virtual Courts is only a partial answer in Maharashtra: the department list on https://vcourts.gov.in/virtualcourt/ carries exactly two Maharashtra entries, Maharashtra(Transport Department) and Maharashtra(NASHIK TRAFFIC DEPARTMENT), so unlike Delhi — which has both a Traffic Department and a Notice Department on the platform — there is no statewide virtual court covering Mumbai, Pune, Nagpur or Thane city traffic police challans. Where a case is on Virtual Courts, the flow published by the e-Courts project is: select the state and department, search by mobile number, CNR number, party name or challan/vehicle number, click 'View' to open the detailed challan, verify by OTP or, if the mobile number on the challan is wrong, by the vehicle's engine and chassis number checked against RTO data, then either pay the fine through the ePay gateway or select 'I wish to contest the case', after which the acknowledgement names the physical court and the date assigned. The MoRTH portal separately warns that a challan forwarded to Virtual Court can still be paid on the e-challan portal, and asks you not to pay in both places.",
@@ -51,7 +53,8 @@
     "Debit card",
     "Credit card",
     "Net banking",
-    "UPI"
+    "UPI",
+    "Offline at the nearest traffic division or police station with a copy of the challan or the vehicle details"
   ],
   "contacts": [
     { "label": "Maharashtra e-Challan helpdesk", "value": "844 844 8960" },
@@ -64,7 +67,12 @@
     "mahatrafficechallan.gov.in redirects to /payechallan/PaymentService.htm with a per-session token in the query string. The token is not stable, so bookmark https://mahatrafficechallan.gov.in/ and let it redirect.",
     "Maharashtra has moved to the MoRTH NextGen e-challan portal. echallan.parivahan.gov.in now carries a note sending MH (with 26 other states and UTs) to https://echallan.parivahan.nic.in/challan/challan-services, so a challan missing on one portal may still appear on the other — check both.",
     "Virtual Courts covers only two Maharashtra departments, Transport and Nashik Traffic. There is no virtual court for Mumbai, Pune, Nagpur or Thane traffic police challans, so a court challan in those cities means an actual court date.",
-    "The state portal is a payment counter, not a rulebook. Its only functions are the challan search, a mobile link/unlink page and a grievance form; there is no offence or penalty schedule on it, and its footer reads 'Website last updated on: 15/09/2025'."
+    "The state portal is a payment counter, not a rulebook. Its only functions are the challan search, a mobile link/unlink page and a grievance form; there is no offence or penalty schedule on it, and its footer reads 'Website last updated on: 15/09/2025'.",
+    "Maharashtra's fine schedule is published, but not where you would look for it. It is a 234-row 'Acts and Fine' PDF under Information → Acts & Rules on the Maharashtra Highway Traffic Police site, not on mahatrafficechallan.gov.in, and it lists each offence with a Fine and a separate Repetitive Fine.",
+    "Maharashtra books many offences twice — once against the driver and once against the owner or the person in authorised possession of the vehicle. No registration, no insurance, no PUC, no helmet and the child-restraint offence all appear as paired driver and owner rows.",
+    "Red light jumping is treated quite differently from Delhi. Maharashtra's schedule marks 'Dangerous driving' under Sec 184 MVA as Non-Compoundable with a fine of 0, but books 'Jumping signal' separately under MMVR 239/177 MVA at ₹500 / ₹1,500 — so an ordinary signal violation stays payable online here.",
+    "Maharashtra grades several fines by vehicle class where the central Act does not: overspeeding runs across 2/3-wheeler, tractor, LMV and MMV/HMV, and handheld phone use across 2/3-wheeler, LMV and other vehicles.",
+    "Nashik is the odd one out. Maharashtra Highway Traffic Police's own FAQ tells Nashik City users to check mParivahan or echallan.parivahan.gov.in rather than the state portal — and Nashik is also the only city traffic department Maharashtra has on Virtual Courts."
   ],
   "faqs": [
     {
@@ -80,15 +88,56 @@
       "a": "Only for two departments. The Virtual Courts department list carries just Maharashtra(Transport Department) and Maharashtra(NASHIK TRAFFIC DEPARTMENT). City traffic police court challans elsewhere in the state are not on that platform and are heard by the ordinary magistrate's court, so there is no online 'pay fine' or 'request to contest' button for them."
     },
     {
+      "q": "Where can I see Maharashtra's own list of traffic fines?",
+      "a": "Maharashtra Highway Traffic Police publishes a 234-row 'Acts and Fine' document under Information → Acts & Rules at https://highwaypolice.maharashtra.gov.in/info-rules-page/. It lists each offence by section, in English and Marathi, with a Fine and a separate Repetitive Fine column. It is not on mahatrafficechallan.gov.in, which only searches and takes payment, so most people never find it."
+    },
+    {
       "q": "How do I dispute a challan booked on my vehicle by mistake?",
       "a": "The state portal carries a dedicated link, 'Click here to raise a grievance for wrongly booked challan or any payment issue', which opens https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm. The same route handles payments that were debited but did not clear the challan; the helpdesk number 844 844 8960 is published on the same page."
     }
   ],
-  "fine_overrides": {},
+  "fine_overrides": {
+    "overspeeding": {
+      "amount_text": "Graded into four vehicle classes, with the repetitive fine equal to the first: ₹1,000 for a 2/3-wheeler, ₹1,500 for a tractor, ₹2,000 for an LMV and ₹4,000 for an MMV/HMV (Sec 112/183(1) MVA). Maharashtra's schedule is finer-grained than the central Act, which knows only 'light motor vehicle' and 'medium or heavy'",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹2,000 first offence and ₹5,000 repetitive (Sec 39/192(1) MVA), and it is booked twice — once on the driver and once on the owner, as two separate rows of the schedule. Note this repetitive figure is ₹5,000, not the ₹10,000 ceiling the central section allows",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "driving-without-puc": {
+      "amount_text": "Far below the ₹10,000 central ceiling. For a 2/3-wheeler: ₹1,000 and disqualification from holding a licence for 3 months, rising to ₹3,000 on repetition. For anything other than a 2/3-wheeler: ₹2,000 and a 3-month disqualification, rising to ₹5,000 (Sec 190(2) MVA, booked separately on driver and owner). Merely failing to produce a valid PUCC is a separate and much lighter offence at ₹500 / ₹1,500 under CMVR 115(7)/177 MVA",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "Graded by vehicle class: ₹1,000 for a 2/3-wheeler, ₹2,000 for an LMV and ₹4,000 for other vehicles, with a repetitive fine of ₹10,000 within 3 years of the first offence. The schedule labels it 'Sec 184C MVA', its shorthand for clause (c) of the Explanation to Section 184 — the one limb of Section 184 that Section 200 allows to be compounded",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "Maharashtra splits these. 'Dangerous driving' under Sec 184 MVA is listed with a fine of 0 and marked Non-Compoundable, so it goes to court. But 'Jumping signal' is booked separately under MMVR 239/177 MVA at ₹500 first offence and ₹1,500 repetitive — which is why a red-light challan is often payable online in Maharashtra when the same violation is a court challan in Delhi. 'Police manual signal violation' carries the same ₹500 / ₹1,500",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "drunk-driving": {
+      "amount_text": "Listed as 'Drunk and Drive — Sec 185 MVA' with a fine of 0 and marked Non-Compoundable. There is no amount to pay online; the case goes to court",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "driving-without-helmet": {
+      "amount_text": "The amount matches the central figure — ₹1,000 and, in addition, disqualification from holding a motor driving licence for 3 months, identical for the repetitive offence — but Maharashtra notifies it as four separate rows: riding without a helmet by the driver and by the pillion, each booked against both the driver and the owner (Sec 129/194(D) MVA). One bare-headed rider can therefore generate more than one challan",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    },
+    "driving-without-seatbelt": {
+      "amount_text": "₹1,000 first and repetitive, matching the central figure, but notified as separate rows so the exposure adds up: 'Without Seatbelt' (Sec 194B(1)), 'Without seatbelt other than driver' for passengers (Sec 194B(1)), and a child up to 14 not provided a seat with an appropriate child restraint system (Sec 194B(2)) at ₹1,000, booked against the driver and the owner separately",
+      "source": "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
+    }
+  },
   "sources": [
     "https://mahatrafficechallan.gov.in/payechallan/PaymentService.htm",
     "https://mahatrafficechallan.gov.in/MH-Echallan-Grievance/Grievance.htm",
     "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://highwaypolice.maharashtra.gov.in/info-rules-page/",
+    "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf",
+    "https://highwaypolice.maharashtra.gov.in/faq/",
+    "https://highwaypolice.maharashtra.gov.in/e-challan-page/",
     "https://echallan.parivahan.gov.in/index/accused-challan",
     "https://vcourts.gov.in/virtualcourt/",
     "https://vcourts.gov.in/virtualcourt/help.php",

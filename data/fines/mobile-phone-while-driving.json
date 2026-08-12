@@ -4,7 +4,7 @@
   "target_keyword": "mobile phone driving fine india",
   "mva_section": "Section 184, Explanation clause (c), Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)",
   "description": "Before 2019 phone use while driving was usually booked under the residual Section 177 for a few hundred rupees. The Motor Vehicles (Amendment) Act 2019 inserted an Explanation into Section 184 declaring that 'use of handheld communications devices while driving' amounts to driving in a manner dangerous to the public, which lifts the offence into Section 184's much heavier penalty band. It is also the only limb of Section 184 that Section 200 allows to be compounded, so unlike red-light jumping or dangerous driving it can normally still be settled without a court appearance.",
-  "base_fine_text": "First offence under Section 184: imprisonment for not less than 6 months and up to 1 year, or a fine of not less than ₹1,000 and up to ₹5,000, or both. States that compound it commonly notify the ₹5,000 ceiling — Delhi's schedule shows ₹5,000",
+  "base_fine_text": "First offence under Section 184: imprisonment for not less than 6 months and up to 1 year, or a fine of not less than ₹1,000 and up to ₹5,000, or both. State compounding amounts vary widely within that band — Delhi's schedule pins it at the ₹5,000 ceiling, while Maharashtra grades it by vehicle class at ₹1,000 for a 2/3-wheeler, ₹2,000 for an LMV and ₹4,000 for other vehicles",
   "base_fine_min": 1000,
   "base_fine_max": 5000,
   "repeat_fine_text": "Second or subsequent offence within three years of a previous similar offence: imprisonment up to 2 years, or a fine of ₹10,000, or both — Delhi's schedule shows ₹10,000 for a subsequent offence",
@@ -29,7 +29,8 @@
     "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
     "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28452&sectionno=177&orderno=194",
     "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28483&sectionno=206&orderno=237",
-    "https://traffic.delhipolice.gov.in/traffic-offences"
+    "https://traffic.delhipolice.gov.in/traffic-offences",
+    "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf"
   ],
   "last_verified": "2026-08-12"
 }
