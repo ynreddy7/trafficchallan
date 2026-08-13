@@ -37,7 +37,7 @@ const sourceHost = (url: string) => new URL(url).hostname.replace(/^www\./, '');
 const faqs = [
   {
     q: 'How do I know if a challan SMS is fake?',
-    a: 'Do not tap anything in the message. Open a browser, type echallan.parivahan.gov.in (or your state’s official portal from the allow-list on this page) yourself, and enter your vehicle number. If the challan is real it appears there with its amount and photo evidence; if the portal shows nothing, nothing is owed no matter what the message claims. Also check vcourts.gov.in for court-referred challans. PIB Fact Check’s reported advice goes further: never click challan links received by SMS or WhatsApp at all.'
+    a: 'Do not tap anything in the message. Open a browser, type echallan.parivahan.gov.in (or your state’s official portal from the allow-list on this page) yourself, and enter your vehicle number. If the challan is real it appears there with its amount and photo evidence; if no portal shows it, there is nothing to pay right now — though a camera challan can surface days after the violation, so recheck before assuming the matter is closed. Also check vcourts.gov.in for court-referred challans. PIB Fact Check’s reported advice goes further: never click challan links received by SMS or WhatsApp at all.'
   },
   {
     q: 'What does a genuine challan SMS sender ID look like?',
@@ -72,8 +72,8 @@ const jsonld = [faqJsonLd(faqs)];
     Never tap the link in the message. Open your browser and <strong>type the official portal address yourself</strong>
     &mdash; <strong>echallan.parivahan.gov.in</strong> &mdash; then enter your vehicle number; check your state&rsquo;s own portal
     from the list below and <strong>vcourts.gov.in</strong> too, since court-referred challans show there. If no portal
-    shows the challan, nothing is owed. And one absolute rule: <strong>no government challan ever arrives as an APK
-    file</strong> to install.
+    shows the challan, there is nothing to pay right now &mdash; recheck in a few days, since camera challans can take
+    time to appear. And one absolute rule: <strong>no government challan ever arrives as an APK file</strong> to install.
   </AnswerBox>
   <LastVerified date={lastVerified} />
   <p class="legal-note">

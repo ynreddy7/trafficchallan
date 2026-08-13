@@ -1,15 +1,27 @@
 {
   "national_sittings": [
-    { "date": "2026-03-14", "status": "held" },
-    { "date": "2026-05-09", "status": "held" },
-    { "date": "2026-09-12", "status": "scheduled" },
-    { "date": "2026-12-12", "status": "scheduled" }
+    {
+      "date": "2026-03-14",
+      "status": "held"
+    },
+    {
+      "date": "2026-05-09",
+      "status": "held"
+    },
+    {
+      "date": "2026-09-12",
+      "status": "scheduled"
+    },
+    {
+      "date": "2026-12-12",
+      "status": "scheduled"
+    }
   ],
   "delhi_token": {
     "portal": "https://traffic.delhipolice.gov.in/lokadalat/",
     "opens_days_before": 5,
-    "daily_cap_note": "As reported for the March 2026 edition, Delhi Traffic Police released 50,000 challans per day for download on the token portal, up to a total cap of 2 lakh challans per Lok Adalat; DSLSA announces the exact caps afresh per edition.",
-    "limits_note": "As reported for the March 2026 edition, tokens opened on 9 March (five days before the sitting) and a maximum of 5 challans per vehicle could be processed, with an eligibility cutoff of challans pending up to 31 October 2025; DSLSA announces the exact windows, limits and cutoffs afresh for each edition."
+    "daily_cap_note": "As reported for the May 2026 edition, Delhi Traffic Police released around 50,000 challans per day for download on the token portal across the four booking days; DSLSA announces the exact caps afresh per edition.",
+    "limits_note": "As reported for the May 2026 edition, the token window opened on 4 May at 10:00 AM and ran to 7 May — five days before the 9 May sitting; DSLSA announces the exact windows, per-vehicle limits and eligibility cutoffs afresh for each edition."
   },
   "delhi_extras": {
     "digital_lok_adalat_note": "DSLSA organised a special Lok Adalat exclusively for traffic challans across all Delhi district court complexes on 14 February 2026 and launched a Digital Lok Adalat application for settling traffic matters.",
@@ -25,9 +37,9 @@
     "https://traffic.delhipolice.gov.in/special-lok-adalat/",
     "https://traffic.delhipolice.gov.in/evecourtddc/",
     "https://dslsa.org/",
-    "https://delhincrtimes.com/delhi-news/delhi-traffic-challan-lok-adalat-2026-token-court-how-to-apply/",
     "https://www.livelaw.in/events/dslsa-organises-special-traffic-lok-adalat-launches-digital-lok-adalat-application-delhi-523288",
-    "https://lawchakra.in/other-courts/delhi-weekend-traffic-violation-case/"
+    "https://lawchakra.in/other-courts/delhi-weekend-traffic-violation-case/",
+    "https://digilawyer.ai/latest-announcements/national-lok-adalat-challan-settlement-dates"
   ],
   "last_verified": "2026-08-13"
 }
