@@ -26,6 +26,7 @@ export const GET: APIRoute = async () => {
     `- [Fine calculator](${ORIGIN}/calculator/): offence × state × repeat lookup`,
     `- [Compare fines across states](${ORIGIN}/compare/): offence × state matrix`,
     `- [RTO code lookup](${ORIGIN}/rto-codes/): which city a number plate is from — every RTO code for all 36 states and union territories`,
+    `- [Challan status decoder](${ORIGIN}/challan-status/): what every official e-challan status (Pending, Disposed, Sent to Court, Cognizance Denied…) means, with sourced next steps and Virtual Courts state coverage`,
     '',
     '## Live status',
     `- [Challan discount & Lok Adalat tracker](${ORIGIN}/challan-discount/): state-by-state discount/amnesty scheme status with government-order sources, next National Lok Adalat date, Delhi token steps`,

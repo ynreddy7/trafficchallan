@@ -126,6 +126,52 @@ export const LokAdalatSchema = z.object({
 });
 export type LokAdalatRecord = z.infer<typeof LokAdalatSchema>;
 
+/**
+ * One decoded e-challan/vcourts status term for /challan-status/.
+ * Meanings and next_steps must be grounded in the sources listed on the
+ * record; next_steps are procedural options, never outcome predictions
+ * (CONTENT_STANDARDS rule 13).
+ */
+export const ChallanStatusSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
+  term: z.string().min(2),
+  seen_on: z.array(z.string().min(10)).min(1),
+  meaning: z.string().min(60),
+  next_steps: z.array(z.string().min(10)).min(1),
+  sources: z.array(z.string().url()).min(1)
+});
+export type ChallanStatusRecord = z.infer<typeof ChallanStatusSchema>;
+
+export const StatusFileSchema = z
+  .object({
+    statuses: z.array(ChallanStatusSchema).min(1),
+    vcourts: z.object({
+      states_count: z.number().int().positive(),
+      departments_count: z.number().int().positive(),
+      covered_states: z.array(z.string().min(2)).min(1),
+      footnotes: z.array(z.string().min(20)),
+      source: z.string().url()
+    }),
+    sources: z.array(z.string().url()).min(1),
+    last_verified: isoDate
+  })
+  .superRefine((rec, ctx) => {
+    const seen = new Set<string>();
+    for (const s of rec.statuses) {
+      if (seen.has(s.slug)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, message: `duplicate status slug "${s.slug}"` });
+      }
+      seen.add(s.slug);
+    }
+    if (rec.vcourts.covered_states.length !== rec.vcourts.states_count) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: `vcourts states_count ${rec.vcourts.states_count} does not match covered_states length ${rec.vcourts.covered_states.length}`
+      });
+    }
+  });
+export type StatusFileRecord = z.infer<typeof StatusFileSchema>;
+
 export const RtoStateSchema = z.object({
   slug: z.string().regex(/^[a-z][a-z-]*$/),
   state_name: z.string().min(2),

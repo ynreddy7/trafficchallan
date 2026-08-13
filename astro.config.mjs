@@ -14,10 +14,12 @@ const TRUST_PAGE_DATE = '2026-08-13';
  * date; guides come from frontmatter via gray-matter (Astro's content
  * collections aren't available in astro.config.mjs); the four data-summary
  * pages (/, /fines/, /calculator/, /compare/) get the max date across all
- * sources (states + fines + guides + schemes + lok-adalat, mirroring
- * src/lib/data.ts newestVerifiedDate() — change both together; RTO files
- * are deliberately excluded there and here); /challan-discount/ gets the
- * max across schemes + lok-adalat only (mirroring data.ts maxSchemeDate());
+ * sources (states + fines + guides + schemes + lok-adalat +
+ * challan-statuses, mirroring src/lib/data.ts newestVerifiedDate() —
+ * change both together; RTO files are deliberately excluded there and
+ * here); /challan-discount/ gets the max across schemes + lok-adalat only
+ * (mirroring data.ts maxSchemeDate()); /challan-status/ gets the
+ * challan-statuses.json date, which also joins the global max;
  * /rto-codes/ gets the max across data/rto/ files only (its dates never
  * join the global max — slow-moving directory data must not bump
  * site-wide freshness); trust pages get the fixed site-launch date.
@@ -69,6 +71,15 @@ function buildLastmodMap() {
   const schemeMax = [...schemeDates].sort().at(-1);
   if (schemeMax) map.set('/challan-discount/', schemeMax);
   allDates.push(...schemeDates);
+
+  // Challan-status decoder: its file's date is /challan-status/'s lastmod
+  // AND joins the global max (mirrors data.ts newestVerifiedDate(), which
+  // includes loadStatusFile().last_verified — change both together).
+  const statusFile = JSON.parse(readFileSync(join(process.cwd(), 'data', 'challan-statuses.json'), 'utf-8'));
+  if (statusFile.last_verified) {
+    map.set('/challan-status/', statusFile.last_verified);
+    allDates.push(statusFile.last_verified);
+  }
 
   // RTO directory files: their max is /rto-codes/'s own lastmod ONLY —
   // deliberately NOT pushed into allDates (mirrors data.ts, where

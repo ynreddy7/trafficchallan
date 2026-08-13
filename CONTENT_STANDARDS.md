@@ -38,3 +38,15 @@
     fetchable official list, that list is the source of record (verification method "full");
     where it does not, verify a sample against official RTO office pages and disclose the
     method and sample per state ON the page (verification method "sampled").
+13. LEGAL CONTENT: a statute is cited ONLY after fetching the section text from India Code
+    the same day — quote verbatim or paraphrase WITH the section number; never cite a
+    section from blogs or memory. Procedure in 2026 cites the BNSS 2023, not the repealed
+    CrPC; a BNSS section number that cannot be verified from a primary source is not cited
+    (describe the step generically instead — "the court may issue a summons"). Judgments
+    are cited only from the judgment text itself (indiankanoon.org or the court site),
+    with the citation as printed in the fetched text, and holdings stated narrowly. Never
+    predict what a court will do, never advise skipping a court date or evading service,
+    and never declare a specific message or domain "genuine" for a reader's case — myths
+    are countered by stating what IS documented, not with counter-predictions. Every
+    legal-process page visibly carries: "This is general information, not legal advice.
+    For your specific case, consult an advocate."

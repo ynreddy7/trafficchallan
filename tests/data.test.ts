@@ -3,7 +3,7 @@ import { mkdtempSync, writeFileSync, readdirSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import matter from 'gray-matter';
-import { loadStates, loadOffences, loadSchemes, loadLokAdalat, newestVerifiedDate } from '../src/lib/data';
+import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadStatusFile, newestVerifiedDate } from '../src/lib/data';
 
 function tmpDataDir(files: Record<string, unknown>): string {
   const dir = mkdtempSync(join(tmpdir(), 'tc-data-'));
@@ -54,13 +54,14 @@ describe('newestVerifiedDate', () => {
   // that the function still agrees with astro.config.mjs's
   // buildLastmodMap(), which computes the same max from the same sources
   // for the sitemap.
-  it('is at least as new as every state, offence, guide, scheme and lok-adalat date', () => {
+  it('is at least as new as every state, offence, guide, scheme, lok-adalat and status-file date', () => {
     const newest = newestVerifiedDate();
 
     for (const s of loadStates()) expect(newest >= s.last_verified).toBe(true);
     for (const o of loadOffences()) expect(newest >= o.last_verified).toBe(true);
     for (const s of loadSchemes()) expect(newest >= s.last_verified).toBe(true);
     expect(newest >= loadLokAdalat().last_verified).toBe(true);
+    expect(newest >= loadStatusFile().last_verified).toBe(true);
 
     const guidesDir = join(process.cwd(), 'src', 'content', 'guides');
     for (const file of readdirSync(guidesDir).filter((f) => f.endsWith('.md'))) {
@@ -69,7 +70,7 @@ describe('newestVerifiedDate', () => {
     }
   });
 
-  it('matches the known max across states, offences, guides, schemes and lok-adalat', () => {
+  it('matches the known max across states, offences, guides, schemes, lok-adalat and the status file', () => {
     const guidesDir = join(process.cwd(), 'src', 'content', 'guides');
     const guideDates = readdirSync(guidesDir)
       .filter((f) => f.endsWith('.md'))
@@ -81,7 +82,8 @@ describe('newestVerifiedDate', () => {
       ...loadOffences().map((o) => o.last_verified),
       ...guideDates,
       ...loadSchemes().map((s) => s.last_verified),
-      loadLokAdalat().last_verified
+      loadLokAdalat().last_verified,
+      loadStatusFile().last_verified
     ].sort().at(-1);
 
     expect(newestVerifiedDate()).toBe(expected);

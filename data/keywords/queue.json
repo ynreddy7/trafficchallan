@@ -385,7 +385,8 @@
       "max_cpc": 10.49,
       "min_seo_difficulty": 36,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-status"
     },
     {
       "slug_suggestion": "details",

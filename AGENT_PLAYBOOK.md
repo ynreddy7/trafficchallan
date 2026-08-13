@@ -6,7 +6,9 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
 1. `git pull`. Read CONTENT_STANDARDS.md. Run `npm install` if lockfile changed.
 2. Run the Discount watch (next section) BEFORE taking a queue item.
 3. Take the TOP item with status "pending" from data/keywords/queue.json.
-4. Research it per CONTENT_STANDARDS (official sources only, verify today).
+4. Research it per CONTENT_STANDARDS (official sources only, verify today). Legal-process
+   content follows rule 13: statutes only from a same-day India Code fetch, BNSS 2023 (not
+   CrPC) for procedure, no outcome predictions, and the not-legal-advice line on the page.
 5. Produce it as the right page type:
    - state → data/states/<slug>.json (schema: src/lib/schemas.ts StateSchema)
    - offence → data/fines/<slug>.json (OffenceSchema)

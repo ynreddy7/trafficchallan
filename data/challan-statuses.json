@@ -1,0 +1,245 @@
+{
+  "statuses": [
+    {
+      "slug": "pending",
+      "term": "Pending",
+      "seen_on": [
+        "echallan.parivahan.gov.in — Check Challan Status results table",
+        "eChallan application language file ('Pending', 'Pending Cases')"
+      ],
+      "meaning": "The challan is recorded as unpaid and not yet disposed. 'Pending' is the state in which the portal offers the Pay Now button, and for court-eligible pending challans a Status link points to the challan's court record. While a compoundable challan is still with the department it can normally be settled by paying: Section 200 of the Motor Vehicles Act 1988 lets the listed offences be compounded — before or after a prosecution is instituted — by the officers and for the amounts the state government notifies.",
+      "next_steps": [
+        "If you accept the challan, pay it online at echallan.parivahan.gov.in or on the state portal named on the challan, while it is still with the department.",
+        "If a Status link or button appears against the row, open it — the challan may already have court data attached.",
+        "If you dispute it, note the issuing authority printed on the challan and contact that department; in virtual-court states, the Request to Contest option becomes available once the case reaches the virtual court."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/index/accused-challan",
+        "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
+        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28477"
+      ]
+    },
+    {
+      "slug": "disposed",
+      "term": "Disposed",
+      "seen_on": [
+        "echallan.parivahan.gov.in — Check Challan Status results table",
+        "eChallan language file ('Disposed Cases', 'On Road Disposed')"
+      ],
+      "meaning": "The challan is closed in the eChallan system — paid online, paid in cash, or otherwise settled or decided. The portal's own status template maps its internal value 'Cash' to the display word 'Disposed', so a challan settled in cash at the roadside or at an office shows the same closed status as an online payment.",
+      "next_steps": [
+        "Download the receipt from the Receipt column on the status page and keep it with the vehicle papers.",
+        "If the case went through a virtual court, receipts can be reprinted at vcourts.gov.in via View and then Reprint, after OTP verification (vcourts FAQ Q5–Q6)."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/index/accused-challan",
+        "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
+        "https://vcourts.gov.in/virtualcourt/faq.php"
+      ]
+    },
+    {
+      "slug": "sent-to-court",
+      "term": "Sent to Court",
+      "seen_on": [
+        "echallan.parivahan.gov.in — challan-status page ('Sent To Court Data' block)",
+        "eChallan language file ('Sent To Court', 'Challan In Court')"
+      ],
+      "meaning": "The department has forwarded the challan to a court — regular or virtual. The portal's Sent To Court block names the court, its address and the date it was sent, and the system message 'Payment cannot be saved as the challan has been sent to court.' shows that once forwarded, a payment can no longer be recorded on the eChallan side.",
+      "next_steps": [
+        "Open the Status link on the results row to see which court received the challan and on what date.",
+        "If it went to a virtual court, search the case on vcourts.gov.in by mobile number, CNR, party name, or vehicle/challan number, then either pay the fine or use Request to Contest.",
+        "If it went to a regular court, attend on the date in the summons or appear through an advocate; under Section 208 of the Motor Vehicles Act 1988 the court may state on the summons that you can instead plead guilty and remit the specified sum by money order."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/api/challan-status/challan/DL18322190923183816",
+        "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
+        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28485"
+      ]
+    },
+    {
+      "slug": "forwarded-to-virtual-court",
+      "term": "Forwarded to Virtual Court",
+      "seen_on": [
+        "echallan.parivahan.gov.in — disclaimer modal on the Check Challan Status page",
+        "challan-status page ('Status from virtual court' block)"
+      ],
+      "meaning": "A virtual-court case has been created from the challan: it gets a court CNR (Delhi traffic cases begin DLVC…) and a case number in the style TC/12345/2026. The eChallan portal's own disclaimer says such a challan 'has been forwarded to Virtual Court… but still it can be paid here' — with an explicit warning to pay on only one of the two portals.",
+      "next_steps": [
+        "Look the case up on vcourts.gov.in by mobile number, CNR, party name, or vehicle/challan number.",
+        "Choose Pay Fine — the vcourts site says the case is disposed immediately after online payment of the fine — or choose Request to Contest, which assigns the case to a physical court with a date.",
+        "Pay on one portal only: the eChallan disclaimer explicitly warns against paying the same challan in both places."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/index/accused-challan",
+        "https://echallan.parivahan.gov.in/api/challan-status/challan/DL18322190923183816",
+        "https://vcourts.gov.in/virtualcourt/faq.php"
+      ]
+    },
+    {
+      "slug": "paid-virtual-court",
+      "term": "Paid (virtual-court case)",
+      "seen_on": [
+        "vcourts.gov.in — case status badge",
+        "vcourts FAQ Q6 ('The status of the case is now Paid.')"
+      ],
+      "meaning": "The fine has been paid online through the virtual court. The vcourts site's own description of the process is that 'the case is disposed immediately after online payment of the fine', so a Paid virtual-court case is a closed case on the court side.",
+      "next_steps": [
+        "Reprint or download the receipt at vcourts.gov.in via the View link and then Reprint, after OTP verification.",
+        "Keep the receipt with the vehicle papers — the portal indicates no further action for a paid case."
+      ],
+      "sources": [
+        "https://vcourts.gov.in/virtualcourt/faq.php",
+        "https://vcourts.gov.in/virtualcourt/index.js"
+      ]
+    },
+    {
+      "slug": "contested-transferred",
+      "term": "Contested — transferred to regular court",
+      "seen_on": [
+        "vcourts.gov.in — Request to Contest confirmation dialog",
+        "vcourts FAQ Q3/Q7 (acknowledgement with court name and date)"
+      ],
+      "meaning": "Choosing Request to Contest ends the online-payment option: the vcourts confirmation dialog states 'Once you contest case, you can not pay fine and case will be transfered to regular court.' An acknowledgement then displays the court name and the date assigned for the case, and the summons shown in the flow is styled a 'Special Summons'.",
+      "next_steps": [
+        "Record the assigned court name and date from the acknowledgement screen.",
+        "Appear on that date in person or through an advocate — under Section 228 of the Bharatiya Nagarik Suraksha Sanhita, 2023 a Magistrate issuing a summons may dispense with personal attendance and permit appearance by advocate, and may also direct personal attendance at any stage.",
+        "View or download the summons via the 'Click here to view summon' link after OTP verification (vcourts FAQ Q8)."
+      ],
+      "sources": [
+        "https://vcourts.gov.in/virtualcourt/index.js",
+        "https://vcourts.gov.in/virtualcourt/faq.php",
+        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_5_23_00049_202346_1719552320687&sectionID=91214"
+      ]
+    },
+    {
+      "slug": "cognizance-denied",
+      "term": "Cognizance Denied",
+      "seen_on": [
+        "echallan.parivahan.gov.in — challan-status page ('Cognizance Denied Data' block)"
+      ],
+      "meaning": "A status returned from the virtual court and displayed on the eChallan status page: the named virtual-court judge did not take cognizance of the challan on the recorded date. The block lists the challan number, party name, fine imposed, CNR, case number and the judge's name. The portal does not define the term further and does not say what happens to the challan next — so treat it as neither a closure nor an escalation until confirmed.",
+      "next_steps": [
+        "Note the CNR and case number shown and look them up on vcourts.gov.in or the eCourts services.",
+        "Ask the issuing traffic or transport department — or the court named in the Sent To Court block — where the matter now stands.",
+        "Do not assume the challan is closed: the portal itself does not say, so verify with the department or court before treating it as settled."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/api/challan-status/challan/DL18322190923183816",
+        "https://echallan.parivahan.gov.in/api/challan-status/challan/OR36055210914145940"
+      ]
+    },
+    {
+      "slug": "payment-transaction",
+      "term": "Payment transaction: Pending / Success / Failed",
+      "seen_on": [
+        "echallan.parivahan.gov.in/payment-verification — Check Pending Transaction",
+        "site-wide notice on pending / stuck / deducted payments"
+      ],
+      "meaning": "These are payment-gateway transaction statuses, not challan statuses. The verification page maps its internal codes to Pending, Success and Failed; 'Pending' here means the payment attempt itself is unverified or stuck — not that the challan is unpaid by choice. The portal's own notice says to use the Check Pending Transaction module whenever a payment is pending, stuck, or deducted from your account.",
+      "next_steps": [
+        "Open Check Pending Transaction on echallan.parivahan.gov.in and click Verify against the pending row.",
+        "If money was deducted but the status stays Failed or Pending, retain the bank transaction reference and re-verify there — that is the portal's own stated route for stuck payments."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/payment-verification",
+        "https://echallan.parivahan.gov.in/index/accused-challan"
+      ]
+    },
+    {
+      "slug": "under-investigation",
+      "term": "Under investigation",
+      "seen_on": [
+        "eChallan portal script message ('Your challan is under investigation')"
+      ],
+      "meaning": "The challan record is flagged as under investigation in the eChallan system — the payment flow carries an internal under-investigation flag — and the portal does not explain publicly what is being verified or how long the check takes.",
+      "next_steps": [
+        "Contact the issuing department to ask what is being verified on the record.",
+        "Re-check the status after a few days before attempting payment again."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/www/module/controllers/index-controller.js"
+      ]
+    },
+    {
+      "slug": "challan-not-found",
+      "term": "Challan Not Found",
+      "seen_on": [
+        "echallan.parivahan.gov.in — accused-challan and payment-verification empty-result message"
+      ],
+      "meaning": "No record matched what you typed. That can mean a data-entry lag, a state system that is not integrated with the national portal, or simply a wrong challan, vehicle or licence number — it is not proof that no challan exists against the vehicle.",
+      "next_steps": [
+        "Re-check the challan, vehicle or DL number and try the page's other search modes.",
+        "Try the issuing state's own portal if that state runs a separate challan system.",
+        "Type the address yourself and use only echallan.parivahan.gov.in — the portal's own notice names a lookalike site (echallanparivahan.in) used to collect fraudulent payments."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/index/accused-challan",
+        "https://echallan.parivahan.gov.in/payment-verification"
+      ]
+    },
+    {
+      "slug": "department-labels",
+      "term": "Back-office labels: 'Challan reverted from court', 'Pending from Court', 'Released from Court', 'Sent To Lok Adalat' and others",
+      "seen_on": [
+        "eChallan application language file lang_en.js (official strings)"
+      ],
+      "meaning": "The official eChallan application also carries strings such as 'Challan reverted from court', 'Pending from Court', 'Released from Court', 'Not Sent To Court', 'Not Consumed by Vcourts', 'Challan Sent To Lok Adalat Successfully.' and 'Payment not initiated.' — largely back-office and report labels. The public pages do not define them, so no fuller gloss can honestly be given. What 'Sent To Lok Adalat' does show is that challans are also routed to Lok Adalats for settlement: a Lok Adalat works by compromise between the parties, and under Section 21 of the Legal Services Authorities Act 1987 a settled award is final and binding, with no appeal to any court.",
+      "next_steps": [
+        "If one of these labels appears against your specific challan, ask the issuing department what it denotes for that record.",
+        "For a challan routed to a Lok Adalat: attending is for settlement by compromise; if no settlement is reached, the record is returned to the referring court for disposal in accordance with law (Section 20(5), Legal Services Authorities Act 1987)."
+      ],
+      "sources": [
+        "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
+        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_3_46_00003_198739_1517807322718&sectionID=27594"
+      ]
+    }
+  ],
+  "vcourts": {
+    "states_count": 22,
+    "departments_count": 32,
+    "covered_states": [
+      "Assam (Transport + Traffic)",
+      "Chandigarh (Traffic)",
+      "Chhattisgarh (Traffic + Transport)",
+      "Delhi (Notice Department + Traffic Department)",
+      "Gujarat (Transport + Traffic)",
+      "Haryana (Traffic)",
+      "Himachal Pradesh (Traffic)",
+      "Jammu and Kashmir (Jammu Traffic + Kashmir Traffic)",
+      "Karnataka (Traffic)",
+      "Kerala (Transport + Police)",
+      "Madhya Pradesh (Traffic)",
+      "Maharashtra (NASHIK TRAFFIC DEPARTMENT + Transport Department)",
+      "Manipur (Transport + Traffic)",
+      "Meghalaya (Traffic)",
+      "Odisha (Odisha Traffic CTC-BBSR Commissionerate)",
+      "Punjab (Traffic)",
+      "Rajasthan (Traffic)",
+      "Tamil Nadu (Traffic)",
+      "Tripura (Traffic)",
+      "Uttarakhand (Transport + Traffic)",
+      "Uttar Pradesh (Traffic)",
+      "West Bengal (Traffic)"
+    ],
+    "footnotes": [
+      "Counted from the live department dropdown on vcourts.gov.in on 13 August 2026: 32 department entries across 22 states and union territories.",
+      "Maharashtra's traffic entry is literally 'NASHIK TRAFFIC DEPARTMENT' (city-specific), alongside a separate statewide 'Maharashtra (Transport Department)' entry — traffic-police coverage there is not statewide.",
+      "Odisha's coverage is limited to the 'Odisha Traffic CTC-BBSR Commissionerate' (Cuttack–Bhubaneswar).",
+      "Telangana and Andhra Pradesh are absent entirely, as are Bihar, Jharkhand, Goa, Sikkim, Nagaland, Mizoram, Arunachal Pradesh, and union territories other than Chandigarh, Delhi and Jammu & Kashmir.",
+      "Delhi has a distinct 'Notice Department' in addition to its 'Traffic Department'; Jammu & Kashmir is split into Jammu Traffic and Kashmir Traffic; Kerala appears as Transport Department + Police Department, with no entry labelled 'Traffic'.",
+      "The vcourts site describes its own process as: 'The case proceedings are completed online and the case is disposed immediately after online payment of the fine.' Site content last reviewed 24 April 2026 per its footer."
+    ],
+    "source": "https://vcourts.gov.in/virtualcourt/index.php"
+  },
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://echallan.parivahan.gov.in/payment-verification",
+    "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
+    "https://vcourts.gov.in/virtualcourt/index.php",
+    "https://vcourts.gov.in/virtualcourt/faq.php",
+    "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28477",
+    "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28485",
+    "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_5_23_00049_202346_1719552320687&sectionID=91214"
+  ],
+  "last_verified": "2026-08-13"
+}

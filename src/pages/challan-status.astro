@@ -1,0 +1,205 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import CautionCallout from '../components/CautionCallout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LastVerified from '../components/LastVerified.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import ShareBar from '../components/ShareBar.astro';
+import SourceList from '../components/SourceList.astro';
+import StepList from '../components/StepList.astro';
+import { loadStatusFile } from '../lib/data';
+import { faqJsonLd } from '../lib/seo';
+import { slugify } from '../lib/format';
+
+const statusFile = loadStatusFile();
+const { statuses, vcourts } = statusFile;
+const lastVerified = statusFile.last_verified;
+
+// Question-form H2 per status — keyed by slug so the data file stays plain
+// vocabulary and the page owns the phrasing. Fallback keeps any future
+// status renderable without touching this map.
+const QUESTION_BY_SLUG: Record<string, string> = {
+  'pending': "What does 'Pending' mean on an e-challan?",
+  'disposed': "What does 'Disposed' mean on an e-challan?",
+  'sent-to-court': "What does 'Sent to Court' mean on an e-challan?",
+  'forwarded-to-virtual-court': "What does 'forwarded to Virtual Court' mean?",
+  'paid-virtual-court': "What does 'Paid' mean on a virtual-court case?",
+  'contested-transferred': "What happens after 'Request to Contest' on vcourts?",
+  'cognizance-denied': "What does 'Cognizance Denied' mean on an e-challan?",
+  'payment-transaction': "What do the payment statuses Pending, Success and Failed mean?",
+  'under-investigation': "What does 'Your challan is under investigation' mean?",
+  'challan-not-found': "Why does the portal say 'Challan Not Found'?",
+  'department-labels': "What do 'Challan reverted from court' and other portal labels mean?"
+};
+const question = (slug: string, term: string) => QUESTION_BY_SLUG[slug] ?? `What does '${term}' mean on an e-challan?`;
+
+// Shorter labels for the jump picker where the term itself is a mouthful.
+const PICK_LABEL: Record<string, string> = {
+  'department-labels': "'Challan reverted from court' / other portal labels",
+  'contested-transferred': 'Contested (transferred to regular court)'
+};
+const pickLabel = (s: { slug: string; term: string }) => PICK_LABEL[s.slug] ?? s.term;
+
+// Per-section source line: hostnames, with a counter when a host repeats.
+const sourceLabels = (sources: string[]) => {
+  const seen = new Map<string, number>();
+  return sources.map((url) => {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    const n = (seen.get(host) ?? 0) + 1;
+    seen.set(host, n);
+    return { url, label: n === 1 ? host : `${host} (${n})` };
+  });
+};
+
+// "State (Departments)" rows for the vcourts coverage table.
+const vcourtRows = vcourts.covered_states.map((entry) => {
+  const cut = entry.indexOf(' (');
+  return cut === -1
+    ? { state: entry, departments: '—' }
+    : { state: entry.slice(0, cut), departments: entry.slice(cut + 2).replace(/\)$/, '') };
+});
+
+// Aggregated, deduped sources across every status + the vcourts block.
+const allSources = [
+  ...new Set([...statuses.flatMap((s) => s.sources), vcourts.source, ...statusFile.sources])
+];
+
+const faqs = [
+  {
+    q: "What does 'Sent to Court' mean on an e-challan?",
+    a: 'The department has forwarded the challan to a court — regular or virtual. The eChallan status page names the court, its address and the date it was sent, and the portal’s own message — ‘Payment cannot be saved as the challan has been sent to court.’ — shows that once forwarded, a payment can no longer be recorded on the eChallan side. If it went to a virtual court you can pay the fine or contest the case at vcourts.gov.in; if it went to a regular court, the matter is dealt with there.'
+  },
+  {
+    q: 'Can I still pay online after my challan goes to court?',
+    a: 'Often, yes. For a challan forwarded to a virtual court, vcourts.gov.in offers Pay Fine and says the case is disposed immediately after online payment; the eChallan portal’s own disclaimer says such a challan can still be paid there too, with a warning to pay in only one place. Once a challan is with a regular court the eChallan system stops recording payments against it — but the summons itself may say how the fine can be remitted: under Section 208 of the Motor Vehicles Act 1988, the court may state on the summons that the accused can plead guilty and remit the specified sum by money order without appearing.'
+  },
+  {
+    q: 'What happens if I ignore a challan that has gone to court?',
+    a: 'No one can tell you in advance how a particular court will act, but the procedure the law lays down is documented. The court may issue a summons, in writing or by electronic communication (Sections 63–64, Bharatiya Nagarik Suraksha Sanhita, 2023). If a duly served summons is not obeyed in time and no reasonable excuse is offered, Section 90 of the same Sanhita lets the court, after recording its reasons in writing, issue a warrant of arrest. Separately, Section 206 of the Motor Vehicles Act 1988 lets police seize the licence of a driver charged under the Act whom they believe may avoid service of a summons. Appearing — in person or through an advocate — keeps every documented option open. This is general information, not legal advice.'
+  },
+  {
+    q: 'Do I need a lawyer for a compoundable traffic challan?',
+    a: 'The law does not require one. Offences listed in Section 200 of the Motor Vehicles Act 1988 can be compounded — settled by paying the amount the state government notifies, to the notified officer or authority — before or after a prosecution is instituted, and on compounding no further proceedings are taken for that offence. In court, a Section 208 summons may permit pleading guilty and remitting the fine by money order, and under Section 228 of the BNSS 2023 a Magistrate may permit appearance through an advocate instead of in person. Whether to engage an advocate is your choice; for a contested case, or anything beyond a routine compoundable fine, consulting one is the careful course.'
+  },
+  {
+    q: 'Does an unpaid challan get reduced or cancelled if I wait long enough?',
+    a: 'No official source documents any automatic reduction or lapse. What the portals document for a waiting challan runs the other way: it stays Pending, and may be forwarded to a court, after which the eChallan side stops recording payments against it. The only documented reductions are state government schemes notified for fixed windows, and Lok Adalat settlements — where the figure is decided by the bench on the day and never announced in advance.'
+  }
+];
+
+const jsonld = [faqJsonLd(faqs)];
+---
+<Base
+  title="E-Challan Status Meaning: Pending, Disposed, Sent to Court"
+  description="What every e-challan status actually means — Pending, Disposed, Sent to Court, Cognizance Denied and more — with sourced next steps for each."
+  path="/challan-status/"
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Challan status decoder', path: '/challan-status/' }]}
+  dateModified={lastVerified}
+>
+  <h1>What does your e-challan status actually mean?</h1>
+  <AnswerBox>
+    <strong>Pending</strong> means the challan is unpaid and still with the department — it can be paid online.
+    <strong>Disposed</strong> means it is closed: paid or otherwise settled (the portal shows even cash payments as
+    Disposed). <strong>Sent to Court</strong> means the department has forwarded it to a regular or virtual court
+    and the eChallan portal will no longer record a payment against it. Every status the official portals use is
+    decoded below, with what to do next for each.
+  </AnswerBox>
+  <LastVerified date={lastVerified} />
+  <p class="legal-note">This is general information, not legal advice. For your specific case, consult an advocate.</p>
+
+  <section class="panel">
+    <h2 id={slugify('Jump to your status')}>Jump to your status</h2>
+    <form class="status-picker">
+      <label for="status-jump">What does your challan say?</label>
+      <select id="status-jump">
+        <option value="">Choose a status&hellip;</option>
+        {statuses.map((s) => <option value={s.slug}>{pickLabel(s)}</option>)}
+      </select>
+    </form>
+    <noscript>
+      <p class="verified">The picker needs JavaScript — without it, every status is listed in order just below.</p>
+    </noscript>
+  </section>
+
+  {statuses.map((s) => (
+    <section class="status-entry">
+      <h2 id={s.slug}>{question(s.slug, s.term)}</h2>
+      <ul class="seen-on" aria-label="Where this status appears">
+        {s.seen_on.map((where) => <li>{where}</li>)}
+      </ul>
+      <p>{s.meaning}</p>
+      <h3>What to do next</h3>
+      <StepList steps={s.next_steps} />
+      <p class="verified">
+        Sources: {sourceLabels(s.sources).map((src, i) => (
+          <>{i > 0 && ' · '}<a href={src.url} rel="noopener nofollow">{src.label}</a></>
+        ))}
+      </p>
+    </section>
+  ))}
+
+  <h2 id={slugify('Which states are on the Virtual Courts system?')}>Which states are on the Virtual Courts system?</h2>
+  <p>
+    Statuses like "forwarded to Virtual Court" only arise where a state's traffic or transport department is
+    connected to <a href="https://vcourts.gov.in/virtualcourt/index.php" rel="noopener nofollow">vcourts.gov.in</a>.
+    As of {new Date(lastVerified + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' })},
+    the portal's own department list shows {vcourts.departments_count} departments across {vcourts.states_count}{' '}
+    states and union territories:
+  </p>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr><th scope="col">State / UT</th><th scope="col">Departments on vcourts</th></tr>
+      </thead>
+      <tbody>
+        {vcourtRows.map((r) => (
+          <tr><td>{r.state}</td><td data-label="Departments on vcourts">{r.departments}</td></tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <ul>
+    {vcourts.footnotes.map((f) => <li class="verified">{f}</li>)}
+  </ul>
+
+  <h2 id={slugify('Can a challan just be ignored until it lapses?')}>Can a challan just be ignored until it lapses?</h2>
+  <CautionCallout>
+    <p>
+      No official source documents a challan lapsing, halving, or being written off with time — those are forwards,
+      not rules. What <em>is</em> documented: an unpaid challan can be sent to a court (a status this page decodes),
+      a court may issue a summons in writing or electronically (Sections 63&ndash;64, BNSS 2023), a duly served
+      summons that is disobeyed without reasonable excuse can lead the court — after recording its reasons — to
+      issue an arrest warrant (Section 90, BNSS 2023), and police may seize the licence of a driver charged under
+      the Motor Vehicles Act whom they believe may avoid service of a summons (Section 206). Real concessions exist
+      only as notified state schemes or Lok Adalat settlements — see our
+      <a href="/challan-discount/">discount tracker</a> for what is actually on.
+    </p>
+  </CautionCallout>
+
+  <FaqSection faqs={faqs} />
+
+  <ShareBar text="What does 'Sent to Court' on an e-challan actually mean? Plain-English decoder" />
+
+  <RelatedLinks items={[
+    { href: '/court-challan-vs-on-spot-challan/', label: 'Court challan vs on-spot challan: what changes' },
+    { href: '/wrong-e-challan-dispute/', label: 'Wrong e-challan? How to dispute it' },
+    { href: '/unpaid-e-challan-consequences/', label: 'What happens to unpaid e-challans' },
+    { href: '/challan-discount/', label: 'Challan discount tracker: what is actually on' }
+  ]} />
+
+  <SourceList sources={allSources} />
+
+  <script>
+    // Jump picker: choosing a status moves the page to that entry's anchor;
+    // the :target CSS highlights the heading. Everything below is fully
+    // static, so losing JS loses nothing but the shortcut.
+    const select = document.getElementById('status-jump') as HTMLSelectElement | null;
+    if (select) {
+      select.addEventListener('change', () => {
+        if (select.value) location.hash = select.value;
+      });
+    }
+  </script>
+</Base>

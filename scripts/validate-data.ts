@@ -3,14 +3,15 @@ import { join } from 'node:path';
 import fg from 'fast-glob';
 import matter from 'gray-matter';
 import { readFileSync } from 'node:fs';
-import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadRtoFiles } from '../src/lib/data';
+import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadRtoFiles, loadStatusFile } from '../src/lib/data';
 import { runGates, type GuideMeta, type PageMeta } from '../src/lib/gate';
 
 // Feature pages (src/pages/*.astro) that own a target keyword — they join
 // the gate's duplicate-keyword and duplicate-slug registries.
 const FEATURE_PAGES: PageMeta[] = [
   { slug: 'challan-discount', target_keyword: 'traffic challan discount' },
-  { slug: 'rto-codes', target_keyword: 'rto code list india' }
+  { slug: 'rto-codes', target_keyword: 'rto code list india' },
+  { slug: 'challan-status', target_keyword: 'e challan status meaning' }
 ];
 
 function loadGuideMeta(): GuideMeta[] {
@@ -35,6 +36,7 @@ try {
     schemes: loadSchemes(),
     lokAdalat: loadLokAdalat(),
     rtoFiles: loadRtoFiles(),
+    statusFile: loadStatusFile(),
     pages: FEATURE_PAGES,
     now: new Date()
   });

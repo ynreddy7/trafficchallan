@@ -1,4 +1,4 @@
-import type { StateRecord, OffenceRecord, SchemeRecord, LokAdalatRecord, RtoStateRecord } from './schemas';
+import type { StateRecord, OffenceRecord, SchemeRecord, LokAdalatRecord, RtoStateRecord, StatusFileRecord } from './schemas';
 
 export interface GuideMeta { file: string; target_keyword: string; last_verified: string; sources: string[] }
 /** Feature pages (e.g. /challan-discount/) join the duplicate keyword/slug registries. */
@@ -10,6 +10,7 @@ export interface GateInput {
   schemes?: SchemeRecord[];
   lokAdalat?: LokAdalatRecord;
   rtoFiles?: RtoStateRecord[];
+  statusFile?: StatusFileRecord;
   pages?: PageMeta[];
   now: Date;
 }
@@ -73,6 +74,9 @@ export function runGates(input: GateInput): string[] {
       v.push(`rto ${r.slug}: stale last_verified ${r.last_verified} (> ${RTO_STALE_DAYS} days)`);
     }
   });
+
+  // /challan-status/ decoder data: standard 90-day staleness.
+  if (input.statusFile) checkStale('challan-statuses', input.statusFile.last_verified);
 
   const kwOwners = new Map<string, string>();
   const claim = (kw: string, owner: string) => {
