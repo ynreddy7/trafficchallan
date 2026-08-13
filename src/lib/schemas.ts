@@ -172,6 +172,62 @@ export const StatusFileSchema = z
   });
 export type StatusFileRecord = z.infer<typeof StatusFileSchema>;
 
+/**
+ * The /fake-challan-sms/ allow-list of official challan-related domains plus
+ * documented scam signals and victim-help steps. Honesty rules:
+ * - Every domain here was fetched and verified on last_verified — nothing
+ *   enters this file from memory or SEO blogs.
+ * - `hedged: true` sender-ID facts MUST render hedged on the page
+ *   ("as reported" / "convention, not proof") — they rest on secondary
+ *   reporting or on a mandate whose rollout is unconfirmed.
+ * - The page never declares any specific message genuine; scam_signals slugs
+ *   prefixed "genuine-" document real official message mechanisms (the
+ *   inverse case), not verdicts on any reader's message.
+ */
+export const OfficialDomainSchema = z.object({
+  domain: z.string().regex(/^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$/, 'must be a bare hostname'),
+  label: z.string().min(5),
+  /** Caution note (e.g. legacy non-gov.in domain, TLS-chain warning). */
+  note: z.string().min(20).optional()
+});
+export type OfficialDomainRecord = z.infer<typeof OfficialDomainSchema>;
+
+export const OfficialPortalsSchema = z
+  .object({
+    national: z.array(OfficialDomainSchema).min(1),
+    states: z.array(z.object({
+      state_slug: z.string().regex(/^[a-z][a-z-]*$/),
+      domains: z.array(OfficialDomainSchema).min(1)
+    })).min(1),
+    sender_id_notes: z.array(z.object({
+      fact: z.string().min(40),
+      hedged: z.boolean()
+    })).min(1),
+    scam_signals: z.array(z.object({
+      slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
+      name: z.string().min(5),
+      detail: z.string().min(60),
+      source: z.string().url()
+    })).min(1),
+    victim_help: z.array(z.object({ fact: z.string().min(40) })).min(1),
+    sources: z.array(z.string().url()).min(1),
+    last_verified: isoDate
+  })
+  .superRefine((rec, ctx) => {
+    const dupCheck = (values: string[], what: string) => {
+      const seen = new Set<string>();
+      for (const v of values) {
+        if (seen.has(v)) ctx.addIssue({ code: z.ZodIssueCode.custom, message: `duplicate ${what} "${v}"` });
+        seen.add(v);
+      }
+    };
+    dupCheck(rec.national.map((d) => d.domain), 'national domain');
+    dupCheck(rec.states.map((s) => s.state_slug), 'state_slug');
+    dupCheck(rec.scam_signals.map((s) => s.slug), 'scam signal slug');
+    for (const s of rec.states) dupCheck(s.domains.map((d) => d.domain), `domain under ${s.state_slug}`);
+  });
+export type OfficialPortalsRecord = z.infer<typeof OfficialPortalsSchema>;
+
 export const RtoStateSchema = z.object({
   slug: z.string().regex(/^[a-z][a-z-]*$/),
   state_name: z.string().min(2),

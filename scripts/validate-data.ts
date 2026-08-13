@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import fg from 'fast-glob';
 import matter from 'gray-matter';
 import { readFileSync } from 'node:fs';
-import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadRtoFiles, loadStatusFile } from '../src/lib/data';
+import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadRtoFiles, loadStatusFile, loadOfficialPortals } from '../src/lib/data';
 import { runGates, type GuideMeta, type PageMeta } from '../src/lib/gate';
 
 // Feature pages (src/pages/*.astro) that own a target keyword — they join
@@ -11,7 +11,8 @@ import { runGates, type GuideMeta, type PageMeta } from '../src/lib/gate';
 const FEATURE_PAGES: PageMeta[] = [
   { slug: 'challan-discount', target_keyword: 'traffic challan discount' },
   { slug: 'rto-codes', target_keyword: 'rto code list india' },
-  { slug: 'challan-status', target_keyword: 'e challan status meaning' }
+  { slug: 'challan-status', target_keyword: 'e challan status meaning' },
+  { slug: 'fake-challan-sms', target_keyword: 'e challan fake sms' }
 ];
 
 function loadGuideMeta(): GuideMeta[] {
@@ -37,6 +38,7 @@ try {
     lokAdalat: loadLokAdalat(),
     rtoFiles: loadRtoFiles(),
     statusFile: loadStatusFile(),
+    portalsFile: loadOfficialPortals(),
     pages: FEATURE_PAGES,
     now: new Date()
   });

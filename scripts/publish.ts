@@ -41,6 +41,7 @@ for (const f of changed) {
   }
   if (/^data\/rto\/.+\.json$/.test(f)) urls.add('https://trafficchallan.com/rto-codes/');
   if (f === 'data/challan-statuses.json') urls.add('https://trafficchallan.com/challan-status/');
+  if (f === 'data/official-portals.json') urls.add('https://trafficchallan.com/fake-challan-sms/');
 }
 
 // 4. Commit + push

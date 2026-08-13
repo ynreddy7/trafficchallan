@@ -1,0 +1,181 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import CautionCallout from '../components/CautionCallout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LastVerified from '../components/LastVerified.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import ShareBar from '../components/ShareBar.astro';
+import SourceList from '../components/SourceList.astro';
+import StepList from '../components/StepList.astro';
+import { loadOfficialPortals, loadStates } from '../lib/data';
+import { faqJsonLd } from '../lib/seo';
+import { slugify } from '../lib/format';
+
+const portals = loadOfficialPortals();
+const lastVerified = portals.last_verified;
+
+// State display names come from the state records themselves — a
+// portals-file state_slug with no matching state page is a data bug
+// (tests/portals-data.test.ts enforces the match).
+const stateName = new Map(loadStates().map((s) => [s.slug, s.name]));
+
+// One flat row per (state, domain) for the per-state allow-list table.
+const stateRows = portals.states.flatMap((s) =>
+  s.domains.map((d) => ({ ...d, state_slug: s.state_slug, state: stateName.get(s.state_slug) ?? s.state_slug }))
+);
+
+// Scam signals split: "genuine-" slugs are the inverse cases (real official
+// message mechanisms), the rest are documented fraud signals. The APK rule
+// gets the CautionCallout treatment.
+const fraudSignals = portals.scam_signals.filter((s) => !s.slug.startsWith('genuine-') && s.slug !== 'apk-attachment');
+const apkSignal = portals.scam_signals.find((s) => s.slug === 'apk-attachment');
+const genuineSignals = portals.scam_signals.filter((s) => s.slug.startsWith('genuine-'));
+
+const sourceHost = (url: string) => new URL(url).hostname.replace(/^www\./, '');
+
+const faqs = [
+  {
+    q: 'How do I know if a challan SMS is fake?',
+    a: 'Do not tap anything in the message. Open a browser, type echallan.parivahan.gov.in (or your state’s official portal from the allow-list on this page) yourself, and enter your vehicle number. If the challan is real it appears there with its amount and photo evidence; if the portal shows nothing, nothing is owed no matter what the message claims. Also check vcourts.gov.in for court-referred challans. PIB Fact Check’s reported advice goes further: never click challan links received by SMS or WhatsApp at all.'
+  },
+  {
+    q: 'What does a genuine challan SMS sender ID look like?',
+    a: 'Registered senders appear as XY-HEADER (up to 11 characters after the telecom prefix) under TRAI’s DLT regime, and Telangana Police, for example, publishes that its official challan SMS use the ECHALN header. TRAI has also mandated a -G suffix for government-message headers, though how completely that has rolled out is not confirmed. None of this is proof by itself — fraud messages impersonating official senders are exactly what DoT’s Chakshu reporting facility exists for — so verify the challan on the portal, not the sender name.'
+  },
+  {
+    q: 'Are all challan messages with links fake?',
+    a: 'No. Genuine mechanisms exist: police link your mobile number to challans so you receive notices (Delhi and Maharashtra both run official mobile-linking flows), and a challan forwarded to a virtual court generates real notices searchable on vcourts.gov.in. The safe habit is the same either way — act on the message only after the challan shows up on an official portal whose address you typed yourself.'
+  },
+  {
+    q: 'I clicked the link and paid — can I get the money back?',
+    a: 'No one can promise recovery, but the documented channels move fastest when used immediately: call the national cyber crime helpline 1930, file a written complaint on cybercrime.gov.in (Ministry of Home Affairs), and report the message via Chakshu on sancharsaathi.gov.in. Complaints about the SMS sender go to your telecom operator via 1909, and under TRAI’s amended rules that complaint must be lodged within 7 days of the message.'
+  },
+  {
+    q: 'Is echallan.parivahan.gov.in a real government website?',
+    a: 'Yes. It is the Ministry of Road Transport and Highways’ eChallan portal, run on a gov.in domain by the National Informatics Centre, and it is where challans from most states are checked and paid. The portal itself warns about fraudulent websites and apps impersonating its services and states that it never requests passwords, OTPs or payment details via calls, emails, messages or links.'
+  }
+];
+
+const jsonld = [faqJsonLd(faqs)];
+---
+<Base
+  title="Fake Challan SMS Check: All Official Portals, 60-Sec Test"
+  description="Is that challan SMS real? A 60-second check, the full list of official e-challan portals, documented scam signals, and what to do if you already paid."
+  path="/fake-challan-sms/"
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fake challan SMS check', path: '/fake-challan-sms/' }]}
+  dateModified={lastVerified}
+>
+  <h1>Is this challan SMS real? How to check in 60 seconds</h1>
+  <AnswerBox>
+    Never tap the link in the message. Open your browser and <strong>type the official portal address yourself</strong>
+    &mdash; <strong>echallan.parivahan.gov.in</strong> &mdash; then enter your vehicle number; check your state&rsquo;s own portal
+    from the list below and <strong>vcourts.gov.in</strong> too, since court-referred challans show there. If no portal
+    shows the challan, nothing is owed. And one absolute rule: <strong>no government challan ever arrives as an APK
+    file</strong> to install.
+  </AnswerBox>
+  <LastVerified date={lastVerified} />
+  <p class="legal-note">
+    Independent guide. When in doubt, verify only on the official portals listed below &mdash; this page teaches
+    verification and never declares any particular message genuine.
+  </p>
+
+  <h2 id={slugify('Which challan websites are actually official?')}>Which challan websites are actually official?</h2>
+  <p>
+    Every domain below was fetched and verified on the date above &mdash; branding, footer attribution and TLD checked
+    against the government body it claims to be. Type these addresses yourself; a message&rsquo;s link that looks similar
+    but is not on this list deserves suspicion, and even an address that matches is only safe when you typed it.
+  </p>
+  <h3>National portals (work for every state)</h3>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr><th scope="col">Address to type</th><th scope="col">What it is</th></tr>
+      </thead>
+      <tbody>
+        {portals.national.map((d) => (
+          <tr>
+            <td><code>{d.domain}</code></td>
+            <td data-label="What it is">{d.label}{d.note && <>{' '}<em class="verified">{d.note}</em></>}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <h3>State portals</h3>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr><th scope="col">Address to type</th><th scope="col">What it is</th><th scope="col">State</th></tr>
+      </thead>
+      <tbody>
+        {stateRows.map((r) => (
+          <tr>
+            <td><code>{r.domain}</code></td>
+            <td data-label="What it is">{r.label}{r.note && <>{' '}<em class="verified">{r.note}</em></>}</td>
+            <td data-label="State"><a href={`/${r.state_slug}-e-challan/`}>{r.state}</a></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id={slugify('Can the sender ID prove a challan SMS is genuine?')}>Can the sender ID prove a challan SMS is genuine?</h2>
+  <p>
+    No single header proves anything, but knowing how genuine sender IDs work helps you weigh a message. Items marked
+    &ldquo;reported / convention&rdquo; rest on secondary reporting or on a rule whose rollout is not confirmed &mdash;
+    treat them as context, not proof.
+  </p>
+  <ul>
+    {portals.sender_id_notes.map((n) => (
+      <li>
+        {n.hedged && <strong class="verified">Reported / convention, not proof:</strong>}{n.hedged && ' '}{n.fact}
+      </li>
+    ))}
+  </ul>
+
+  <h2 id={slugify('How do the scams actually work?')}>How do the scams actually work?</h2>
+  {apkSignal && (
+    <CautionCallout>
+      <p><strong>{apkSignal.name}.</strong> {apkSignal.detail}</p>
+    </CautionCallout>
+  )}
+  {fraudSignals.map((s) => (
+    <section>
+      <h3 id={s.slug}>{s.name}</h3>
+      <p>{s.detail}</p>
+      <p class="verified">Source: <a href={s.source} rel="noopener nofollow">{sourceHost(s.source)}</a></p>
+    </section>
+  ))}
+
+  <h2 id={slugify('But I got a real message that looked fake')}>But I got a real message that looked fake</h2>
+  <p>
+    The inverse mistake &mdash; ignoring a genuine notice because it arrived by SMS &mdash; has its own cost, since a
+    real challan can be forwarded to a court. These official message mechanisms exist, and each one is verified the
+    same way: type the portal address yourself and look the vehicle number up.
+  </p>
+  {genuineSignals.map((s) => (
+    <section>
+      <h3 id={s.slug}>{s.name.replace(/^Inverse case: /, '')}</h3>
+      <p>{s.detail}</p>
+      <p class="verified">Source: <a href={s.source} rel="noopener nofollow">{sourceHost(s.source)}</a></p>
+    </section>
+  ))}
+
+  <h2 id={slugify('What if I already clicked or paid?')}>What if I already clicked or paid?</h2>
+  <StepList steps={portals.victim_help.map((v) => v.fact)} />
+  <p class="legal-note">This is general information, not legal advice. For your specific case, consult an advocate.</p>
+
+  <FaqSection faqs={faqs} />
+
+  <ShareBar text="Fake challan SMS are everywhere — here is the full list of official challan portals + a 60-second check" />
+
+  <RelatedLinks items={[
+    { href: '/challan-status/', label: 'Challan status decoder: what Pending, Sent to Court and the rest mean' },
+    { href: '/how-to-check-e-challan/', label: 'How to check an e-challan: every official way' },
+    { href: '/challan-discount/', label: 'Challan discount tracker: what is actually on' }
+  ]} />
+
+  <SourceList sources={portals.sources} />
+</Base>

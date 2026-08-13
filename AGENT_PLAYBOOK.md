@@ -22,6 +22,10 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
      recovery, camera enforcement zones, and local helplines.
    - Never restate the parent state's generic check/pay steps — link to the state page
      for those instead.
+   Items with type "guide-update" are NOT new pages: edit the existing guide named by
+   slug_suggestion in src/content/guides/, add what the note asks for, re-verify the
+   guide's facts against its sources and bump its frontmatter last_verified — no new
+   file is created, so these do not count against the velocity cap.
 6. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" + "covered_by" were retired during curation — never produce them; skip to the next "pending" item.)
 7. `npm test` must pass. Then `npm run publish:site -- --message "content: <what you added>"`.
    If the gate, tests, links or velocity cap fail: fix the cause or stop WITHOUT pushing;

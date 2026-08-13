@@ -1180,7 +1180,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "percent-off",
@@ -2907,7 +2908,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 0,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "superseded by the sold-vehicle-challans queue item below (same keyword, richer research notes) — produce that one, not this"
     },
     {
       "slug_suggestion": "e-challan-fake-sms-scam",
@@ -2919,7 +2921,92 @@
       "max_cpc": 0,
       "min_seo_difficulty": 0,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
+    },
+    {
+      "slug_suggestion": "sold-vehicle-challans",
+      "target_keyword": "challan on sold vehicle",
+      "cluster_keywords": [
+        "challan on sold vehicle",
+        "challans after selling vehicle",
+        "rc not transferred challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending",
+      "note": "Challans arriving after you sold the vehicle because the RC was never transferred. Cover: MV Act s.50 unilateral intimation by the transferor (verify the section text from India Code on the day of writing), Forms 29/30, the Supreme Court's Naveen Kumar v. Vijay Kumar (2018) 3 SCC 1 holding on registered-owner liability (verified citation available in repo git history/research — still re-fetch the judgment text from indiankanoon before citing), and the escalation ladder (RTO intimation -> state transport grievance -> challan grievance ticket). NEVER advise filing a stolen-vehicle FIR as a workaround.",
+      "sources_hint": [
+        "https://www.indiacode.nic.in/ (MV Act 1988 s.50 — fetch section text same-day)",
+        "https://indiankanoon.org/ (Naveen Kumar v. Vijay Kumar, (2018) 3 SCC 1)",
+        "https://parivahan.gov.in/ (Forms 29/30, RC transfer flow)",
+        "https://echallan.parivahan.gov.in/index/grievance"
+      ]
+    },
+    {
+      "slug_suggestion": "digitally-impounded-vehicle",
+      "target_keyword": "digitally impounded vehicle meaning",
+      "cluster_keywords": [
+        "digitally impounded vehicle meaning",
+        "vehicle blacklisted for challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending",
+      "note": "What 'digitally impounded' / 'blacklisted' actually means. Distinguish carefully: MV Act s.206 (physical seizure of documents/licence) and s.207 (detention of the vehicle) vs the VAHAN database blacklist flag that blocks RC transactions (transfer, fitness, NOC) until challans clear — these are different mechanisms with different legal bases. Verify s.206/s.207 text from India Code same-day; describe the VAHAN flag only from official portal behaviour/state transport notices, never as a statutory term.",
+      "sources_hint": [
+        "https://www.indiacode.nic.in/ (MV Act 1988 s.206, s.207 — fetch same-day)",
+        "https://vahan.parivahan.gov.in/",
+        "https://echallan.parivahan.gov.in/"
+      ]
+    },
+    {
+      "slug_suggestion": "unpaid-challan-timeline",
+      "target_keyword": "what happens if e challan is not paid",
+      "cluster_keywords": [
+        "what happens if e challan is not paid",
+        "e challan not paid for 1 year"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending",
+      "note": "The timeline of an unpaid e-challan: no documented expiry or automatic lapse; department -> court forwarding; the court flow per BNSS 2023 (summons ss.63-64, warrant s.90 — RE-VERIFY every BNSS section number from India Code on the day of writing, never from memory or blogs), careful framing with zero outcome predictions. CHECK OVERLAP FIRST: the existing unpaid-e-challan-consequences guide covers consequences — if the timeline angle cannot stand alone, do this as a guide-update to that file instead of a new page.",
+      "sources_hint": [
+        "https://www.indiacode.nic.in/ (BNSS 2023 sections — fetch same-day)",
+        "https://vcourts.gov.in/virtualcourt/",
+        "https://echallan.parivahan.gov.in/"
+      ]
+    },
+    {
+      "slug_suggestion": "used-car-pending-challans",
+      "target_keyword": "challan on second hand vehicle",
+      "cluster_keywords": [
+        "challan on second hand vehicle",
+        "used car pending challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending",
+      "note": "Buying a used vehicle with challans on it: pre-purchase checks (eChallan by vehicle number, VAHAN RC status, AND vcourts.gov.in — court-referred challans do not appear in the normal eChallan lookup), the backdated-ANPR-upload trap (camera challans can surface weeks after the offence date, i.e. after purchase), who is liable per registered-owner rules, and how to make the seller clear challans before transfer. Cross-link sold-vehicle-challans (the seller's side of the same problem).",
+      "sources_hint": [
+        "https://echallan.parivahan.gov.in/index/accused-challan",
+        "https://vcourts.gov.in/virtualcourt/",
+        "https://vahan.parivahan.gov.in/"
+      ]
+    },
+    {
+      "slug_suggestion": "wrong-e-challan-dispute",
+      "type": "guide-update",
+      "status": "pending",
+      "note": "UPGRADE existing guide: add the post-grievance-rejection escalation ladder (state police channel -> CPGRAMS pgportal.gov.in -> RTI for speed-camera calibration certificate under Legal Metrology Act -> contest option on vcourts) — modifies an existing guide file, no new page, cap-free"
     }
   ]
 }

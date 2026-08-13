@@ -15,11 +15,13 @@ const TRUST_PAGE_DATE = '2026-08-13';
  * collections aren't available in astro.config.mjs); the four data-summary
  * pages (/, /fines/, /calculator/, /compare/) get the max date across all
  * sources (states + fines + guides + schemes + lok-adalat +
- * challan-statuses, mirroring src/lib/data.ts newestVerifiedDate() —
- * change both together; RTO files are deliberately excluded there and
- * here); /challan-discount/ gets the max across schemes + lok-adalat only
- * (mirroring data.ts maxSchemeDate()); /challan-status/ gets the
- * challan-statuses.json date, which also joins the global max;
+ * challan-statuses + official-portals, mirroring src/lib/data.ts
+ * newestVerifiedDate() — change both together; RTO files are deliberately
+ * excluded there and here); /challan-discount/ gets the max across
+ * schemes + lok-adalat only (mirroring data.ts maxSchemeDate());
+ * /challan-status/ gets the challan-statuses.json date, which also joins
+ * the global max; /fake-challan-sms/ gets the official-portals.json date,
+ * which also joins the global max;
  * /rto-codes/ gets the max across data/rto/ files only (its dates never
  * join the global max — slow-moving directory data must not bump
  * site-wide freshness); trust pages get the fixed site-launch date.
@@ -79,6 +81,16 @@ function buildLastmodMap() {
   if (statusFile.last_verified) {
     map.set('/challan-status/', statusFile.last_verified);
     allDates.push(statusFile.last_verified);
+  }
+
+  // Official-portals allow-list: its file's date is /fake-challan-sms/'s
+  // lastmod AND joins the global max (mirrors data.ts newestVerifiedDate(),
+  // which includes loadOfficialPortals().last_verified — change both
+  // together).
+  const portalsFile = JSON.parse(readFileSync(join(process.cwd(), 'data', 'official-portals.json'), 'utf-8'));
+  if (portalsFile.last_verified) {
+    map.set('/fake-challan-sms/', portalsFile.last_verified);
+    allDates.push(portalsFile.last_verified);
   }
 
   // RTO directory files: their max is /rto-codes/'s own lastmod ONLY —

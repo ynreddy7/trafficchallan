@@ -2,8 +2,9 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import {
   StateSchema, OffenceSchema, SchemeSchema, LokAdalatSchema, RtoStateSchema, StatusFileSchema,
+  OfficialPortalsSchema,
   type StateRecord, type OffenceRecord, type SchemeRecord, type LokAdalatRecord, type RtoStateRecord,
-  type StatusFileRecord
+  type StatusFileRecord, type OfficialPortalsRecord
 } from './schemas';
 import type { ZodType } from 'zod';
 import { z } from 'zod';
@@ -59,6 +60,10 @@ export function loadLokAdalat(path = join(process.cwd(), 'data', 'lok-adalat.jso
 export function loadStatusFile(path = join(process.cwd(), 'data', 'challan-statuses.json')): StatusFileRecord {
   return loadJsonFile(path, StatusFileSchema);
 }
+/** The /fake-challan-sms/ official-portal allow-list + scam signals. */
+export function loadOfficialPortals(path = join(process.cwd(), 'data', 'official-portals.json')): OfficialPortalsRecord {
+  return loadJsonFile(path, OfficialPortalsSchema);
+}
 
 /**
  * Newest last_verified across schemes + lok-adalat — the dateModified /
@@ -76,16 +81,18 @@ export function maxSchemeDate(): string {
 
 /**
  * Newest last_verified date across every state, every offence, every
- * guide's frontmatter, every scheme, lok-adalat, and the challan-status
- * file — the single source of truth for the "global max" dateModified used
- * by the site-wide summary pages (/, /fines/, /calculator/, /compare/).
+ * guide's frontmatter, every scheme, lok-adalat, the challan-status file,
+ * and the official-portals file — the single source of truth for the
+ * "global max" dateModified used by the site-wide summary pages
+ * (/, /fines/, /calculator/, /compare/).
  *
  * RTO files are deliberately EXCLUDED: they are slow-moving directory data
  * (365-day staleness) and should not bump site-wide freshness dates.
  *
  * This MUST stay in agreement with astro.config.mjs's buildLastmodMap(),
  * which independently computes the same max (states + fines + guides +
- * schemes + lok-adalat + challan-statuses) at config-load time to assign
+ * schemes + lok-adalat + challan-statuses + official-portals) at
+ * config-load time to assign
  * <lastmod> for those same four URLs in the sitemap. If the source
  * directories or aggregation logic change here, change them there too —
  * otherwise a page's JSON-LD dateModified will disagree with its own
@@ -97,7 +104,8 @@ export function newestVerifiedDate(): string {
     ...loadOffences().map((o) => o.last_verified),
     ...loadSchemes().map((s) => s.last_verified),
     loadLokAdalat().last_verified,
-    loadStatusFile().last_verified
+    loadStatusFile().last_verified,
+    loadOfficialPortals().last_verified
   ];
 
   const guidesDir = join(process.cwd(), 'src', 'content', 'guides');

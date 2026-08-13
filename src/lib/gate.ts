@@ -1,4 +1,4 @@
-import type { StateRecord, OffenceRecord, SchemeRecord, LokAdalatRecord, RtoStateRecord, StatusFileRecord } from './schemas';
+import type { StateRecord, OffenceRecord, SchemeRecord, LokAdalatRecord, RtoStateRecord, StatusFileRecord, OfficialPortalsRecord } from './schemas';
 
 export interface GuideMeta { file: string; target_keyword: string; last_verified: string; sources: string[] }
 /** Feature pages (e.g. /challan-discount/) join the duplicate keyword/slug registries. */
@@ -11,6 +11,7 @@ export interface GateInput {
   lokAdalat?: LokAdalatRecord;
   rtoFiles?: RtoStateRecord[];
   statusFile?: StatusFileRecord;
+  portalsFile?: OfficialPortalsRecord;
   pages?: PageMeta[];
   now: Date;
 }
@@ -77,6 +78,11 @@ export function runGates(input: GateInput): string[] {
 
   // /challan-status/ decoder data: standard 90-day staleness.
   if (input.statusFile) checkStale('challan-statuses', input.statusFile.last_verified);
+
+  // /fake-challan-sms/ official-portal allow-list: standard 90-day staleness.
+  // An allow-list of "official" domains that nobody has re-fetched in months
+  // is exactly the kind of stale trust signal the page exists to fight.
+  if (input.portalsFile) checkStale('official-portals', input.portalsFile.last_verified);
 
   const kwOwners = new Map<string, string>();
   const claim = (kw: string, owner: string) => {

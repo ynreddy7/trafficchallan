@@ -1,0 +1,441 @@
+{
+  "national": [
+    {
+      "domain": "echallan.parivahan.gov.in",
+      "label": "MoRTH eChallan — the national portal to check and pay traffic challans (NIC-run); carries its own warning against impersonator websites and apps"
+    },
+    {
+      "domain": "echallan.parivahan.nic.in",
+      "label": "NextGen eChallan — the new national portal (challan services and grievance)"
+    },
+    {
+      "domain": "vcourts.gov.in",
+      "label": "Virtual Courts (e-Committee, Supreme Court of India) — challans referred to a virtual court; search by vehicle, challan or mobile number"
+    },
+    {
+      "domain": "pay.ecourts.gov.in",
+      "label": "ePay-eCourts (e-Committee, Supreme Court of India) — official payment of court fines and fees"
+    },
+    {
+      "domain": "morth.gov.in",
+      "label": "Ministry of Road Transport and Highways official website (morth.nic.in redirects here)"
+    },
+    {
+      "domain": "cybercrime.gov.in",
+      "label": "National Cyber Crime Reporting Portal (Ministry of Home Affairs / I4C) — where fake-challan fraud is reported"
+    },
+    {
+      "domain": "i4c.mha.gov.in",
+      "label": "Indian Cyber Crime Coordination Centre (I4C), MHA — names helpline 1930 and cybercrime.gov.in as the official reporting channels"
+    },
+    {
+      "domain": "sancharsaathi.gov.in",
+      "label": "DoT Sanchar Saathi — Chakshu reporting of suspected fraud communications received by call, SMS or WhatsApp"
+    }
+  ],
+  "states": [
+    {
+      "state_slug": "andhra-pradesh",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan — AP challans are checked and paid here"
+        },
+        {
+          "domain": "appolice.gov.in",
+          "label": "Andhra Pradesh Police official site",
+          "note": "The AP challan transaction flow itself runs on the national eChallan portal — this is the police department's own domain, not a separate payment site."
+        },
+        {
+          "domain": "ap.meeseva.gov.in",
+          "label": "AP MeeSeva citizen-services portal — police-department services including challan"
+        }
+      ]
+    },
+    {
+      "state_slug": "delhi",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan — Delhi challans"
+        },
+        {
+          "domain": "traffic.delhipolice.gov.in",
+          "label": "Delhi Traffic Police — Notice Branch payment and challan mobile-number update"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts — Delhi court-referred challans"
+        }
+      ]
+    },
+    {
+      "state_slug": "gujarat",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "echallanpayment.gujarat.gov.in",
+          "label": "Gujarat Police (VISWAS) e-challan payment",
+          "note": "This genuine gujarat.gov.in server sends an incomplete TLS certificate chain, so some browsers and tools show a certificate warning. On this specific site that warning is a server-configuration issue — not, by itself, proof of fraud. When in doubt, use the national eChallan portal instead."
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        },
+        {
+          "domain": "cot.gujarat.gov.in",
+          "label": "Commissionerate of Transport, Gujarat — penalty structure"
+        }
+      ]
+    },
+    {
+      "state_slug": "haryana",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan — challan and grievance"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        },
+        {
+          "domain": "traffic.haryanapolice.gov.in",
+          "label": "Haryana Traffic Police"
+        },
+        {
+          "domain": "gurgaon.haryanapolice.gov.in",
+          "label": "Gurugram Police — offences and penalties table"
+        },
+        {
+          "domain": "egrashry.nic.in",
+          "label": "Haryana e-GRAS government-receipts portal — used for some fine payments"
+        }
+      ]
+    },
+    {
+      "state_slug": "jammu-kashmir",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan — challan and grievance"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        },
+        {
+          "domain": "trafficpolice.jk.gov.in",
+          "label": "J&K Traffic Police (NIC-developed) — e-challan services"
+        },
+        {
+          "domain": "transport.jk.gov.in",
+          "label": "J&K Transport Department"
+        }
+      ]
+    },
+    {
+      "state_slug": "karnataka",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "kspapp.ksp.gov.in",
+          "label": "Karnataka State Police app portal — Bengaluru Traffic Police challan payment"
+        },
+        {
+          "domain": "btp.karnataka.gov.in",
+          "label": "Bengaluru Traffic Police"
+        },
+        {
+          "domain": "www.karnatakaone.gov.in",
+          "label": "KarnatakaOne citizen services — collection of Bangalore traffic-police violation fines"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        }
+      ]
+    },
+    {
+      "state_slug": "madhya-pradesh",
+      "domains": [
+        {
+          "domain": "echallan.mponline.gov.in",
+          "label": "MP Police e-challan payment — served by MPOnline"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        }
+      ]
+    },
+    {
+      "state_slug": "maharashtra",
+      "domains": [
+        {
+          "domain": "mahatrafficechallan.gov.in",
+          "label": "Maharashtra Traffic Police e-challan — payment, grievance and mobile-number linking (operated by ADG Traffic, Maharashtra State)"
+        },
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        }
+      ]
+    },
+    {
+      "state_slug": "rajasthan",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        },
+        {
+          "domain": "transport.rajasthan.gov.in",
+          "label": "Rajasthan Transport Department portal — compounding notifications"
+        }
+      ]
+    },
+    {
+      "state_slug": "tamil-nadu",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan — TN uses the national portal"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan — challan check and grievance"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        }
+      ]
+    },
+    {
+      "state_slug": "telangana",
+      "domains": [
+        {
+          "domain": "echallan.tspolice.gov.in",
+          "label": "Telangana State Police e-challan — Hyderabad, Cyberabad, Malkajgiri and Future City commissionerates; the site itself warns of fraudulent copies and says official SMS use the ECHALN header"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "htp.gov.in",
+          "label": "Hyderabad Traffic Police (NIC Telangana)"
+        }
+      ]
+    },
+    {
+      "state_slug": "uttar-pradesh",
+      "domains": [
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan — UP challan transactions, payment verification and grievance tickets"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        },
+        {
+          "domain": "uptransport.upsdc.gov.in",
+          "label": "UP Transport Department e-challan information page",
+          "note": "Information only — the department's own page directs users to echallan.parivahan.gov.in for actual challan transactions."
+        }
+      ]
+    },
+    {
+      "state_slug": "west-bengal",
+      "domains": [
+        {
+          "domain": "sanjog.wb.gov.in",
+          "label": "WB Sanjog (Dept. of IT & Electronics, Govt. of West Bengal) — pending challan information and fine payment"
+        },
+        {
+          "domain": "echallan.parivahan.nic.in",
+          "label": "NextGen eChallan"
+        },
+        {
+          "domain": "echallan.parivahan.gov.in",
+          "label": "National eChallan"
+        },
+        {
+          "domain": "vcourts.gov.in",
+          "label": "Virtual Courts"
+        },
+        {
+          "domain": "kolkatatrafficpolice.gov.in",
+          "label": "Kolkata Traffic Police official site — e-challan, Sanjog payment link, Traffic Lok Adalat"
+        },
+        {
+          "domain": "kolkatatrafficpolice.net",
+          "label": "Kolkata Traffic Police legacy domain (eNOC forms)",
+          "note": "Not a gov.in address. It serves Kolkata Traffic Police-branded pages and links back to the gov.in site, but prefer kolkatatrafficpolice.gov.in — a non-gov.in challan link you did not go looking for deserves the full 60-second check before anything else."
+        },
+        {
+          "domain": "www.wbtrafficpolice.com",
+          "label": "West Bengal Traffic Police site — offences and penalties",
+          "note": "Not a gov.in address. The content matches official WB Transport Department notifications, but because it is a .com domain, never treat a link to it in a message as proof of anything — verify challans on sanjog.wb.gov.in or the national portal instead."
+        }
+      ]
+    }
+  ],
+  "sender_id_notes": [
+    {
+      "fact": "Commercial SMS in India runs on TRAI's registered-sender (DLT) regime under the TCCCPR, 2018: senders and telemarketers must be registered with the telecom access providers, and TRAI's February 2025 amendment adds physical verification of the sender entity and biometric authentication of its authorised person as part of sender registration.",
+      "hedged": false
+    },
+    {
+      "fact": "A registered SMS header is an alphanumeric string of up to 11 characters displayed as XY-HEADER, where X identifies the originating telecom operator and Y its licence service area — so the same genuine government sender can legitimately appear with different two-letter prefixes (VM-ECHALN, VK-ECHALN and so on) depending on your operator and circle.",
+      "hedged": false
+    },
+    {
+      "fact": "TRAI's February 2025 amendment directs telecom operators to suffix headers with -P, -S, -T and -G for promotional, service, transactional and government messages, so a government challan SMS header should end in -G once implemented. TRAI has mandated this scheme, but how completely -G suffixing has rolled out on live government headers is not confirmed — treat the suffix as a convention to look for, not proof in either direction.",
+      "hedged": true
+    },
+    {
+      "fact": "Telangana Police's e-challan portal publishes its genuine sender ID: it tells users that official challan SMS come from the ECHALN header and directs users exclusively to the official website — an example of a state publishing exactly which sender is real.",
+      "hedged": false
+    },
+    {
+      "fact": "Sender appearance alone proves nothing. DoT's Chakshu facility on Sanchar Saathi exists precisely because fraudulent communications impersonating official senders circulate by call, SMS and WhatsApp, and TRAI's amended rules were broadened to cover communications made to deceive customers even over registered routes — treat the header format as one signal among many, never as sole proof a message is genuine.",
+      "hedged": false
+    },
+    {
+      "fact": "PIB Fact Check — as reported by Outlook Money, 10 July 2026 — advises not to click traffic-challan links received by SMS or WhatsApp at all, however official the sender looks, and to check challan status only on the official Parivahan e-challan website. The underlying PIB post sits on X and was not directly fetchable, so this is cited as reported.",
+      "hedged": true
+    }
+  ],
+  "scam_signals": [
+    {
+      "slug": "apk-attachment",
+      "name": "The 'challan' arrives as an APK file to install",
+      "detail": "PIB Fact Check (as reported by Outlook Money) warned citizens to avoid installing APK files shared over SMS or WhatsApp: fake 'RTO' and 'e-challan' APKs are malware built to read OTPs and trigger unauthorised bank or UPI transactions. No government challan is delivered as an app file — apps come only from official app stores, and a challan is checked on the portal, never installed.",
+      "source": "https://www.outlookmoney.com/news/fake-traffic-e-challan-messages-can-expose-otps-trigger-unauthorised-bank-transactions-pib-warns"
+    },
+    {
+      "slug": "lookalike-website",
+      "name": "A lookalike website or app imitating eChallan",
+      "detail": "The official portal's own on-page warning says it plainly: 'Please beware of fraudulent websites and mobile apps impersonating our echallan services… We never request your password, OTP, payment details or sensitive personal information via calls, emails, or messages or links.' Only the domains in the allow-list above, reached by typing them yourself, are the real thing.",
+      "source": "https://echallan.parivahan.gov.in/"
+    },
+    {
+      "slug": "urgency-threat",
+      "name": "Pressure to pay immediately",
+      "detail": "The reported PIB warning describes the pattern: a message claims a traffic fine is pending and urges immediate payment through its link. A genuine challan never needs the message's link — it can always be verified independently by typing the official portal address yourself and entering your vehicle number; if the challan exists, it shows there.",
+      "source": "https://www.outlookmoney.com/news/fake-traffic-e-challan-messages-can-expose-otps-trigger-unauthorised-bank-transactions-pib-warns"
+    },
+    {
+      "slug": "whatsapp-delivery",
+      "name": "A 'challan notice' arriving on WhatsApp",
+      "detail": "PIB Fact Check (as reported) flagged fake RTO and e-challan notices arriving over WhatsApp as a scam channel, and DoT's Chakshu page treats WhatsApp alongside calls and SMS as a vector for fraud communications and impersonation. Treat a WhatsApp challan message as unverified until the challan itself shows up on an official portal you typed yourself.",
+      "source": "https://sancharsaathi.gov.in/"
+    },
+    {
+      "slug": "otp-upi-drain",
+      "name": "Asks for an OTP, card details, or payment to a personal UPI ID",
+      "detail": "The official eChallan portal states it never requests your password, OTP, payment details or sensitive personal information via calls, emails, messages or links — official portals collect payment on the portal itself through a payment gateway. So a 'challan' that wants an OTP read back, card details typed into a chat, or money sent to a personal UPI handle is not how any official flow works. Reported PIB warnings describe exactly this drain: fake links and APKs exposing OTPs and triggering unauthorised bank or UPI transactions.",
+      "source": "https://echallan.parivahan.gov.in/"
+    },
+    {
+      "slug": "state-confirmed-fraud",
+      "name": "Police themselves confirm fraud copies circulate",
+      "detail": "Telangana Police's e-challan portal warns users about fraudulent alternatives, names its genuine ECHALN SMS header, and directs users exclusively to the official website. When a state police force publishes which sender and site are real, that is both a verification tool and confirmation that the fakes are common enough to warrant it.",
+      "source": "https://echallan.tspolice.gov.in/publicview/"
+    },
+    {
+      "slug": "genuine-mobile-linking",
+      "name": "Inverse case: genuine challan SMS exist by design",
+      "detail": "Police run official flows to link or update your mobile number precisely so you receive challan and virtual-court notices: Delhi Traffic Police has a dedicated page to update the mobile number on a challan, and Maharashtra's mahatrafficechallan.gov.in offers mobile link and disassociate services. An unexpected challan SMS is therefore not automatically fake — it is verified by typing the official portal address yourself, never through the message's link.",
+      "source": "https://traffic.delhipolice.gov.in/echallan/index/update-mobile"
+    },
+    {
+      "slug": "genuine-vcourts-notice",
+      "name": "Inverse case: court-referred challan messages pointing to vcourts.gov.in are a real mechanism",
+      "detail": "Virtual Courts (e-Committee, Supreme Court of India; NIC-hosted) lets you search cases by mobile number or challan/vehicle number across 30+ states and union territories — a challan transferred to a virtual court generates genuine notices. Check any such message by typing vcourts.gov.in yourself and searching your vehicle number.",
+      "source": "https://vcourts.gov.in/virtualcourt/"
+    },
+    {
+      "slug": "genuine-lok-adalat",
+      "name": "Inverse case: Lok Adalat challan settlement is a real official programme",
+      "detail": "Kolkata Traffic Police's official gov.in site lists Traffic Lok Adalat as a service alongside e-challan and Sanjog payment, and challan settlement through Lok Adalats is an established mechanism. A Lok Adalat settlement message is not inherently a scam — but before acting on one, the destination must be a gov.in property from the allow-list above (for example vcourts.gov.in or your state portal), reached by typing the address yourself.",
+      "source": "https://kolkatatrafficpolice.gov.in/"
+    }
+  ],
+  "victim_help": [
+    {
+      "fact": "Call 1930 — the national cyber crime helpline — as soon as you realise money has moved. The Indian Cyber Crime Coordination Centre (I4C, Ministry of Home Affairs) names 1930 as an official channel for reporting cybercrime, including financial fraud."
+    },
+    {
+      "fact": "File a written complaint on the National Cyber Crime Reporting Portal, cybercrime.gov.in (content managed by the Ministry of Home Affairs). It registers complaints, tracks their status, and lets you search suspect identifiers such as UPI IDs and phone numbers against I4C's repository."
+    },
+    {
+      "fact": "Report the fraudulent message itself — even if you lost no money — via Chakshu on DoT's Sanchar Saathi portal (sancharsaathi.gov.in), which takes reports of suspected fraud communications received by call, SMS or WhatsApp so the telecom resources behind them can be cut off."
+    },
+    {
+      "fact": "Complain about the SMS sender to your own telecom operator under TRAI's TCCCPR rules: through the operator's app, by SMS to the short code 1909, or by calling 1909."
+    },
+    {
+      "fact": "Do not sit on it: under the amended TCCCPR, unwanted-commercial-communication complaints must be lodged within 7 days of receiving the message, so report promptly through every channel above."
+    }
+  ],
+  "sources": [
+    "https://echallan.parivahan.gov.in/",
+    "https://echallan.parivahan.nic.in/",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://pay.ecourts.gov.in/",
+    "https://echallan.tspolice.gov.in/publicview/",
+    "https://traffic.delhipolice.gov.in/echallan/index/update-mobile",
+    "https://mahatrafficechallan.gov.in/",
+    "https://kolkatatrafficpolice.gov.in/",
+    "https://sanjog.wb.gov.in/",
+    "https://trai.gov.in/sites/default/files/2025-02/Regulation_12022025.pdf",
+    "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2110694",
+    "https://sancharsaathi.gov.in/",
+    "https://i4c.mha.gov.in/",
+    "https://cybercrime.gov.in/",
+    "https://www.outlookmoney.com/news/fake-traffic-e-challan-messages-can-expose-otps-trigger-unauthorised-bank-transactions-pib-warns"
+  ],
+  "last_verified": "2026-08-13"
+}
