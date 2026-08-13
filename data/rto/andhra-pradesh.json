@@ -18,7 +18,7 @@
     { "code": "AP37", "office": "West Godavari (historical)" },
     { "code": "AP39", "office": "Statewide - all new registrations since Jan 2019 (one state, one code)" }
   ],
-  "verification": { "method": "full", "sample_size": 15, "official_list_available": true },
+  "verification": { "method": "full", "sample_size": 14, "official_list_available": true },
   "sources": [
     "https://www.aptransport.org/html/registration-districtcodes.html",
     "https://www.aptransport.org/",

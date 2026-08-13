@@ -31,7 +31,7 @@ const disclosure = (r: RtoStateRecord) => {
     : `Sample-verified: ${sampled} of ${codes(n)} checked against ${r.sources.length} independent sources — no fetchable official list.`;
 };
 
-// 129 distinct source URLs across the 36 states is too long for one
+// 130 distinct source URLs across the 36 states is too long for one
 // aggregated list, so sources render inside each state's section instead.
 // Repeated hostnames within a state get a counter so every URL stays visible.
 const sourceLabels = (sources: string[]) => {

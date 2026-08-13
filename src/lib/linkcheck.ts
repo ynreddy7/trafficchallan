@@ -20,14 +20,30 @@ export function resolveToDistFile(href: string): string {
 }
 
 const LEGACY_TLS_CODES = new Set(['UNABLE_TO_GET_ISSUER_CERT_LOCALLY', 'ERR_SSL_UNSAFE_LEGACY_RENEGOTIATION_DISABLED']);
+const DNS_DEAD_CODES = new Set(['ENOTFOUND', 'EAI_AGAIN']);
 
 /**
  * Classifies a Node TLS/network error code from a failed external-link fetch.
- * Some legacy gov.in servers respond, but with a TLS handshake modern Node
- * rejects (incomplete cert chain, unsafe legacy renegotiation) while curl and
- * browsers load them fine — those are warnings, not dead links. Every other
- * TLS error (expired cert, hostname mismatch, etc.) still fails the check.
+ *
+ * Only DNS resolution failure is treated as dead: a host that no longer
+ * resolves after retries is gone. Every connection-level failure on a host
+ * that DOES resolve (timeouts, resets, TLS quirks) is a warning, not a dead
+ * link — NIC/gov.in servers are routinely too slow for any sane timeout
+ * (nalsa.gov.in has been observed still streaming its page at 20s) and reject
+ * modern TLS handshakes that curl and browsers accept. Warnings stay loud in
+ * the report; the monthly verification run reviews them by hand.
  */
-export function classifyExternalFailure(code: string): 'legacy-tls-warn' | 'fail' {
-  return LEGACY_TLS_CODES.has(code) ? 'legacy-tls-warn' : 'fail';
+export function classifyExternalFailure(code: string): 'legacy-tls-warn' | 'dns-dead' | 'net-warn' {
+  if (DNS_DEAD_CODES.has(code)) return 'dns-dead';
+  return LEGACY_TLS_CODES.has(code) ? 'legacy-tls-warn' : 'net-warn';
+}
+
+/**
+ * Classifies a non-2xx/3xx HTTP status. Only 404/410 are dead — the server
+ * affirmatively says the page is gone. Anything else (401/403/429, 5xx) means
+ * the server is alive but refusing or failing this particular request — gov
+ * portals routinely 500 on bot-shaped GETs while working fine in browsers.
+ */
+export function classifyExternalStatus(status: number): 'dead' | 'warn' {
+  return status === 404 || status === 410 ? 'dead' : 'warn';
 }

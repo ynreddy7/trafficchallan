@@ -21,11 +21,12 @@
 10. STATUTE QUOTES: offence records may carry statute_quote — the text must be VERBATIM from the
     cited official source, verified on the day it is added; never paraphrase inside quotation marks.
 11. SCHEMES (two tiers):
-    - LIVE/ANNOUNCED: a percentage requires the official G.O./circular URL in the record's
-      sources, OR — only when the order is verifiably real (e.g. quoted by a court order or
-      named consistently by multiple reports) but not available online — at least 2 independent
-      press sources naming the order AND a note telling readers to confirm the figure on the
-      official portal before paying.
+    - LIVE/ANNOUNCED: a percentage requires an official record of the order in the record's
+      sources — the G.O./circular URL itself, or an official/court record quoting it (a High
+      Court order, a gazette index entry). Where no official record is online at all, the
+      fallback is at least 2 independent press sources naming the order. In every fallback or
+      court-record case (the order text itself unread), the note must tell readers to confirm
+      the figure on the official portal before paying.
     - CLOSED/HISTORICAL: a percentage requires order_ref (or the order named in the history
       entry) plus at least 2 independent corroborating press sources; an official URL is still
       preferred. Where a drive was announced with no published order at all (some states

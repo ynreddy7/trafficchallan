@@ -28,14 +28,14 @@ export function runGates(input: GateInput): string[] {
   const schemes = input.schemes ?? [];
   const rtoFiles = input.rtoFiles ?? [];
   const pages = input.pages ?? [];
-  const staleBefore = new Date(input.now.getTime() - STALE_DAYS * 86400_000);
   const todayISO = input.now.toISOString().slice(0, 10);
-  // Truncate `now` to UTC midnight for the 14-day window so a scheme verified
-  // exactly 14 days ago passes for the whole of today, not just until the
-  // clock time the gate happens to run at.
+  // Truncate `now` to UTC midnight for every staleness window so a record
+  // verified exactly N days ago passes for the whole of today, not just until
+  // the clock time the gate happens to run at.
   const nowUtcMidnight = new Date(todayISO + 'T00:00:00Z');
+  const staleBefore = new Date(nowUtcMidnight.getTime() - STALE_DAYS * 86400_000);
   const volatileStaleBefore = new Date(nowUtcMidnight.getTime() - SCHEME_VOLATILE_STALE_DAYS * 86400_000);
-  const rtoStaleBefore = new Date(input.now.getTime() - RTO_STALE_DAYS * 86400_000);
+  const rtoStaleBefore = new Date(nowUtcMidnight.getTime() - RTO_STALE_DAYS * 86400_000);
 
   const checkStale = (what: string, date: string) => {
     if (new Date(date + 'T00:00:00Z') < staleBefore) v.push(`${what}: stale last_verified ${date} (> ${STALE_DAYS} days)`);

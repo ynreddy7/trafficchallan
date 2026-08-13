@@ -260,6 +260,12 @@ const description = `Check and pay traffic e-challans online for all ${states.le
       li2.appendChild(externalLink('https://echallan.parivahan.nic.in/', 'echallan.parivahan.nic.in (NextGen)'));
       ul.appendChild(li2);
       wrap.appendChild(ul);
+      const rto = document.createElement('p');
+      const rtoLink = document.createElement('a');
+      rtoLink.href = '/rto-codes/';
+      rtoLink.textContent = `Which city is ${code} from? See the full RTO code lookup`;
+      rto.appendChild(rtoLink);
+      wrap.appendChild(rto);
       result.appendChild(wrap);
     }
 

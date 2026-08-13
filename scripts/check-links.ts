@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from 'node:fs';
 import fg from 'fast-glob';
-import { extractLocalHrefs, extractExternalHrefs, resolveToDistFile, classifyExternalFailure } from '../src/lib/linkcheck';
+import { extractLocalHrefs, extractExternalHrefs, resolveToDistFile, classifyExternalFailure, classifyExternalStatus } from '../src/lib/linkcheck';
 
 const UA = 'TrafficChallanBot/1.0 (+https://trafficchallan.com/about/)';
 const checkExternalFlag = process.argv.includes('--external');
@@ -21,25 +21,35 @@ function causeCode(e: unknown): string | undefined {
 async function checkExternal(url: string): Promise<ExternalResult> {
   let lastError = 'unknown error';
   let lastCode: string | undefined;
+  let lastStatus: number | undefined;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       const res = await fetch(url, {
         method: 'GET',
         redirect: 'follow',
-        signal: AbortSignal.timeout(15_000),
+        signal: AbortSignal.timeout(30_000),
         headers: { 'User-Agent': UA }
       });
       if (res.status === 403) return { url, status: 'warning', kind: '403', detail: '403 Forbidden (bot-blocked, treated as alive)' };
       if (res.status >= 200 && res.status < 400) return { url, status: 'alive', detail: `HTTP ${res.status}` };
       lastError = `HTTP ${res.status}`;
+      lastStatus = res.status;
       lastCode = undefined;
     } catch (e) {
       lastError = e instanceof Error ? e.message : String(e);
       lastCode = causeCode(e);
+      lastStatus = undefined;
     }
     if (attempt < 3) await new Promise((r) => setTimeout(r, 2000));
   }
-  if (lastCode && classifyExternalFailure(lastCode) === 'legacy-tls-warn') {
+  if (lastStatus !== undefined) {
+    // The server answered — only an affirmative "gone" (404/410) is dead.
+    if (classifyExternalStatus(lastStatus) === 'dead') return { url, status: 'dead', detail: lastError };
+    return { url, status: 'warning', kind: 'http-error', detail: `${lastError} (server alive but refusing this request; verify manually)` };
+  }
+  const cls = lastCode ? classifyExternalFailure(lastCode) : 'net-warn';
+  if (cls === 'dns-dead') return { url, status: 'dead', detail: `${lastError} (host no longer resolves)` };
+  if (cls === 'legacy-tls-warn') {
     return {
       url,
       status: 'warning',
@@ -48,7 +58,9 @@ async function checkExternal(url: string): Promise<ExternalResult> {
       detail: 'server responded but our TLS client rejects its legacy config; curl/browsers load it fine'
     };
   }
-  return { url, status: 'dead', detail: lastError };
+  // Timeouts, resets, protocol quirks on a host that resolves: NIC/gov infra
+  // is routinely this flaky from automated clients — loud warning, not dead.
+  return { url, status: 'warning', kind: 'unreachable', code: lastCode, detail: `${lastError} (could not connect after 3 attempts; verify manually)` };
 }
 
 async function main() {

@@ -36,11 +36,12 @@ The /challan-discount/ tracker is only worth existing if it is current. On EVERY
 2. If a live scheme's window has ended: set status to `closed` and move the window
    into `history` with its sources.
 3. A press report alone is NEVER status `live`. A scheme goes `live` or `announced`
-   only with the official G.O./gazette/circular URL in sources, OR — only when the
-   order is verifiably real (e.g. quoted by a court order or named consistently by
-   multiple reports) but not available online — with at least 2 independent press
-   sources naming the order AND a note telling readers to confirm the figure on the
-   official portal before paying. Until one of those holds, record it as `rumour`
+   only with an official record of the order in sources — the G.O./gazette/circular
+   URL itself, or an official/court record quoting it (a High Court order, a gazette
+   index entry) — or, when no official record is online at all, with at least 2
+   independent press sources naming the order. In every fallback or court-record
+   case (the order text itself unread), the note must tell readers to confirm the
+   figure on the official portal before paying. Until one of those holds, record it as `rumour`
    (or `proposal` if officially proposed) and never put its percentage in
    `percent_by_class` (the schema blocks it anyway). `closed`/historical
    percentages need order_ref (or the order named in the history entry) plus at

@@ -85,7 +85,9 @@ export function lookupRto(input: string, states: RtoLookupState[]): RtoLookupRes
   return {
     kind: 'state',
     series,
-    codes_count: state.codes.length,
+    // Count only the typed series' own rows: Telangana holds both TG and
+    // historical TS codes, and "TG" answering "76 codes" double-counts them.
+    codes_count: state.codes.filter((c) => c.code.startsWith(series)).length,
     state: { slug: state.slug, state_name: state.state_name }
   };
 }
