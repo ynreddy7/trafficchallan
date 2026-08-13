@@ -6,9 +6,11 @@
   "percent_by_class": {
     "all_vehicles": "50% of the prescribed fine (pay half)"
   },
-  "note": "Odisha's OTS, approved by the cabinet on 10 September 2025 and notified by the Commerce and Transport Department in September–October 2025, let violators settle e-challans pending as of 31 July 2025 at half the prescribed fine (for example ₹5,000 licence offences settled at ₹2,500). Challans already sent to court as prosecution reports were excluded. The scheme ran for six months from notification, so the window ended around March–April 2026; no extension had been announced as of 13 August 2026.",
+  "order_ref": "Commerce & Transport Department Notification No. 11521 dated 17 September 2025",
+  "note": "Odisha's OTS, approved by the cabinet in September 2025 and notified on 17 September 2025 (Notification No. 11521), let violators settle e-challans pending as of 31 July 2025 at half the prescribed fine (for example ₹5,000 licence offences settled at ₹2,500). Challans already sent to court as prosecution reports were excluded. The scheme ran for six months from notification, so the window ended around March–April 2026; no extension had been announced as of 13 August 2026.",
   "history": [],
   "sources": [
+    "https://odishatransport.gov.in/Application/uploadDocuments/Notification/PAYMENT-OF-e-CHALLAN-UNDER-OTS-SCHEME.pdf",
     "https://ommcomnews.com/odisha-news/odisha-govt-introduces-one-time-settlement-scheme-for-pending-e-challans/",
     "https://kalingatv.com/odisha/odisha-issues-new-notification-of-one-time-settlement-scheme-defaulters-have-to-pay-half-of-their-challans/"
   ],

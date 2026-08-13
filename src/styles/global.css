@@ -1181,6 +1181,12 @@ details p:last-child {
 .action__chev {
   flex: 0 0 auto;
 }
+/* Row of action buttons/links (e.g. the countdown panel's reminder buttons). */
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
 
 /* --- Share strip (ShareBar) ---------------------------------------------- */
 /* Deliberately quiet: it sits under the answer content and must never
@@ -1409,7 +1415,9 @@ details p:last-child {
   .footer-nav,
   .brand__chev,
   .action__chev,
-  .share-strip {
+  .share-strip,
+  /* Reminder buttons print as huge expanded hrefs (the gcal URL especially). */
+  .action-row {
     display: none !important;
   }
   .site-header {

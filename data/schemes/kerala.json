@@ -6,12 +6,11 @@
   "percent_by_class": {
     "all_vehicles": "50% of the fine waived"
   },
-  "window": { "start": "2026-03-15", "end": "2026-04-30" },
-  "order_ref": "G.O.(Ms) No.14/2026/TRANS dated 15 March 2026",
-  "note": "Kerala's one-time amnesty closed on 30 April 2026. Under G.O.(Ms) No.14/2026/TRANS, violations registered up to 31 December 2024 could be settled at half the fine — covering unlicensed driving, overspeeding, helmet/seatbelt and insurance offences, among others. The backlog it targeted was 1,02,53,151 pending violations worth ₹932.64 crore. No new window has been announced since.",
+  "note": "Kerala's one-time amnesty was a 50% concession with a payment deadline of 30 April 2026. It covered violations registered up to 31 December 2024 (cases already before the courts were excluded) and targeted a backlog of 1,02,53,151 pending violations worth ₹932.64 crore. The Transport Department order behind it is not available online, so the record carries press sources only. No new window has been announced since it closed.",
   "history": [],
   "sources": [
-    "https://www.onmanorama.com/news/kerala/2026/03/20/kerala-transport-department-vehicle-fine-amnesty-scheme.html"
+    "https://www.onmanorama.com/news/kerala/2026/03/20/kerala-transport-department-vehicle-fine-amnesty-scheme.html",
+    "https://www.mathrubhumi.com/auto/news/kerala-mvd-police-amnesty-scheme-2026-traffic-fine-50-percent-discount-sa7m0s6m"
   ],
   "last_verified": "2026-08-13"
 }

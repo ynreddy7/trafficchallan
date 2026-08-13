@@ -7,10 +7,11 @@
     "specified_offences": "up to 50% relief on the pending fine"
   },
   "window": { "start": "2026-05-09", "end": "2027-03-31" },
-  "order_ref": "Gazette notification dated 30 April 2026",
-  "note": "Bihar's one-time settlement took effect at the 9 May 2026 National Lok Adalat under Patna High Court supervision and remains operational through financial year 2026-27. It gives up to 50% relief on e-challans pending more than 90 days for specified offences; serious violations such as using a handheld mobile while driving are excluded and attract the full penalty. Settlement happens at National Lok Adalat sittings — the next is on 12 September 2026.",
+  "order_ref": "Notification No. 3261 dated 30 April 2026 (e-gazette; recorded in the Patna High Court order of 4 May 2026)",
+  "note": "Bihar's one-time settlement took effect at the 9 May 2026 National Lok Adalat under Patna High Court supervision and remains operational through financial year 2026-27. It gives up to 50% relief on e-challans pending more than 90 days for specified offences; serious violations such as using a handheld mobile while driving are excluded and attract the full penalty. Settlement happens at National Lok Adalat sittings. The Patna High Court's 4 May 2026 order records the notification (No. 3261 dated 30 April 2026), but the notification text itself is not online — the up-to-50% figure is as reported in press, so confirm the relief shown against your challan on the official portal before paying.",
   "history": [],
   "sources": [
+    "https://indiankanoon.org/doc/199092032/",
     "https://www.gktoday.in/bihar-launches-one-time-traffic-challan-settlement-scheme/"
   ],
   "last_verified": "2026-08-13"

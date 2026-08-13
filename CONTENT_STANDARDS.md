@@ -20,10 +20,19 @@
    page rather than inventing certainty.
 10. STATUTE QUOTES: offence records may carry statute_quote — the text must be VERBATIM from the
     cited official source, verified on the day it is added; never paraphrase inside quotation marks.
-11. SCHEMES: Never publish a discount percentage without the official G.O./circular URL in the
-    record's sources. A percentage circulating without an official order = status "rumour", named
-    as a rumour on the page, with the fact-check cited. Lok Adalat outcomes are decided by the
-    bench case by case — never publish a predicted Lok Adalat percentage anywhere.
+11. SCHEMES (two tiers):
+    - LIVE/ANNOUNCED: a percentage requires the official G.O./circular URL in the record's
+      sources, OR — only when the order is verifiably real (e.g. quoted by a court order or
+      named consistently by multiple reports) but not available online — at least 2 independent
+      press sources naming the order AND a note telling readers to confirm the figure on the
+      official portal before paying.
+    - CLOSED/HISTORICAL: a percentage requires order_ref (or the order named in the history
+      entry) plus at least 2 independent corroborating press sources; an official URL is still
+      preferred. Where a drive was announced with no published order at all (some states
+      announce via press briefing only), the note must say so explicitly.
+    A percentage circulating with none of the above = status "rumour", named as a rumour on
+    the page, with the fact-check cited. Lok Adalat outcomes are decided by the bench case by
+    case — never publish a predicted Lok Adalat percentage anywhere.
 12. DIRECTORY DATA CLASS (RTO code lists): where the state transport department publishes a
     fetchable official list, that list is the source of record (verification method "full");
     where it does not, verify a sample against official RTO office pages and disclose the

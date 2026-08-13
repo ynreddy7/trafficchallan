@@ -53,6 +53,8 @@ const calcData = {
 
     <div style="display:flex;align-items:center;gap:0.7rem;">
       <button type="button" id="copy-link" class="action action--secondary" style="flex:0 0 auto;">Copy link</button>
+      {/* Announces copy results to screen readers — sighted users see the button text swap. */}
+      <span class="sr-only" role="status" id="copy-link-status"></span>
     </div>
   </form>
 
@@ -163,14 +165,17 @@ const calcData = {
     repeatBox.addEventListener('change', render);
 
     const copyBtn = document.getElementById('copy-link') as HTMLButtonElement;
+    const copyStatus = document.getElementById('copy-link-status');
     copyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(location.href);
         const original = copyBtn.textContent;
         copyBtn.textContent = 'Copied';
+        if (copyStatus) copyStatus.textContent = 'Link copied';
         setTimeout(() => { copyBtn.textContent = original; }, 1500);
       } catch {
         copyBtn.textContent = 'Copy failed — copy the address bar instead';
+        if (copyStatus) copyStatus.textContent = 'Copy failed — copy the address bar instead';
       }
     });
 

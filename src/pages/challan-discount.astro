@@ -11,7 +11,7 @@ import StepList from '../components/StepList.astro';
 import { loadSchemes, loadLokAdalat, loadStates, maxSchemeDate } from '../lib/data';
 import { faqJsonLd, datasetJsonLd } from '../lib/seo';
 import { slugify } from '../lib/format';
-import { nextSitting, daysUntil } from '../lib/countdown';
+import { nextSitting } from '../lib/countdown';
 import type { SchemeRecord } from '../lib/schemas';
 
 const schemes = loadSchemes();
@@ -44,9 +44,6 @@ const todayISO = new Date().toISOString().slice(0, 10);
 const sittingDates = lokAdalat.national_sittings.map((s) => s.date);
 const next = nextSitting(sittingDates, todayISO);
 const remaining = sittingDates.filter((d) => d >= todayISO).sort();
-const daysToNext = next ? daysUntil(next, todayISO) : null;
-const relativeText =
-  daysToNext === null ? '' : daysToNext === 0 ? 'today' : daysToNext === 1 ? 'tomorrow' : `in ${daysToNext} days`;
 
 const gcalHref = next
   ? 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
@@ -55,10 +52,21 @@ const gcalHref = next
     '&details=' + encodeURIComponent('Settle pending traffic challans at the National Lok Adalat sitting. The settlement figure is decided by the bench on the day. https://trafficchallan.com/challan-discount/')
   : null;
 
-const liveNames = schemes.filter((s) => s.status === 'live').map((s) => s.state_name).sort();
+const liveSchemes = schemes
+  .filter((s) => s.status === 'live')
+  .sort((a, b) => a.state_name.localeCompare(b.state_name));
+const liveNames = liveSchemes.map((s) => s.state_name);
+// Scoped to what we actually track — never "every other state" (we don't cover all 36 states/UTs).
 const liveSentence = liveNames.length
-  ? `Right now ${liveNames.join(' and ')} ${liveNames.length === 1 ? 'is the only state' : 'are the only states'} with a live scheme — every other state's verified status is in the table below.`
-  : 'Right now no state has a live discount scheme — the verified status of every state is in the table below.';
+  ? `Right now ${liveNames.join(' and ')} ${liveNames.length === 1 ? 'is the only state' : 'are the only states'} with a live scheme — the table below shows the verified status of every state we track (${schemes.length} as of today).`
+  : `Right now no state we track has a live discount scheme — the table below shows the verified status of all ${schemes.length}.`;
+// FAQ 1's live-scheme sentence, derived from the same data as the table so the
+// two can never contradict each other.
+const liveFaqSentence = liveNames.length
+  ? `As of today, ${liveSchemes
+      .map((s) => `${s.state_name}${s.window?.end ? ` (running until ${pretty(s.window.end)})` : ''}`)
+      .join(' and ')} ${liveNames.length === 1 ? 'has' : 'have'} the only live scheme${liveNames.length === 1 ? '' : 's'} among the ${schemes.length} states we track.`
+  : `As of today, none of the ${schemes.length} states we track has a live scheme.`;
 
 const classLabel = (key: string) => {
   const t = key.replace(/_/g, ' ');
@@ -76,10 +84,21 @@ const allSources = [...new Set([...schemes.flatMap((s) => s.sources), ...lokAdal
 
 const rumourAnchor = slugify("Is the '80% discount' message real?");
 
+// FAQ answers are built from the same computed values as the table and the
+// countdown (liveFaqSentence, next/remaining, lokAdalat notes) so the on-page
+// FAQ and faqJsonLd can never contradict what the rest of the page renders.
+const lastOfYear = remaining.length ? remaining[remaining.length - 1] : null;
+const nextSittingFaq = next
+  ? `The next National Lok Adalat sits on ${pretty(next)}${
+      lastOfYear && lastOfYear !== next
+        ? `, and the last one of the year on ${pretty(lastOfYear)}`
+        : ' — the last one of the year'
+    }. They follow the NALSA calendar — four second Saturdays a year — and courts across India sit on the same date.`
+  : 'No further National Lok Adalat sitting is scheduled yet — state legal services authorities publish the next cycle’s dates, and this page updates as soon as the first one does. They follow the NALSA calendar — four second Saturdays a year.';
 const faqs = [
   {
     q: 'Is there a 50% discount on traffic challans right now?',
-    a: 'Only where a state government order says so, for a fixed window. As of August 2026, Bihar’s one-time settlement (up to 50% relief on eligible pending challans, running through 31 March 2027) is the only live scheme; Karnataka’s and Kerala’s 50% windows have closed. The tracker table on this page shows every state’s verified status with its order or source.'
+    a: `Only where a state government order says so, for a fixed window. ${liveFaqSentence} The tracker table on this page shows every state’s verified status with its order or source.`
   },
   {
     q: 'How much discount does a Lok Adalat give on a traffic challan?',
@@ -91,11 +110,11 @@ const faqs = [
   },
   {
     q: 'When is the next National Lok Adalat for traffic challans?',
-    a: 'The next National Lok Adalat sits on 12 September 2026, and the last one of the year on 12 December 2026. They follow the NALSA calendar — four second Saturdays a year — and courts across India sit on the same date.'
+    a: nextSittingFaq
   },
   {
     q: 'How do I get a token for the Delhi traffic Lok Adalat?',
-    a: 'Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens — about five days before the sitting, with exact dates announced afresh by DSLSA for each edition. Enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. Delhi releases 50,000 challans per day for download, up to 2 lakh per Lok Adalat.'
+    a: `Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens — about ${lokAdalat.delhi_token.opens_days_before} days before the sitting, with exact dates announced afresh by DSLSA for each edition. Enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. ${lokAdalat.delhi_token.daily_cap_note}`
   }
 ];
 
@@ -104,6 +123,8 @@ const islandData = {
   opensDaysBefore: lokAdalat.delhi_token.opens_days_before,
   portal: lokAdalat.delhi_token.portal
 };
+// Escape "<" so the JSON can never close the <script> tag early ("</script>" injection).
+const islandJson = JSON.stringify(islandData).replace(/</g, '\\u003c');
 
 const jsonld = [
   faqJsonLd(faqs),
@@ -136,7 +157,9 @@ const jsonld = [
     <h2 id={slugify('When is the next National Lok Adalat?')}>When is the next National Lok Adalat?</h2>
     {next ? (
       <p>
-        <strong>{pretty(next)}</strong> — <span data-countdown>{relativeText}</span>.
+        {/* The span's server text stays neutral and absolute — the client script
+            replaces it with a relative phrase computed on the visitor's day. */}
+        <strong>{pretty(next)}</strong> — <span data-countdown>the next scheduled sitting</span>.
         {remaining.length > 1
           ? ` ${remaining.length} sittings remain in 2026: ${remaining.map(prettyShort).join(' and ')}.`
           : ' It is the last sitting of 2026.'}
@@ -148,8 +171,10 @@ const jsonld = [
       The .ics reminder covers each remaining sitting (alerts 7 days and 1 day before) plus the likely Delhi
       token-window date — "likely" because DSLSA announces the exact dates afresh for every edition.
     </p>
-    <div style="display:flex;flex-wrap:wrap;gap:0.7rem;">
-      <button type="button" id="ics-download" class="action action--secondary">Download .ics reminder</button>
+    <div class="action-row">
+      {/* Rendered hidden and un-hidden by the island once its click handler is
+          attached — without JS the button would do nothing. */}
+      <button type="button" id="ics-download" class="action action--secondary" hidden>Download .ics reminder</button>
       {gcalHref && <a class="action action--secondary" href={gcalHref} rel="noopener">Add to Google Calendar</a>}
     </div>
   </section>
@@ -163,7 +188,7 @@ const jsonld = [
   <div class="table-wrap">
     <table class="schedule">
       <thead>
-        <tr><th>State</th><th>Status</th><th>Discount</th><th>Window</th><th>Order / source</th></tr>
+        <tr><th scope="col">State</th><th scope="col">Status</th><th scope="col">Discount</th><th scope="col">Window</th><th scope="col">Order / source</th></tr>
       </thead>
       <tbody>
         {rows.map((s) => (
@@ -261,28 +286,38 @@ const jsonld = [
 
   <SourceList sources={allSources} />
 
-  <script type="application/json" id="discount-data" set:html={JSON.stringify(islandData)} />
+  <script type="application/json" id="discount-data" set:html={islandJson} />
   <script>
     import { buildIcs, type IcsEvent } from '../lib/ics';
     import { nextSitting, daysUntil } from '../lib/countdown';
 
     interface DiscountData { sittings: string[]; opensDaysBefore: number; portal: string }
     const data: DiscountData = JSON.parse(document.getElementById('discount-data')!.textContent!);
-    const today = new Date().toISOString().slice(0, 10);
+    // LOCAL date components, not toISOString(): UTC would put an IST visitor on
+    // yesterday's date until 05:30 in the morning.
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
     const addDays = (iso: string, days: number) =>
       new Date(Date.parse(iso + 'T00:00:00Z') + days * 86_400_000).toISOString().slice(0, 10);
 
-    // The server rendered an absolute date + build-day relative text; recompute
-    // the relative part against the visitor's own day.
+    // The server rendered an absolute date + a neutral phrase; write the
+    // relative phrase computed against the visitor's own day.
     const next = nextSitting(data.sittings, today);
     const countdownEl = document.querySelector<HTMLElement>('[data-countdown]');
-    if (countdownEl && next) {
-      const d = daysUntil(next, today);
-      countdownEl.textContent = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
+    if (countdownEl) {
+      if (next) {
+        const d = daysUntil(next, today);
+        countdownEl.textContent = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
+      } else {
+        // Server-rendered date is already in the past for this visitor.
+        countdownEl.textContent = 'date passed — next cycle to be announced';
+      }
     }
 
     const icsBtn = document.getElementById('ics-download') as HTMLButtonElement | null;
     if (icsBtn) {
+      // Progressive enhancement: the button is server-rendered hidden and only
+      // appears once this handler is attached.
       icsBtn.addEventListener('click', () => {
         const remaining = data.sittings.filter((s) => s >= today).sort();
         const events: IcsEvent[] = remaining.map((date) => ({
@@ -295,13 +330,17 @@ const jsonld = [
         }));
         if (next) {
           const tokenDate = addDays(next, -data.opensDaysBefore);
-          events.push({
-            uid: `delhi-token-${tokenDate}@trafficchallan.com`,
-            date: tokenDate,
-            summary: 'Delhi Lok Adalat token window likely opens',
-            description: `Delhi's token portal has opened about ${data.opensDaysBefore} days before recent sittings, but DSLSA announces the exact dates afresh for each edition — check ${data.portal} on this day.`,
-            alarmDaysBefore: [1]
-          });
+          // Skip the token event once its likely date is already behind the
+          // visitor — a past-dated calendar event is worse than none.
+          if (tokenDate >= today) {
+            events.push({
+              uid: `delhi-token-${tokenDate}@trafficchallan.com`,
+              date: tokenDate,
+              summary: 'Delhi Lok Adalat token window likely opens',
+              description: `Delhi's token portal has opened about ${data.opensDaysBefore} days before recent sittings, but DSLSA announces the exact dates afresh for each edition — check ${data.portal} on this day.`,
+              alarmDaysBefore: [1]
+            });
+          }
         }
         const blob = new Blob([buildIcs(events, today)], { type: 'text/calendar;charset=utf-8' });
         const url = URL.createObjectURL(blob);
@@ -313,6 +352,7 @@ const jsonld = [
         a.remove();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       });
+      icsBtn.hidden = false;
     }
   </script>
 </Base>

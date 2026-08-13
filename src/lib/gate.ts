@@ -29,9 +29,13 @@ export function runGates(input: GateInput): string[] {
   const rtoFiles = input.rtoFiles ?? [];
   const pages = input.pages ?? [];
   const staleBefore = new Date(input.now.getTime() - STALE_DAYS * 86400_000);
-  const volatileStaleBefore = new Date(input.now.getTime() - SCHEME_VOLATILE_STALE_DAYS * 86400_000);
-  const rtoStaleBefore = new Date(input.now.getTime() - RTO_STALE_DAYS * 86400_000);
   const todayISO = input.now.toISOString().slice(0, 10);
+  // Truncate `now` to UTC midnight for the 14-day window so a scheme verified
+  // exactly 14 days ago passes for the whole of today, not just until the
+  // clock time the gate happens to run at.
+  const nowUtcMidnight = new Date(todayISO + 'T00:00:00Z');
+  const volatileStaleBefore = new Date(nowUtcMidnight.getTime() - SCHEME_VOLATILE_STALE_DAYS * 86400_000);
+  const rtoStaleBefore = new Date(input.now.getTime() - RTO_STALE_DAYS * 86400_000);
 
   const checkStale = (what: string, date: string) => {
     if (new Date(date + 'T00:00:00Z') < staleBefore) v.push(`${what}: stale last_verified ${date} (> ${STALE_DAYS} days)`);
@@ -47,7 +51,7 @@ export function runGates(input: GateInput): string[] {
     checkStale(`scheme ${s.slug}`, s.last_verified);
     if (VOLATILE_STATUSES.has(s.status) && new Date(s.last_verified + 'T00:00:00Z') < volatileStaleBefore) {
       v.push(
-        `scheme ${s.slug}: status "${s.status}" but last_verified ${s.last_verified} is > ${SCHEME_VOLATILE_STALE_DAYS} days old — ` +
+        `scheme ${s.slug}: status "${s.status}" not re-verified in ${SCHEME_VOLATILE_STALE_DAYS} days (last_verified ${s.last_verified}) — ` +
         `re-verify against its sources and update last_verified (Discount watch in AGENT_PLAYBOOK)`
       );
     }

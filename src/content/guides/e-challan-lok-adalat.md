@@ -107,7 +107,7 @@ So the percentages that circulate ("75% off at Lok Adalat") do not come from NAL
 
 No — a different mechanism entirely. A discount scheme is an executive decision by a state government or police force, applied on the payment portal, open to everyone for a fixed window, with no court and no bench involved.
 
-Which states have a scheme open right now — with current windows, percentages and the government order behind each, plus the live National Lok Adalat dates — is tracked on the [challan discount tracker](/challan-discount/), which is re-verified on every content run.
+Which states have a scheme open right now — with current windows, percentages and the government order behind each, plus the live National Lok Adalat dates — is tracked on the [challan discount tracker](/challan-discount/); active schemes are re-verified on every content run, and every record at least monthly.
 
 Karnataka is the clearest case. The state has run recurring limited-window challan-discount drives on pending e-challans, but the dates are announced through the press rather than kept as a standing notice on the police or transport portals — so there is no official page listing past or current windows. Check btp.karnataka.gov.in or ksp.karnataka.gov.in before assuming one is active; outside an active window the full notified amount is payable. See [Karnataka](/karnataka-e-challan/).
 

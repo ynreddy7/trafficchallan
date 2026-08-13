@@ -16,6 +16,8 @@ const waHref = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url);
     Share&hellip;
   </button>
   <button type="button" class="share-strip__btn" id="share-copy" data-url={url}>Copy link</button>
+  {/* Announces copy results to screen readers — sighted users see the button text swap. */}
+  <span class="sr-only" role="status" id="share-copy-status"></span>
 </div>
 
 <script>
@@ -30,15 +32,18 @@ const waHref = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url);
   }
 
   const copyBtn = document.getElementById('share-copy') as HTMLButtonElement | null;
+  const copyStatus = document.getElementById('share-copy-status');
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(copyBtn.dataset.url ?? location.href);
         const original = copyBtn.textContent;
         copyBtn.textContent = 'Copied';
+        if (copyStatus) copyStatus.textContent = 'Link copied';
         setTimeout(() => { copyBtn.textContent = original; }, 1500);
       } catch {
         copyBtn.textContent = 'Copy failed — copy the address bar instead';
+        if (copyStatus) copyStatus.textContent = 'Copy failed — copy the address bar instead';
       }
     });
   }

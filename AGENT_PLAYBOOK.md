@@ -36,9 +36,17 @@ The /challan-discount/ tracker is only worth existing if it is current. On EVERY
 2. If a live scheme's window has ended: set status to `closed` and move the window
    into `history` with its sources.
 3. A press report alone is NEVER status `live`. A scheme goes `live` or `announced`
-   only on an official G.O./gazette/circular; until then record it as `rumour` (or
-   `proposal` if officially proposed), and never put its percentage in
-   `percent_by_class` (the schema blocks it anyway).
+   only with the official G.O./gazette/circular URL in sources, OR — only when the
+   order is verifiably real (e.g. quoted by a court order or named consistently by
+   multiple reports) but not available online — with at least 2 independent press
+   sources naming the order AND a note telling readers to confirm the figure on the
+   official portal before paying. Until one of those holds, record it as `rumour`
+   (or `proposal` if officially proposed) and never put its percentage in
+   `percent_by_class` (the schema blocks it anyway). `closed`/historical
+   percentages need order_ref (or the order named in the history entry) plus at
+   least 2 independent corroborating press sources — official URL preferred; where
+   a drive had no published order at all, the note must say so (mirrors
+   CONTENT_STANDARDS rule 11).
 4. Within 21 days of a National Lok Adalat sitting, check the Delhi token portal
    (traffic.delhipolice.gov.in/lokadalat/) and DSLSA notifications for that edition's
    exact token dates, caps and eligibility cutoff; update data/lok-adalat.json.

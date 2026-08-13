@@ -7,20 +7,22 @@
     "all_vehicles": "50% of the pending fine waived"
   },
   "window": { "start": "2026-06-21", "end": "2026-07-10" },
-  "note": "Karnataka's latest 50% concession window closed on 10 July 2026. It was the state's sixth such drive — ₹96.73 lakh was collected on day one (32,486 cases settled) and over ₹18.15 crore in the first 14 days (6,06,032 cases). These drives recur but each needs a fresh government announcement; there is no discount between windows.",
+  "note": "Karnataka's latest 50% concession window closed on 10 July 2026. It was the state's sixth such drive — ₹96.73 lakh was collected on day one (32,486 cases settled) and over ₹18.15 crore in the first 14 days (6,06,032 cases). These drives recur but each needs a fresh government announcement, made through the press rather than a standing published order — no official order for any drive is available online — and there is no discount between windows.",
   "history": [
     {
       "period": "2025 (two drives)",
-      "summary": "Karnataka ran two 50% concession drives in 2025; the later one collected more than ₹89 crore and settled over 30 lakh pending cases.",
+      "summary": "Karnataka ran two 50% concession drives in 2025; the August–September drive alone collected over ₹106 crore and settled more than 37.8 lakh pending cases in 22 days.",
       "sources": [
-        "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914"
+        "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914",
+        "https://www.daijiworld.com/news/newsDisplay?newsID=1292324"
       ]
     },
     {
       "period": "2023 (three drives)",
-      "summary": "Three 50% concession drives on pending traffic fines were offered during 2023.",
+      "summary": "Three 50% concession drives on pending traffic fines were offered during 2023; the February window collected ₹5.61 crore across 2,01,828 cases in Bengaluru on its first day alone.",
       "sources": [
-        "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914"
+        "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914",
+        "https://thesouthfirst.com/karnataka/50-discount-on-pending-traffic-fines-whopping-%E2%82%B95-61-crore-mopped-up-on-day-1-in-bengaluru-alone/"
       ]
     }
   ],
