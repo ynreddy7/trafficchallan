@@ -16,7 +16,7 @@
       "sources": [
         "https://echallan.parivahan.gov.in/index/accused-challan",
         "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
-        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28477"
+        "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231"
       ]
     },
     {
@@ -44,16 +44,16 @@
         "echallan.parivahan.gov.in — challan-status page ('Sent To Court Data' block)",
         "eChallan language file ('Sent To Court', 'Challan In Court')"
       ],
-      "meaning": "The department has forwarded the challan to a court — regular or virtual. The portal's Sent To Court block names the court, its address and the date it was sent, and the system message 'Payment cannot be saved as the challan has been sent to court.' shows that once forwarded, a payment can no longer be recorded on the eChallan side.",
+      "meaning": "The department has forwarded the challan to a court — regular or virtual. The portal's own application strings carry a 'Sent To Court Data' block with fields for the court's name, its address and the date it was sent, and the system message 'Payment cannot be saved as the challan has been sent to court.' shows that once forwarded, a payment can no longer be recorded on the eChallan side.",
       "next_steps": [
         "Open the Status link on the results row to see which court received the challan and on what date.",
         "If it went to a virtual court, search the case on vcourts.gov.in by mobile number, CNR, party name, or vehicle/challan number, then either pay the fine or use Request to Contest.",
         "If it went to a regular court, attend on the date in the summons or appear through an advocate; under Section 208 of the Motor Vehicles Act 1988 the court may state on the summons that you can instead plead guilty and remit the specified sum by money order."
       ],
       "sources": [
-        "https://echallan.parivahan.gov.in/api/challan-status/challan/DL18322190923183816",
+        "https://echallan.parivahan.gov.in/index/accused-challan",
         "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
-        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28485"
+        "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28485&sectionno=208&orderno=239"
       ]
     },
     {
@@ -61,9 +61,9 @@
       "term": "Forwarded to Virtual Court",
       "seen_on": [
         "echallan.parivahan.gov.in — disclaimer modal on the Check Challan Status page",
-        "challan-status page ('Status from virtual court' block)"
+        "vcourts.gov.in — case search for court-referred challans (by CNR, challan or vehicle number)"
       ],
-      "meaning": "A virtual-court case has been created from the challan: it gets a court CNR (Delhi traffic cases begin DLVC…) and a case number in the style TC/12345/2026. The eChallan portal's own disclaimer says such a challan 'has been forwarded to Virtual Court… but still it can be paid here' — with an explicit warning to pay on only one of the two portals.",
+      "meaning": "A virtual-court case has been created from the challan: it becomes a court case with its own CNR, which is why vcourts.gov.in offers Search by CNR alongside challan- and vehicle-number search. The eChallan portal's own disclaimer says such a challan 'has been forwarded to Virtual Court… but still it can be paid here' — with an explicit warning to pay on only one of the two portals.",
       "next_steps": [
         "Look the case up on vcourts.gov.in by mobile number, CNR, party name, or vehicle/challan number.",
         "Choose Pay Fine — the vcourts site says the case is disposed immediately after online payment of the fine — or choose Request to Contest, which assigns the case to a physical court with a date.",
@@ -71,7 +71,7 @@
       ],
       "sources": [
         "https://echallan.parivahan.gov.in/index/accused-challan",
-        "https://echallan.parivahan.gov.in/api/challan-status/challan/DL18322190923183816",
+        "https://vcourts.gov.in/virtualcourt/index.php",
         "https://vcourts.gov.in/virtualcourt/faq.php"
       ]
     },
@@ -108,24 +108,24 @@
       "sources": [
         "https://vcourts.gov.in/virtualcourt/index.js",
         "https://vcourts.gov.in/virtualcourt/faq.php",
-        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_5_23_00049_202346_1719552320687&sectionID=91214"
+        "https://www.indiacode.nic.in/show-data?actid=AC_CEN_5_23_00049_202346_1719552320687&sectionId=91214&sectionno=228&orderno=228"
       ]
     },
     {
       "slug": "cognizance-denied",
       "term": "Cognizance Denied",
       "seen_on": [
-        "echallan.parivahan.gov.in — challan-status page ('Cognizance Denied Data' block)"
+        "echallan.parivahan.gov.in — per-challan status page opened from the Status link on Check Challan Status results"
       ],
-      "meaning": "A status returned from the virtual court and displayed on the eChallan status page: the named virtual-court judge did not take cognizance of the challan on the recorded date. The block lists the challan number, party name, fine imposed, CNR, case number and the judge's name. The portal does not define the term further and does not say what happens to the challan next — so treat it as neither a closure nor an escalation until confirmed.",
+      "meaning": "A status the eChallan portal can display for a challan after it reaches a virtual court. On its face the label records that the virtual-court judge did not take cognizance of the challan; the portal's status page displays it alongside the court details it holds for the challan. Neither the status page nor the portal's application language file defines the term or says what happens to the challan next — so treat it as neither a closure nor an escalation until confirmed.",
       "next_steps": [
         "Note the CNR and case number shown and look them up on vcourts.gov.in or the eCourts services.",
         "Ask the issuing traffic or transport department — or the court named in the Sent To Court block — where the matter now stands.",
         "Do not assume the challan is closed: the portal itself does not say, so verify with the department or court before treating it as settled."
       ],
       "sources": [
-        "https://echallan.parivahan.gov.in/api/challan-status/challan/DL18322190923183816",
-        "https://echallan.parivahan.gov.in/api/challan-status/challan/OR36055210914145940"
+        "https://echallan.parivahan.gov.in/index/accused-challan",
+        "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js"
       ]
     },
     {
@@ -190,13 +190,13 @@
       ],
       "sources": [
         "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
-        "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_3_46_00003_198739_1517807322718&sectionID=27594"
+        "https://www.indiacode.nic.in/show-data?actid=AC_CEN_3_46_00003_198739_1517807322718&sectionId=27594&sectionno=21&orderno=25"
       ]
     }
   ],
   "vcourts": {
     "states_count": 22,
-    "departments_count": 32,
+    "departments_count": 31,
     "covered_states": [
       "Assam (Transport + Traffic)",
       "Chandigarh (Traffic)",
@@ -222,7 +222,7 @@
       "West Bengal (Traffic)"
     ],
     "footnotes": [
-      "Counted from the live department dropdown on vcourts.gov.in on 13 August 2026: 32 department entries across 22 states and union territories.",
+      "Counted from the live department dropdown on vcourts.gov.in on 13 August 2026: 31 department entries across 22 states and union territories.",
       "Maharashtra's traffic entry is literally 'NASHIK TRAFFIC DEPARTMENT' (city-specific), alongside a separate statewide 'Maharashtra (Transport Department)' entry — traffic-police coverage there is not statewide.",
       "Odisha's coverage is limited to the 'Odisha Traffic CTC-BBSR Commissionerate' (Cuttack–Bhubaneswar).",
       "Telangana and Andhra Pradesh are absent entirely, as are Bihar, Jharkhand, Goa, Sikkim, Nagaland, Mizoram, Arunachal Pradesh, and union territories other than Chandigarh, Delhi and Jammu & Kashmir.",
@@ -237,9 +237,9 @@
     "https://echallan.parivahan.gov.in/www/js/languages/lang_en.js",
     "https://vcourts.gov.in/virtualcourt/index.php",
     "https://vcourts.gov.in/virtualcourt/faq.php",
-    "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28477",
-    "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionID=28485",
-    "https://www.indiacode.nic.in/SectionPageContent?actid=AC_CEN_5_23_00049_202346_1719552320687&sectionID=91214"
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28485&sectionno=208&orderno=239",
+    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_5_23_00049_202346_1719552320687&sectionId=91214&sectionno=228&orderno=228"
   ],
   "last_verified": "2026-08-13"
 }

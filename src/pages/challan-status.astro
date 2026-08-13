@@ -109,7 +109,7 @@ const jsonld = [faqJsonLd(faqs)];
   <LastVerified date={lastVerified} />
   <p class="legal-note">This is general information, not legal advice. For your specific case, consult an advocate.</p>
 
-  <section class="panel">
+  <section class="panel jump-panel">
     <h2 id={slugify('Jump to your status')}>Jump to your status</h2>
     <form class="status-picker">
       <label for="status-jump">What does your challan say?</label>
@@ -117,7 +117,9 @@ const jsonld = [faqJsonLd(faqs)];
         <option value="">Choose a status&hellip;</option>
         {statuses.map((s) => <option value={s.slug}>{pickLabel(s)}</option>)}
       </select>
+      <button type="submit" class="action action--secondary">Go</button>
     </form>
+    <p class="verified">Pick a status, then press Go to jump to its entry below.</p>
     <noscript>
       <p class="verified">The picker needs JavaScript — without it, every status is listed in order just below.</p>
     </noscript>
@@ -192,12 +194,17 @@ const jsonld = [faqJsonLd(faqs)];
   <SourceList sources={allSources} />
 
   <script>
-    // Jump picker: choosing a status moves the page to that entry's anchor;
-    // the :target CSS highlights the heading. Everything below is fully
-    // static, so losing JS loses nothing but the shortcut.
+    // Jump picker: submitting the form (the Go button, or Enter in the
+    // select) moves the page to the chosen entry's anchor; the :target CSS
+    // highlights the heading. Jumping on submit — not on change — keeps
+    // keyboard users free to arrow through the options without the page
+    // leaping away. Everything below is fully static, so losing JS loses
+    // nothing but the shortcut.
+    const form = document.querySelector<HTMLFormElement>('.status-picker');
     const select = document.getElementById('status-jump') as HTMLSelectElement | null;
-    if (select) {
-      select.addEventListener('change', () => {
+    if (form && select) {
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
         if (select.value) location.hash = select.value;
       });
     }

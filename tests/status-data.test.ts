@@ -59,6 +59,22 @@ describe('StatusFileSchema', () => {
     const bad = { ...validFile, vcourts: { ...validFile.vcourts, states_count: 5 } };
     expect(() => StatusFileSchema.parse(bad)).toThrow(/states_count/);
   });
+  it('rejects a departments_count that disagrees with the covered_states department lists', () => {
+    const bad = { ...validFile, vcourts: { ...validFile.vcourts, departments_count: 3 } };
+    expect(() => StatusFileSchema.parse(bad)).toThrow(/departments_count 3 does not match the 2 departments/);
+  });
+  it('counts a covered_states entry without a parenthesised list as one department', () => {
+    const ok = {
+      ...validFile,
+      vcourts: {
+        ...validFile.vcourts,
+        states_count: 2,
+        departments_count: 3,
+        covered_states: ['Delhi (Notice Department + Traffic Department)', 'Haryana']
+      }
+    };
+    expect(StatusFileSchema.parse(ok).vcourts.departments_count).toBe(3);
+  });
   it('rejects a missing vcourts block', () => {
     const { vcourts: _vcourts, ...bad } = validFile;
     expect(() => StatusFileSchema.parse(bad)).toThrow();
@@ -70,7 +86,7 @@ describe('loadStatusFile', () => {
     const file = loadStatusFile();
     expect(file.statuses.length).toBeGreaterThanOrEqual(8);
     expect(file.vcourts.states_count).toBe(22);
-    expect(file.vcourts.departments_count).toBe(32);
+    expect(file.vcourts.departments_count).toBe(31);
   });
   it('throws an error naming the file for invalid data', () => {
     const dir = mkdtempSync(join(tmpdir(), 'tc-status-'));

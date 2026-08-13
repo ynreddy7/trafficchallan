@@ -60,8 +60,8 @@ const faqs = [
 const jsonld = [faqJsonLd(faqs)];
 ---
 <Base
-  title="Fake Challan SMS Check: All Official Portals, 60-Sec Test"
-  description="Is that challan SMS real? A 60-second check, the full list of official e-challan portals, documented scam signals, and what to do if you already paid."
+  title="Fake Challan SMS Check: Official Portals + 60-Second Test"
+  description="Is that challan SMS real? A 60-second check, verified official e-challan portals, documented scam signals, and what to do if you already paid."
   path="/fake-challan-sms/"
   jsonld={jsonld}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fake challan SMS check', path: '/fake-challan-sms/' }]}
@@ -86,6 +86,7 @@ const jsonld = [faqJsonLd(faqs)];
     Every domain below was fetched and verified on the date above &mdash; branding, footer attribution and TLD checked
     against the government body it claims to be. Type these addresses yourself; a message&rsquo;s link that looks similar
     but is not on this list deserves suspicion, and even an address that matches is only safe when you typed it.
+    The state table covers the {portals.states.length} states this site tracks; the national portals work for every state.
   </p>
   <h3>National portals (work for every state)</h3>
   <div class="table-wrap">
@@ -169,7 +170,7 @@ const jsonld = [faqJsonLd(faqs)];
 
   <FaqSection faqs={faqs} />
 
-  <ShareBar text="Fake challan SMS are everywhere — here is the full list of official challan portals + a 60-second check" />
+  <ShareBar text="Fake challan SMS are everywhere — here are the verified official challan portals + a 60-second check" />
 
   <RelatedLinks items={[
     { href: '/challan-status/', label: 'Challan status decoder: what Pending, Sent to Court and the rest mean' },

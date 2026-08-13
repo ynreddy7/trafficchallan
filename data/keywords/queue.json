@@ -2908,8 +2908,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 0,
       "type": "guide",
-      "status": "covered",
-      "covered_by": "superseded by the sold-vehicle-challans queue item below (same keyword, richer research notes) — produce that one, not this"
+      "status": "superseded",
+      "covered_by": "sold-vehicle-challans",
+      "note": "Superseded by the sold-vehicle-challans queue item below (same keyword, richer research notes) — produce that one, not this."
     },
     {
       "slug_suggestion": "e-challan-fake-sms-scam",

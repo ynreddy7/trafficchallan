@@ -310,8 +310,8 @@
         },
         {
           "domain": "kolkatatrafficpolice.net",
-          "label": "Kolkata Traffic Police legacy domain (eNOC forms)",
-          "note": "Not a gov.in address. It serves Kolkata Traffic Police-branded pages and links back to the gov.in site, but prefer kolkatatrafficpolice.gov.in — a non-gov.in challan link you did not go looking for deserves the full 60-second check before anything else."
+          "label": "Kolkata Traffic Police legacy domain — now redirects to WB Sanjog",
+          "note": "Not a gov.in address. As of the date above it no longer serves its own pages: it 302-redirects to sanjog.wb.gov.in, the WB government challan portal, so it remains government-controlled. Still, prefer typing sanjog.wb.gov.in or kolkatatrafficpolice.gov.in yourself — a non-gov.in challan link you did not go looking for deserves the full 60-second check before anything else."
         },
         {
           "domain": "www.wbtrafficpolice.com",
@@ -327,8 +327,8 @@
       "hedged": false
     },
     {
-      "fact": "A registered SMS header is an alphanumeric string of up to 11 characters displayed as XY-HEADER, where X identifies the originating telecom operator and Y its licence service area — so the same genuine government sender can legitimately appear with different two-letter prefixes (VM-ECHALN, VK-ECHALN and so on) depending on your operator and circle.",
-      "hedged": false
+      "fact": "A registered SMS header is an alphanumeric string of up to 11 characters displayed as XY-HEADER. By widely described convention the X identifies the originating telecom operator and the Y its licence service area — so the same genuine government sender can appear with different two-letter prefixes (VM-ECHALN, VK-ECHALN and so on) depending on your operator and circle. The prefix semantics are a convention to recognise, not something the sources listed here formally document.",
+      "hedged": true
     },
     {
       "fact": "TRAI's February 2025 amendment directs telecom operators to suffix headers with -P, -S, -T and -G for promotional, service, transactional and government messages, so a government challan SMS header should end in -G once implemented. TRAI has mandated this scheme, but how completely -G suffixing has rolled out on live government headers is not confirmed — treat the suffix as a convention to look for, not proof in either direction.",
@@ -393,7 +393,7 @@
     {
       "slug": "genuine-vcourts-notice",
       "name": "Inverse case: court-referred challan messages pointing to vcourts.gov.in are a real mechanism",
-      "detail": "Virtual Courts (e-Committee, Supreme Court of India; NIC-hosted) lets you search cases by mobile number or challan/vehicle number across 30+ states and union territories — a challan transferred to a virtual court generates genuine notices. Check any such message by typing vcourts.gov.in yourself and searching your vehicle number.",
+      "detail": "Virtual Courts (e-Committee, Supreme Court of India; NIC-hosted) lets you search cases by mobile number or challan/vehicle number in the states connected to the Virtual Courts system (see the coverage table on /challan-status/) — a challan transferred to a virtual court generates genuine notices. Check any such message by typing vcourts.gov.in yourself and searching your vehicle number.",
       "source": "https://vcourts.gov.in/virtualcourt/"
     },
     {

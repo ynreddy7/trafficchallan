@@ -13,7 +13,8 @@
    an existing page (the gate enforces exact dupes; you enforce near-dupes).
 6. BYLINE: Team TrafficChallan. Never invent an author.
 7. VELOCITY: Max 5 NEW pages per calendar week (publish pipeline enforces; do not use
-   --force-velocity).
+   --force-velocity). The cap governs routine-produced pages — the states/fines/guides
+   pages publish.ts counts — while owner-built feature pages ship outside it by design.
 8. UPDATES BEAT ADDITIONS: If a fact changed (portal moved, fine revised), fixing existing
    records takes priority over new content.
 9. HONESTY: If a state's process is genuinely unclear or its portal is down, say so on the

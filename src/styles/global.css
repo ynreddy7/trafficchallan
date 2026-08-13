@@ -1432,7 +1432,10 @@ details p:last-child {
   .action__chev,
   .share-strip,
   /* Reminder buttons print as huge expanded hrefs (the gcal URL especially). */
-  .action-row {
+  .action-row,
+  /* The status jump picker is JS-only navigation — on paper it would print
+     as a dead dropdown and button. */
+  .jump-panel {
     display: none !important;
   }
   .site-header {
@@ -1534,11 +1537,21 @@ details p:last-child {
 .status-picker select {
   font: inherit;
   max-width: 100%;
+  min-height: 44px;
   padding: 0.5rem 0.7rem;
   border: 1.5px solid var(--rule-strong);
   border-radius: var(--radius-sm);
   background: var(--surface-raised);
   color: var(--text);
+}
+/* The Go button: a compact action--secondary sized to the 44px touch target
+   (the shared .action is 56px and styled for anchors, so re-assert font/cursor). */
+.status-picker .action {
+  min-height: 44px;
+  padding: 0.45rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 /* "Seen on" chips: where a status string literally appears on the official portals. */

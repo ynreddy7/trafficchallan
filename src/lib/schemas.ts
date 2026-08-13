@@ -169,6 +169,19 @@ export const StatusFileSchema = z
         message: `vcourts states_count ${rec.vcourts.states_count} does not match covered_states length ${rec.vcourts.covered_states.length}`
       });
     }
+    // departments_count must equal the departments the covered_states entries
+    // themselves encode — each entry is "State (Dept A + Dept B + …)", so an
+    // entry contributes its "+"-separated parenthesised list (or 1 if bare).
+    const departmentsListed = rec.vcourts.covered_states.reduce((n, entry) => {
+      const m = entry.match(/\(([^)]*)\)\s*$/);
+      return n + (m ? m[1].split('+').length : 1);
+    }, 0);
+    if (departmentsListed !== rec.vcourts.departments_count) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: `vcourts departments_count ${rec.vcourts.departments_count} does not match the ${departmentsListed} departments listed in covered_states`
+      });
+    }
   });
 export type StatusFileRecord = z.infer<typeof StatusFileSchema>;
 
