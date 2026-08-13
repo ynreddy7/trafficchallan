@@ -70,7 +70,9 @@ faqs:
       practice that means you need the owner's or licence-holder's credentials
       to hand, whoever is sitting at the keyboard.
 ---
-<div class="answer-box">Pay an e-challan on one of the two national MoRTH portals: <strong>echallan.parivahan.gov.in</strong> (Delhi, Telangana, UP, AP, MP and others) or the NextGen portal <strong>echallan.parivahan.nic.in</strong>, which serves 27 states and UTs including Maharashtra, Karnataka, Tamil Nadu, Gujarat and West Bengal. Search by challan, vehicle or DL number, verify the OTP, pay by UPI, card or net banking, and download the receipt. A challan already forwarded to a Virtual Court can also be paid at vcourts.gov.in — but pay it in one place only, because neither system stops you paying twice.</div>
+<div class="answer-box">Pay an e-challan on one of the two national MoRTH portals: <strong>echallan.parivahan.gov.in</strong> (Delhi, Telangana, UP, AP, MP and others) or the NextGen portal <strong>echallan.parivahan.nic.in</strong>, which serves 27 states and UTs including Maharashtra, Karnataka, Tamil Nadu, Gujarat and West Bengal.</div>
+
+Search by challan, vehicle or DL number, verify the OTP, pay by UPI, card or net banking, and download the receipt. A challan already forwarded to a Virtual Court can also be paid at vcourts.gov.in — but pay it in one place only, because neither system stops you paying twice.
 
 ## Which website should I actually use to pay my challan?
 

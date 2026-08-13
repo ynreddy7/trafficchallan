@@ -78,7 +78,9 @@ faqs:
       Virtual Court entry, such as Telangana and Andhra Pradesh, the case is
       before the ordinary jurisdictional magistrate from the start.
 ---
-<div class="answer-box">An unpaid e-challan does not quietly expire. NIC, which runs the national eChallan system, states that a challan unpaid for 90 days is automatically forwarded to a Virtual Court under Rule 167(5) of the Central Motor Vehicles Rules, and that under Rule 167(7) the licensing and registering authorities then stop processing applications relating to that driving licence or vehicle registration. Once it reaches a court it is a case, not a bill: you plead guilty and pay online, or you contest it and appear before a magistrate.</div>
+<div class="answer-box">An unpaid e-challan does not quietly expire. NIC, which runs the national eChallan system, states that a challan unpaid for 90 days is automatically forwarded to a Virtual Court under Rule 167(5) of the Central Motor Vehicles Rules, and that under Rule 167(7) the licensing and registering authorities then stop processing applications relating to that driving licence or vehicle registration.</div>
+
+Once it reaches a court it is a case, not a bill: you plead guilty and pay online, or you contest it and appear before a magistrate.
 
 ## How long before an unpaid challan becomes a traffic challan court case?
 

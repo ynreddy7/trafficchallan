@@ -54,8 +54,15 @@ const footerGuides = (await getCollection('guides'))
   <header class="site-header">
     <div class="inner">
       <a href="/" class="brand">
-        <svg class="brand__chev" width="13" height="17" viewBox="0 0 13 17" aria-hidden="true" focusable="false"><path d="M0 0h5.4L13 8.5 5.4 17H0l7.6-8.5z" fill="currentColor"/></svg>
-        TrafficChallan
+        <!-- Sign-Slip mark: guide-sign board tearing into a receipt zigzag.
+             Fills are fixed (not currentColor) — the board blue must survive
+             sitting on the blue header band, helped by the CSS outer keyline. -->
+        <svg class="brand__mark" width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path class="brand__mark-board" d="M6 0h20q6 0 6 6v22l-4 3-4-3-4 3-4-3-4 3-4-3-4 3-4-3V6q0-6 6-6Z" fill="#0A3D7C"/>
+          <path d="M6.5 3h19Q29 3 29 6.5v20.75l-1 .75-4-3-4 3-4-3-4 3-4-3-4 3-1-.75V6.5Q3 3 6.5 3Z" fill="none" stroke="#fff" stroke-width="2" stroke-opacity=".9"/>
+          <text x="16" y="19" style="font-family:inherit" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">₹</text>
+        </svg>
+        TrafficChallan<span class="brand__tld">.com</span>
       </a>
       <div id="search-slot">
         <button type="button" id="search-open" class="search-btn" aria-haspopup="dialog" aria-controls="search-dialog">
@@ -116,7 +123,7 @@ const footerGuides = (await getCollection('guides'))
           </ul>
         </div>
       </nav>
-      <p class="colophon">© {new Date().getFullYear()} TrafficChallan · By Team TrafficChallan ·
+      <p class="colophon">© {new Date().getFullYear()} TrafficChallan<span class="brand__tld">.com</span> · By Team TrafficChallan ·
         <a href="/editorial-policy/">Editorial policy</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></p>
     </div>
   </footer>

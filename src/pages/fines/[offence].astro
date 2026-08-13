@@ -37,8 +37,9 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
   <h1>{offence.name}: fine amount and rules</h1>
   <AnswerBox>
     The fine for {offence.name.toLowerCase()} is {offence.base_fine_text} for a first offence
-    ({shortSection(offence.mva_section)}); a repeat offence costs {offence.repeat_fine_text}. {offence.licence_impact}
+    ({shortSection(offence.mva_section)}).
   </AnswerBox>
+  <p>A repeat offence costs {offence.repeat_fine_text}. {offence.licence_impact}</p>
   <LastVerified date={offence.last_verified} />
 
   <h2 id={slugify('What the law says')}>What does the law say about {offence.name.toLowerCase()}?</h2>

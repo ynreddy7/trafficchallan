@@ -60,8 +60,8 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
       To check a traffic challan in {props.state.name}, enter your vehicle number on
       <a href={props.state.portals[0].url} rel="noopener">{props.state.portals[0].label}</a> or the national portal
       <a href="https://echallan.parivahan.gov.in/" rel="noopener">echallan.parivahan.gov.in</a>.
-      Payment is done on the same official portal via {props.state.payment_methods.join(', ')}.
     </AnswerBox>
+    <p>Payment is done on the same official portal via {props.state.payment_methods.join(', ')}.</p>
     <LastVerified date={props.state.last_verified} />
 
     <h2 id={slugify(`How to check your ${props.state.name} challan`)}>How do I check a {props.state.name} challan?</h2>

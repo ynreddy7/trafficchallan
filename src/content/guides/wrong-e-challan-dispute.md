@@ -79,7 +79,9 @@ faqs:
       well, such as Maharashtra's e-challan helpdesk on 844 844 8960 and the
       Hyderabad Traffic Cell on 040-27852721 or 040-27852772.
 ---
-<div class="answer-box">A wrong challan complaint goes through the e-challan grievance ticket system, not through email or a police counter. If your state is still on the legacy national portal, file it at echallan.parivahan.gov.in/gsticket/; if your state has migrated to NextGen, use the "Raise Grievance" tile at echallan.parivahan.nic.in. Either route starts from the challan number and verifies your identity by OTP before the form opens, then asks you to pick a fixed issue category, describe the problem in 500 characters and attach evidence. Neither portal publishes a rule on whether an open ticket survives a referral to the Virtual Court, so file early rather than near the 90-day mark.</div>
+<div class="answer-box">A wrong challan complaint goes through the e-challan grievance ticket system, not through email or a police counter. If your state is still on the legacy national portal, file it at echallan.parivahan.gov.in/gsticket/; if your state has migrated to NextGen, use the "Raise Grievance" tile at echallan.parivahan.nic.in.</div>
+
+Either route starts from the challan number and verifies your identity by OTP before the form opens, then asks you to pick a fixed issue category, describe the problem in 500 characters and attach evidence. Neither portal publishes a rule on whether an open ticket survives a referral to the Virtual Court, so file early rather than near the 90-day mark.
 
 ## How do I file a traffic challan complaint online?
 

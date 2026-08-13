@@ -497,7 +497,7 @@ time,
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
   margin-right: auto;
   font-weight: 700;
   font-size: 1.25rem;
@@ -505,9 +505,34 @@ time,
   padding: 0.4rem 0;
   min-height: 44px;
 }
-.brand__chev {
+.brand__mark {
   flex: 0 0 auto;
-  color: var(--on-board);
+  /* the outer keyline stroke sits half outside the 32-unit viewBox */
+  overflow: visible;
+}
+/* The mark's board is the same blue as the header band it sits on — a subtle
+   outer keyline keeps the torn-slip silhouette readable there (and on the
+   dark header, where the band is a near-identical dark blue). */
+.brand__mark-board {
+  stroke: var(--keyline);
+  stroke-width: 1;
+}
+/* ".com" is part of the wordmark, not the name: full-size, regular weight,
+   dimmed. Reused verbatim in the footer colophon. */
+.brand__tld {
+  font-weight: 400;
+  opacity: 0.62;
+}
+@media (max-width: 400px) {
+  /* the wordmark grew by ".com" — step down a notch so it never crowds the
+     Search button on narrow phones */
+  .brand {
+    font-size: 1.125rem;
+  }
+  .brand__mark {
+    width: 24px;
+    height: 24px;
+  }
 }
 .site-nav {
   display: flex;
@@ -1596,7 +1621,7 @@ details p:last-child {
   .site-nav,
   #search-slot,
   .footer-nav,
-  .brand__chev,
+  .brand__mark,
   .action__chev,
   .share-strip,
   /* Reminder buttons print as huge expanded hrefs (the gcal URL especially). */

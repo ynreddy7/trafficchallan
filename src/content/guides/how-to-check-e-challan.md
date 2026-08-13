@@ -68,7 +68,9 @@ faqs:
       so pick one route and keep the receipt. If you have already paid on
       vcourts.gov.in, do not pay again on the e-challan portal.
 ---
-<div class="answer-box">To check an e-challan, search your vehicle number, driving licence number or challan number on the government e-challan portal — <strong>echallan.parivahan.gov.in</strong> if your state is still on the older site (Delhi, Telangana, Uttar Pradesh, Andhra Pradesh, Madhya Pradesh), or the NextGen portal <strong>echallan.parivahan.nic.in</strong> for the 27 states and UTs migrated to it, including Karnataka, Maharashtra, Tamil Nadu, Gujarat and West Bengal. Several states also run their own portal that shows city-police challans the national site can miss, and a challan already sent to court has to be looked up separately on Virtual Courts at vcourts.gov.in. Checking is free everywhere — no official portal charges a fee just to show you a challan.</div>
+<div class="answer-box">To check an e-challan, search your vehicle number, driving licence number or challan number on the government e-challan portal — <strong>echallan.parivahan.gov.in</strong> if your state is still on the older site (Delhi, Telangana, Uttar Pradesh, Andhra Pradesh, Madhya Pradesh), or the NextGen portal <strong>echallan.parivahan.nic.in</strong> for the 27 states and UTs migrated to it, including Karnataka, Maharashtra, Tamil Nadu, Gujarat and West Bengal.</div>
+
+Several states also run their own portal that shows city-police challans the national site can miss, and a challan already sent to court has to be looked up separately on Virtual Courts at vcourts.gov.in. Checking is free everywhere — no official portal charges a fee just to show you a challan.
 
 ## Which portal shows my challan — parivahan.gov.in or NextGen?
 

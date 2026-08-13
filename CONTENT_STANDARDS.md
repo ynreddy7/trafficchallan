@@ -6,7 +6,9 @@
    other challan sites are NEVER sources for facts.
 2. VERIFY, THEN WRITE: Open the source and confirm the fact TODAY before writing it.
    Set last_verified to today's date only if you actually verified today.
-3. ANSWER FIRST: Every page opens with a 2–3 sentence direct answer to its target_keyword.
+3. ANSWER FIRST: Every page opens with a direct answer to its target_keyword. The answer
+   board (blue board / answer-box) carries at most two sentences (~45 words) — the direct
+   answer only; supporting detail goes in the first paragraph immediately below the board.
 4. NO FILLER: No "in today's fast-paced world" openers, no padded intros, no repeated
    sections, no keyword stuffing. If a section adds no information, delete it.
 5. ONE INTENT, ONE PAGE: Before creating a page, check the target_keyword does not overlap

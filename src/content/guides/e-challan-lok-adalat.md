@@ -56,7 +56,9 @@ faqs:
       right to litigate." The finality described above attaches only to an award
       actually made.
 ---
-<div class="answer-box">A National Lok Adalat is a statutory settlement sitting where a bench disposes of pending cases by compromise — including traffic challans already before a court. Four are scheduled in 2026, all on a second Saturday: 14 March, 9 May, 12 September and 12 December. There is no fixed nationwide discount: the settlement figure is decided at the sitting itself, and once the bench passes an award it is deemed a decree of a civil court, final and binding, with no appeal.</div>
+<div class="answer-box">A National Lok Adalat is a statutory settlement sitting where a bench disposes of pending cases by compromise — including traffic challans already before a court. Four are scheduled in 2026, all on a second Saturday: 14 March, 9 May, 12 September and 12 December.</div>
+
+There is no fixed nationwide discount: the settlement figure is decided at the sitting itself, and once the bench passes an award it is deemed a decree of a civil court, final and binding, with no appeal.
 
 ## What is a Lok Adalat, and why do traffic challans end up there?
 

@@ -72,7 +72,9 @@ faqs:
       disqualification or revocation proceedings under Section 19, so a licence
       action can run alongside the case.
 ---
-<div class="answer-box">An on-spot challan is issued for a <strong>compoundable</strong> offence: Section 200 of the Motor Vehicles Act lets you settle it by paying a fixed compounding amount — to the officer, or online — and the prosecution ends there. A court challan is issued for an offence Section 200 does not permit to be compounded, chiefly drunken driving under Section 185 and every limb of dangerous driving under Section 184 except handheld phone use, so there is no amount to pay anywhere and a magistrate decides the penalty. A compoundable challan can also turn into a court case simply by going unpaid.</div>
+<div class="answer-box">An on-spot challan is issued for a <strong>compoundable</strong> offence: Section 200 of the Motor Vehicles Act lets you settle it by paying a fixed compounding amount — to the officer, or online — and the prosecution ends there.</div>
+
+A court challan is issued for an offence Section 200 does not permit to be compounded, chiefly drunken driving under Section 185 and every limb of dangerous driving under Section 184 except handheld phone use, so there is no amount to pay anywhere and a magistrate decides the penalty. A compoundable challan can also turn into a court case simply by going unpaid.
 
 ## What actually separates a court challan from an on-spot challan?
 
