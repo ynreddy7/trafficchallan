@@ -131,6 +131,26 @@ export default defineConfig({
     })
   ],
   markdown: {
-    rehypePlugins: [rehypeSlug]
+    rehypePlugins: [rehypeSlug, rehypeWrapTables]
   }
 });
+
+/**
+ * Wraps every markdown-generated <table> in <div class="table-wrap"> so wide
+ * tables scroll inside their own container instead of widening the page on
+ * phones — the same idiom the .astro templates use, keeping real table
+ * semantics for assistive tech (no display:block hack).
+ */
+function rehypeWrapTables() {
+  const wrap = (node) => {
+    if (!node.children) return;
+    node.children = node.children.map((child) => {
+      if (child.type === 'element' && child.tagName === 'table') {
+        return { type: 'element', tagName: 'div', properties: { className: ['table-wrap'] }, children: [child] };
+      }
+      wrap(child);
+      return child;
+    });
+  };
+  return wrap;
+}

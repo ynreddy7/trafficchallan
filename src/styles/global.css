@@ -257,9 +257,14 @@ input,
 textarea,
 select,
 .answer-board__body,
+.answer-box,
 .cell-note,
 .legal-note {
   font-family: var(--font-prose);
+}
+/* FAQ questions keep the display voice; only the answers are prose. */
+.faqs summary {
+  font-family: var(--font-body);
 }
 /* Signage furniture that sits inside an li/td stays in Anek: nav lists,
    breadcrumbs, stat strip, gantry, condensed labels, plates, tags, chips,
@@ -288,6 +293,7 @@ ol,
 blockquote,
 .statute,
 .faqs details,
+.answer-box,
 .legal-note {
   max-width: var(--measure-prose);
   line-height: 1.55;
@@ -358,6 +364,8 @@ main td a,
 .statute a,
 .faqs details a,
 .legal-note a {
+  /* Plain fallback first: engines without color-mix keep a deliberate value. */
+  text-decoration-color: var(--link);
   text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent);
   text-decoration-thickness: 1px;
 }
@@ -1092,8 +1100,8 @@ tbody tr:nth-child(even) {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-weight: 600;
-    font-size: 0.6875rem;
-    color: var(--text-muted);
+    font-size: 0.75rem;
+    color: var(--text-muted-strong);
   }
 }
 
