@@ -3,8 +3,15 @@ import { join } from 'node:path';
 import fg from 'fast-glob';
 import matter from 'gray-matter';
 import { readFileSync } from 'node:fs';
-import { loadStates, loadOffences } from '../src/lib/data';
-import { runGates, type GuideMeta } from '../src/lib/gate';
+import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadRtoFiles } from '../src/lib/data';
+import { runGates, type GuideMeta, type PageMeta } from '../src/lib/gate';
+
+// Feature pages (src/pages/*.astro) that own a target keyword — they join
+// the gate's duplicate-keyword and duplicate-slug registries. Add 'rto-codes'
+// (-> 'rto code list india') when that page ships.
+const FEATURE_PAGES: PageMeta[] = [
+  { slug: 'challan-discount', target_keyword: 'traffic challan discount' }
+];
 
 function loadGuideMeta(): GuideMeta[] {
   const dir = join(process.cwd(), 'src', 'content', 'guides');
@@ -25,6 +32,10 @@ try {
     states: loadStates(),
     offences: loadOffences(),
     guides: loadGuideMeta(),
+    schemes: loadSchemes(),
+    lokAdalat: loadLokAdalat(),
+    rtoFiles: loadRtoFiles(),
+    pages: FEATURE_PAGES,
     now: new Date()
   });
   if (violations.length) {

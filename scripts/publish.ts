@@ -36,6 +36,10 @@ for (const f of changed) {
   if (mState) urls.add(`https://trafficchallan.com/${mState[1]}-e-challan/`);
   if (mFine) urls.add(`https://trafficchallan.com/fines/${mFine[1]}/`);
   if (mGuide) urls.add(`https://trafficchallan.com/${mGuide[1]}/`);
+  if (/^data\/schemes\/.+\.json$/.test(f) || f === 'data/lok-adalat.json') {
+    urls.add('https://trafficchallan.com/challan-discount/');
+  }
+  if (/^data\/rto\/.+\.json$/.test(f)) urls.add('https://trafficchallan.com/rto-codes/');
 }
 
 // 4. Commit + push

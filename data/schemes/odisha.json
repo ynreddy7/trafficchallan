@@ -1,0 +1,16 @@
+{
+  "slug": "odisha",
+  "state_name": "Odisha",
+  "status": "closed",
+  "scheme_name": "One-Time Settlement (OTS) scheme for pending e-challans",
+  "percent_by_class": {
+    "all_vehicles": "50% of the prescribed fine (pay half)"
+  },
+  "note": "Odisha's OTS, approved by the cabinet on 10 September 2025 and notified by the Commerce and Transport Department in September–October 2025, let violators settle e-challans pending as of 31 July 2025 at half the prescribed fine (for example ₹5,000 licence offences settled at ₹2,500). Challans already sent to court as prosecution reports were excluded. The scheme ran for six months from notification, so the window ended around March–April 2026; no extension had been announced as of 13 August 2026.",
+  "history": [],
+  "sources": [
+    "https://ommcomnews.com/odisha-news/odisha-govt-introduces-one-time-settlement-scheme-for-pending-e-challans/",
+    "https://kalingatv.com/odisha/odisha-issues-new-notification-of-one-time-settlement-scheme-defaulters-have-to-pay-half-of-their-challans/"
+  ],
+  "last_verified": "2026-08-13"
+}

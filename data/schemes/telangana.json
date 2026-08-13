@@ -1,0 +1,22 @@
+{
+  "slug": "telangana",
+  "state_name": "Telangana",
+  "status": "none",
+  "note": "No discount scheme is in force in Telangana. In January 2026 the Chief Minister ruled out challan discounts outright — 'not a single paisa should be reduced' — and proposed an auto-debit system for fines instead. A fake '80% off at the Lok Adalat' message keeps recirculating on WhatsApp, Instagram and YouTube; Hyderabad's police commissioner publicly called it fake in March 2026. The only genuine discount so far was the one-time December 2023 G.O. 659 window.",
+  "history": [
+    {
+      "period": "26 Dec 2023 – 10 Jan 2024",
+      "summary": "One-time settlement under G.O. 659 dated 26 December 2023: two/three-wheelers and autos paid 20% (80% waived), cars/LMVs/HMVs paid 40% (60% waived), pushcarts and TSRTC drivers paid 10% (90% waived). Payment was made on the Telangana e-challan website during the window.",
+      "sources": [
+        "https://www.siasat.com/telangana-issues-go-on-traffic-challans-heres-how-to-avail-discount-2942002/",
+        "https://www.thenewsminute.com/telangana/telangana-offers-60-90-discount-on-traffic-challans-details"
+      ]
+    }
+  ],
+  "sources": [
+    "https://telanganatoday.com/revanth-reddy-wants-cops-to-start-auto-debit-system-no-discounts-for-traffic-challans",
+    "https://ouprephub.in/telangana-traffic-challans-80-percent-discount-fake-news/",
+    "https://www.siasat.com/telangana-issues-go-on-traffic-challans-heres-how-to-avail-discount-2942002/"
+  ],
+  "last_verified": "2026-08-13"
+}

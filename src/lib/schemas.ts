@@ -49,3 +49,97 @@ export const OffenceSchema = z.object({
   }).optional()
 });
 export type OffenceRecord = z.infer<typeof OffenceSchema>;
+
+/**
+ * Discount/amnesty scheme status. Honesty rules (CONTENT_STANDARDS 11):
+ * - `rumour` = press/social claims with no G.O. — rumoured percentages must
+ *   NEVER appear in percent_by_class (schema enforces).
+ * - `proposal` = officially proposed but not enacted; also no percentages.
+ * - `none` = verified absence of a scheme ("no scheme, verified" is the product).
+ */
+export const SchemeStatus = z.enum(['live', 'announced', 'closed', 'proposal', 'rumour', 'none']);
+export type SchemeStatusType = z.infer<typeof SchemeStatus>;
+
+export const SchemeSchema = z
+  .object({
+    slug: z.string().regex(/^[a-z][a-z-]*$/),
+    state_name: z.string().min(2),
+    status: SchemeStatus,
+    scheme_name: z.string().min(3).optional(),
+    // vehicle-class label -> plain-text discount, e.g. { "two_three_wheelers": "80% waived (pay 20%)" }
+    percent_by_class: z.record(z.string().min(2), z.string().min(2)).optional(),
+    window: z.object({ start: isoDate, end: isoDate.optional() }).optional(),
+    order_ref: z.string().min(5).optional(),
+    note: z.string().min(30),
+    history: z.array(z.object({
+      period: z.string().min(4),
+      summary: z.string().min(20),
+      sources: z.array(z.string().url()).min(1)
+    })).default([]),
+    sources: z.array(z.string().url()).min(1),
+    last_verified: isoDate
+  })
+  .superRefine((rec, ctx) => {
+    if (rec.percent_by_class && !['live', 'announced', 'closed'].includes(rec.status)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: `percent_by_class is only allowed for live/announced/closed schemes, not status "${rec.status}"`
+      });
+    }
+    if ((rec.status === 'live' || rec.status === 'announced') && !rec.window) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: `status "${rec.status}" requires a window`
+      });
+    }
+    if (rec.window?.end && rec.window.end < rec.window.start) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: `window end ${rec.window.end} is before start ${rec.window.start}`
+      });
+    }
+  });
+export type SchemeRecord = z.infer<typeof SchemeSchema>;
+
+export const LokAdalatSchema = z.object({
+  national_sittings: z.array(z.object({
+    date: isoDate,
+    status: z.enum(['held', 'scheduled'])
+  })).min(1),
+  delhi_token: z.object({
+    portal: z.string().url(),
+    opens_days_before: z.number().int().positive(),
+    daily_cap_note: z.string().min(30),
+    limits_note: z.string().min(30)
+  }),
+  delhi_extras: z.object({
+    digital_lok_adalat_note: z.string().min(30),
+    evening_courts_url: z.string().url(),
+    weekend_courts_note: z.string().min(30)
+  }),
+  state_notes: z.array(z.object({
+    state_slug: z.string().regex(/^[a-z][a-z-]*$/),
+    note: z.string().min(30)
+  })),
+  sources: z.array(z.string().url()).min(1),
+  last_verified: isoDate
+});
+export type LokAdalatRecord = z.infer<typeof LokAdalatSchema>;
+
+export const RtoStateSchema = z.object({
+  slug: z.string().regex(/^[a-z][a-z-]*$/),
+  state_name: z.string().min(2),
+  series: z.array(z.string().regex(/^[A-Z]{2}$/)).min(1),
+  codes: z.array(z.object({
+    code: z.string().regex(/^[A-Z]{2}[0-9]{1,2}$/),
+    office: z.string().min(3)
+  })).min(1),
+  verification: z.object({
+    method: z.enum(['full', 'sampled']),
+    sample_size: z.number().int().nonnegative().optional(),
+    official_list_available: z.boolean()
+  }),
+  sources: z.array(z.string().url()).min(1),
+  last_verified: isoDate
+});
+export type RtoStateRecord = z.infer<typeof RtoStateSchema>;

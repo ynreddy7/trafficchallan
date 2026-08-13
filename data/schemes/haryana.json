@@ -1,0 +1,11 @@
+{
+  "slug": "haryana",
+  "state_name": "Haryana",
+  "status": "none",
+  "note": "No challan discount or settlement scheme is in force in Haryana as of 13 August 2026 — a news check on this date found none. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually; the next sitting is on 12 September 2026. Check and pay challans at full amount on the official e-challan portal.",
+  "history": [],
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan"
+  ],
+  "last_verified": "2026-08-13"
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "karnataka",
+  "state_name": "Karnataka",
+  "status": "closed",
+  "scheme_name": "50% concession on pending traffic e-challan fines (June–July 2026 drive)",
+  "percent_by_class": {
+    "all_vehicles": "50% of the pending fine waived"
+  },
+  "window": { "start": "2026-06-21", "end": "2026-07-10" },
+  "note": "Karnataka's latest 50% concession window closed on 10 July 2026. It was the state's sixth such drive — ₹96.73 lakh was collected on day one (32,486 cases settled) and over ₹18.15 crore in the first 14 days (6,06,032 cases). These drives recur but each needs a fresh government announcement; there is no discount between windows.",
+  "history": [
+    {
+      "period": "2025 (two drives)",
+      "summary": "Karnataka ran two 50% concession drives in 2025; the later one collected more than ₹89 crore and settled over 30 lakh pending cases.",
+      "sources": [
+        "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914"
+      ]
+    },
+    {
+      "period": "2023 (three drives)",
+      "summary": "Three 50% concession drives on pending traffic fines were offered during 2023.",
+      "sources": [
+        "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914"
+      ]
+    }
+  ],
+  "sources": [
+    "https://newsfirstprime.com/bengaluru/bengalurus-50-traffic-fine-discount-scheme-fetches-over-18-crore-in-just-14-days-12137492",
+    "https://www.thehansindia.com/news/cities/bengaluru/karnataka-collects-rs-9673-lakh-on-first-day-of-50-traffic-fine-discount-scheme-1088914"
+  ],
+  "last_verified": "2026-08-13"
+}
