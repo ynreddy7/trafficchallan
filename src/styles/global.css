@@ -814,6 +814,31 @@ tbody tr:nth-child(even) {
 .schedule tr[data-severity='court'] td:first-child {
   border-left-color: var(--rail-danger);
 }
+.schedule tr[data-severity='rumour'] td:first-child {
+  border-left-color: var(--rail-danger);
+}
+/* Scheme-status words (/challan-discount/): colour always accompanies the
+   word, never replaces it. Green stays inline-only per the signage rules. */
+.status-word {
+  font-weight: 600;
+}
+.status-word--live {
+  color: var(--status-ok);
+}
+.status-word--announced {
+  color: var(--ink-attention);
+}
+.status-word--rumour {
+  color: var(--danger);
+}
+/* Muted secondary line inside a table cell (scheme tracker notes). */
+.cell-note {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
 .schedule td[data-override='true'] {
   border-left: 4px solid var(--rail-attention);
 }

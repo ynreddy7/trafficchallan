@@ -16,9 +16,10 @@ const TRUST_PAGE_DATE = '2026-08-13';
  * pages (/, /fines/, /calculator/, /compare/) get the max date across all
  * sources (states + fines + guides + schemes + lok-adalat, mirroring
  * src/lib/data.ts newestVerifiedDate() — change both together; RTO files
- * are deliberately excluded there and here); trust pages get the fixed
- * site-launch date. Anything not in the map is left without a lastmod by
- * the caller.
+ * are deliberately excluded there and here); /challan-discount/ gets the
+ * max across schemes + lok-adalat only (mirroring data.ts maxSchemeDate());
+ * trust pages get the fixed site-launch date. Anything not in the map is
+ * left without a lastmod by the caller.
  */
 function buildLastmodMap() {
   const map = new Map();
@@ -52,15 +53,20 @@ function buildLastmodMap() {
     }
   }
 
-  // Schemes + lok-adalat join the global max only (their page ships in a
-  // later chunk; no per-page entry yet). Mirrors data.ts newestVerifiedDate().
+  // Schemes + lok-adalat: their max is /challan-discount/'s own lastmod
+  // (mirrors data.ts maxSchemeDate()), and the same dates join the global
+  // max (mirrors data.ts newestVerifiedDate() — change both together).
+  const schemeDates = [];
   const schemesDir = join(process.cwd(), 'data', 'schemes');
   for (const file of readdirSync(schemesDir).filter((f) => f.endsWith('.json'))) {
     const rec = JSON.parse(readFileSync(join(schemesDir, file), 'utf-8'));
-    if (rec.last_verified) allDates.push(rec.last_verified);
+    if (rec.last_verified) schemeDates.push(rec.last_verified);
   }
   const lokAdalat = JSON.parse(readFileSync(join(process.cwd(), 'data', 'lok-adalat.json'), 'utf-8'));
-  if (lokAdalat.last_verified) allDates.push(lokAdalat.last_verified);
+  if (lokAdalat.last_verified) schemeDates.push(lokAdalat.last_verified);
+  const schemeMax = [...schemeDates].sort().at(-1);
+  if (schemeMax) map.set('/challan-discount/', schemeMax);
+  allDates.push(...schemeDates);
 
   const newest = allDates.sort().at(-1);
   if (newest) {

@@ -37,6 +37,13 @@ const offences = loadOffences();
 const guideSlugs = (await getCollection('guides')).map((g) => g.id);
 const year = new Date().getFullYear();
 
+// City guides carry state_slug frontmatter: the parent state page becomes a
+// breadcrumb level and the first related link.
+const parentState =
+  props.type === 'guide' && props.guide.data.state_slug
+    ? loadStates().find((s) => s.slug === props.guide.data.state_slug) ?? null
+    : null;
+
 const { Content } = props.type === 'guide' ? await render(props.guide) : { Content: null };
 ---
 {props.type === 'state' ? (
@@ -95,12 +102,19 @@ const { Content } = props.type === 'guide' ? await render(props.guide) : { Conte
     description={props.guide.data.description}
     path={`/${props.guide.id}/`}
     jsonld={props.guide.data.faqs.length ? [faqJsonLd(props.guide.data.faqs)] : []}
-    breadcrumbs={[{ name: 'Home', path: '/' }, { name: props.guide.data.title, path: `/${props.guide.id}/` }]}
+    breadcrumbs={[
+      { name: 'Home', path: '/' },
+      ...(parentState ? [{ name: `${parentState.name} e-Challan`, path: `/${parentState.slug}-e-challan/` }] : []),
+      { name: props.guide.data.title, path: `/${props.guide.id}/` }
+    ]}
     dateModified={props.guide.data.last_verified}
   >
     <h1>{props.guide.data.title}</h1>
     <LastVerified date={props.guide.data.last_verified} />
     {Content && <Content />}
+    {parentState && (
+      <RelatedLinks items={[{ href: `/${parentState.slug}-e-challan/`, label: `Full ${parentState.name} e-challan guide` }]} />
+    )}
     {props.guide.data.faqs.length > 0 && <FaqSection faqs={props.guide.data.faqs} />}
     <SourceList sources={props.guide.data.sources} />
   </Base>

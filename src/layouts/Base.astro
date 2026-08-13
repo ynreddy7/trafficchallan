@@ -76,6 +76,7 @@ const footerGuides = (await getCollection('guides'))
       <nav class="site-nav" aria-label="Primary">
         <a href="/fines/">Fines &amp; Penalties</a>
         <a href="/calculator/">Calculator</a>
+        <a href="/challan-discount/">Discounts</a>
         <a href="/about/">About</a>
       </nav>
     </div>
@@ -97,6 +98,7 @@ const footerGuides = (await getCollection('guides'))
           <ul>
             <li><a href="/fines/">Fines &amp; Penalties</a></li>
             <li><a href="/calculator/">Fine calculator</a></li>
+            <li><a href="/challan-discount/">Challan discount tracker</a></li>
             {footerGuides.map((g) => <li><a href={g.href}>{g.label}</a></li>)}
           </ul>
         </div>

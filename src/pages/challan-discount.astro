@@ -1,0 +1,318 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import CautionCallout from '../components/CautionCallout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LastVerified from '../components/LastVerified.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import ShareBar from '../components/ShareBar.astro';
+import SourceList from '../components/SourceList.astro';
+import StepList from '../components/StepList.astro';
+import { loadSchemes, loadLokAdalat, loadStates, maxSchemeDate } from '../lib/data';
+import { faqJsonLd, datasetJsonLd } from '../lib/seo';
+import { slugify } from '../lib/format';
+import { nextSitting, daysUntil } from '../lib/countdown';
+import type { SchemeRecord } from '../lib/schemas';
+
+const schemes = loadSchemes();
+const lokAdalat = loadLokAdalat();
+const siteStateSlugs = new Set(loadStates().map((s) => s.slug));
+const lastVerified = maxSchemeDate();
+
+// Flagship table order: what's on now first, verified absence last.
+const STATUS_ORDER: Record<SchemeRecord['status'], number> = {
+  live: 0, announced: 1, proposal: 2, rumour: 3, closed: 4, none: 5
+};
+const STATUS_LABEL: Record<SchemeRecord['status'], string> = {
+  live: 'Live', announced: 'Announced', proposal: 'Proposal', rumour: 'Rumour', closed: 'Closed', none: 'No scheme'
+};
+const STATUS_WORD_CLASS: Partial<Record<SchemeRecord['status'], string>> = {
+  live: 'status-word--live', announced: 'status-word--announced', rumour: 'status-word--rumour'
+};
+const rows = [...schemes].sort(
+  (a, b) => STATUS_ORDER[a.status] - STATUS_ORDER[b.status] || a.state_name.localeCompare(b.state_name)
+);
+
+const pretty = (iso: string) =>
+  new Date(iso + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const prettyShort = (iso: string) =>
+  new Date(iso + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const addDays = (iso: string, days: number) =>
+  new Date(Date.parse(iso + 'T00:00:00Z') + days * 86_400_000).toISOString().slice(0, 10);
+
+const todayISO = new Date().toISOString().slice(0, 10);
+const sittingDates = lokAdalat.national_sittings.map((s) => s.date);
+const next = nextSitting(sittingDates, todayISO);
+const remaining = sittingDates.filter((d) => d >= todayISO).sort();
+const daysToNext = next ? daysUntil(next, todayISO) : null;
+const relativeText =
+  daysToNext === null ? '' : daysToNext === 0 ? 'today' : daysToNext === 1 ? 'tomorrow' : `in ${daysToNext} days`;
+
+const gcalHref = next
+  ? 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+    '&text=' + encodeURIComponent('National Lok Adalat — traffic challan settlement') +
+    '&dates=' + next.replace(/-/g, '') + '/' + addDays(next, 1).replace(/-/g, '') +
+    '&details=' + encodeURIComponent('Settle pending traffic challans at the National Lok Adalat sitting. The settlement figure is decided by the bench on the day. https://trafficchallan.com/challan-discount/')
+  : null;
+
+const liveNames = schemes.filter((s) => s.status === 'live').map((s) => s.state_name).sort();
+const liveSentence = liveNames.length
+  ? `Right now ${liveNames.join(' and ')} ${liveNames.length === 1 ? 'is the only state' : 'are the only states'} with a live scheme — every other state's verified status is in the table below.`
+  : 'Right now no state has a live discount scheme — the verified status of every state is in the table below.';
+
+const classLabel = (key: string) => {
+  const t = key.replace(/_/g, ' ');
+  return t.charAt(0).toUpperCase() + t.slice(1);
+};
+const windowText = (s: SchemeRecord) =>
+  s.window
+    ? s.window.end
+      ? `${prettyShort(s.window.start)} – ${prettyShort(s.window.end)}`
+      : `from ${prettyShort(s.window.start)}`
+    : '—';
+
+// Aggregated, deduped sources across every scheme + the lok-adalat record.
+const allSources = [...new Set([...schemes.flatMap((s) => s.sources), ...lokAdalat.sources])];
+
+const rumourAnchor = slugify("Is the '80% discount' message real?");
+
+const faqs = [
+  {
+    q: 'Is there a 50% discount on traffic challans right now?',
+    a: 'Only where a state government order says so, for a fixed window. As of August 2026, Bihar’s one-time settlement (up to 50% relief on eligible pending challans, running through 31 March 2027) is the only live scheme; Karnataka’s and Kerala’s 50% windows have closed. The tracker table on this page shows every state’s verified status with its order or source.'
+  },
+  {
+    q: 'How much discount does a Lok Adalat give on a traffic challan?',
+    a: 'There is no fixed percentage. The settlement figure is decided by the bench on the day, case by case — no state legal services authority publishes a discount in advance. What is certain is that a settled case closes that day and the award is final, with no appeal.'
+  },
+  {
+    q: 'Is the 80% traffic challan discount message real?',
+    a: 'No. No current government order gives an 80% discount anywhere in India. The viral ‘80% off’ message keeps recirculating and Hyderabad’s police commissioner publicly called it fake in March 2026. The only 80% waiver that ever existed was Telangana’s one-time December 2023 window (G.O. 659), closed since 10 January 2024.'
+  },
+  {
+    q: 'When is the next National Lok Adalat for traffic challans?',
+    a: 'The next National Lok Adalat sits on 12 September 2026, and the last one of the year on 12 December 2026. They follow the NALSA calendar — four second Saturdays a year — and courts across India sit on the same date.'
+  },
+  {
+    q: 'How do I get a token for the Delhi traffic Lok Adalat?',
+    a: 'Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens — about five days before the sitting, with exact dates announced afresh by DSLSA for each edition. Enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. Delhi releases 50,000 challans per day for download, up to 2 lakh per Lok Adalat.'
+  }
+];
+
+const islandData = {
+  sittings: sittingDates,
+  opensDaysBefore: lokAdalat.delhi_token.opens_days_before,
+  portal: lokAdalat.delhi_token.portal
+};
+
+const jsonld = [
+  faqJsonLd(faqs),
+  datasetJsonLd(
+    'Indian traffic challan discount & amnesty scheme tracker',
+    'State-by-state status of traffic e-challan discount, amnesty and one-time-settlement schemes in India, with government-order references, windows, percentages and National Lok Adalat dates. Every record carries sources and a last-verified date.',
+    '/challan-discount/',
+    [{ url: '/api/schemes.json', encodingFormat: 'application/json' }]
+  )
+];
+---
+<Base
+  title="Traffic Challan Discount 2026: Live State-by-State Tracker"
+  description="Which states have a real traffic challan discount right now: live tracker of amnesty schemes with government orders, Lok Adalat dates and the rumours to skip."
+  path="/challan-discount/"
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Challan discount tracker', path: '/challan-discount/' }]}
+  dateModified={lastVerified}
+>
+  <h1>Traffic challan discount: what's actually on right now</h1>
+  <AnswerBox>
+    Most percentage-off challan messages in circulation are rumours — a discount is real only when a state
+    government publishes an order with a fixed payment window, or a Lok Adalat bench settles your case, where the
+    figure is decided by the judge on the day and never published in advance. {liveSentence}
+    {next && <>The next National Lok Adalat sits on {pretty(next)}.</>}
+  </AnswerBox>
+  <LastVerified date={lastVerified} />
+
+  <section class="panel">
+    <h2 id={slugify('When is the next National Lok Adalat?')}>When is the next National Lok Adalat?</h2>
+    {next ? (
+      <p>
+        <strong>{pretty(next)}</strong> — <span data-countdown>{relativeText}</span>.
+        {remaining.length > 1
+          ? ` ${remaining.length} sittings remain in 2026: ${remaining.map(prettyShort).join(' and ')}.`
+          : ' It is the last sitting of 2026.'}
+      </p>
+    ) : (
+      <p>No further National Lok Adalat sitting is scheduled yet — the next cycle's dates are published by the state legal services authorities.</p>
+    )}
+    <p class="verified">
+      The .ics reminder covers each remaining sitting (alerts 7 days and 1 day before) plus the likely Delhi
+      token-window date — "likely" because DSLSA announces the exact dates afresh for every edition.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:0.7rem;">
+      <button type="button" id="ics-download" class="action action--secondary">Download .ics reminder</button>
+      {gcalHref && <a class="action action--secondary" href={gcalHref} rel="noopener">Add to Google Calendar</a>}
+    </div>
+  </section>
+
+  <h2 id={slugify('Which states have a challan discount right now?')}>Which states have a challan discount right now?</h2>
+  <p>
+    Every row is verified against the sourced order or official statement it cites — including the states where the
+    verified answer is "no scheme". A percentage appears only when a government order backs it; proposals and
+    rumours never get one.
+  </p>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr><th>State</th><th>Status</th><th>Discount</th><th>Window</th><th>Order / source</th></tr>
+      </thead>
+      <tbody>
+        {rows.map((s) => (
+          <tr data-severity={s.status === 'rumour' ? 'rumour' : undefined}>
+            <td>
+              {siteStateSlugs.has(s.slug) ? <a href={`/${s.slug}-e-challan/`}>{s.state_name}</a> : s.state_name}
+            </td>
+            <td data-label="Status">
+              <span class={`status-word ${STATUS_WORD_CLASS[s.status] ?? ''}`.trim()}>{STATUS_LABEL[s.status]}</span>
+            </td>
+            <td data-label="Discount" class="amount-cell">
+              {['live', 'announced', 'closed'].includes(s.status) && s.percent_by_class ? (
+                Object.entries(s.percent_by_class).map(([k, v]) => (
+                  <div><strong>{classLabel(k)}:</strong> {v}</div>
+                ))
+              ) : s.status === 'proposal' ? (
+                <span>Proposal only — nothing in force</span>
+              ) : s.status === 'rumour' ? (
+                <a href={`#${rumourAnchor}`}>Rumour — no official order</a>
+              ) : (
+                <span>—</span>
+              )}
+              <span class="cell-note">{s.note}</span>
+            </td>
+            <td data-label="Window">{windowText(s)}</td>
+            <td data-label="Order / source">
+              {s.order_ref && <div>{s.order_ref}</div>}
+              <a href={s.sources[0]} rel="noopener nofollow">{new URL(s.sources[0]).hostname}</a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id={slugify('How much discount does a Lok Adalat actually give?')}>How much discount does a Lok Adalat actually give?</h2>
+  <p>
+    Nobody can tell you in advance, because there is no fixed figure. A National Lok Adalat settles each case by
+    compromise, and the bench decides the settlement amount on the day — no state legal services authority
+    publishes a percentage beforehand. Any forward that promises "75% off at the Lok Adalat" is quoting a number
+    that does not exist in any order.
+  </p>
+  <p>
+    What the sitting does guarantee: a settled case closes the same day, the award is deemed a decree of a civil
+    court with no appeal, and court fees already paid are refunded. How the sittings work, which challans qualify
+    (drunk driving and red-light cases under Section 184 cannot be compounded) and what happens if you miss your
+    slot are covered in our full <a href="/e-challan-lok-adalat/">e-challan Lok Adalat guide</a>.
+  </p>
+
+  <h2 id={slugify('How does the Delhi token system work?')}>How does the Delhi token system work?</h2>
+  <StepList steps={[
+    `Wait for the token window: Delhi's portal opens about ${lokAdalat.delhi_token.opens_days_before} days before each National Lok Adalat sitting, and DSLSA announces the exact dates afresh for every edition.`,
+    'Open traffic.delhipolice.gov.in/lokadalat/ and enter your vehicle number and the captcha. An OTP goes to the vehicle owner’s registered mobile number — update the number on the portal first if it is not registered.',
+    'After OTP verification, select the challans and notices to be taken up, choose a court complex and a forenoon or afternoon slot.',
+    'Submit and print the appointment slip. Carry the printout and the challans to the court complex on the sitting day — if you miss the date, you must book afresh for the next Lok Adalat.'
+  ]} />
+  <p>
+    {lokAdalat.delhi_token.daily_cap_note} {lokAdalat.delhi_token.limits_note}
+  </p>
+  <p>
+    {lokAdalat.delhi_extras.digital_lok_adalat_note} Outside Lok Adalat dates, Delhi also runs
+    <a href={lokAdalat.delhi_extras.evening_courts_url} rel="noopener">evening traffic courts</a>.
+    {lokAdalat.delhi_extras.weekend_courts_note}
+  </p>
+
+  <h2 id={rumourAnchor}>Is the '80% discount' message real?</h2>
+  <CautionCallout>
+    <p>
+      <strong>No — it is a rumour.</strong> No current government order gives an 80% discount on traffic challans
+      anywhere in India. The viral "80% off at the Lok Adalat" message keeps recirculating on WhatsApp, Instagram
+      and YouTube; Hyderabad's police commissioner publicly called it fake in March 2026. The only 80% waiver that
+      ever existed was Telangana's one-time December 2023 window (G.O. 659), closed since 10 January 2024.
+    </p>
+    <p>
+      The same forwards often link to clone e-challan portals and apps built to harvest card details. A real
+      discount always has a government order behind it and shows up on the official payment portal itself — never
+      only in a forward. Pay only on the official portals linked from our state pages; Telangana Police, for
+      example, says to trust SMS only from the sender header "ECHALN-*".
+    </p>
+  </CautionCallout>
+
+  <FaqSection faqs={faqs} />
+
+  <ShareBar text="Is there a traffic challan discount on right now? Live state-by-state tracker — trafficchallan.com" />
+
+  <RelatedLinks items={[
+    { href: '/e-challan-lok-adalat/', label: 'Lok Adalat guide: how sittings and tokens work' },
+    { href: '/how-to-pay-e-challan-online/', label: 'How to pay an e-challan online' },
+    { href: '/unpaid-e-challan-consequences/', label: 'What happens to unpaid e-challans' },
+    { href: '/karnataka-e-challan/', label: 'Karnataka e-challan: check & pay' },
+    { href: '/telangana-e-challan/', label: 'Telangana e-challan: check & pay' },
+    { href: '/delhi-e-challan/', label: 'Delhi e-challan: check & pay' },
+    { href: '/calculator/', label: 'Fine calculator' }
+  ]} />
+
+  <SourceList sources={allSources} />
+
+  <script type="application/json" id="discount-data" set:html={JSON.stringify(islandData)} />
+  <script>
+    import { buildIcs, type IcsEvent } from '../lib/ics';
+    import { nextSitting, daysUntil } from '../lib/countdown';
+
+    interface DiscountData { sittings: string[]; opensDaysBefore: number; portal: string }
+    const data: DiscountData = JSON.parse(document.getElementById('discount-data')!.textContent!);
+    const today = new Date().toISOString().slice(0, 10);
+    const addDays = (iso: string, days: number) =>
+      new Date(Date.parse(iso + 'T00:00:00Z') + days * 86_400_000).toISOString().slice(0, 10);
+
+    // The server rendered an absolute date + build-day relative text; recompute
+    // the relative part against the visitor's own day.
+    const next = nextSitting(data.sittings, today);
+    const countdownEl = document.querySelector<HTMLElement>('[data-countdown]');
+    if (countdownEl && next) {
+      const d = daysUntil(next, today);
+      countdownEl.textContent = d === 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
+    }
+
+    const icsBtn = document.getElementById('ics-download') as HTMLButtonElement | null;
+    if (icsBtn) {
+      icsBtn.addEventListener('click', () => {
+        const remaining = data.sittings.filter((s) => s >= today).sort();
+        const events: IcsEvent[] = remaining.map((date) => ({
+          uid: `lok-adalat-${date}@trafficchallan.com`,
+          date,
+          summary: 'National Lok Adalat — traffic challan settlement',
+          description:
+            'Pending traffic challans can be settled at this National Lok Adalat sitting; the figure is decided by the bench on the day. Details: https://trafficchallan.com/challan-discount/',
+          alarmDaysBefore: [7, 1]
+        }));
+        if (next) {
+          const tokenDate = addDays(next, -data.opensDaysBefore);
+          events.push({
+            uid: `delhi-token-${tokenDate}@trafficchallan.com`,
+            date: tokenDate,
+            summary: 'Delhi Lok Adalat token window likely opens',
+            description: `Delhi's token portal has opened about ${data.opensDaysBefore} days before recent sittings, but DSLSA announces the exact dates afresh for each edition — check ${data.portal} on this day.`,
+            alarmDaysBefore: [1]
+          });
+        }
+        const blob = new Blob([buildIcs(events, today)], { type: 'text/calendar;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'lok-adalat-reminders.ics';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+    }
+  </script>
+</Base>

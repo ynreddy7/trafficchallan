@@ -58,7 +58,7 @@
       "completed": "2026-08-13"
     },
     {
-      "slug_suggestion": "mumbai",
+      "slug_suggestion": "mumbai-traffic-challan",
       "target_keyword": "traffic challan mumbai",
       "cluster_keywords": [
         "traffic challan mumbai"
@@ -66,9 +66,9 @@
       "est_volume": 5400,
       "max_cpc": 6.68,
       "min_seo_difficulty": 32,
-      "type": "state",
-      "status": "covered",
-      "covered_by": "maharashtra-e-challan"
+      "type": "guide",
+      "status": "pending",
+      "note": "City intent (Mumbai portals, discount drives, court/Lok Adalat venues) is distinct from the maharashtra-e-challan state page — write the city guide, do not fold back into the state page."
     },
     {
       "slug_suggestion": "receipt",
@@ -129,10 +129,12 @@
       "max_cpc": 16.22,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-08-13",
+      "covered_by": "challan-discount"
     },
     {
-      "slug_suggestion": "surat",
+      "slug_suggestion": "surat-traffic-challan",
       "target_keyword": "traffic challan surat",
       "cluster_keywords": [
         "traffic challan surat"
@@ -140,12 +142,11 @@
       "est_volume": 2900,
       "max_cpc": 3.82,
       "min_seo_difficulty": 29,
-      "type": "state",
-      "status": "covered",
-      "covered_by": "gujarat-e-challan"
+      "type": "guide",
+      "status": "pending"
     },
     {
-      "slug_suggestion": "jaipur",
+      "slug_suggestion": "jaipur-traffic-challan",
       "target_keyword": "e challan jaipur",
       "cluster_keywords": [
         "e challan jaipur"
@@ -153,9 +154,8 @@
       "est_volume": 1300,
       "max_cpc": 14.31,
       "min_seo_difficulty": 16,
-      "type": "state",
-      "status": "covered",
-      "covered_by": "rajasthan-e-challan"
+      "type": "guide",
+      "status": "pending"
     },
     {
       "slug_suggestion": "odisha",
@@ -170,7 +170,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "ahmedabad",
+      "slug_suggestion": "ahmedabad-traffic-challan",
       "target_keyword": "traffic challan ahmedabad",
       "cluster_keywords": [
         "traffic challan ahmedabad"
@@ -178,12 +178,11 @@
       "est_volume": 1300,
       "max_cpc": 11.45,
       "min_seo_difficulty": 25,
-      "type": "state",
-      "status": "covered",
-      "covered_by": "gujarat-e-challan"
+      "type": "guide",
+      "status": "pending"
     },
     {
-      "slug_suggestion": "chennai",
+      "slug_suggestion": "chennai-traffic-challan",
       "target_keyword": "traffic challan chennai",
       "cluster_keywords": [
         "traffic challan chennai"
@@ -191,9 +190,8 @@
       "est_volume": 880,
       "max_cpc": 3.82,
       "min_seo_difficulty": 20,
-      "type": "state",
-      "status": "covered",
-      "covered_by": "tamil-nadu-e-challan"
+      "type": "guide",
+      "status": "pending"
     },
     {
       "slug_suggestion": "cars24",
@@ -221,7 +219,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "ranchi",
+      "slug_suggestion": "ranchi-traffic-challan",
       "target_keyword": "traffic challan ranchi",
       "cluster_keywords": [
         "traffic challan ranchi"
@@ -281,7 +279,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "vadodara",
+      "slug_suggestion": "vadodara-traffic-challan",
       "target_keyword": "traffic challan vadodara",
       "cluster_keywords": [
         "traffic challan vadodara"
@@ -330,7 +328,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "rajkot",
+      "slug_suggestion": "rajkot-traffic-challan",
       "target_keyword": "traffic challan rajkot",
       "cluster_keywords": [
         "traffic challan rajkot"
@@ -402,7 +400,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "kolkata",
+      "slug_suggestion": "kolkata-traffic-challan",
       "target_keyword": "traffic challan kolkata",
       "cluster_keywords": [
         "traffic challan kolkata"
@@ -459,7 +457,8 @@
       "max_cpc": 41.02,
       "min_seo_difficulty": 35,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "photo",
@@ -549,7 +548,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "gurgaon",
+      "slug_suggestion": "gurgaon-traffic-challan",
       "target_keyword": "traffic challan gurgaon",
       "cluster_keywords": [
         "traffic challan gurgaon"
@@ -679,10 +678,11 @@
       "max_cpc": 5.25,
       "min_seo_difficulty": 24,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
-      "slug_suggestion": "ludhiana",
+      "slug_suggestion": "ludhiana-traffic-challan",
       "target_keyword": "traffic challan ludhiana",
       "cluster_keywords": [
         "traffic challan ludhiana"
@@ -694,7 +694,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "srinagar",
+      "slug_suggestion": "srinagar-traffic-challan",
       "target_keyword": "traffic challan srinagar",
       "cluster_keywords": [
         "traffic challan srinagar"
@@ -764,7 +764,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "image",
@@ -851,7 +852,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "indore",
+      "slug_suggestion": "indore-traffic-challan",
       "target_keyword": "traffic challan indore",
       "cluster_keywords": [
         "traffic challan indore"
@@ -950,7 +951,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "mysore",
+      "slug_suggestion": "mysore-traffic-challan",
       "target_keyword": "traffic challan mysore",
       "cluster_keywords": [
         "traffic challan mysore"
@@ -1019,7 +1020,8 @@
       "max_cpc": 21.46,
       "min_seo_difficulty": 19,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "timing",
@@ -1070,7 +1072,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "bengaluru",
+      "slug_suggestion": "bengaluru-traffic-challan",
       "target_keyword": "traffic challan bengaluru",
       "cluster_keywords": [
         "traffic challan bengaluru"
@@ -1103,7 +1105,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 6,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "late-fees",
@@ -1188,7 +1191,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "vehicle-percent",
@@ -1200,7 +1204,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 9,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "wrong-side",
@@ -1227,7 +1232,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "nagpur",
+      "slug_suggestion": "nagpur-traffic-challan",
       "target_keyword": "traffic challan nagpur",
       "cluster_keywords": [
         "traffic challan nagpur"
@@ -1251,7 +1256,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "patna",
+      "slug_suggestion": "patna-traffic-challan",
       "target_keyword": "traffic challan patna",
       "cluster_keywords": [
         "traffic challan patna"
@@ -1383,7 +1388,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "ghaziabad",
+      "slug_suggestion": "ghaziabad-traffic-challan",
       "target_keyword": "traffic challan ghaziabad",
       "cluster_keywords": [
         "traffic challan ghaziabad"
@@ -1419,7 +1424,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "mangalore",
+      "slug_suggestion": "mangalore-traffic-challan",
       "target_keyword": "traffic challan mangalore",
       "cluster_keywords": [
         "traffic challan mangalore"
@@ -1624,7 +1629,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "vizag",
+      "slug_suggestion": "vizag-traffic-challan",
       "target_keyword": "traffic challan vizag",
       "cluster_keywords": [
         "traffic challan vizag"
@@ -1830,7 +1835,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "bhopal",
+      "slug_suggestion": "bhopal-traffic-challan",
       "target_keyword": "traffic challan bhopal",
       "cluster_keywords": [
         "traffic challan bhopal"
@@ -2374,7 +2379,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "guwahati",
+      "slug_suggestion": "guwahati-traffic-challan",
       "target_keyword": "traffic challan guwahati",
       "cluster_keywords": [
         "traffic challan guwahati"
@@ -2446,7 +2451,7 @@
       "status": "pending"
     },
     {
-      "slug_suggestion": "jalandhar",
+      "slug_suggestion": "jalandhar-traffic-challan",
       "target_keyword": "traffic challan jalandhar",
       "cluster_keywords": [
         "traffic challan jalandhar"
@@ -2495,7 +2500,7 @@
       "covered_by": "jharkhand state item / how-to-pay-e-challan-online"
     },
     {
-      "slug_suggestion": "yamunanagar",
+      "slug_suggestion": "yamunanagar-traffic-challan",
       "target_keyword": "e challan yamunanagar",
       "cluster_keywords": [
         "e challan yamunanagar"
@@ -2624,7 +2629,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "police-yogyata",
