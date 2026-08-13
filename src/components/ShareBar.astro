@@ -1,0 +1,45 @@
+---
+import { ORIGIN } from '../lib/seo';
+
+interface Props {
+  text: string;
+  url?: string;
+}
+const { text, url = ORIGIN + Astro.url.pathname } = Astro.props;
+// Build-time encoded: the WhatsApp link is a plain anchor, zero JS needed.
+const waHref = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url);
+---
+<div class="share-strip">
+  <span class="share-strip__label label">Share</span>
+  <a class="share-strip__btn" href={waHref} rel="noopener" target="_blank">WhatsApp</a>
+  <button type="button" class="share-strip__btn" id="share-native" data-text={text} data-url={url} hidden>
+    Share&hellip;
+  </button>
+  <button type="button" class="share-strip__btn" id="share-copy" data-url={url}>Copy link</button>
+</div>
+
+<script>
+  const nativeBtn = document.getElementById('share-native') as HTMLButtonElement | null;
+  if (nativeBtn && typeof navigator.share === 'function') {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener('click', () => {
+      navigator
+        .share({ text: nativeBtn.dataset.text ?? '', url: nativeBtn.dataset.url ?? location.href })
+        .catch(() => {}); // user cancelled the sheet — nothing to do
+    });
+  }
+
+  const copyBtn = document.getElementById('share-copy') as HTMLButtonElement | null;
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(copyBtn.dataset.url ?? location.href);
+        const original = copyBtn.textContent;
+        copyBtn.textContent = 'Copied';
+        setTimeout(() => { copyBtn.textContent = original; }, 1500);
+      } catch {
+        copyBtn.textContent = 'Copy failed — copy the address bar instead';
+      }
+    });
+  }
+</script>

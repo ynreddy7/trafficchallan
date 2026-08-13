@@ -1157,6 +1157,40 @@ details p:last-child {
   flex: 0 0 auto;
 }
 
+/* --- Share strip (ShareBar) ---------------------------------------------- */
+/* Deliberately quiet: it sits under the answer content and must never
+   compete with it. Tokens only; hidden in print (see print block). */
+.share-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.4rem 0 1rem;
+}
+.share-strip__label {
+  color: var(--text-muted);
+}
+.share-strip__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--link);
+  border: 1px solid var(--rule);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--speed) ease;
+}
+.share-strip__btn:hover {
+  text-decoration: underline;
+}
+
 .stat-strip {
   display: flex;
   flex-wrap: wrap;
@@ -1276,7 +1310,8 @@ details p:last-child {
   .crumbs span,
   .search-btn,
   .search-dialog,
-  .search-dialog__head {
+  .search-dialog__head,
+  .share-strip__btn {
     border: 1px solid CanvasText;
     box-shadow: none;
     background: Canvas;
@@ -1348,7 +1383,8 @@ details p:last-child {
   #search-slot,
   .footer-nav,
   .brand__chev,
-  .action__chev {
+  .action__chev,
+  .share-strip {
     display: none !important;
   }
   .site-header {
