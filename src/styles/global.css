@@ -40,6 +40,46 @@
   line-gap-override: 0%;
 }
 
+/* IBM Plex Sans, variable (wght 400..700) — prose face for running text.
+   Latin subset (unicode-range values as served by Google Fonts v23). */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('/fonts/plex-sans-var-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Latin-ext subset — carries the rupee sign (U+20B9 sits in U+20AD-20C0),
+   so fine amounts keep ₹ in the prose face without a supplement file. */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url('/fonts/plex-sans-var-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Metric-matched fallback for Plex (local Arial) so the swap does not shift
+   layout: Plex ascent 1025 / descent 275 per 1000 UPM, rebased to the
+   size-adjust. */
+@font-face {
+  font-family: 'Plex Fallback';
+  font-style: normal;
+  font-weight: 400 700;
+  src: local('Arial');
+  size-adjust: 102%;
+  ascent-override: 100.5%;
+  descent-override: 27%;
+  line-gap-override: 0%;
+}
+
 /* --- Role tokens (light) -------------------------------------------------- */
 
 :root {
@@ -60,14 +100,18 @@
   /* ink */
   --text: #16181d;
   --text-muted: #4a4f57;
-  --on-board: #ffffff;
+  /* darker muted for small condensed labels (.tag/.chip/.cell-note) that sit
+     below 16px — the regular muted grey falls short of comfortable there */
+  --text-muted-strong: #40454d;
+  /* softened off-white: full #fff on the deep blue board halates at 19px */
+  --on-board: #f2f6fb;
   --on-board-muted: #d4e1f4;
   --on-plate: #16181d;
   --on-plate-tab: #ffffff;
-  --ink-attention: #8a5a00;
+  --ink-attention: #7a5000;
 
   /* interactive */
-  --link: #1156a8;
+  --link: #0f4c96;
   --link-hover: #0a3d7c;
   --focus: #ffdd00;
   --selection: #ffe9a8;
@@ -86,13 +130,19 @@
   --status-ok: #0b5033;
 
   /* type */
+  /* --font-body (Anek) now carries display duty: headings, labels, thead,
+     plates, tags, chips, nav, buttons. Name kept to avoid touching every
+     component — prose elements opt in to --font-prose below. */
   --font-body: 'Anek Latin', 'Anek Fallback', system-ui, -apple-system, 'Segoe UI',
     Roboto, sans-serif;
+  --font-prose: 'IBM Plex Sans', 'Plex Fallback', system-ui, -apple-system,
+    'Segoe UI', Roboto, sans-serif;
   --width-condensed: 80%;
   --width-normal: 100%;
 
   /* layout */
   --measure: 760px;
+  --measure-prose: 640px;
   --gutter: 1rem;
   --radius: 10px;
   --radius-sm: 4px;
@@ -115,6 +165,7 @@
 
     --text: #e8eaed;
     --text-muted: #a9b0ba;
+    --text-muted-strong: #b4bac4;
     --on-board: #e8eaed;
     --on-board-muted: #a9b0ba;
     --on-plate: #101317;
@@ -178,18 +229,79 @@ h1 {
   margin: 1.4rem 0 0.7rem;
 }
 h2 {
-  font-size: clamp(1.6875rem, 1.38rem + 1.36vw, 2.25rem);
+  font-size: clamp(1.5rem, 1.39rem + 0.51vw, 1.875rem);
   margin: 2.4rem 0 0.6rem;
 }
 h3 {
-  font-size: clamp(1.3125rem, 1.21rem + 0.45vw, 1.5rem);
+  font-size: clamp(1.25rem, 1.2rem + 0.23vw, 1.375rem);
   margin: 1.8rem 0 0.5rem;
 }
 
 p,
 ul,
 ol {
-  margin: 0 0 1rem;
+  margin: 0 0 1.2rem;
+}
+
+/* --- Prose face ----------------------------------------------------------- */
+/* Running text reads in IBM Plex Sans; Anek stays on display duty (headings,
+   labels, thead, plates, tags, chips, nav, buttons, breadcrumbs, stat strip). */
+p,
+li,
+dd,
+td,
+blockquote,
+details,
+figcaption,
+input,
+textarea,
+select,
+.answer-board__body,
+.cell-note,
+.legal-note {
+  font-family: var(--font-prose);
+}
+/* Signage furniture that sits inside an li/td stays in Anek: nav lists,
+   breadcrumbs, stat strip, gantry, condensed labels, plates, tags, chips,
+   step markers and the mobile schedule's data labels. */
+.footer-nav li,
+.crumbs li,
+.stat-strip li,
+.gantry li,
+.jump-nav li,
+.seen-on li,
+.steps li::before,
+.plate,
+.tag,
+.chip,
+.amount__unit,
+.schedule td:not(:first-child)::before {
+  font-family: var(--font-body);
+}
+
+/* Prose measure: ~66ch at 19px Plex. The shell (--measure: 760px) stays for
+   header/footer/tables/gantry/compare; these left-aligned elements simply
+   stop short — no margin auto. */
+p,
+ul,
+ol,
+blockquote,
+.statute,
+.faqs details,
+.legal-note {
+  max-width: var(--measure-prose);
+  line-height: 1.55;
+}
+/* Navigational and grid lists span the full shell, not the prose measure. */
+.gantry ul,
+.footer-nav ul,
+.related-links,
+.jump-nav ul,
+.crumbs ol,
+.seen-on,
+.stat-strip,
+.finder-result ul {
+  max-width: none;
 }
 main ul,
 main ol {
@@ -232,6 +344,41 @@ main td a,
 .answer-board a,
 .sources a {
   overflow-wrap: anywhere;
+}
+
+/* Content-area links: keep the underline always on but pull it back to a
+   1px, 45%-strength stroke at rest so dense prose stays calm; hover/focus
+   restore the full-colour 2px stroke. Nav, footer, board, action and
+   breadcrumb links are untouched. */
+main p a,
+main li a,
+main dd a,
+main td a,
+.sources a,
+.statute a,
+.faqs details a,
+.legal-note a {
+  text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent);
+  text-decoration-thickness: 1px;
+}
+main p a:hover,
+main li a:hover,
+main dd a:hover,
+main td a:hover,
+.sources a:hover,
+.statute a:hover,
+.faqs details a:hover,
+.legal-note a:hover,
+main p a:focus-visible,
+main li a:focus-visible,
+main dd a:focus-visible,
+main td a:focus-visible,
+.sources a:focus-visible,
+.statute a:focus-visible,
+.faqs details a:focus-visible,
+.legal-note a:focus-visible {
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
 }
 
 :focus-visible {
@@ -446,6 +593,7 @@ time,
   background: var(--surface);
   color: var(--text);
   font: inherit;
+  font-family: var(--font-prose);
   font-size: 1.0625rem;
 }
 .search-close {
@@ -588,19 +736,36 @@ time,
   margin: 0 0 0.4rem;
 }
 .answer-board__body {
+  /* Reversed polarity (light on deep blue) needs more air, a touch more
+     weight (Plex variable wght 460) and a slightly softened white (--on-board)
+     to stay comfortable. Font size never drops below body on a board. */
   font-size: 1.1875rem;
-  line-height: 1.55;
+  line-height: 1.62;
+  font-weight: 460;
+  letter-spacing: 0.005em;
+  max-width: 58ch;
+  color: var(--on-board);
 }
 .answer-board__body > :last-child {
   margin-bottom: 0;
 }
+/* The generic prose rules (1.55 leading, 640px measure) must not undercut the
+   board's own tuned leading and 58ch measure. */
+.answer-board__body :is(p, ul, ol, blockquote) {
+  line-height: inherit;
+  max-width: none;
+}
 .answer-board a {
   color: var(--on-board);
   text-decoration: underline;
+  /* full-strength stroke: the softened content-link decoration colour would
+     vanish against the deep blue board */
+  text-decoration-color: currentColor;
   text-decoration-thickness: 2px;
 }
 .answer-board a:hover {
   color: var(--on-board);
+  text-decoration-color: currentColor;
   text-decoration-thickness: 3px;
 }
 
@@ -774,7 +939,7 @@ time,
 table {
   border-collapse: collapse;
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.0625rem; /* body cells; thead keeps its own 0.8125rem Anek caps */
 }
 th,
 td {
@@ -837,7 +1002,7 @@ tbody tr:nth-child(even) {
   margin-top: 0.3rem;
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--text-muted);
+  color: var(--text-muted-strong);
 }
 .schedule td[data-override='true'] {
   border-left: 4px solid var(--rail-attention);
@@ -849,8 +1014,8 @@ tbody tr:nth-child(even) {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
-  font-size: 0.6875rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--text-muted-strong);
 }
 .tag--danger {
   color: var(--danger);
@@ -932,8 +1097,9 @@ tbody tr:nth-child(even) {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   line-height: 1;
+  color: var(--text-muted-strong);
   padding: 0.22rem 0.5rem;
   border-radius: 999px;
   border: 1px solid currentColor;
@@ -975,6 +1141,7 @@ tbody tr:nth-child(even) {
   margin-top: 0.3rem;
   padding: 0.5rem 0.6rem;
   font: inherit;
+  font-family: var(--font-prose);
   border: 1px solid var(--rule);
   border-radius: var(--radius-sm);
   background: var(--surface-raised);
@@ -1405,6 +1572,7 @@ details p:last-child {
     --board-hover: transparent;
     --text: #000000;
     --text-muted: #333333;
+    --text-muted-strong: #333333;
     --on-board: #000000;
     --on-board-muted: #333333;
     --on-plate: #000000;
@@ -1536,6 +1704,7 @@ details p:last-child {
 }
 .status-picker select {
   font: inherit;
+  font-family: var(--font-prose);
   max-width: 100%;
   min-height: 44px;
   padding: 0.5rem 0.7rem;
