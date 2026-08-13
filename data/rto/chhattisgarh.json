@@ -1,0 +1,43 @@
+{
+  "slug": "chhattisgarh",
+  "state_name": "Chhattisgarh",
+  "series": ["CG"],
+  "codes": [
+    { "code": "CG01", "office": "Statewide series (entire Chhattisgarh)" },
+    { "code": "CG02", "office": "Statewide series (entire Chhattisgarh)" },
+    { "code": "CG03", "office": "Statewide series (entire Chhattisgarh)" },
+    { "code": "CG04", "office": "Raipur" },
+    { "code": "CG05", "office": "Dhamtari" },
+    { "code": "CG06", "office": "Mahasamund" },
+    { "code": "CG07", "office": "Durg" },
+    { "code": "CG08", "office": "Rajnandgaon" },
+    { "code": "CG09", "office": "Kabirdham (Kawardha)" },
+    { "code": "CG10", "office": "Bilaspur" },
+    { "code": "CG11", "office": "Janjgir-Champa" },
+    { "code": "CG12", "office": "Korba" },
+    { "code": "CG13", "office": "Raigarh" },
+    { "code": "CG14", "office": "Jashpur" },
+    { "code": "CG15", "office": "Ambikapur" },
+    { "code": "CG16", "office": "Baikunthpur (Koriya)" },
+    { "code": "CG17", "office": "Jagdalpur" },
+    { "code": "CG18", "office": "Dantewada" },
+    { "code": "CG19", "office": "Kanker" },
+    { "code": "CG20", "office": "Bijapur" },
+    { "code": "CG21", "office": "Narayanpur" },
+    { "code": "CG22", "office": "Baloda Bazar" },
+    { "code": "CG23", "office": "Gariaband" },
+    { "code": "CG24", "office": "Balod" },
+    { "code": "CG25", "office": "Bemetara" },
+    { "code": "CG26", "office": "Sukma" },
+    { "code": "CG27", "office": "Kondagaon" },
+    { "code": "CG28", "office": "Mungeli" },
+    { "code": "CG29", "office": "Surajpur" },
+    { "code": "CG30", "office": "Balrampur" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 27, "official_list_available": true },
+  "sources": [
+    "https://cgtransport.gov.in/OfficeList.aspx",
+    "https://cgtransport.gov.in/"
+  ],
+  "last_verified": "2026-08-13"
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "meghalaya",
+  "state_name": "Meghalaya",
+  "series": ["ML"],
+  "codes": [
+    { "code": "ML01", "office": "Meghalaya Government vehicles" },
+    { "code": "ML02", "office": "Meghalaya Police vehicles" },
+    { "code": "ML04", "office": "Jowai (Jaintia Hills)" },
+    { "code": "ML05", "office": "Shillong (East Khasi Hills)" },
+    { "code": "ML06", "office": "Nongstoin (West Khasi Hills)" },
+    { "code": "ML07", "office": "Williamnagar (East Garo Hills)" },
+    { "code": "ML08", "office": "Tura (West Garo Hills)" },
+    { "code": "ML09", "office": "Baghmara (South Garo Hills)" },
+    { "code": "ML10", "office": "Nongpoh (Ri-Bhoi)" },
+    { "code": "ML11", "office": "Khliehriat (East Jaintia Hills)" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 5, "official_list_available": false },
+  "sources": [
+    "https://www.coverfox.com/rto/meghalaya/",
+    "https://www.acko.com/rto/meghalaya/",
+    "https://www.insurancedekho.com/rto/meghalaya",
+    "https://megtransport.gov.in/"
+  ],
+  "last_verified": "2026-08-13"
+}

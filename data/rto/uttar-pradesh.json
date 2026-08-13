@@ -1,0 +1,319 @@
+{
+  "slug": "uttar-pradesh",
+  "state_name": "Uttar Pradesh",
+  "series": [
+    "UP"
+  ],
+  "codes": [
+    {
+      "code": "UP11",
+      "office": "Saharanpur"
+    },
+    {
+      "code": "UP12",
+      "office": "Muzaffarnagar"
+    },
+    {
+      "code": "UP13",
+      "office": "Bulandshahr"
+    },
+    {
+      "code": "UP14",
+      "office": "Ghaziabad"
+    },
+    {
+      "code": "UP15",
+      "office": "Meerut"
+    },
+    {
+      "code": "UP16",
+      "office": "Gautam Buddha Nagar (Noida)"
+    },
+    {
+      "code": "UP17",
+      "office": "Baghpat"
+    },
+    {
+      "code": "UP19",
+      "office": "Shamli"
+    },
+    {
+      "code": "UP20",
+      "office": "Bijnor"
+    },
+    {
+      "code": "UP21",
+      "office": "Moradabad"
+    },
+    {
+      "code": "UP22",
+      "office": "Rampur"
+    },
+    {
+      "code": "UP23",
+      "office": "Amroha"
+    },
+    {
+      "code": "UP24",
+      "office": "Badaun"
+    },
+    {
+      "code": "UP25",
+      "office": "Bareilly"
+    },
+    {
+      "code": "UP26",
+      "office": "Pilibhit"
+    },
+    {
+      "code": "UP27",
+      "office": "Shahjahanpur"
+    },
+    {
+      "code": "UP30",
+      "office": "Hardoi"
+    },
+    {
+      "code": "UP31",
+      "office": "Lakhimpur Kheri"
+    },
+    {
+      "code": "UP32",
+      "office": "Lucknow"
+    },
+    {
+      "code": "UP33",
+      "office": "Raebareli"
+    },
+    {
+      "code": "UP34",
+      "office": "Sitapur"
+    },
+    {
+      "code": "UP35",
+      "office": "Unnao"
+    },
+    {
+      "code": "UP36",
+      "office": "Amethi"
+    },
+    {
+      "code": "UP37",
+      "office": "Hapur"
+    },
+    {
+      "code": "UP38",
+      "office": "Sambhal (Bahjoi)"
+    },
+    {
+      "code": "UP40",
+      "office": "Bahraich"
+    },
+    {
+      "code": "UP41",
+      "office": "Barabanki"
+    },
+    {
+      "code": "UP42",
+      "office": "Ayodhya"
+    },
+    {
+      "code": "UP43",
+      "office": "Gonda"
+    },
+    {
+      "code": "UP44",
+      "office": "Sultanpur"
+    },
+    {
+      "code": "UP45",
+      "office": "Ambedkar Nagar (Akbarpur)"
+    },
+    {
+      "code": "UP46",
+      "office": "Shravasti"
+    },
+    {
+      "code": "UP47",
+      "office": "Balrampur"
+    },
+    {
+      "code": "UP50",
+      "office": "Azamgarh"
+    },
+    {
+      "code": "UP51",
+      "office": "Basti"
+    },
+    {
+      "code": "UP52",
+      "office": "Deoria"
+    },
+    {
+      "code": "UP53",
+      "office": "Gorakhpur"
+    },
+    {
+      "code": "UP54",
+      "office": "Mau"
+    },
+    {
+      "code": "UP55",
+      "office": "Siddharthnagar"
+    },
+    {
+      "code": "UP56",
+      "office": "Maharajganj"
+    },
+    {
+      "code": "UP57",
+      "office": "Kushinagar (Padrauna)"
+    },
+    {
+      "code": "UP58",
+      "office": "Sant Kabir Nagar (Khalilabad)"
+    },
+    {
+      "code": "UP60",
+      "office": "Ballia"
+    },
+    {
+      "code": "UP61",
+      "office": "Ghazipur"
+    },
+    {
+      "code": "UP62",
+      "office": "Jaunpur"
+    },
+    {
+      "code": "UP63",
+      "office": "Mirzapur"
+    },
+    {
+      "code": "UP64",
+      "office": "Sonbhadra (Robertsganj)"
+    },
+    {
+      "code": "UP65",
+      "office": "Varanasi"
+    },
+    {
+      "code": "UP66",
+      "office": "Bhadohi (Gyanpur)"
+    },
+    {
+      "code": "UP67",
+      "office": "Chandauli"
+    },
+    {
+      "code": "UP70",
+      "office": "Prayagraj"
+    },
+    {
+      "code": "UP71",
+      "office": "Fatehpur"
+    },
+    {
+      "code": "UP72",
+      "office": "Pratapgarh"
+    },
+    {
+      "code": "UP73",
+      "office": "Kaushambi (Manjhanpur)"
+    },
+    {
+      "code": "UP74",
+      "office": "Kannauj"
+    },
+    {
+      "code": "UP75",
+      "office": "Etawah"
+    },
+    {
+      "code": "UP76",
+      "office": "Farrukhabad"
+    },
+    {
+      "code": "UP77",
+      "office": "Kanpur Dehat (Akbarpur)"
+    },
+    {
+      "code": "UP78",
+      "office": "Kanpur Nagar"
+    },
+    {
+      "code": "UP79",
+      "office": "Auraiya"
+    },
+    {
+      "code": "UP80",
+      "office": "Agra"
+    },
+    {
+      "code": "UP81",
+      "office": "Aligarh"
+    },
+    {
+      "code": "UP82",
+      "office": "Etah"
+    },
+    {
+      "code": "UP83",
+      "office": "Firozabad"
+    },
+    {
+      "code": "UP84",
+      "office": "Mainpuri"
+    },
+    {
+      "code": "UP85",
+      "office": "Mathura"
+    },
+    {
+      "code": "UP86",
+      "office": "Hathras"
+    },
+    {
+      "code": "UP87",
+      "office": "Kasganj"
+    },
+    {
+      "code": "UP90",
+      "office": "Banda"
+    },
+    {
+      "code": "UP91",
+      "office": "Hamirpur"
+    },
+    {
+      "code": "UP92",
+      "office": "Jalaun"
+    },
+    {
+      "code": "UP93",
+      "office": "Jhansi"
+    },
+    {
+      "code": "UP94",
+      "office": "Lalitpur"
+    },
+    {
+      "code": "UP95",
+      "office": "Mahoba"
+    },
+    {
+      "code": "UP96",
+      "office": "Chitrakoot Dham"
+    }
+  ],
+  "verification": {
+    "method": "full",
+    "sample_size": 75,
+    "official_list_available": true
+  },
+  "sources": [
+    "https://uptransport.upsdc.gov.in/Pages/RTO_Code",
+    "https://uptransport.upsdc.gov.in/"
+  ],
+  "last_verified": "2026-08-13"
+}

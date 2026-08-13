@@ -1,0 +1,15 @@
+{
+  "slug": "andaman-nicobar-islands",
+  "state_name": "Andaman and Nicobar Islands",
+  "series": ["AN"],
+  "codes": [
+    { "code": "AN01", "office": "Port Blair" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 1, "official_list_available": false },
+  "sources": [
+    "https://groww.in/rto/andaman-and-nicobar-islands",
+    "https://www.coverfox.com/rto/andaman-and-nicobar-islands/",
+    "https://www.carinfo.app/rto-vehicle-registration-detail/rto-details/AN01"
+  ],
+  "last_verified": "2026-08-13"
+}

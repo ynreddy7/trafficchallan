@@ -1,0 +1,22 @@
+{
+  "slug": "manipur",
+  "state_name": "Manipur",
+  "series": ["MN"],
+  "codes": [
+    { "code": "MN01", "office": "Imphal West" },
+    { "code": "MN02", "office": "Churachandpur" },
+    { "code": "MN03", "office": "Kangpokpi" },
+    { "code": "MN04", "office": "Thoubal" },
+    { "code": "MN05", "office": "Bishnupur" },
+    { "code": "MN06", "office": "Imphal East" },
+    { "code": "MN07", "office": "Ukhrul" },
+    { "code": "MN08", "office": "Senapati" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 5, "official_list_available": false },
+  "sources": [
+    "https://www.acko.com/rto/manipur/",
+    "https://www.coverfox.com/rto/manipur/",
+    "https://www.insurancedekho.com/rto/manipur"
+  ],
+  "last_verified": "2026-08-13"
+}

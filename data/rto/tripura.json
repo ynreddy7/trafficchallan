@@ -1,0 +1,51 @@
+{
+  "slug": "tripura",
+  "state_name": "Tripura",
+  "series": [
+    "TR"
+  ],
+  "codes": [
+    {
+      "code": "TR01",
+      "office": "Agartala (West Tripura)"
+    },
+    {
+      "code": "TR02",
+      "office": "Kailashahar (Unakoti)"
+    },
+    {
+      "code": "TR03",
+      "office": "Udaipur (Gomati)"
+    },
+    {
+      "code": "TR04",
+      "office": "Ambassa (Dhalai)"
+    },
+    {
+      "code": "TR05",
+      "office": "Dharmanagar (North Tripura)"
+    },
+    {
+      "code": "TR06",
+      "office": "Teliamura (Khowai)"
+    },
+    {
+      "code": "TR07",
+      "office": "Bishramganj (Sepahijala)"
+    },
+    {
+      "code": "TR08",
+      "office": "Santirbazar (South Tripura)"
+    }
+  ],
+  "verification": {
+    "method": "full",
+    "sample_size": 8,
+    "official_list_available": true
+  },
+  "sources": [
+    "https://transport.tripura.gov.in/dto_info.html",
+    "https://transport.tripura.gov.in/"
+  ],
+  "last_verified": "2026-08-13"
+}

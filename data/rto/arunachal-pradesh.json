@@ -1,0 +1,35 @@
+{
+  "slug": "arunachal-pradesh",
+  "state_name": "Arunachal Pradesh",
+  "series": ["AR"],
+  "codes": [
+    { "code": "AR01", "office": "Itanagar" },
+    { "code": "AR02", "office": "Itanagar" },
+    { "code": "AR03", "office": "Tawang" },
+    { "code": "AR04", "office": "Bomdila" },
+    { "code": "AR05", "office": "Seppa" },
+    { "code": "AR06", "office": "Ziro" },
+    { "code": "AR07", "office": "Daporijo" },
+    { "code": "AR08", "office": "Along" },
+    { "code": "AR09", "office": "Pasighat" },
+    { "code": "AR10", "office": "Anini" },
+    { "code": "AR11", "office": "Tezu" },
+    { "code": "AR12", "office": "Changlang" },
+    { "code": "AR13", "office": "Khonsa" },
+    { "code": "AR14", "office": "Yingkiong" },
+    { "code": "AR15", "office": "Koloriang" },
+    { "code": "AR16", "office": "Roing" },
+    { "code": "AR17", "office": "Hawai" },
+    { "code": "AR19", "office": "Palin" },
+    { "code": "AR20", "office": "Namsai" },
+    { "code": "AR22", "office": "Siji" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 5, "official_list_available": false },
+  "sources": [
+    "https://www.acko.com/rto/arunachal-pradesh/",
+    "https://www.cars24.com/rto-vehicle-registration-details-arunachal-pradesh/",
+    "https://www.insurancedekho.com/rto/arunachal-pradesh",
+    "https://www.godigit.com/rto-office/arunachal-pradesh"
+  ],
+  "last_verified": "2026-08-13"
+}

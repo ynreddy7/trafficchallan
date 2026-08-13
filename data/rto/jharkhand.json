@@ -1,0 +1,115 @@
+{
+  "slug": "jharkhand",
+  "state_name": "Jharkhand",
+  "series": [
+    "JH"
+  ],
+  "codes": [
+    {
+      "code": "JH01",
+      "office": "Ranchi"
+    },
+    {
+      "code": "JH02",
+      "office": "Hazaribagh"
+    },
+    {
+      "code": "JH03",
+      "office": "Daltonganj"
+    },
+    {
+      "code": "JH04",
+      "office": "Dumka"
+    },
+    {
+      "code": "JH05",
+      "office": "Jamshedpur"
+    },
+    {
+      "code": "JH06",
+      "office": "Chaibasa"
+    },
+    {
+      "code": "JH07",
+      "office": "Gumla"
+    },
+    {
+      "code": "JH08",
+      "office": "Lohardaga"
+    },
+    {
+      "code": "JH09",
+      "office": "Bokaro"
+    },
+    {
+      "code": "JH10",
+      "office": "Dhanbad"
+    },
+    {
+      "code": "JH11",
+      "office": "Giridih"
+    },
+    {
+      "code": "JH12",
+      "office": "Koderma"
+    },
+    {
+      "code": "JH13",
+      "office": "Chatra"
+    },
+    {
+      "code": "JH14",
+      "office": "Garhwa"
+    },
+    {
+      "code": "JH15",
+      "office": "Deoghar"
+    },
+    {
+      "code": "JH16",
+      "office": "Pakur"
+    },
+    {
+      "code": "JH17",
+      "office": "Godda"
+    },
+    {
+      "code": "JH18",
+      "office": "Sahibganj"
+    },
+    {
+      "code": "JH19",
+      "office": "Latehar"
+    },
+    {
+      "code": "JH20",
+      "office": "Simdega"
+    },
+    {
+      "code": "JH21",
+      "office": "Jamtara"
+    },
+    {
+      "code": "JH22",
+      "office": "Seraikela-Kharsawan"
+    },
+    {
+      "code": "JH23",
+      "office": "Khunti"
+    },
+    {
+      "code": "JH24",
+      "office": "Ramgarh"
+    }
+  ],
+  "verification": {
+    "method": "sampled",
+    "sample_size": 24,
+    "official_list_available": false
+  },
+  "sources": [
+    "https://www.acko.com/rto/jharkhand/",
+    "https://groww.in/rto/jharkhand"
+  ],
+  "last_verified": "2026-08-13"
+}

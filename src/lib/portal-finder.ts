@@ -4,7 +4,12 @@
  * typed value anywhere. The state list a caller passes in is expected to be
  * one row per RTO code (Telangana appears twice, once for TS and once for
  * TG), because a code and a state are not a 1:1 relationship.
+ *
+ * Plate parsing (normalization + "looks like a code") is shared with the
+ * /rto-codes/ lookup — see normalizePlate/plateSeries in rto-lookup.ts.
  */
+
+import { normalizePlate, plateSeries } from './rto-lookup';
 
 export interface RtoStateEntry {
   slug: string;
@@ -32,17 +37,13 @@ export function resolveVehicleInput(input: string, states: RtoStateEntry[]): Por
   const trimmed = input.trim();
   if (!trimmed) return { kind: 'invalid' };
 
-  // Vehicle-registration / bare-RTO-code path: strip spaces and hyphens,
-  // uppercase, and take the first two letters as a candidate code — but
-  // only when the shape actually looks like a code (a bare two-letter
-  // string like "TG", or two letters immediately followed by a digit like
-  // "MH12AB1234" or "KL01"). This deliberately excludes an attempted state
-  // name like "Kar" or "karnataka", where the third character is a letter.
-  const compact = trimmed.replace(/[\s-]/g, '').toUpperCase();
-  const looksLikeCode = /^[A-Z]{2}/.test(compact) && (compact.length === 2 || /[0-9]/.test(compact[2]));
+  // Vehicle-registration / bare-RTO-code path: normalize (strip spaces,
+  // hyphens and dots, uppercase) and take the series prefix as a candidate
+  // code when the shape actually looks like one — shared helpers with the
+  // /rto-codes/ lookup, see rto-lookup.ts.
+  const code = plateSeries(normalizePlate(trimmed));
 
-  if (looksLikeCode) {
-    const code = compact.slice(0, 2);
+  if (code) {
     const covered = states.find((s) => s.code === code);
     if (covered) return { kind: 'state', slug: covered.slug };
     if (KNOWN_UNCOVERED_CODES.has(code)) return { kind: 'unknown-code', code };

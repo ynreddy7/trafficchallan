@@ -1,0 +1,23 @@
+{
+  "slug": "nagaland",
+  "state_name": "Nagaland",
+  "series": ["NL"],
+  "codes": [
+    { "code": "NL01", "office": "Kohima" },
+    { "code": "NL02", "office": "Mokokchung" },
+    { "code": "NL03", "office": "Tuensang" },
+    { "code": "NL04", "office": "Mon" },
+    { "code": "NL05", "office": "Wokha" },
+    { "code": "NL06", "office": "Zunheboto" },
+    { "code": "NL07", "office": "Dimapur" },
+    { "code": "NL08", "office": "Phek" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 8, "official_list_available": false },
+  "sources": [
+    "https://www.acko.com/rto/nagaland/",
+    "https://groww.in/rto/nagaland",
+    "https://www.policybazaar.com/rto/nagaland/",
+    "https://www.insurancedekho.com/rto/nagaland"
+  ],
+  "last_verified": "2026-08-13"
+}

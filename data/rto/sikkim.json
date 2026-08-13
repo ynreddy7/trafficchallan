@@ -1,0 +1,23 @@
+{
+  "slug": "sikkim",
+  "state_name": "Sikkim",
+  "series": ["SK"],
+  "codes": [
+    { "code": "SK01", "office": "Gangtok" },
+    { "code": "SK02", "office": "Gyalshing" },
+    { "code": "SK03", "office": "Mangan" },
+    { "code": "SK04", "office": "Jorethang" },
+    { "code": "SK05", "office": "Namchi" },
+    { "code": "SK06", "office": "Soreng" },
+    { "code": "SK07", "office": "Pakyong" },
+    { "code": "SK08", "office": "Singtam" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 5, "official_list_available": false },
+  "sources": [
+    "https://www.acko.com/rto/sikkim/",
+    "https://www.coverfox.com/rto/sikkim/",
+    "https://www.cars24.com/rto-vehicle-registration-details-sikkim/",
+    "https://www.policybazaar.com/rto/sikkim/"
+  ],
+  "last_verified": "2026-08-13"
+}

@@ -1,0 +1,28 @@
+{
+  "slug": "ladakh",
+  "state_name": "Ladakh",
+  "series": [
+    "LA"
+  ],
+  "codes": [
+    {
+      "code": "LA01",
+      "office": "Kargil"
+    },
+    {
+      "code": "LA02",
+      "office": "Leh"
+    }
+  ],
+  "verification": {
+    "method": "sampled",
+    "sample_size": 2,
+    "official_list_available": false
+  },
+  "sources": [
+    "https://ladakh.gov.in/transport/",
+    "https://groww.in/rto/ladakh",
+    "https://ackodrive.com/rto/ladakh/"
+  ],
+  "last_verified": "2026-08-13"
+}

@@ -291,9 +291,10 @@ describe('loaders on the seeded repo data', () => {
     const la = loadLokAdalat();
     expect(la.national_sittings.map((s) => s.date)).toEqual(['2026-03-14', '2026-05-09', '2026-09-12', '2026-12-12']);
   });
-  it('loadRtoFiles tolerates the not-yet-existing rto dir', () => {
-    expect(loadRtoFiles()).toEqual([]);
+  it('loadRtoFiles tolerates a missing rto dir and loads the real one', () => {
     expect(loadRtoFiles(join(tmpdir(), 'definitely-missing-rto-dir'))).toEqual([]);
+    // The real dataset shipped with /rto-codes/: all 36 states/UTs.
+    expect(loadRtoFiles().length).toBe(36);
   });
   it('maxSchemeDate covers every scheme and the lok-adalat date', () => {
     const max = maxSchemeDate();

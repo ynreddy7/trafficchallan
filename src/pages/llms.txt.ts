@@ -25,6 +25,7 @@ export const GET: APIRoute = async () => {
     '## Tools',
     `- [Fine calculator](${ORIGIN}/calculator/): offence × state × repeat lookup`,
     `- [Compare fines across states](${ORIGIN}/compare/): offence × state matrix`,
+    `- [RTO code lookup](${ORIGIN}/rto-codes/): which city a number plate is from — every RTO code for all 36 states and union territories`,
     '',
     '## Live status',
     `- [Challan discount & Lok Adalat tracker](${ORIGIN}/challan-discount/): state-by-state discount/amnesty scheme status with government-order sources, next National Lok Adalat date, Delhi token steps`,
@@ -33,7 +34,8 @@ export const GET: APIRoute = async () => {
     `- [Fine schedule (JSON)](${ORIGIN}/api/fines.json): every offence record, machine-readable, CC BY 4.0 with attribution`,
     `- [Fine schedule (CSV)](${ORIGIN}/api/fines.csv): same fine schedule as CSV`,
     `- [State records (JSON)](${ORIGIN}/api/states.json): every state's portals, check/pay steps and fine overrides, machine-readable`,
-    `- [Discount schemes (JSON)](${ORIGIN}/api/schemes.json): per-state discount/amnesty scheme status + Lok Adalat dates, machine-readable`
+    `- [Discount schemes (JSON)](${ORIGIN}/api/schemes.json): per-state discount/amnesty scheme status + Lok Adalat dates, machine-readable`,
+    `- [RTO codes (JSON)](${ORIGIN}/api/rto-codes.json): every RTO code with its registering office and state, machine-readable`
   ];
   return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };

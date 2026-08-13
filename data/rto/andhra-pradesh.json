@@ -1,0 +1,30 @@
+{
+  "slug": "andhra-pradesh",
+  "state_name": "Andhra Pradesh",
+  "series": ["AP"],
+  "codes": [
+    { "code": "AP02", "office": "Anantapur (historical)" },
+    { "code": "AP03", "office": "Chittoor (historical)" },
+    { "code": "AP04", "office": "YSR Kadapa (historical)" },
+    { "code": "AP05", "office": "East Godavari (historical)" },
+    { "code": "AP07", "office": "Guntur (historical)" },
+    { "code": "AP16", "office": "Krishna (historical)" },
+    { "code": "AP21", "office": "Kurnool (historical)" },
+    { "code": "AP26", "office": "Nellore (historical)" },
+    { "code": "AP27", "office": "Prakasam (historical)" },
+    { "code": "AP30", "office": "Srikakulam (historical)" },
+    { "code": "AP31", "office": "Visakhapatnam (historical)" },
+    { "code": "AP35", "office": "Vizianagaram (historical)" },
+    { "code": "AP37", "office": "West Godavari (historical)" },
+    { "code": "AP39", "office": "Statewide - all new registrations since Jan 2019 (one state, one code)" }
+  ],
+  "verification": { "method": "full", "sample_size": 15, "official_list_available": true },
+  "sources": [
+    "https://www.aptransport.org/html/registration-districtcodes.html",
+    "https://www.aptransport.org/",
+    "https://www.coverfox.com/rto/andhra-pradesh/",
+    "https://www.acko.com/rto/andhra-pradesh/",
+    "https://www.insurancedekho.com/rto/andhra-pradesh"
+  ],
+  "last_verified": "2026-08-13"
+}

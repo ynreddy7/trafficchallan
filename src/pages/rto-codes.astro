@@ -1,0 +1,237 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LastVerified from '../components/LastVerified.astro';
+import ShareBar from '../components/ShareBar.astro';
+import { loadRtoFiles, loadStates } from '../lib/data';
+import { faqJsonLd, datasetJsonLd } from '../lib/seo';
+import { slugify } from '../lib/format';
+import type { RtoStateRecord } from '../lib/schemas';
+
+const rtoStates = [...loadRtoFiles()].sort((a, b) => a.state_name.localeCompare(b.state_name));
+const siteStateSlugs = [...new Set(loadStates().map((s) => s.slug))];
+const siteSlugSet = new Set(siteStateSlugs);
+
+const totalCodes = rtoStates.reduce((n, r) => n + r.codes.length, 0);
+const lastVerified = rtoStates.map((r) => r.last_verified).sort().at(-1)!;
+const codeCount = new Intl.NumberFormat('en-IN').format(totalCodes);
+
+// Per-state verification disclosure, derived straight from the verification
+// block so the page can never overclaim (CONTENT_STANDARDS rule 12).
+const disclosure = (r: RtoStateRecord) => {
+  const n = r.codes.length;
+  const codes = (k: number) => `${k} code${k === 1 ? '' : 's'}`;
+  if (r.verification.method === 'full') {
+    return `All ${codes(n)} verified against the official state transport department list.`;
+  }
+  const sampled = r.verification.sample_size ?? 0;
+  return r.verification.official_list_available
+    ? `Sample-verified: ${sampled} of ${codes(n)} checked against the official transport department list and independent directories.`
+    : `Sample-verified: ${sampled} of ${codes(n)} checked against ${r.sources.length} independent sources — no fetchable official list.`;
+};
+
+// 129 distinct source URLs across the 36 states is too long for one
+// aggregated list, so sources render inside each state's section instead.
+// Repeated hostnames within a state get a counter so every URL stays visible.
+const sourceLabels = (sources: string[]) => {
+  const seen = new Map<string, number>();
+  return sources.map((url) => {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    const n = (seen.get(host) ?? 0) + 1;
+    seen.set(host, n);
+    return { url, label: n === 1 ? host : `${host} (${n})` };
+  });
+};
+
+const faqs = [
+  {
+    q: 'What is an RTO code?',
+    a: 'It is the first half of an Indian number plate: two letters for the state or union territory and two digits for the Regional Transport Office that registered the vehicle — MH12 is Pune, KA01 is Bengaluru Central, DL05 is Shahdara in Delhi. The code tells you where the vehicle was registered, not where its owner lives today.'
+  },
+  {
+    q: 'Why does my city have several RTO codes?',
+    a: 'Big cities are split between multiple transport offices, each with its own code and zone. Mumbai alone has MH01 (Tardeo), MH02 (Andheri), MH03 (Wadala) and MH47 (Borivali), and Bengaluru has a dozen KA codes. New codes are added whenever a state carves out a new office, which is why the digits in a series keep climbing.'
+  },
+  {
+    q: 'What is the BH series on a number plate?',
+    a: 'BH is the all-India Bharat series introduced by the central government in August 2021 (notification G.S.R. 594(E)). The format is year, then BH, then a number and letters — 22 BH 1234 AA — with no state code at all. It is open to central and state government employees and to private-sector employees whose company has offices in four or more states or union territories, and a BH-registered vehicle does not need re-registration when its owner moves between states.'
+  },
+  {
+    q: 'Are old TS and AP codes still valid?',
+    a: 'Yes. A number plate keeps its series for the life of the registration, so TS plates issued before Telangana switched its new registrations to TG remain valid, exactly as AP plates issued before the state split remain valid. The same applies to DN09 plates from before Dadra and Nagar Haveli merged with Daman and Diu — new registrations there use the DD series.'
+  }
+];
+
+// Everything the lookup island needs, embedded at build time. Escape "<" so
+// the JSON can never close the <script> tag early ("</script>" injection).
+const islandData = {
+  states: rtoStates.map((r) => ({
+    slug: r.slug,
+    state_name: r.state_name,
+    series: r.series,
+    codes: r.codes
+  })),
+  siteSlugs: siteStateSlugs
+};
+const islandJson = JSON.stringify(islandData).replace(/</g, '\\u003c');
+
+const jsonld = [
+  faqJsonLd(faqs),
+  datasetJsonLd(
+    'Indian RTO code directory — all states and union territories',
+    `Every Regional Transport Office code in India (${codeCount} codes across ${rtoStates.length} states and union territories) with the registering office each code belongs to, verified against official state transport department lists where published and against sampled independent directories elsewhere, with per-state sources and last-verified dates.`,
+    '/rto-codes/',
+    [{ url: '/api/rto-codes.json', encodingFormat: 'application/json' }]
+  )
+];
+---
+<Base
+  title="RTO Code List India: Which City Is That Number Plate From?"
+  description={`Type any Indian number plate to see which city and RTO it is from — the full list of ${codeCount} RTO codes across ${rtoStates.length} states and union territories, verified and dated.`}
+  path="/rto-codes/"
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'RTO code lookup', path: '/rto-codes/' }]}
+  dateModified={lastVerified}
+>
+  <h1>RTO code lookup: which city is that number plate from?</h1>
+  <AnswerBox>
+    The first two letters of an Indian number plate name the state or union territory, and the two digits after
+    them name the exact office that registered the vehicle — MH12 is Pune, TG09 is Hyderabad Central, DL05 is
+    Shahdara. Type any plate or code into the lookup below to decode it on the spot, or scroll down for the full
+    list of all {codeCount} codes across {rtoStates.length} states and union territories.
+  </AnswerBox>
+  <LastVerified date={lastVerified} />
+
+  <section class="panel">
+    <h2 id={slugify('Find the RTO from a number plate')}>Find the RTO from a number plate</h2>
+    <form id="rto-form" class="finder-form">
+      <label for="rto-input">Number plate or RTO code</label>
+      <input type="text" id="rto-input" autocomplete="off" placeholder="MH12AB1234 or MH12" />
+      <button type="submit" class="action action--primary">Look up</button>
+    </form>
+    <p class="verified">Checks run in your browser — nothing you type leaves this page.</p>
+    <div id="rto-result" class="finder-result" aria-live="polite"></div>
+    <noscript>
+      <p>The lookup needs JavaScript — without it, find your code in the state-by-state tables below.</p>
+    </noscript>
+  </section>
+
+  <h2 id={slugify('Every RTO code in India, state by state')}>Every RTO code in India, state by state</h2>
+  <p>
+    Jump to a state below. Each section lists every code with its registering office, how that state's list was
+    verified, and the sources it was checked against.
+  </p>
+  <nav class="jump-nav" aria-label="Jump to state">
+    <ul>
+      {rtoStates.map((r) => <li><a href={`#${r.slug}`}>{r.state_name}</a></li>)}
+    </ul>
+  </nav>
+
+  {rtoStates.map((r) => (
+    <section>
+      <h2 id={r.slug}>{r.state_name} RTO codes ({r.series.join(', ')})</h2>
+      <p class="verified">{disclosure(r)}</p>
+      <div class="table-wrap">
+        <table class="schedule">
+          <thead>
+            <tr><th scope="col">Code</th><th scope="col">Office</th></tr>
+          </thead>
+          <tbody>
+            {r.codes.map((c) => (
+              <tr><td>{c.code}</td><td data-label="Office">{c.office}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <LastVerified date={r.last_verified} />
+      <p class="verified">
+        Sources: {sourceLabels(r.sources).map((s, i) => (
+          <>{i > 0 && ' · '}<a href={s.url} rel="noopener nofollow">{s.label}</a></>
+        ))}
+      </p>
+    </section>
+  ))}
+
+  <FaqSection faqs={faqs} />
+
+  <ShareBar text="Which city is that number plate from? Full RTO code lookup — trafficchallan.com" />
+
+  <script type="application/json" id="rto-data" set:html={islandJson} />
+  <script>
+    import { lookupRto, type RtoLookupState } from '../lib/rto-lookup';
+
+    interface RtoIslandData { states: RtoLookupState[]; siteSlugs: string[] }
+    const data: RtoIslandData = JSON.parse(document.getElementById('rto-data')!.textContent!);
+    const siteSlugs = new Set(data.siteSlugs);
+
+    const form = document.getElementById('rto-form') as HTMLFormElement;
+    const input = document.getElementById('rto-input') as HTMLInputElement;
+    const result = document.getElementById('rto-result') as HTMLDivElement;
+
+    function panel(): HTMLDivElement {
+      result.replaceChildren();
+      const wrap = document.createElement('div');
+      wrap.className = 'panel';
+      result.appendChild(wrap);
+      return wrap;
+    }
+
+    function p(wrap: HTMLElement, text: string) {
+      const el = document.createElement('p');
+      el.textContent = text;
+      wrap.appendChild(el);
+      return el;
+    }
+
+    function stateLinks(wrap: HTMLElement, state: { slug: string; state_name: string }) {
+      const line = document.createElement('p');
+      const all = document.createElement('a');
+      all.href = `#${state.slug}`;
+      all.textContent = `All ${state.state_name} codes`;
+      line.appendChild(all);
+      if (siteSlugs.has(state.slug)) {
+        line.appendChild(document.createTextNode(' · '));
+        const challan = document.createElement('a');
+        challan.href = `/${state.slug}-e-challan/`;
+        challan.textContent = `Check pending challans in ${state.state_name}`;
+        line.appendChild(challan);
+      }
+      wrap.appendChild(line);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const r = lookupRto(input.value, data.states);
+      const wrap = panel();
+
+      if (r.kind === 'code') {
+        const h3 = document.createElement('h3');
+        h3.textContent = `${r.code} — ${r.office}, ${r.state.state_name}`;
+        wrap.appendChild(h3);
+        p(wrap, `A ${r.code} plate was registered at the ${r.office} office in ${r.state.state_name}.`);
+        stateLinks(wrap, r.state);
+      } else if (r.kind === 'state') {
+        const h3 = document.createElement('h3');
+        h3.textContent = `${r.series} — ${r.state.state_name}`;
+        wrap.appendChild(h3);
+        p(
+          wrap,
+          `${r.series} plates are registered in ${r.state.state_name}, which has ${r.codes_count} RTO code${r.codes_count === 1 ? '' : 's'}. ` +
+            'If you typed a code with a number we do not list, it may be newly created — the state section below has every code we have verified.'
+        );
+        stateLinks(wrap, r.state);
+      } else if (r.kind === 'bh') {
+        const h3 = document.createElement('h3');
+        h3.textContent = 'BH — Bharat series (all-India)';
+        wrap.appendChild(h3);
+        p(
+          wrap,
+          'BH plates carry no state code: the format is year + BH + number (e.g. 22 BH 1234 AA). The series is open to central and state government employees and to private-sector employees whose company has offices in four or more states, and the vehicle needs no re-registration when its owner moves between states.'
+        );
+      } else {
+        p(wrap, "We couldn't recognise that — try a full number plate like MH12AB1234, or a code like MH12.");
+      }
+    });
+  </script>
+</Base>

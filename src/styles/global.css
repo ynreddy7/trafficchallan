@@ -907,6 +907,21 @@ tbody tr:nth-child(even) {
   }
 }
 
+/* --- State jump index (/rto-codes/ directory) ----------------------------- */
+
+.jump-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  padding: 0;
+  margin: 0.6rem 0 1.4rem;
+  font-size: 0.9375rem;
+}
+.jump-nav li {
+  margin: 0;
+}
+
 /* --- Scope chip (portal finder result panel) ------------------------------ */
 /* Text-only, never a fill — colour is always paired with the Check/Pay/Both
    word itself, and green stays inline-only per the signage colour rules. */

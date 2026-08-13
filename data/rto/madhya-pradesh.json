@@ -1,0 +1,252 @@
+{
+  "slug": "madhya-pradesh",
+  "state_name": "Madhya Pradesh",
+  "series": [
+    "MP"
+  ],
+  "codes": [
+    {
+      "code": "MP01",
+      "office": "Bhopal"
+    },
+    {
+      "code": "MP02",
+      "office": "Bhopal"
+    },
+    {
+      "code": "MP03",
+      "office": "Bhopal"
+    },
+    {
+      "code": "MP04",
+      "office": "Bhopal"
+    },
+    {
+      "code": "MP05",
+      "office": "Hoshangabad"
+    },
+    {
+      "code": "MP06",
+      "office": "Morena"
+    },
+    {
+      "code": "MP07",
+      "office": "Gwalior"
+    },
+    {
+      "code": "MP08",
+      "office": "Guna"
+    },
+    {
+      "code": "MP09",
+      "office": "Indore"
+    },
+    {
+      "code": "MP10",
+      "office": "Khargone"
+    },
+    {
+      "code": "MP11",
+      "office": "Dhar"
+    },
+    {
+      "code": "MP12",
+      "office": "Khandwa"
+    },
+    {
+      "code": "MP13",
+      "office": "Ujjain"
+    },
+    {
+      "code": "MP14",
+      "office": "Mandsaur"
+    },
+    {
+      "code": "MP15",
+      "office": "Sagar"
+    },
+    {
+      "code": "MP16",
+      "office": "Chhatarpur"
+    },
+    {
+      "code": "MP17",
+      "office": "Rewa"
+    },
+    {
+      "code": "MP18",
+      "office": "Shahdol"
+    },
+    {
+      "code": "MP19",
+      "office": "Satna"
+    },
+    {
+      "code": "MP20",
+      "office": "Jabalpur"
+    },
+    {
+      "code": "MP21",
+      "office": "Katni"
+    },
+    {
+      "code": "MP22",
+      "office": "Seoni"
+    },
+    {
+      "code": "MP28",
+      "office": "Chhindwara"
+    },
+    {
+      "code": "MP30",
+      "office": "Bhind"
+    },
+    {
+      "code": "MP31",
+      "office": "Sheopur"
+    },
+    {
+      "code": "MP32",
+      "office": "Datia"
+    },
+    {
+      "code": "MP33",
+      "office": "Shivpuri"
+    },
+    {
+      "code": "MP34",
+      "office": "Damoh"
+    },
+    {
+      "code": "MP35",
+      "office": "Panna"
+    },
+    {
+      "code": "MP36",
+      "office": "Tikamgarh"
+    },
+    {
+      "code": "MP37",
+      "office": "Sehore"
+    },
+    {
+      "code": "MP38",
+      "office": "Raisen"
+    },
+    {
+      "code": "MP39",
+      "office": "Rajgarh"
+    },
+    {
+      "code": "MP40",
+      "office": "Vidisha"
+    },
+    {
+      "code": "MP41",
+      "office": "Dewas"
+    },
+    {
+      "code": "MP42",
+      "office": "Shajapur"
+    },
+    {
+      "code": "MP43",
+      "office": "Ratlam"
+    },
+    {
+      "code": "MP44",
+      "office": "Neemuch"
+    },
+    {
+      "code": "MP45",
+      "office": "Jhabua"
+    },
+    {
+      "code": "MP46",
+      "office": "Barwani"
+    },
+    {
+      "code": "MP47",
+      "office": "Harda"
+    },
+    {
+      "code": "MP48",
+      "office": "Betul"
+    },
+    {
+      "code": "MP49",
+      "office": "Narsinghpur"
+    },
+    {
+      "code": "MP50",
+      "office": "Balaghat"
+    },
+    {
+      "code": "MP51",
+      "office": "Mandla"
+    },
+    {
+      "code": "MP52",
+      "office": "Dindori"
+    },
+    {
+      "code": "MP53",
+      "office": "Sidhi"
+    },
+    {
+      "code": "MP54",
+      "office": "Umaria"
+    },
+    {
+      "code": "MP65",
+      "office": "Anuppur"
+    },
+    {
+      "code": "MP66",
+      "office": "Singrauli"
+    },
+    {
+      "code": "MP67",
+      "office": "Ashoknagar"
+    },
+    {
+      "code": "MP68",
+      "office": "Burhanpur"
+    },
+    {
+      "code": "MP69",
+      "office": "Alirajpur"
+    },
+    {
+      "code": "MP70",
+      "office": "Agar"
+    },
+    {
+      "code": "MP71",
+      "office": "Niwari"
+    },
+    {
+      "code": "MP72",
+      "office": "Mauganj"
+    },
+    {
+      "code": "MP73",
+      "office": "Maihar"
+    },
+    {
+      "code": "MP74",
+      "office": "Pandhurna"
+    }
+  ],
+  "verification": {
+    "method": "sampled",
+    "sample_size": 6,
+    "official_list_available": false
+  },
+  "sources": [
+    "https://transport.mp.gov.in/",
+    "https://www.acko.com/rto/madhya-pradesh/",
+    "https://www.cars24.com/rto-vehicle-registration-details-madhya-pradesh/"
+  ],
+  "last_verified": "2026-08-13"
+}

@@ -1,0 +1,28 @@
+{
+  "slug": "delhi",
+  "state_name": "Delhi",
+  "series": ["DL"],
+  "codes": [
+    { "code": "DL01", "office": "Mall Road (North District)" },
+    { "code": "DL02", "office": "IP Depot, IP Estate (New Delhi District)" },
+    { "code": "DL03", "office": "DDA Market, Sheikh Sarai (South District)" },
+    { "code": "DL04", "office": "Janakpuri (West District-I)" },
+    { "code": "DL05", "office": "Loni Road, Shahdara (North East District)" },
+    { "code": "DL06", "office": "ISBT Sarai Kale Khan (Central District)" },
+    { "code": "DL07", "office": "DTC Depot, Mayur Vihar (East District-I)" },
+    { "code": "DL08", "office": "DTC Depot, Wazirpur (North West District-I)" },
+    { "code": "DL09", "office": "DTC Depot, Sector-10 Dwarka (South West District-I)" },
+    { "code": "DL10", "office": "DTC Depot, Raja Garden (West District-II)" },
+    { "code": "DL11", "office": "DTC Depot, Rohini (North West District-II)" },
+    { "code": "DL12", "office": "DTC Depot, Vasant Vihar (South West District-II)" },
+    { "code": "DL13", "office": "CBD Ground, Surajmal Vihar (East District-II)" },
+    { "code": "DL14", "office": "CBD Ground, Surajmal Vihar (East District-II)" }
+  ],
+  "verification": { "method": "full", "sample_size": 14, "official_list_available": true },
+  "sources": [
+    "https://transport.delhi.gov.in/sites/default/files/Transport/generic_multiple_files/new_zonal_office_informations_0.pdf",
+    "https://transport.delhi.gov.in/transport/current-running-series",
+    "https://transport.delhi.gov.in/transport/zonal-offices"
+  ],
+  "last_verified": "2026-08-13"
+}

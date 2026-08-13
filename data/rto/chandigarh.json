@@ -1,0 +1,16 @@
+{
+  "slug": "chandigarh",
+  "state_name": "Chandigarh",
+  "series": ["CH"],
+  "codes": [
+    { "code": "CH01", "office": "Chandigarh (Registering & Licensing Authority)" },
+    { "code": "CH02", "office": "Chandigarh" },
+    { "code": "CH03", "office": "Chandigarh" },
+    { "code": "CH04", "office": "Chandigarh" }
+  ],
+  "verification": { "method": "full", "sample_size": 4, "official_list_available": true },
+  "sources": [
+    "https://chdtransport.gov.in/"
+  ],
+  "last_verified": "2026-08-13"
+}

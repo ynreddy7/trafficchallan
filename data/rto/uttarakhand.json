@@ -1,0 +1,35 @@
+{
+  "slug": "uttarakhand",
+  "state_name": "Uttarakhand",
+  "series": ["UK"],
+  "codes": [
+    { "code": "UK01", "office": "Almora" },
+    { "code": "UK02", "office": "Bageshwar" },
+    { "code": "UK03", "office": "Tanakpur (Champawat)" },
+    { "code": "UK04", "office": "Haldwani (Nainital)" },
+    { "code": "UK05", "office": "Pithoragarh" },
+    { "code": "UK06", "office": "Rudrapur (Udham Singh Nagar)" },
+    { "code": "UK07", "office": "Dehradun" },
+    { "code": "UK08", "office": "Haridwar" },
+    { "code": "UK09", "office": "New Tehri" },
+    { "code": "UK10", "office": "Uttarkashi" },
+    { "code": "UK11", "office": "Karanprayag (Chamoli)" },
+    { "code": "UK12", "office": "Pauri" },
+    { "code": "UK13", "office": "Rudraprayag" },
+    { "code": "UK14", "office": "Rishikesh" },
+    { "code": "UK15", "office": "Kotdwar" },
+    { "code": "UK16", "office": "Vikasnagar" },
+    { "code": "UK17", "office": "Roorkee" },
+    { "code": "UK18", "office": "Kashipur" },
+    { "code": "UK19", "office": "Ramnagar" },
+    { "code": "UK20", "office": "Ranikhet" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 16, "official_list_available": true },
+  "sources": [
+    "https://transport.uk.gov.in/organization-type/sub-regional-office/",
+    "https://transport.uk.gov.in/organization-type/sub-regional-office/page/2/",
+    "https://transport.uk.gov.in/organization-type/regional-transport-authorities/",
+    "https://transport.uk.gov.in/"
+  ],
+  "last_verified": "2026-08-13"
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "mizoram",
+  "state_name": "Mizoram",
+  "series": ["MZ"],
+  "codes": [
+    { "code": "MZ01", "office": "Aizawl" },
+    { "code": "MZ02", "office": "Lunglei" },
+    { "code": "MZ03", "office": "Siaha" },
+    { "code": "MZ04", "office": "Champhai" },
+    { "code": "MZ05", "office": "Kolasib" },
+    { "code": "MZ06", "office": "Serchhip" },
+    { "code": "MZ07", "office": "Lawngtlai" },
+    { "code": "MZ08", "office": "Mamit" }
+  ],
+  "verification": { "method": "full", "sample_size": 8, "official_list_available": true },
+  "sources": [
+    "https://transport.mizoram.gov.in/page/unit-offices",
+    "https://transport.mizoram.gov.in/",
+    "https://www.insurancedekho.com/rto/mizoram"
+  ],
+  "last_verified": "2026-08-13"
+}

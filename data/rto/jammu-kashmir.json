@@ -1,0 +1,37 @@
+{
+  "slug": "jammu-kashmir",
+  "state_name": "Jammu and Kashmir",
+  "series": ["JK"],
+  "codes": [
+    { "code": "JK01", "office": "Srinagar" },
+    { "code": "JK02", "office": "Jammu" },
+    { "code": "JK03", "office": "Anantnag" },
+    { "code": "JK04", "office": "Budgam" },
+    { "code": "JK05", "office": "Baramulla" },
+    { "code": "JK06", "office": "Doda" },
+    { "code": "JK07", "office": "Kargil (historical)" },
+    { "code": "JK08", "office": "Kathua" },
+    { "code": "JK09", "office": "Kupwara" },
+    { "code": "JK10", "office": "Leh (historical)" },
+    { "code": "JK11", "office": "Rajouri" },
+    { "code": "JK12", "office": "Poonch" },
+    { "code": "JK13", "office": "Pulwama" },
+    { "code": "JK14", "office": "Udhampur" },
+    { "code": "JK15", "office": "Bandipora" },
+    { "code": "JK16", "office": "Ganderbal" },
+    { "code": "JK17", "office": "Kishtwar" },
+    { "code": "JK18", "office": "Kulgam" },
+    { "code": "JK19", "office": "Ramban" },
+    { "code": "JK20", "office": "Reasi" },
+    { "code": "JK21", "office": "Samba" },
+    { "code": "JK22", "office": "Shopian" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 5, "official_list_available": false },
+  "sources": [
+    "https://transport.jk.gov.in/",
+    "https://groww.in/rto/jammu-and-kashmir",
+    "https://www.carinfo.app/rto-vehicle-registration-detail/jammu-and-kashmir",
+    "https://www.godigit.com/rto-office/jammu-and-kashmir"
+  ],
+  "last_verified": "2026-08-13"
+}

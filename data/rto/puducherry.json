@@ -1,0 +1,20 @@
+{
+  "slug": "puducherry",
+  "state_name": "Puducherry",
+  "series": ["PY"],
+  "codes": [
+    { "code": "PY01", "office": "Puducherry" },
+    { "code": "PY02", "office": "Karaikal" },
+    { "code": "PY03", "office": "Mahe" },
+    { "code": "PY04", "office": "Yanam" },
+    { "code": "PY05", "office": "Oulgaret" }
+  ],
+  "verification": { "method": "full", "sample_size": 5, "official_list_available": true },
+  "sources": [
+    "https://transport.py.gov.in/Regional%20Offices/Checkposts",
+    "https://transport.py.gov.in/",
+    "https://groww.in/rto/puducherry",
+    "https://www.acko.com/rto/pondicherry/"
+  ],
+  "last_verified": "2026-08-13"
+}

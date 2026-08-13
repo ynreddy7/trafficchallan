@@ -7,10 +7,10 @@ import { loadStates, loadOffences, loadSchemes, loadLokAdalat, loadRtoFiles } fr
 import { runGates, type GuideMeta, type PageMeta } from '../src/lib/gate';
 
 // Feature pages (src/pages/*.astro) that own a target keyword — they join
-// the gate's duplicate-keyword and duplicate-slug registries. Add 'rto-codes'
-// (-> 'rto code list india') when that page ships.
+// the gate's duplicate-keyword and duplicate-slug registries.
 const FEATURE_PAGES: PageMeta[] = [
-  { slug: 'challan-discount', target_keyword: 'traffic challan discount' }
+  { slug: 'challan-discount', target_keyword: 'traffic challan discount' },
+  { slug: 'rto-codes', target_keyword: 'rto code list india' }
 ];
 
 function loadGuideMeta(): GuideMeta[] {

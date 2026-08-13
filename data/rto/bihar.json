@@ -1,0 +1,171 @@
+{
+  "slug": "bihar",
+  "state_name": "Bihar",
+  "series": [
+    "BR"
+  ],
+  "codes": [
+    {
+      "code": "BR01",
+      "office": "Patna"
+    },
+    {
+      "code": "BR02",
+      "office": "Gaya"
+    },
+    {
+      "code": "BR03",
+      "office": "Arrah"
+    },
+    {
+      "code": "BR04",
+      "office": "Chhapra"
+    },
+    {
+      "code": "BR05",
+      "office": "Motihari"
+    },
+    {
+      "code": "BR06",
+      "office": "Muzaffarpur"
+    },
+    {
+      "code": "BR07",
+      "office": "Darbhanga"
+    },
+    {
+      "code": "BR08",
+      "office": "Munger"
+    },
+    {
+      "code": "BR09",
+      "office": "Begusarai"
+    },
+    {
+      "code": "BR10",
+      "office": "Bhagalpur"
+    },
+    {
+      "code": "BR11",
+      "office": "Purnia"
+    },
+    {
+      "code": "BR19",
+      "office": "Saharsa"
+    },
+    {
+      "code": "BR21",
+      "office": "Bihar Sharif"
+    },
+    {
+      "code": "BR22",
+      "office": "Bettiah"
+    },
+    {
+      "code": "BR24",
+      "office": "Dehri"
+    },
+    {
+      "code": "BR25",
+      "office": "Jehanabad"
+    },
+    {
+      "code": "BR26",
+      "office": "Aurangabad"
+    },
+    {
+      "code": "BR27",
+      "office": "Nawada"
+    },
+    {
+      "code": "BR28",
+      "office": "Gopalganj"
+    },
+    {
+      "code": "BR29",
+      "office": "Siwan"
+    },
+    {
+      "code": "BR30",
+      "office": "Sitamarhi"
+    },
+    {
+      "code": "BR31",
+      "office": "Hajipur"
+    },
+    {
+      "code": "BR32",
+      "office": "Madhubani"
+    },
+    {
+      "code": "BR33",
+      "office": "Samastipur"
+    },
+    {
+      "code": "BR34",
+      "office": "Khagaria"
+    },
+    {
+      "code": "BR37",
+      "office": "Kishanganj"
+    },
+    {
+      "code": "BR38",
+      "office": "Araria"
+    },
+    {
+      "code": "BR39",
+      "office": "Katihar"
+    },
+    {
+      "code": "BR43",
+      "office": "Madhepura"
+    },
+    {
+      "code": "BR44",
+      "office": "Buxar"
+    },
+    {
+      "code": "BR45",
+      "office": "Bhabua"
+    },
+    {
+      "code": "BR46",
+      "office": "Jamui"
+    },
+    {
+      "code": "BR50",
+      "office": "Supaul"
+    },
+    {
+      "code": "BR51",
+      "office": "Banka"
+    },
+    {
+      "code": "BR52",
+      "office": "Sheikhpura"
+    },
+    {
+      "code": "BR53",
+      "office": "Lakhisarai"
+    },
+    {
+      "code": "BR55",
+      "office": "Sheohar"
+    },
+    {
+      "code": "BR56",
+      "office": "Arwal"
+    }
+  ],
+  "verification": {
+    "method": "sampled",
+    "sample_size": 5,
+    "official_list_available": false
+  },
+  "sources": [
+    "https://www.acko.com/rto/bihar/",
+    "https://www.cars24.com/rto-vehicle-registration-details-bihar/"
+  ],
+  "last_verified": "2026-08-13"
+}

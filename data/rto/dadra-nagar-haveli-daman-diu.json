@@ -1,0 +1,21 @@
+{
+  "slug": "dadra-nagar-haveli-daman-diu",
+  "state_name": "Dadra and Nagar Haveli and Daman and Diu",
+  "series": ["DD", "DN"],
+  "codes": [
+    { "code": "DD01", "office": "Silvassa (Dadra and Nagar Haveli)" },
+    { "code": "DD02", "office": "Diu" },
+    { "code": "DD03", "office": "Daman" },
+    { "code": "DN09", "office": "Silvassa (historical)" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 4, "official_list_available": false },
+  "sources": [
+    "https://www.carinfo.app/rto-vehicle-registration-detail/rto-details/DD01",
+    "https://www.carinfo.app/rto-vehicle-registration-detail/rto-details/DN09",
+    "https://www.cars24.com/rto-vehicle-registration-details-daman-and-diu-dd-02/",
+    "https://www.cars24.com/rto-vehicle-registration-details-daman-and-diu-dd-03/",
+    "https://www.coverfox.com/rto/dadra-and-nagar-haveli/",
+    "https://www.insurancedekho.com/rto/daman-and-diu"
+  ],
+  "last_verified": "2026-08-13"
+}

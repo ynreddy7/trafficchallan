@@ -1,0 +1,27 @@
+{
+  "slug": "goa",
+  "state_name": "Goa",
+  "series": ["GA"],
+  "codes": [
+    { "code": "GA01", "office": "Panaji" },
+    { "code": "GA02", "office": "Margao" },
+    { "code": "GA03", "office": "Mapusa" },
+    { "code": "GA04", "office": "Bicholim" },
+    { "code": "GA05", "office": "Ponda" },
+    { "code": "GA06", "office": "Vasco da Gama" },
+    { "code": "GA07", "office": "Panaji" },
+    { "code": "GA08", "office": "Margao" },
+    { "code": "GA09", "office": "Quepem" },
+    { "code": "GA10", "office": "Canacona" },
+    { "code": "GA11", "office": "Pernem" },
+    { "code": "GA12", "office": "Dharbandora" }
+  ],
+  "verification": { "method": "sampled", "sample_size": 12, "official_list_available": false },
+  "sources": [
+    "https://www.goatransport.gov.in/Contact",
+    "https://www.acko.com/rto/goa/",
+    "https://www.policybazaar.com/rto/goa/",
+    "https://www.insurancedekho.com/rto/goa"
+  ],
+  "last_verified": "2026-08-13"
+}
