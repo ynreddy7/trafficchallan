@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   classifyStateRouting, groupByRouting, countByNational, rtoStateEntries, hostOf,
-  RTO_CODE_TO_SLUG, NATIONAL_LEGACY_HOST, NATIONAL_NEXTGEN_HOST
+  nextgenNoticeCodes, RTO_CODE_TO_SLUG, NATIONAL_LEGACY_HOST, NATIONAL_NEXTGEN_HOST
 } from '../src/lib/portal-routing';
 import { resolveVehicleInput } from '../src/lib/portal-finder';
 import { loadStates } from '../src/lib/data';
@@ -104,6 +104,31 @@ describe('groupByRouting / countByNational', () => {
   });
 });
 
+describe('nextgenNoticeCodes', () => {
+  const quoting = (quirk: string): StateRecord => ({
+    ...state('haryana', 'Haryana', 'HR', [nextgen]),
+    quirks: [quirk]
+  });
+
+  it('reads the code list back out of the portal’s own quoted notice', () => {
+    const codes = nextgenNoticeCodes([
+      quoting('The legacy page displays, verbatim: "NOTE : Please check and pay your challans of AN, AR, TN States on NextGen eChallan Portal" — HR is Haryana.')
+    ]);
+    expect(codes).toEqual(['AN', 'AR', 'TN']);
+  });
+
+  it('ignores a paraphrase — only the quoted notice counts', () => {
+    const codes = nextgenNoticeCodes([
+      quoting('The migration notice lists AN, AR and TN as the states to use echallan.parivahan.nic.in — MP is absent.')
+    ]);
+    expect(codes).toEqual([]);
+  });
+
+  it('returns [] rather than a wrong figure when no record quotes the notice', () => {
+    expect(nextgenNoticeCodes([state('delhi', 'Delhi', 'DL', [legacy])])).toEqual([]);
+  });
+});
+
 describe('rtoStateEntries', () => {
   it('drops codes whose state has no record instead of inventing one', () => {
     const entries = rtoStateEntries([{ slug: 'delhi', name: 'Delhi' }]);
@@ -154,6 +179,24 @@ describe('seeded state routing', () => {
     expect(counts.nextgen).toBeGreaterThan(0);
     expect(counts.legacy).toBeGreaterThan(0);
     expect(counts.nextgen + counts.legacy).toBe(states.length);
+  });
+
+  it('the seeded records yield a usable migration figure', () => {
+    const codes = nextgenNoticeCodes(states);
+    expect(codes.length).toBeGreaterThan(0);
+    // India has 36 states and union territories: a parse wider than that means
+    // the regex swallowed something that is not the notice.
+    expect(codes.length).toBeLessThanOrEqual(36);
+    expect(codes).toContain('TN');
+  });
+
+  it('every record quoting the notice quotes the identical code list', () => {
+    const quoting = states.filter((s) => nextgenNoticeCodes([s]).length > 0);
+    expect(quoting.length, 'the notice should be quoted by more than one state record').toBeGreaterThan(1);
+    const first = nextgenNoticeCodes([quoting[0]]).join(',');
+    for (const s of quoting) {
+      expect(nextgenNoticeCodes([s]).join(','), `${s.slug} quotes a different notice`).toBe(first);
+    }
   });
 
   it('a state-run portal is never one of the national or court hosts', () => {

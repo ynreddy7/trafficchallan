@@ -74,6 +74,35 @@ export function hostOf(url: string): string {
   return new URL(url).hostname.replace(/^www\./, '');
 }
 
+/**
+ * The legacy portal's migration notice, as quoted verbatim inside the state
+ * records that carry it (data/states/haryana.json, jammu-kashmir.json and
+ * tamil-nadu.json each reproduce the notice board's own wording, with their
+ * own sources and dates).
+ */
+const NEXTGEN_NOTICE_RE =
+  /check and pay your challans of ([A-Z]{2}(?:,\s*[A-Z]{2})+)\s+States on NextGen eChallan Portal/;
+
+/**
+ * The state/UT codes the legacy portal's notice board sends to NextGen, read
+ * back out of that quote in the order the notice lists them.
+ *
+ * Pages state how far the migration reaches by counting this, never by typing
+ * a number into prose: the figure then cannot drift away from the sourced
+ * wording, and a re-read notice updates the pages by itself. Returns [] when
+ * no record quotes the notice, so a caller can drop the figure rather than
+ * render a wrong one.
+ */
+export function nextgenNoticeCodes(states: StateRecord[]): string[] {
+  for (const s of states) {
+    for (const q of s.quirks) {
+      const m = q.match(NEXTGEN_NOTICE_RE);
+      if (m) return m[1].split(',').map((c) => c.trim());
+    }
+  }
+  return [];
+}
+
 export type NationalPortalKind = 'nextgen' | 'legacy' | 'none';
 
 export interface RoutedPortal {

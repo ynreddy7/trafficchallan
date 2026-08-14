@@ -76,7 +76,7 @@ Several states also run their own portal that shows city-police challans the nat
 
 Two national e-challan portals run side by side, and picking the wrong one is a common reason a search comes back empty. The older portal at echallan.parivahan.gov.in carries a notice listing the states whose challans have moved: AN, AR, AS, BR, CH, CG, DD, GA, HP, HR, JH, JK, KA, LA, MH, ML, MN, MZ, NL, PB, PY, SK, TN, UK, WB, RJ and GJ. Those 27 states and UTs must be searched on the NextGen portal at echallan.parivahan.nic.in. Anything not on that list — including [Delhi](/delhi-e-challan/), [Telangana](/telangana-e-challan/), [Uttar Pradesh](/uttar-pradesh-e-challan/), [Andhra Pradesh](/andhra-pradesh-e-challan/) and [Madhya Pradesh](/madhya-pradesh-e-challan/) — is still served by the older site.
 
-The list does change. If a search returns nothing on one portal, run the same number on the other before concluding you have no challan.
+The list does change. If a search returns nothing on one portal, run the same number on the other before concluding you have no challan. For the state-by-state version of this — which portal actually transacts your challans, and which state-run services sit alongside it — see our [directory of official portals](/echallan-parivahan/).
 
 ## Traffic challan enquiry by vehicle number, step by step
 

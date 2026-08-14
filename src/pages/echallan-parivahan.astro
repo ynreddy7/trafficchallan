@@ -11,15 +11,17 @@ import { faqJsonLd } from '../lib/seo';
 import { slugify } from '../lib/format';
 import {
   classifyStateRouting, groupByRouting, countByNational, rtoStateEntries, hostOf,
-  NATIONAL_LEGACY_HOST, NATIONAL_NEXTGEN_HOST
+  nextgenNoticeCodes, NATIONAL_LEGACY_HOST, NATIONAL_NEXTGEN_HOST
 } from '../lib/portal-routing';
 
 const portals = loadOfficialPortals();
 // The page is dated by the allow-list file, mirroring buildLastmodMap() in
 // astro.config.mjs (/echallan-parivahan/ = official-portals.json
-// last_verified) — change both together. The routing tables below are derived
-// from the state records, whose own last_verified dates are never newer than
-// this one, so the visible date never overstates freshness.
+// last_verified) — change both together. This date covers the two national
+// addresses and nothing else: the routing tables are derived from the state
+// records, each of which carries its own (usually older) last_verified, and
+// the app block below carries its own verified_on. Nothing on the page may
+// claim that every link was checked on the date displayed here — it wasn't.
 const lastVerified = portals.last_verified;
 
 const states = loadStates();
@@ -54,6 +56,16 @@ const migrationNotices = states
   })
   .filter((x): x is { slug: string; name: string; label: string } => x !== null)
   .sort((a, b) => a.name.localeCompare(b.name));
+
+// How far the migration reaches, counted out of the legacy portal's own
+// quoted notice rather than typed as a frequency word: the notice names these
+// states/UTs, so "most states" and "several states" are both claims the data
+// does not support. Falls back to an unquantified phrase if no record quotes
+// the notice, rather than rendering a number the source no longer carries.
+const migratedCodes = nextgenNoticeCodes(states);
+const migratedPhrase = migratedCodes.length
+  ? `${migratedCodes.length} states and union territories`
+  : 'the states and union territories';
 
 const app = portals.official_app;
 const prettyDate = (iso: string) =>
@@ -91,11 +103,11 @@ const sourceUrls = [
 const faqs = [
   {
     q: 'Is echallan.parivahan.gov.in the official site?',
-    a: 'Yes. It is the Ministry of Road Transport and Highways’ eChallan portal, run on a gov.in domain by the National Informatics Centre, and it is where challans from most states are checked and paid. A second national portal, echallan.parivahan.nic.in — the NextGen eChallan — now serves several states instead. TrafficChallan.com is neither of them: this page is an independent directory that links to them.'
+    a: 'Yes — and so is echallan.parivahan.nic.in. Both are national eChallan portals the National Informatics Centre runs for the Ministry of Road Transport and Highways, and neither one serves the whole country: which of the two holds your challan depends on your state. TrafficChallan.com is neither portal. This page is an independent directory that links to both and says which states each one transacts.'
   },
   {
     q: 'What is the difference between echallan.parivahan.gov.in and echallan.parivahan.nic.in?',
-    a: 'Both are national eChallan portals for MoRTH. The gov.in address is the older, legacy portal; the nic.in address is the NextGen eChallan, and states have been migrated onto it in batches. Of the ' + routings.length + ' states this site tracks, ' + counts.nextgen + ' now transact on NextGen and ' + counts.legacy + ' still transact on the legacy portal. The legacy portal has not been switched off — for a migrated state it shows a notice pointing users to NextGen — so if one address shows nothing, try the other before concluding there is no challan.'
+    a: 'Both are national eChallan portals for MoRTH. The gov.in address is the older, legacy portal; the nic.in address is the NextGen eChallan, and the legacy portal’s own notice board names ' + migratedPhrase + ' whose challans must be checked and paid on NextGen instead. Of the ' + routings.length + ' states this site tracks, ' + counts.nextgen + ' now transact on NextGen and ' + counts.legacy + ' still transact on the legacy portal. The legacy portal has not been switched off — for a migrated state it shows that notice rather than the challan — so if one address shows nothing, try the other before concluding there is no challan.'
   },
   {
     q: 'Why can’t I find my challan on the Parivahan portal?',
@@ -122,10 +134,9 @@ const jsonld = [faqJsonLd(faqs)];
 >
   <h1>eChallan Parivahan: which official portal handles your state&rsquo;s challans</h1>
   <AnswerBox>
-    The national portal is <strong>echallan.parivahan.gov.in</strong> &mdash; the Ministry of Road Transport and
-    Highways&rsquo; eChallan service, run by the National Informatics Centre &mdash; and a newer national portal,
-    <strong>echallan.parivahan.nic.in</strong>, now serves several states. This page is an independent directory of
-    those official addresses, not the portal itself.
+    Two national eChallan portals run side by side &mdash; <strong>echallan.parivahan.gov.in</strong> (legacy) and
+    <strong>echallan.parivahan.nic.in</strong> (NextGen) &mdash; and which one holds your challan depends on your
+    state. This page is an independent directory of those official addresses, not the portal itself.
   </AnswerBox>
   <p>
     <strong>The official address ends in .gov.in</strong> &mdash; or <strong>.nic.in</strong> for the NextGen portal.
@@ -137,7 +148,8 @@ const jsonld = [faqJsonLd(faqs)];
   <LastVerified date={lastVerified} />
   <p class="legal-note">
     Independent directory of official portals. Nothing here is a challan search, and no payment is taken on this site
-    &mdash; every link below goes to a government portal that we checked on the date above.
+    &mdash; every link below goes to a government portal, each with its own last-checked date: the date above covers
+    the two national addresses, and every state row is dated on the state page linked beside it.
   </p>
 
   <h2 id={slugify('Which address is the official one?')}>Which address is the official one?</h2>
@@ -174,7 +186,8 @@ const jsonld = [faqJsonLd(faqs)];
     The two addresses are identical up to the last few characters, and that ending decides where your challan is
     visible &mdash; so it is the first thing to check when a challan seems to have vanished. The
     <code>gov.in</code> address is the original portal; the <code>nic.in</code> address is the NextGen eChallan, and
-    states have been moved onto it in batches. Of the {routings.length} states this site tracks,
+    the legacy portal&rsquo;s own notice board names {migratedPhrase} whose challans must be checked and paid on
+    NextGen instead. Of the {routings.length} states this site tracks,
     <strong>{counts.nextgen} transact on NextGen</strong> and <strong>{counts.legacy} still transact on the legacy
     portal</strong>.
   </p>
@@ -190,7 +203,9 @@ const jsonld = [faqJsonLd(faqs)];
   </ul>
   <p>
     Practical rule: if one national address shows nothing, open the other before concluding there is no challan
-    &mdash; and if your state runs its own portal, check that too.
+    &mdash; and if your state runs its own portal, check that too. What each portal then asks you for &mdash; the
+    extra Registration Date field NextGen wants, which tabs need no date at all &mdash; is set out step by step in
+    our guide to <a href="/how-to-check-e-challan/">how to check an e-challan</a>.
   </p>
 
   <h2 id={slugify('Which portal serves your state?')}>Which portal serves your state?</h2>
@@ -366,10 +381,14 @@ const jsonld = [faqJsonLd(faqs)];
       wrap.appendChild(ul);
 
       if (state.stateOwn.length) {
+        // Mirrors the static heading's wording deliberately. A state-run row is
+        // NOT necessarily a second challan search: it can be a payment gateway,
+        // an assisted counter, or a legacy portal holding only old challans.
+        // Telling everyone to "check that one too" would be wrong advice.
         const note = document.createElement('p');
         note.className = 'verified';
         note.textContent =
-          'This state also runs its own challan portal — if the national portal shows nothing, check that one too.';
+          'A state-run service also handles payment in this state — read its label above, they are not interchangeable.';
         wrap.appendChild(note);
       }
 

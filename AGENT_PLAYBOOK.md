@@ -114,4 +114,9 @@ The /challan-discount/ tracker is only worth existing if it is current. On EVERY
    state transport list (or official RTO office pages where no list is published),
    rotating which 3 states are sampled each month.
 4. Fix drift; update last_verified to today for records actually re-verified.
+   If you bump `last_verified` in data/official-portals.json, re-check its
+   `official_app` block against parivahan.gov.in the SAME day and set
+   `official_app.verified_on` too — tests/portals-data.test.ts asserts the app
+   date is never older than the file date, so a file-only bump fails `npm test`
+   and aborts the publish.
 5. `npm run publish:site -- --message "data: monthly re-verification"`.
