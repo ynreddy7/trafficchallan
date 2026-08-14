@@ -1,4 +1,5 @@
 import type { StateRecord, OffenceRecord, SchemeRecord, LokAdalatRecord, RtoStateRecord, StatusFileRecord, OfficialPortalsRecord } from './schemas';
+import { hasFineListPage } from './fine-list';
 
 export interface GuideMeta { file: string; target_keyword: string; last_verified: string; sources: string[] }
 /** Feature pages (e.g. /challan-discount/) join the duplicate keyword/slug registries. */
@@ -95,6 +96,12 @@ export function runGates(input: GateInput): string[] {
   input.offences.forEach((o) => claim(o.target_keyword, `offence ${o.slug}`));
   input.guides.forEach((g) => claim(g.target_keyword, `guide ${g.file}`));
   pages.forEach((p) => claim(p.target_keyword, `page ${p.slug}`));
+  // Per-state fine-list pages (/fines/{state}/) exist for every state with at
+  // least one verified fine_override — src/pages/fines/[slug].astro derives
+  // its state paths from the same predicate (hasFineListPage), so the pages
+  // are registered here automatically rather than hand-listed.
+  const fineListStates = input.states.filter(hasFineListPage);
+  fineListStates.forEach((s) => claim(`${s.name.toLowerCase()} traffic fines list`, `fine-list ${s.slug}`));
 
   const slugOwners = new Map<string, string>();
   const claimSlug = (slug: string, owner: string) => {
@@ -106,6 +113,10 @@ export function runGates(input: GateInput): string[] {
   input.offences.forEach((o) => claimSlug(`fines/${o.slug}`, `offence ${o.slug}`));
   input.guides.forEach((g) => claimSlug(g.file.replace(/\.md$/, ''), `guide ${g.file}`));
   pages.forEach((p) => claimSlug(p.slug, `page ${p.slug}`));
+  // Fine-list pages share the /fines/ URL namespace with offence pages: a
+  // state slug equal to an offence slug would be a route collision inside
+  // src/pages/fines/[slug].astro, so it must be flagged here.
+  fineListStates.forEach((s) => claimSlug(`fines/${s.slug}`, `fine-list ${s.slug}`));
 
   const offenceSlugs = new Set(input.offences.map((o) => o.slug));
   input.states.forEach((s) => {

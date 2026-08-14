@@ -191,6 +191,23 @@ export function offenceTitle(seoName: string, min: number, max: number, year: nu
 }
 
 /**
+ * /fines/{state}/ per-state fine-list <title>. Query language is
+ * "{state} traffic fines list"; the ABBR keeps the registration-code
+ * searchers ("ka fine list"). Falls back to dropping the parenthesised ABBR
+ * when a long state name would blow the SERP budget.
+ */
+export function fineListTitle(name: string, abbr: string, year: number): string {
+  const full = `${name} Traffic Fines List ${year}: Challan Amounts (${abbr})`;
+  if (full.length <= TITLE_MAX) return full;
+  return `${name} Traffic Fines List ${year}: Challan Amounts`;
+}
+
+/** Fine-list page H1 — same query language as the title, no year. */
+export function fineListH1(name: string, abbr: string): string {
+  return `${name} Traffic Fines List (${abbr}): Challan Amounts by Offence`;
+}
+
+/**
  * /challan-discount/ <title>: freshness-led when a future National Lok Adalat
  * sitting exists ("… Next Lok Adalat 12 September"), falling back to the
  * evergreen tracker title when none is scheduled yet (or the dated form would

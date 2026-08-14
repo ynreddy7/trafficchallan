@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   breadcrumbJsonLd, faqJsonLd, howToJsonLd, orgJsonLd, websiteJsonLd, datasetJsonLd, webPageJsonLd,
   articleJsonLd, webApplicationJsonLd, eventJsonLd, stateTitle, stateH1, offenceTitle, discountTitle,
-  fineAmountShort, lowerSeoName, SITE_LAUNCH_DATE
+  fineListTitle, fineListH1, fineAmountShort, lowerSeoName, SITE_LAUNCH_DATE
 } from '../src/lib/seo';
 
 describe('seo builders', () => {
@@ -153,6 +153,21 @@ describe('query-language titles', () => {
     const t = discountTitle(2026, null);
     expect(t).toBe('Traffic Challan Discount 2026: Live State-by-State Tracker');
     expect(t.length).toBeLessThanOrEqual(62);
+  });
+  it('fine-list title carries the query language + abbr and stays within ~62 chars for real state names', () => {
+    expect(fineListTitle('Karnataka', 'KA', 2026)).toBe('Karnataka Traffic Fines List 2026: Challan Amounts (KA)');
+    // Longest of the 10 list states must still fit with the abbr parens.
+    const longest = fineListTitle('Andhra Pradesh', 'AP', 2026);
+    expect(longest).toBe('Andhra Pradesh Traffic Fines List 2026: Challan Amounts (AP)');
+    expect(longest.length).toBeLessThanOrEqual(62);
+  });
+  it('fine-list title drops the abbr parens when a very long name would blow the budget', () => {
+    const t = fineListTitle('The Hypothetically Very Long State Name', 'XX', 2026);
+    expect(t).toBe('The Hypothetically Very Long State Name Traffic Fines List 2026: Challan Amounts');
+    expect(t.includes('(XX)')).toBe(false);
+  });
+  it('fine-list H1 keeps the query language with the abbr, no year', () => {
+    expect(fineListH1('Karnataka', 'KA')).toBe('Karnataka Traffic Fines List (KA): Challan Amounts by Offence');
   });
   it('lowerSeoName lowercases while preserving acronyms', () => {
     expect(lowerSeoName('PUC Challan Fine')).toBe('PUC challan fine');

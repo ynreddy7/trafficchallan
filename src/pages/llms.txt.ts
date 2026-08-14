@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 import { loadStates, loadOffences } from '../lib/data';
+import { hasFineListPage } from '../lib/fine-list';
 import { ORIGIN } from '../lib/seo';
 
 export const GET: APIRoute = async () => {
@@ -18,6 +19,8 @@ export const GET: APIRoute = async () => {
     '## Fine amounts',
     `- [Full fine list](${ORIGIN}/fines/): every MV Act offence with first/repeat amounts`,
     ...offences.map((o) => `- [${o.name}](${ORIGIN}/fines/${o.slug}/): ${o.base_fine_text} (${o.mva_section})`),
+    ...states.filter(hasFineListPage).map((s) =>
+      `- [${s.name} traffic fines list](${ORIGIN}/fines/${s.slug}/): every offence with the amount as it applies in ${s.name} — state-notified where verified, statutory otherwise`),
     '',
     '## Guides',
     ...guides.map((g) => `- [${g.data.title}](${ORIGIN}/${g.id}/): ${g.data.description}`),

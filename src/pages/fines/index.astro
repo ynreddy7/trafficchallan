@@ -2,10 +2,13 @@
 import Base from '../../layouts/Base.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import FineTable from '../../components/FineTable.astro';
-import { loadOffences, newestVerifiedDate } from '../../lib/data';
+import { loadOffences, loadStates, newestVerifiedDate } from '../../lib/data';
 import { datasetJsonLd } from '../../lib/seo';
+import { slugify } from '../../lib/format';
+import { hasFineListPage } from '../../lib/fine-list';
 
 const offences = loadOffences();
+const listStates = loadStates().filter(hasFineListPage);
 const newest = newestVerifiedDate();
 const year = new Date().getFullYear();
 ---
@@ -39,6 +42,15 @@ const year = new Date().getFullYear();
   <p class="verified">Table last verified: {newest}</p>
   <FineTable offences={offences} />
   <p>Select any offence for the exact legal section, repeat-offence penalty, licence consequences and state-wise variations.</p>
+
+  <h2 id={slugify('State-wise fine lists')}>State-wise fine lists</h2>
+  <p>
+    These {listStates.length} states have notified their own amounts for some offences — each list shows every
+    offence with the fine as it applies in that state:
+  </p>
+  <ul>
+    {listStates.map((s) => <li><a href={`/fines/${s.slug}/`}>{s.name} traffic fines list</a></li>)}
+  </ul>
   <p class="verified">
     Download this data: <a href="/api/fines.json">JSON</a> · <a href="/api/fines.csv">CSV</a> ·
     <a href="/api/states.json">state records (JSON)</a>. Free to reuse with attribution to TrafficChallan.

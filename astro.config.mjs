@@ -17,7 +17,11 @@ const TRUST_PAGE_DATE = '2026-08-13';
  * sources (states + fines + guides + schemes + lok-adalat +
  * challan-statuses + official-portals, mirroring src/lib/data.ts
  * newestVerifiedDate() — change both together; RTO files are deliberately
- * excluded there and here); /challan-discount/ gets the max across
+ * excluded there and here); per-state fine-list pages (/fines/{state}/,
+ * built for every state with a non-empty fine_overrides, mirroring
+ * src/lib/fine-list.ts hasFineListPage()) get
+ * max(state date, newest fine date), mirroring data.ts fineListDate() —
+ * change both together; /challan-discount/ gets the max across
  * schemes + lok-adalat only (mirroring data.ts maxSchemeDate());
  * /challan-status/ gets the challan-statuses.json date, which also joins
  * the global max; /fake-challan-sms/ gets the official-portals.json date,
@@ -31,22 +35,38 @@ function buildLastmodMap() {
   const map = new Map();
   const allDates = [];
 
+  // States with a non-empty fine_overrides also own a /fines/{state}/ list
+  // page (mirrors src/lib/fine-list.ts hasFineListPage()); its lastmod is
+  // computed after the fines loop below, once the newest fine date is known.
+  const fineListStates = [];
   const statesDir = join(process.cwd(), 'data', 'states');
   for (const file of readdirSync(statesDir).filter((f) => f.endsWith('.json'))) {
     const rec = JSON.parse(readFileSync(join(statesDir, file), 'utf-8'));
     if (rec.slug && rec.last_verified) {
       map.set(`/${rec.slug}-e-challan/`, rec.last_verified);
       allDates.push(rec.last_verified);
+      if (Object.keys(rec.fine_overrides ?? {}).length > 0) fineListStates.push(rec);
     }
   }
 
+  const fineDates = [];
   const finesDir = join(process.cwd(), 'data', 'fines');
   for (const file of readdirSync(finesDir).filter((f) => f.endsWith('.json'))) {
     const rec = JSON.parse(readFileSync(join(finesDir, file), 'utf-8'));
     if (rec.slug && rec.last_verified) {
       map.set(`/fines/${rec.slug}/`, rec.last_verified);
       allDates.push(rec.last_verified);
+      fineDates.push(rec.last_verified);
     }
+  }
+
+  // Per-state fine-list pages: max(state date, newest fine date) — the list
+  // renders every offence, so a re-verified fine file freshens it (mirrors
+  // src/lib/data.ts fineListDate(), which the page uses for its dateModified
+  // — change both together; the dates already joined allDates above).
+  const finesMax = [...fineDates].sort().at(-1);
+  for (const rec of fineListStates) {
+    map.set(`/fines/${rec.slug}/`, [rec.last_verified, finesMax].filter(Boolean).sort().at(-1));
   }
 
   const guidesDir = join(process.cwd(), 'src', 'content', 'guides');

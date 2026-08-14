@@ -80,6 +80,23 @@ export function maxSchemeDate(): string {
 }
 
 /**
+ * dateModified / LastVerified for a /fines/{state}/ per-state fine-list
+ * page: the newest of the state's own last_verified and every offence
+ * file's last_verified. The list renders EVERY offence — statutory rows
+ * come straight from the fine files — so a re-verified fine file freshens
+ * the page even when the state record did not change.
+ *
+ * This MUST stay in agreement with astro.config.mjs's buildLastmodMap(),
+ * which independently computes the same max for each /fines/{state}/
+ * sitemap <lastmod> entry — change both together. State and offence dates
+ * already join the global max there and in newestVerifiedDate() below, so
+ * the global aggregation needs no change for these pages.
+ */
+export function fineListDate(state: StateRecord, offences: OffenceRecord[]): string {
+  return [state.last_verified, ...offences.map((o) => o.last_verified)].sort().at(-1)!;
+}
+
+/**
  * Newest last_verified date across every state, every offence, every
  * guide's frontmatter, every scheme, lok-adalat, the challan-status file,
  * and the official-portals file — the single source of truth for the

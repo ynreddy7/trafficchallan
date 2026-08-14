@@ -1,4 +1,5 @@
 import type { StateRecord, OffenceRecord } from './schemas';
+import { hasFineListPage } from './fine-list';
 
 export interface LinkItem { href: string; label: string }
 
@@ -38,14 +39,30 @@ export function relatedForState(state: StateRecord, offences: OffenceRecord[], g
   const overridden = offences.filter((o) => o.slug in state.fine_overrides);
   const rest = offences.filter((o) => !(o.slug in state.fine_overrides));
   const finePicks = [...overridden, ...rest].slice(0, 2);
+  // States with a /fines/{state}/ list page (hasFineListPage) link their own
+  // list in place of the generic /fines/ hub — the list page itself links the
+  // hub, so hub equity survives while the state page gets the deeper link.
+  const fineListLink = hasFineListPage(state)
+    ? { href: `/fines/${state.slug}/`, label: `Full ${state.name} fine list` }
+    : { href: '/fines/', label: 'Full traffic fine list' };
   return [
     ...finePicks.map((o) => ({ href: `/fines/${o.slug}/`, label: `${o.name}: fine amount` })),
     { href: '/challan-discount/', label: `Is there a ${state.name} challan discount right now?` },
     { href: '/challan-status/', label: 'Challan status decoder: what each status term means' },
     { href: '/calculator/', label: 'Traffic fine calculator' },
-    { href: '/fines/', label: 'Full traffic fine list' },
+    fineListLink,
     ...rotatedGuides(state.slug, guides).map((g) => ({ href: `/${g.slug}/`, label: g.title }))
   ].slice(0, 8);
+}
+
+/** Related links for a /fines/{state}/ fine-list page. */
+export function relatedForFineList(state: StateRecord): LinkItem[] {
+  return [
+    { href: `/${state.slug}-e-challan/`, label: `${state.name} e-challan: check & pay` },
+    { href: '/calculator/', label: 'Traffic fine calculator' },
+    { href: '/fines/', label: 'Full traffic fine list' },
+    { href: '/compare/', label: 'Compare traffic fines across states' }
+  ];
 }
 
 export function relatedForOffence(offence: OffenceRecord, states: StateRecord[], guides: GuideRef[]): LinkItem[] {

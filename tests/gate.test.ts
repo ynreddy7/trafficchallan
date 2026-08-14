@@ -56,6 +56,39 @@ describe('runGates', () => {
     });
     expect(v.join(' ')).toMatch(/g\.md.*source/i);
   });
+  it('flags a state fine-list slug colliding with an offence slug', () => {
+    // A state with fine_overrides gets a /fines/{state}/ list page, which
+    // shares the /fines/ namespace with offence pages — a state slug equal
+    // to an offence slug is a route collision and must be flagged.
+    const v = runGates({
+      ...base,
+      states: [state({
+        slug: 'no-helmet', name: 'No Helmet', target_keyword: 'no helmet state',
+        fine_overrides: { 'no-helmet': { amount_text: '₹1', source: 'https://x.gov.in/' } }
+      })]
+    });
+    expect(v.join(' ')).toMatch(/duplicate slug "fines\/no-helmet"/i);
+  });
+  it('does not claim a fine-list slug for a state without overrides', () => {
+    // No overrides → no /fines/{state}/ page exists → a state slug equal to
+    // an offence slug is NOT a collision (their real routes never meet).
+    const v = runGates({
+      ...base,
+      states: [state({ slug: 'no-helmet', name: 'No Helmet', target_keyword: 'no helmet state' })]
+    });
+    expect(v).toEqual([]);
+  });
+  it('claims fine-list keywords so "{state} traffic fines list" duplicates are flagged', () => {
+    const v = runGates({
+      ...base,
+      states: [state({ fine_overrides: { 'no-helmet': { amount_text: '₹1', source: 'https://x.gov.in/' } } })],
+      guides: [{
+        file: 'g.md', target_keyword: 'delhi traffic fines list',
+        last_verified: '2026-08-01', sources: ['https://example.gov.in/']
+      }]
+    });
+    expect(v.join(' ')).toMatch(/duplicate target_keyword "delhi traffic fines list"/i);
+  });
   it('flags a duplicate slug between a guide and a state page', () => {
     // States claim `${slug}-e-challan`; guides claim their filename minus `.md`.
     // A guide file named "delhi-e-challan.md" collides with state delhi's page slug.

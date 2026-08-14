@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
-import { relatedForState, relatedForOffence, rotatedGuides, type GuideRef } from '../src/lib/links';
+import { relatedForState, relatedForOffence, relatedForFineList, rotatedGuides, type GuideRef } from '../src/lib/links';
 import type { StateRecord, OffenceRecord } from '../src/lib/schemas';
 
 const mkOffence = (slug: string): OffenceRecord => ({
@@ -59,13 +59,22 @@ describe('rotatedGuides', () => {
 });
 
 describe('relatedForState', () => {
-  it('prioritizes overridden offences, caps at 8, includes fines hub', () => {
+  it('prioritizes overridden offences, caps at 8, links the state fine list for override states', () => {
     const offences = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'].map(mkOffence);
     const items = relatedForState(mkState('delhi', ['h', 'i']), offences, []);
     expect(items.length).toBeLessThanOrEqual(8);
-    expect(items.some((l) => l.href === '/fines/')).toBe(true);
+    // A state with fine_overrides has a /fines/{state}/ list page — the
+    // related links point there instead of the generic /fines/ hub.
+    expect(items.some((l) => l.href === '/fines/delhi/' && l.label === 'Full DELHI fine list')).toBe(true);
+    expect(items.some((l) => l.href === '/fines/')).toBe(false);
     expect(items[0].href).toBe('/fines/h/');
     expect(items[1].href).toBe('/fines/i/');
+  });
+
+  it('keeps the generic fines hub link for states without a fine-list page', () => {
+    const items = relatedForState(mkState('telangana'), ['a', 'b'].map(mkOffence), []);
+    expect(items.some((l) => l.href === '/fines/' && l.label === 'Full traffic fine list')).toBe(true);
+    expect(items.some((l) => l.href === '/fines/telangana/')).toBe(false);
   });
 
   it('links the discount tracker, status decoder and calculator feature pages', () => {
@@ -85,6 +94,16 @@ describe('relatedForState', () => {
       const g = guides.find((x) => `/${x.slug}/` === gi.href)!;
       expect(gi.label).toBe(g.title); // real title, not a de-hyphenated slug
     }
+  });
+});
+
+describe('relatedForFineList', () => {
+  it('links the state e-challan page, calculator, fines hub and compare matrix', () => {
+    const items = relatedForFineList(mkState('karnataka', ['x']));
+    expect(items.map((l) => l.href)).toEqual([
+      '/karnataka-e-challan/', '/calculator/', '/fines/', '/compare/'
+    ]);
+    expect(items[0].label).toBe('KARNATAKA e-challan: check & pay');
   });
 });
 
