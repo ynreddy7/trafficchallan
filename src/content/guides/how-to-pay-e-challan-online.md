@@ -1,5 +1,5 @@
 ---
-title: 'How to Pay an E-Challan Online in India: Every Official Route'
+title: 'How to Pay an E-Challan Online: Every Official Route'
 description: >-
   Every official route to pay an Indian e-challan online — Parivahan, NextGen,
   state portals, Virtual Court ePay — plus receipts and stuck payments.

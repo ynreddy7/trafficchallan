@@ -1,5 +1,5 @@
 ---
-title: 'Wrong Challan Complaint: How to Dispute an E-Challan in India'
+title: 'Wrong Challan Complaint: How to Dispute an E-Challan'
 description: >-
   How to file a wrong challan complaint on India's e-challan grievance ticket
   system, contest it in Virtual Court, and what evidence to keep.

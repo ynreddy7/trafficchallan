@@ -164,8 +164,8 @@ export function webApplicationJsonLd(name: string, description: string, path: st
 
 /* --- Query-language titles (CONTENT_STANDARDS rule 14) ------------------- */
 
-/** SERP truncation budget: keep titles at or under ~62 characters. */
-const TITLE_MAX = 62;
+/** SERP truncation budget: keep titles at or under 60 characters. */
+const TITLE_MAX = 60;
 
 /**
  * State page <title>. People search "traffic challan" and the registration

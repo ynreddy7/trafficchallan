@@ -54,7 +54,7 @@
     legal-process page visibly carries: "This is general information, not legal advice.
     For your specific case, consult an advocate."
 14. TITLES IN QUERY LANGUAGE: page titles use the words people search, not formal names,
-    and stay at or under ~62 characters (SERP truncation budget).
+    and stay at or under 60 characters (SERP truncation budget).
     - State pages: "{State} Traffic Challan ({ABBR} e-Challan) {year}: Check & Pay",
       built by seo.ts#stateTitle from the state record's required `abbr` field — the
       registration code people SEARCH with ("e challan ts"; Telangana stays TS even though

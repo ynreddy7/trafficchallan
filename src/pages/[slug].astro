@@ -109,6 +109,7 @@ const stateArticle = props.type === 'state' && /^[AEIOU]/.test(props.state.name)
 ) : (
   <Base
     title={props.guide.data.title}
+    brandSuffix={false}
     description={props.guide.data.description}
     path={`/${props.guide.id}/`}
     jsonld={[

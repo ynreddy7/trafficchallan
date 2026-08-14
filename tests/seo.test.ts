@@ -112,7 +112,7 @@ describe('seo builders', () => {
 });
 
 describe('query-language titles', () => {
-  it('state title carries "Traffic Challan" and the abbr e-Challan form within ~62 chars', () => {
+  it('state title carries "Traffic Challan" and the abbr e-Challan form within ~60 chars', () => {
     const t = stateTitle('Telangana', 'TS', 2026);
     expect(t).toBe('Telangana Traffic Challan (TS e-Challan) 2026: Check & Pay');
     expect(t.length).toBeLessThanOrEqual(62);
@@ -132,7 +132,7 @@ describe('query-language titles', () => {
     expect(fineAmountShort(1000, 5000)).toBe('₹1,000–₹5,000');
     expect(fineAmountShort(0, 10000)).toBe('Up to ₹10,000');
   });
-  it('offence title leads with the seo_name and amount within ~62 chars', () => {
+  it('offence title leads with the seo_name and amount within ~60 chars', () => {
     const t = offenceTitle('Helmet Challan Fine', 1000, 1000, 2026);
     expect(t).toBe('Helmet Challan Fine 2026: ₹1,000 Penalty & Rules');
     expect(t.length).toBeLessThanOrEqual(62);
@@ -142,7 +142,7 @@ describe('query-language titles', () => {
     expect(t).toBe('Mobile Phone While Driving Fine 2026: Penalty & Rules');
     expect(t.length).toBeLessThanOrEqual(62);
   });
-  it('discount title is freshness-led when a future sitting exists, within ~62 chars', () => {
+  it('discount title is freshness-led when a future sitting exists, within ~60 chars', () => {
     const t = discountTitle(2026, '2026-09-12');
     expect(t).toBe('Traffic Challan Discount 2026: Next Lok Adalat 12 September');
     expect(t.length).toBeLessThanOrEqual(62);
@@ -154,7 +154,7 @@ describe('query-language titles', () => {
     expect(t).toBe('Traffic Challan Discount 2026: Live State-by-State Tracker');
     expect(t.length).toBeLessThanOrEqual(62);
   });
-  it('fine-list title carries the query language + abbr and stays within ~62 chars for real state names', () => {
+  it('fine-list title carries the query language + abbr and stays within ~60 chars for real state names', () => {
     expect(fineListTitle('Karnataka', 'KA', 2026)).toBe('Karnataka Traffic Fines List 2026: Challan Amounts (KA)');
     // Longest of the 10 list states must still fit with the abbr parens.
     const longest = fineListTitle('Andhra Pradesh', 'AP', 2026);

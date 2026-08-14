@@ -1073,7 +1073,8 @@ table > caption {
   .schedule,
   .schedule tbody,
   .schedule tr,
-  .schedule td {
+  .schedule td,
+  .schedule caption {
     display: block;
     width: 100%;
   }

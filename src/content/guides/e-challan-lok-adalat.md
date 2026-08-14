@@ -1,5 +1,5 @@
 ---
-title: 'e-Challan Lok Adalat 2026: Dates, Token Booking and Discounts'
+title: 'e-Challan Lok Adalat 2026: Dates, Tokens and Discounts'
 description: >-
   National Lok Adalat for traffic challans: 2026 dates, how the Delhi token
   booking works, and what discount you actually get at the sitting.

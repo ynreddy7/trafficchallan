@@ -51,6 +51,12 @@ const footerGuides = (await getCollection('guides'))
   {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}
 </head>
 <body>
+  <!-- Cloudflare's Email Address Obfuscation rewrites every email-looking
+       string into a /cdn-cgi/l/email-protection pseudo-link that 404s for
+       non-JS crawlers (flagged as broken links in site audits). Every email
+       on this site is a public helpdesk/contact address, so obfuscation is
+       disabled for the whole body with Cloudflare's documented toggle. -->
+  <!--email_off-->
   <!-- Anti-impersonation notice. Deliberately plain: no board, no blue, no
        crest. It must not read as an official notice. -->
   <div class="notice-strip">
@@ -246,5 +252,6 @@ const footerGuides = (await getCollection('guides'))
       });
     }
   </script>
+  <!--email_on-->
 </body>
 </html>

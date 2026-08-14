@@ -23,7 +23,7 @@ export function rtoCodeHref(slug: string, code: string): string {
 }
 
 /** SERP truncation budget — mirrors src/lib/seo.ts TITLE_MAX. */
-const TITLE_MAX = 62;
+const TITLE_MAX = 60;
 
 /**
  * Hub page <title> in query language ("maharashtra rto code list"):

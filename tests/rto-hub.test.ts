@@ -42,7 +42,7 @@ describe('rtoHubTitle', () => {
   it('never emits "All 1 Codes" for a single-code state', () => {
     expect(rtoHubTitle('Ladakh', ['LA'], 1)).toBe('Ladakh RTO Codes (LA)');
   });
-  it('stays inside the 62-character SERP budget for every real state', () => {
+  it('stays inside the 60-character SERP budget for every real state', () => {
     for (const r of rtoFiles) {
       const t = rtoHubTitle(r.state_name, r.series, r.codes.length);
       expect(t.length, `${r.slug}: "${t}"`).toBeLessThanOrEqual(62);
