@@ -86,7 +86,7 @@ Several states also run their own payment portals:
 - **West Bengal** has Sanjog (sanjog.wb.gov.in/payFine), which clears Kolkata Traffic Police, WB Traffic Police and Transport Department challans in one transaction — see [West Bengal](/west-bengal-e-challan/).
 - **Gujarat** keeps a separate legacy portal for challans dated before 13/06/2023 ([Gujarat](/gujarat-e-challan/)); **Maharashtra**, **Madhya Pradesh** and **Bengaluru** each run a payment page alongside the national one ([Maharashtra](/maharashtra-e-challan/), [Karnataka](/karnataka-e-challan/)).
 
-## How do I pay an e-challan on the Parivahan portal step by step?
+## E-challan online payment on the Parivahan portal, step by step
 
 Once you have [found the challan](/how-to-check-e-challan/), the legacy-portal flow is:
 

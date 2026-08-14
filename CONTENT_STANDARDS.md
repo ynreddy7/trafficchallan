@@ -69,3 +69,9 @@
       title is at risk of truncation.
     - `abbr` and `seo_name` are TEMPLATE fields: adding or correcting them does NOT bump
       last_verified (rule 2 still governs — only re-verified facts do).
+15. PHRASING, NOT DUPLICATION: a keyword an existing page already answers is fixed by the
+    words on THAT page — its title (within rule 14's budget) or an H2 over a section that
+    genuinely covers it — never by a second page; and a navigational keyword (an official
+    portal or app, including misspellings and URL typos) is served by /echallan-parivahan/,
+    never by a page of its own. Rewording adds no facts, so it does not bump last_verified.
+    See AGENT_PLAYBOOK "Navigational queries, and keywords we already cover".

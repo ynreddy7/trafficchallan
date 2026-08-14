@@ -31,6 +31,47 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
    If the gate, tests, links or velocity cap fail: fix the cause or stop WITHOUT pushing;
    never bypass a gate.
 
+## Navigational queries, and keywords we already cover
+Two whole classes of keyword look like content gaps and are not. Neither is ever fixed
+with a new page. Read this before you take a queue item that "looks uncovered".
+
+1. **Navigational queries — someone is trying to REACH an official portal or app.**
+   Symptoms: a portal name ("echallan parivahan", "parivahan", "mparivahan", "vahan"),
+   a misspelling of one ("echalan parivahan com"), a pasted URL or a URL typo
+   ("https echallan parivahan gov in ind", "ttps echallan parivahan gov in"), or a bare
+   "official website / app / link / site". These people are not looking for an article;
+   they are looking for an address, and if we do not give them the right one a lookalike
+   site will. They are served by **/echallan-parivahan/** — the portal directory that says
+   which official address actually transacts each state's challans (legacy gov.in vs
+   NextGen nic.in vs a state-run service) and which app the ministry itself links. Route
+   them there: mark the queue item `covered` with `covered_by: echallan-parivahan`, and if
+   the page does not yet carry the wording, add the wording TO THAT PAGE. Never build a
+   second page for the same portal, a page per misspelling, or a page per URL typo — that
+   is doorway spam, it breaks CONTENT_STANDARDS rules 5 and 15, and it competes with our
+   own page. And never build the portal itself: rule 4 of the site's hard constraints —
+   we explain government portals, we never look like one, host one, or transact with one.
+
+2. **Keywords we already cover but do not say.** A gap report (Ubersuggest competitor gap,
+   Search Console, a rank check) will list phrases we genuinely answer but never write in
+   the reader's words — "challan check" on a page titled "How to Check an E-Challan",
+   "online payment" on a page that says "pay online". The fix is PHRASING ON THE OWNING
+   PAGE: retitle within the 60-character budget, or reword an existing H2 so it uses the
+   searched words over content that already covers it. Never a duplicate page.
+   Constraints when you do this:
+   - Only reword a heading where the section ALREADY answers that query. Adding the words
+     without the substance is keyword stuffing (rule 4). If nothing on the page covers it,
+     it is a real gap — queue it as `pending`, do not fake it.
+   - Retitling and rewording add no facts, so they do NOT bump `last_verified`
+     (CONTENT_STANDARDS rule 2). Leave the date alone.
+   - Check the old wording was not itself carrying a keyword before you replace it
+     (`data/keywords/keyword-map.json` and the source CSV say what each page is assigned).
+     Prefer adding words to a heading over swapping words out.
+   - Do not force a long exact-match string into a heading if it will not read as English.
+     Record in the queue note that you deliberately skipped it.
+   Then mark the queue item `covered` with `covered_by` = the page that now carries the
+   phrase, and say in the note which title or H2 does the carrying, so the next agent can
+   verify it rather than trust it.
+
 ## Discount watch (every run, before the queue item)
 The /challan-discount/ tracker is only worth existing if it is current. On EVERY run:
 

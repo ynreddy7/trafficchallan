@@ -216,7 +216,9 @@
       "max_cpc": 6.68,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "The page IS the Parivahan portal directory: which national portal (legacy gov.in vs NextGen nic.in) actually transacts each state's challans, plus the state-run services. Navigational query — never a new page (AGENT_PLAYBOOK, Navigational queries)."
     },
     {
       "slug_suggestion": "ranchi-traffic-challan",
@@ -240,7 +242,9 @@
       "max_cpc": 10.49,
       "min_seo_difficulty": 37,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Answered by the verified official-app section (mParivahan, ministry-listed web address + Play package). We name the official app and how to tell it from an impersonator; we do not distribute it."
     },
     {
       "slug_suggestion": "bihar",
@@ -276,7 +280,9 @@
       "max_cpc": 4.77,
       "min_seo_difficulty": 40,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Same intent as \"traffic challan app\" — answered by the verified official-app section on /echallan-parivahan/."
     },
     {
       "slug_suggestion": "vadodara-traffic-challan",
@@ -680,7 +686,8 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 53,
       "type": "guide",
-      "status": "pending"
+      "status": "pending",
+      "note": "Left pending because the intent splits two ways and neither owning page carries the phrase in a heading: \"download the challan copy/receipt\" (Download Challan Print / Download Payment Receipt, covered in prose by how-to-check-e-challan) vs \"download the app\" (echallan-parivahan). Fix by phrasing on whichever page wins the intent — not by a new page."
     },
     {
       "slug_suggestion": "off",
@@ -829,7 +836,9 @@
       "max_cpc": 2.38,
       "min_seo_difficulty": 15,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Answered by the verified official-app section: the ministry-listed package name is exactly what lets a reader check which store listing they are looking at before installing. We link the ministry's page, not a download."
     },
     {
       "slug_suggestion": "uttarakhand",
@@ -1033,7 +1042,8 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 15,
       "type": "guide",
-      "status": "pending"
+      "status": "pending",
+      "note": "NOT covered by /echallan-parivahan/: that page routes eChallan portals only and never documents VAHAN (vahan.parivahan.gov.in), the vehicle-registration database. Repo data references Vahan only for mobile-number updates. Left pending until a page genuinely covers the registration record."
     },
     {
       "slug_suggestion": "settlement",
@@ -1094,7 +1104,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "The page's \"Is there an official eChallan app?\" section names mParivahan, the one web address and the one Play package the ministry's own site links, verified 14-Aug-2026 against parivahan.gov.in."
     },
     {
       "slug_suggestion": "bengaluru-traffic-challan",
@@ -1359,7 +1371,9 @@
       "max_cpc": 2.38,
       "min_seo_difficulty": 20,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Navigational \"which site is the real one\" query — answered by the page's \"Which address is the official one?\" section and the state routing table."
     },
     {
       "slug_suggestion": "update",
@@ -3119,6 +3133,149 @@
       "type": "guide-update",
       "status": "pending",
       "note": "UPGRADE existing guide: add the post-grievance-rejection escalation ladder (state police channel -> CPGRAMS pgportal.gov.in -> RTI for speed-camera calibration certificate under Legal Metrology Act -> contest option on vcourts) — modifies an existing guide file, no new page, cap-free"
+    },
+    {
+      "slug_suggestion": "challan-check",
+      "target_keyword": "challan check",
+      "cluster_keywords": [
+        "challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact High. Already covered; the guide title now reads \"E-Challan Check: Every Official Way to Find Your Challan\" so the contiguous phrase exists on the page that owns the intent. No new page (CONTENT_STANDARDS rule 15)."
+    },
+    {
+      "slug_suggestion": "e-challan-check",
+      "target_keyword": "e challan check",
+      "cluster_keywords": [
+        "e challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact High (grouped with \"challan check\"). Carried by the retitled guide H1/title \"E-Challan Check: ...\"."
+    },
+    {
+      "slug_suggestion": "online-challan-check",
+      "target_keyword": "online challan check",
+      "cluster_keywords": [
+        "online challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact High (grouped with \"challan check\"). Carried by the H2 \"Where do I run an online challan check — parivahan.gov.in or NextGen?\", which is the section that already answered it."
+    },
+    {
+      "slug_suggestion": "online-traffic-challan-status",
+      "target_keyword": "online traffic challan status",
+      "cluster_keywords": [
+        "online traffic challan status",
+        "traffic challan status check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact High (grouped with \"challan check\"). The guide now carries \"challan status\" in two H2s (results table, old history) over content that already explained the Status column. The full four-word string was NOT forced into a heading — that would be stuffing (rule 4)."
+    },
+    {
+      "slug_suggestion": "echallan-parivahan",
+      "target_keyword": "echallan parivahan",
+      "cluster_keywords": [
+        "echallan parivahan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026 (impact band not stated in the gap list). Navigational — served by the portal directory page shipped 14-Aug-2026, which also owns this keyword in the gate registry."
+    },
+    {
+      "slug_suggestion": "echalan-parivahan-com",
+      "target_keyword": "echalan parivahan com",
+      "cluster_keywords": [
+        "echalan parivahan com",
+        "echalan parivahan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026 (impact band not stated). Misspelling + wrong TLD — exactly the population that lands on lookalike .com sites, so it is answered by \"Which address is the official one?\" rather than by a page of its own."
+    },
+    {
+      "slug_suggestion": "https-echallan-parivahan-gov-in-ind",
+      "target_keyword": "https echallan parivahan gov in ind",
+      "cluster_keywords": [
+        "https echallan parivahan gov in ind"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026 (impact band not stated). A pasted-URL typo, i.e. a navigational query. Served by the official-address section on /echallan-parivahan/; never its own page."
+    },
+    {
+      "slug_suggestion": "ttps-echallan-parivahan-gov-in",
+      "target_keyword": "ttps echallan parivahan gov in",
+      "cluster_keywords": [
+        "ttps echallan parivahan gov in"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026 (impact band not stated). Truncated-\"https\" URL typo — same navigational intent, same page."
+    },
+    {
+      "slug_suggestion": "e-challan-online-payment",
+      "target_keyword": "e challan online payment",
+      "cluster_keywords": [
+        "e challan online payment",
+        "traffic challan payment online"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026 (impact band not stated). Already covered; the step-by-step H2 now reads \"E-challan online payment on the Parivahan portal, step by step\". We describe payment on the official portals — this site never processes payments."
+    },
+    {
+      "slug_suggestion": "rto-details-of-vehicle",
+      "target_keyword": "rto details of vehicle",
+      "cluster_keywords": [
+        "rto details of vehicle"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "rto-codes",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact Medium / effort Low. Answered honestly by the /rto-codes/ H2 \"RTO details of a vehicle: what the number plate tells you\": we decode the registering RTO from the plate, client-side, and state plainly that we hold and publish NO owner records. Any future work here must keep that boundary — never imply an owner lookup."
     }
   ]
 }
