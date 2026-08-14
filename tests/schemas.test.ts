@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { StateSchema, OffenceSchema } from '../src/lib/schemas';
 
 const validState = {
-  slug: 'delhi', name: 'Delhi', target_keyword: 'delhi e challan',
+  slug: 'delhi', name: 'Delhi', abbr: 'DL', target_keyword: 'delhi e challan',
   portals: [{ label: 'Delhi Traffic Police', url: 'https://traffic.delhipolice.gov.in/', scope: 'both' }],
   check_steps: ['Open the portal', 'Enter vehicle number', 'View pending challans'],
   pay_steps: ['Open the portal', 'Select the challan', 'Pay via card/UPI'],
@@ -22,7 +22,8 @@ const validState = {
 };
 
 const validOffence = {
-  slug: 'driving-without-helmet', name: 'Riding without a helmet', target_keyword: 'helmet challan fine',
+  slug: 'driving-without-helmet', name: 'Riding without a helmet', seo_name: 'Helmet Challan Fine',
+  target_keyword: 'helmet challan fine',
   mva_section: 'Section 194D, Motor Vehicles Act 1988',
   description: 'D'.repeat(100),
   base_fine_text: '₹1,000', base_fine_min: 1000, base_fine_max: 1000,
@@ -44,6 +45,14 @@ describe('StateSchema', () => {
   });
   it('rejects fewer than 3 FAQs', () => {
     expect(() => StateSchema.parse({ ...validState, faqs: validState.faqs.slice(0, 2) })).toThrow();
+  });
+  it('requires abbr', () => {
+    const { abbr, ...withoutAbbr } = validState;
+    expect(() => StateSchema.parse(withoutAbbr)).toThrow();
+  });
+  it('rejects abbr that is not exactly two uppercase letters', () => {
+    expect(() => StateSchema.parse({ ...validState, abbr: 'dl' })).toThrow();
+    expect(() => StateSchema.parse({ ...validState, abbr: 'DEL' })).toThrow();
   });
 });
 
@@ -72,5 +81,10 @@ describe('OffenceSchema', () => {
   it('rejects a statute_quote with attribution under 5 chars', () => {
     const bad = { ...validOffence, statute_quote: { text: 'E'.repeat(45), attribution: 'Sec' } };
     expect(() => OffenceSchema.parse(bad)).toThrow();
+  });
+  it('requires seo_name', () => {
+    const { seo_name, ...withoutSeoName } = validOffence;
+    expect(() => OffenceSchema.parse(withoutSeoName)).toThrow();
+    expect(() => OffenceSchema.parse({ ...validOffence, seo_name: 'Fine' })).toThrow(); // < 5 chars
   });
 });

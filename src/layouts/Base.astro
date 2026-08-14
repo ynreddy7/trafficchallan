@@ -11,8 +11,13 @@ interface Props {
   /** ISO date (YYYY-MM-DD) — when present, emits a WebPage JSON-LD node with
    * dateModified/lastReviewed set to it. See src/lib/seo.ts#webPageJsonLd. */
   dateModified?: string;
+  /** When false, the <title> drops the " | TrafficChallan" suffix. Pass false
+   * from pages whose titles already fill the SERP budget with distinguishing
+   * query language (state pages, fine pages) or already carry the brand
+   * (/about/); homepage, guides and feature pages keep the suffix. */
+  brandSuffix?: boolean;
 }
-const { title, description, path, jsonld = [], breadcrumbs, dateModified } = Astro.props;
+const { title, description, path, jsonld = [], breadcrumbs, dateModified, brandSuffix = true } = Astro.props;
 const canonical = ORIGIN + path;
 const blocks = [
   orgJsonLd(),
@@ -31,7 +36,7 @@ const footerGuides = (await getCollection('guides'))
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title} | TrafficChallan</title>
+  <title>{brandSuffix ? `${title} | TrafficChallan` : title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <meta property="og:title" content={title} />

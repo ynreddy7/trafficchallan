@@ -1,12 +1,13 @@
 ---
 import type { StateRecord, OffenceRecord } from '../lib/schemas';
 import { shortSection } from '../lib/format';
-interface Props { offences: OffenceRecord[]; state?: StateRecord; compact?: boolean }
-const { offences, state, compact = false } = Astro.props;
+interface Props { offences: OffenceRecord[]; state?: StateRecord; compact?: boolean; caption?: string }
+const { offences, state, compact = false, caption } = Astro.props;
 const stateLabel = state ? `In ${state.name}` : '';
 ---
 <div class="table-wrap">
 <table class="schedule">
+  {caption && <caption>{caption}</caption>}
   <thead>
     <tr>
       <th>Offence</th>

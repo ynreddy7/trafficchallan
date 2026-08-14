@@ -1029,6 +1029,18 @@ tbody tr:nth-child(even) {
 .status-word--rumour {
   color: var(--danger);
 }
+/* Query-language table captions (SEO): a visible small line above the table,
+   matching the .cell-note voice. */
+table > caption {
+  caption-side: top;
+  text-align: left;
+  padding-bottom: 0.3rem;
+  font-family: var(--font-prose);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-muted-strong);
+}
+
 /* Muted secondary line inside a table cell (scheme tracker notes). */
 .cell-note {
   display: block;

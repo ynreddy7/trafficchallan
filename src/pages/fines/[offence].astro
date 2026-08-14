@@ -7,7 +7,7 @@ import FaqSection from '../../components/FaqSection.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import CautionCallout from '../../components/CautionCallout.astro';
 import { loadStates, loadOffences } from '../../lib/data';
-import { faqJsonLd } from '../../lib/seo';
+import { faqJsonLd, offenceTitle, fineAmountShort, lowerSeoName } from '../../lib/seo';
 import { shortSection, slugify } from '../../lib/format';
 import { relatedForOffence } from '../../lib/links';
 import type { OffenceRecord } from '../../lib/schemas';
@@ -24,17 +24,25 @@ const { offence } = Astro.props;
 const states = loadStates();
 const overriding = states.filter((s) => offence.slug in s.fine_overrides);
 const path = `/fines/${offence.slug}/`;
-const guideSlugs = (await getCollection('guides')).map((g) => g.id);
+// Sorted by slug so the guide-link rotation in links.ts is stable across builds.
+const guideRefs = (await getCollection('guides'))
+  .map((g) => ({ slug: g.id, title: g.data.title }))
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+const year = new Date().getFullYear();
+const title = offenceTitle(offence.seo_name, offence.base_fine_min, offence.base_fine_max, year);
+// Mid-sentence form of the compact amount ("Up to ₹10,000" → "up to ₹10,000").
+const amountInline = fineAmountShort(offence.base_fine_min, offence.base_fine_max).replace(/^Up to/, 'up to');
 ---
 <Base
-  title={`${offence.name}: Fine Amount & Rules`}
-  description={`${offence.name}: current MV Act fine for first and repeat offences, licence impact and how to pay.`}
+  title={title}
+  brandSuffix={false}
+  description={`The ${lowerSeoName(offence.seo_name)} is ${amountInline} under ${shortSection(offence.mva_section)} of the Motor Vehicles Act — first and repeat offence amounts, licence impact and how to pay.`}
   path={path}
   jsonld={[faqJsonLd(offence.faqs)]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }, { name: offence.name, path }]}
   dateModified={offence.last_verified}
 >
-  <h1>{offence.name}: fine amount and rules</h1>
+  <h1>{title}</h1>
   <AnswerBox>
     The fine for {offence.name.toLowerCase()} is {offence.base_fine_text} for a first offence
     ({shortSection(offence.mva_section)}).
@@ -53,6 +61,7 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
 
   <h2 id={slugify('Fine amounts')}>How much is the fine?</h2>
   <div class="table-wrap"><table>
+    <caption>{offence.seo_name}: first and repeat offence amounts, {year}</caption>
     <thead><tr><th></th><th>Amount</th></tr></thead>
     <tbody>
       <tr><td>First offence</td><td>{offence.base_fine_text}</td></tr>
@@ -72,6 +81,7 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
   {overriding.length > 0 && <>
     <h2 id={slugify('States with different notified amounts')}>Which states charge different amounts?</h2>
     <div class="table-wrap"><table>
+      <caption>{offence.seo_name} by state, {year}</caption>
       <thead><tr><th>State</th><th>Amount</th></tr></thead>
       <tbody>{overriding.map((s) => <tr>
         <td><a href={`/${s.slug}-e-challan/`}>{s.name}</a></td>
@@ -80,7 +90,7 @@ const guideSlugs = (await getCollection('guides')).map((g) => g.id);
     </table></div>
   </>}
 
-  <RelatedLinks items={relatedForOffence(offence, states, guideSlugs)} />
+  <RelatedLinks items={relatedForOffence(offence, states, guideRefs)} />
   <FaqSection faqs={offence.faqs} />
   <SourceList sources={offence.sources} />
 </Base>

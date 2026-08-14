@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import AnswerBox from '../components/AnswerBox.astro';
 import FineTable from '../components/FineTable.astro';
 import { loadStates, loadOffences, newestVerifiedDate } from '../lib/data';
+import { webApplicationJsonLd } from '../lib/seo';
 
 const states = loadStates();
 const offences = loadOffences();
@@ -19,6 +20,11 @@ const calcData = {
   title="Traffic Fine Calculator: What Will Your Challan Cost?"
   description="Pick one or more offences and your state to see the current challan amount under the Motor Vehicles Act, including state-notified variations, repeat-offence penalties and a running total."
   path="/calculator/"
+  jsonld={[webApplicationJsonLd(
+    'Traffic Fine Calculator',
+    'Interactive calculator that totals Motor Vehicles Act challan amounts by offence, state-notified variation and repeat-offence status.',
+    '/calculator/'
+  )]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fine calculator', path: '/calculator/' }]}
   dateModified={newestVerified}
 >

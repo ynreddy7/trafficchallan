@@ -5,6 +5,11 @@ export const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'must be YYYY-MM-
 export const StateSchema = z.object({
   slug: z.string().regex(/^[a-z][a-z-]*$/),
   name: z.string().min(2),
+  /** The registration-series code people actually search with ("e challan ts")
+   * — the SEARCHED form, not necessarily the newest plate series (Telangana
+   * stays TS even though new plates use TG). Feeds titles/H1s via
+   * seo.ts#stateTitle. */
+  abbr: z.string().regex(/^[A-Z]{2}$/, 'must be a 2-letter state code'),
   target_keyword: z.string().min(3),
   portals: z.array(z.object({
     label: z.string().min(2),
@@ -31,6 +36,10 @@ export type StateRecord = z.infer<typeof StateSchema>;
 export const OffenceSchema = z.object({
   slug: z.string().regex(/^[a-z0-9][a-z0-9-]*$/),
   name: z.string().min(3),
+  /** Query-language name for titles/H1s ("Helmet Challan Fine", "Drink and
+   * Drive Fine") — how people search, vs the formal `name`. Feeds
+   * seo.ts#offenceTitle. */
+  seo_name: z.string().min(5),
   target_keyword: z.string().min(3),
   mva_section: z.string().min(5),
   description: z.string().min(80),

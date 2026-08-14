@@ -14,7 +14,7 @@ function tmpDataDir(files: Record<string, unknown>): string {
 }
 
 const goodState = {
-  slug: 'delhi', name: 'Delhi', target_keyword: 'delhi e challan',
+  slug: 'delhi', name: 'Delhi', abbr: 'DL', target_keyword: 'delhi e challan',
   portals: [{ label: 'Delhi Traffic Police', url: 'https://traffic.delhipolice.gov.in/', scope: 'both' }],
   check_steps: ['Open the portal site', 'Enter your vehicle number', 'View pending challans'],
   pay_steps: ['Open the portal site', 'Select the pending challan', 'Pay via card or UPI'],

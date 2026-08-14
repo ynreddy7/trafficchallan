@@ -53,3 +53,19 @@
     are countered by stating what IS documented, not with counter-predictions. Every
     legal-process page visibly carries: "This is general information, not legal advice.
     For your specific case, consult an advocate."
+14. TITLES IN QUERY LANGUAGE: page titles use the words people search, not formal names,
+    and stay at or under ~62 characters (SERP truncation budget).
+    - State pages: "{State} Traffic Challan ({ABBR} e-Challan) {year}: Check & Pay",
+      built by seo.ts#stateTitle from the state record's required `abbr` field — the
+      registration code people SEARCH with ("e challan ts"; Telangana stays TS even though
+      new plates use TG). Long names auto-drop " e-Challan" from the parens to fit.
+    - Fine pages: "{seo_name} {year}: {₹amount} Penalty & Rules", built by
+      seo.ts#offenceTitle from the offence record's required `seo_name` field — the
+      query-language name ("Helmet Challan Fine", "Drink and Drive Fine"), with the amount
+      rendered from base_fine_min/base_fine_max and dropped if the title would overrun.
+    - Suffix policy: Base.astro appends " | TrafficChallan" by default; state pages, fine
+      pages and /about/ pass brandSuffix={false} because their titles already fill the
+      budget (or already carry the brand). New page types keep the suffix unless their
+      title is at risk of truncation.
+    - `abbr` and `seo_name` are TEMPLATE fields: adding or correcting them does NOT bump
+      last_verified (rule 2 still governs — only re-verified facts do).

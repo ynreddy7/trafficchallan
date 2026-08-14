@@ -77,6 +77,7 @@
   },
   "last_verified": "2026-08-12",
   "name": "Andhra Pradesh",
+  "abbr": "AP",
   "pay_steps": [
     "Find the challan using the check steps above, then click the 'Pay Now' button on that challan's row in the results table.",
     "Tick the disclaimer checkbox reading 'I have read the above Disclaimer and agree to proceed further.' before the portal will let you continue.",
