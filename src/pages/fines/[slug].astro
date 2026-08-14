@@ -78,14 +78,18 @@ if (props.type === 'state') {
       q: `Are traffic fines different in ${s.name}?`,
       a: `Yes, for ${listOverridden.length} of the ${listRows.length} offences listed here: ${s.name} has notified its own amount for each of those, marked "State-notified" in the table.` +
         (listStatutoryCount > 0
-          ? ` The other ${listStatutoryCount} follow the statutory Motor Vehicles Act schedule.`
+          ? listStatutoryCount === 1
+            ? ' The one remaining offence follows the statutory Motor Vehicles Act schedule.'
+            : ` The other ${listStatutoryCount} follow the statutory Motor Vehicles Act schedule.`
           : '')
     },
     {
       q: `Which offences does ${s.name} set its own amount for?`,
       a: `${listOverridden.map((r) => r.name).join('; ')}.` +
         (listStatutoryCount > 0
-          ? ` Every other offence in the table carries the statutory amount — we have not verified a separate ${s.name} notification for those.`
+          ? listStatutoryCount === 1
+            ? ` The one other offence in the table carries the statutory amount — we have not verified a separate ${s.name} notification for it.`
+            : ` Every other offence in the table carries the statutory amount — we have not verified a separate ${s.name} notification for those.`
           : '')
     }
   ];
