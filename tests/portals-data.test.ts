@@ -70,6 +70,35 @@ describe('OfficialPortalsSchema', () => {
   it('rejects an empty states array', () => {
     expect(() => OfficialPortalsSchema.parse({ ...validFile, states: [] })).toThrow();
   });
+  it('accepts a file with no official_app block at all', () => {
+    expect(OfficialPortalsSchema.parse(validFile).official_app).toBeUndefined();
+  });
+});
+
+describe('official_app block', () => {
+  const app = {
+    name: 'mParivahan',
+    fact: 'F'.repeat(90),
+    site: 'mparivahan.parivahan.gov.in',
+    play_package: 'com.nic.mparivahan',
+    source: 'https://parivahan.gov.in/',
+    verified_on: '2026-08-14'
+  };
+  const withApp = (over: Record<string, unknown> = {}) => ({ ...validFile, official_app: { ...app, ...over } });
+
+  it('accepts a well-formed block', () => {
+    expect(OfficialPortalsSchema.parse(withApp()).official_app?.play_package).toBe('com.nic.mparivahan');
+  });
+  it('rejects an app site that is not on a government domain', () => {
+    expect(() => OfficialPortalsSchema.parse(withApp({ site: 'mparivahan.example.com' }))).toThrow(/gov\.in/);
+  });
+  it('rejects a store URL where a package name belongs', () => {
+    expect(() => OfficialPortalsSchema.parse(withApp({ play_package: 'https://play.google.com/x' }))).toThrow(/package name/);
+  });
+  it('rejects a missing verification date', () => {
+    const { verified_on, ...rest } = app;
+    expect(() => OfficialPortalsSchema.parse({ ...validFile, official_app: rest })).toThrow();
+  });
 });
 
 describe('loadOfficialPortals', () => {
@@ -173,6 +202,17 @@ describe('seeded official-portals data', () => {
   });
   it('every scam signal source appears reachable-shaped (https URL)', () => {
     for (const s of file.scam_signals) expect(s.source.startsWith('https://')).toBe(true);
+  });
+  it('the official_app fact is sourced, and its source is listed in the file sources', () => {
+    const app = file.official_app;
+    expect(app).toBeTruthy();
+    expect(file.sources).toContain(app!.source);
+  });
+  it('the official_app carries its own verification date, never older than the row it documents', () => {
+    // It is dated INDEPENDENTLY of the file: a fact verified after the last
+    // full sweep must not silently inherit — or bump — the file-level date.
+    const app = file.official_app!;
+    expect(app.verified_on >= file.last_verified).toBe(true);
   });
   it('passes the gate as of today alongside the feature-page registry entry', () => {
     const v = runGates({

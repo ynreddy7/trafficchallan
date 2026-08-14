@@ -24,8 +24,8 @@ const TRUST_PAGE_DATE = '2026-08-13';
  * change both together; /challan-discount/ gets the max across
  * schemes + lok-adalat only (mirroring data.ts maxSchemeDate());
  * /challan-status/ gets the challan-statuses.json date, which also joins
- * the global max; /fake-challan-sms/ gets the official-portals.json date,
- * which also joins the global max;
+ * the global max; /fake-challan-sms/ AND /echallan-parivahan/ both get the
+ * official-portals.json date, which also joins the global max;
  * each per-state RTO hub (/rto-codes/{state}/, one per data/rto/ file,
  * mirroring src/pages/rto-codes/[state].astro) gets its own file's date,
  * and /rto-codes/ (the lookup index) gets the max across data/rto/ files
@@ -106,13 +106,17 @@ function buildLastmodMap() {
     allDates.push(statusFile.last_verified);
   }
 
-  // Official-portals allow-list: its file's date is /fake-challan-sms/'s
-  // lastmod AND joins the global max (mirrors data.ts newestVerifiedDate(),
-  // which includes loadOfficialPortals().last_verified — change both
-  // together).
+  // Official-portals allow-list: its file's date is the lastmod for BOTH
+  // pages it drives — /fake-challan-sms/ (the allow-list) and
+  // /echallan-parivahan/ (the portal-routing directory, which also renders
+  // state records whose own dates are never newer) — AND joins the global max
+  // (mirrors data.ts newestVerifiedDate(), which includes
+  // loadOfficialPortals().last_verified — change both together; each page's
+  // dateModified prop reads the same field, so all three move as one).
   const portalsFile = JSON.parse(readFileSync(join(process.cwd(), 'data', 'official-portals.json'), 'utf-8'));
   if (portalsFile.last_verified) {
     map.set('/fake-challan-sms/', portalsFile.last_verified);
+    map.set('/echallan-parivahan/', portalsFile.last_verified);
     allDates.push(portalsFile.last_verified);
   }
 

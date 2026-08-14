@@ -12,7 +12,8 @@ const FEATURE_PAGES: PageMeta[] = [
   { slug: 'challan-discount', target_keyword: 'traffic challan discount' },
   { slug: 'rto-codes', target_keyword: 'rto code list india' },
   { slug: 'challan-status', target_keyword: 'e challan status meaning' },
-  { slug: 'fake-challan-sms', target_keyword: 'e challan fake sms' }
+  { slug: 'fake-challan-sms', target_keyword: 'e challan fake sms' },
+  { slug: 'echallan-parivahan', target_keyword: 'echallan parivahan' }
 ];
 
 function loadGuideMeta(): GuideMeta[] {

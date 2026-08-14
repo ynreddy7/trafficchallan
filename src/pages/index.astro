@@ -6,6 +6,7 @@ import FaqSection from '../components/FaqSection.astro';
 import LastVerified from '../components/LastVerified.astro';
 import PlateBadge from '../components/PlateBadge.astro';
 import { loadStates, loadOffences, newestVerifiedDate } from '../lib/data';
+import { rtoStateEntries } from '../lib/portal-routing';
 import { faqJsonLd } from '../lib/seo';
 import { firstSentence } from '../lib/format';
 import { getCollection } from 'astro:content';
@@ -30,35 +31,12 @@ const STATE_CODES: Record<string, string> = {
   'jammu-kashmir': 'JK'
 };
 
-/** RTO series code → state slug, for the vehicle-number portal finder.
- * One entry per code — Telangana carries both TS (legacy) and TG (current). */
-const RTO_CODE_TO_SLUG: Record<string, string> = {
-  AP: 'andhra-pradesh',
-  DL: 'delhi',
-  GJ: 'gujarat',
-  HR: 'haryana',
-  JK: 'jammu-kashmir',
-  KA: 'karnataka',
-  MP: 'madhya-pradesh',
-  MH: 'maharashtra',
-  RJ: 'rajasthan',
-  TN: 'tamil-nadu',
-  TS: 'telangana',
-  TG: 'telangana',
-  UP: 'uttar-pradesh',
-  WB: 'west-bengal'
-};
-
-const stateBySlug = new Map(states.map((s) => [s.slug, s]));
-const rtoStates = Object.entries(RTO_CODE_TO_SLUG)
-  .map(([code, slug]) => {
-    const s = stateBySlug.get(slug);
-    return s ? { code, slug, name: s.name } : null;
-  })
-  .filter((x): x is { code: string; slug: string; name: string } => x !== null);
-
+// RTO series code → state rows for the vehicle-number portal finder. The map
+// itself lives in src/lib/portal-routing.ts so this finder and the one on
+// /echallan-parivahan/ can never disagree about which plate prefix reaches
+// which state.
 const finderData = {
-  rtoStates,
+  rtoStates: rtoStateEntries(states),
   states: states.map((s) => ({
     slug: s.slug,
     name: s.name,

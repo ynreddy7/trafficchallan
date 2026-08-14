@@ -1,0 +1,487 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LastVerified from '../components/LastVerified.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import ShareBar from '../components/ShareBar.astro';
+import SourceList from '../components/SourceList.astro';
+import { loadOfficialPortals, loadStates } from '../lib/data';
+import { faqJsonLd } from '../lib/seo';
+import { slugify } from '../lib/format';
+import {
+  classifyStateRouting, groupByRouting, countByNational, rtoStateEntries, hostOf,
+  NATIONAL_LEGACY_HOST, NATIONAL_NEXTGEN_HOST
+} from '../lib/portal-routing';
+
+const portals = loadOfficialPortals();
+// The page is dated by the allow-list file, mirroring buildLastmodMap() in
+// astro.config.mjs (/echallan-parivahan/ = official-portals.json
+// last_verified) — change both together. The routing tables below are derived
+// from the state records, whose own last_verified dates are never newer than
+// this one, so the visible date never overstates freshness.
+const lastVerified = portals.last_verified;
+
+const states = loadStates();
+const routings = states.map(classifyStateRouting);
+const { nationalOnly, stateRun } = groupByRouting(routings);
+const counts = countByNational(routings);
+
+// Canonical root address of each national portal, taken from the allow-list
+// file's own verified source list rather than typed here.
+const nationalRoot = (host: string) => portals.sources.find((u) => hostOf(u) === host);
+const legacyRoot = nationalRoot(NATIONAL_LEGACY_HOST)!;
+const nextgenRoot = nationalRoot(NATIONAL_NEXTGEN_HOST)!;
+const nationalRows = portals.national.filter(
+  (d) => d.domain === NATIONAL_LEGACY_HOST || d.domain === NATIONAL_NEXTGEN_HOST
+);
+
+/** Short badge for which national portal transacts a state's challans. */
+const NATIONAL_LABEL = {
+  nextgen: 'NextGen',
+  legacy: 'Legacy',
+  none: 'Not on a national portal'
+} as const;
+
+// Migration evidence, straight from the state records: the legacy portal is
+// not switched off — for a migrated state it carries a notice sending the
+// reader onward. These labels are the sourced, dated wording from
+// data/states/*.json, quoted rather than paraphrased.
+const migrationNotices = states
+  .map((s) => {
+    const legacy = s.portals.find((p) => hostOf(p.url) === NATIONAL_LEGACY_HOST);
+    return legacy && /nextgen/i.test(legacy.label) ? { slug: s.slug, name: s.name, label: legacy.label } : null;
+  })
+  .filter((x): x is { slug: string; name: string; label: string } => x !== null)
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const app = portals.official_app;
+const prettyDate = (iso: string) =>
+  new Date(iso + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+
+// Island payload: plate-prefix / state-name → the portal that actually serves
+// that state. Prefix parsing only (src/lib/portal-finder.ts), and nothing
+// typed is ever echoed back or sent anywhere.
+const finderData = {
+  rtoStates: rtoStateEntries(states),
+  states: routings.map((r) => ({
+    slug: r.slug,
+    name: r.name,
+    national: r.national,
+    nationalLabel: NATIONAL_LABEL[r.national],
+    nationalPortal: r.nationalPortal,
+    stateOwn: r.stateOwn
+  })),
+  legacyRoot,
+  nextgenRoot
+};
+const islandJson = JSON.stringify(finderData).replace(/</g, '\\u003c');
+
+const sourceUrls = [
+  ...new Set(
+    [
+      legacyRoot,
+      nextgenRoot,
+      ...(app ? [app.source] : []),
+      ...routings.flatMap((r) => [r.nationalPortal?.url, ...r.stateOwn.map((p) => p.url)])
+    ].filter((u): u is string => Boolean(u))
+  )
+];
+
+const faqs = [
+  {
+    q: 'Is echallan.parivahan.gov.in the official site?',
+    a: 'Yes. It is the Ministry of Road Transport and Highways’ eChallan portal, run on a gov.in domain by the National Informatics Centre, and it is where challans from most states are checked and paid. A second national portal, echallan.parivahan.nic.in — the NextGen eChallan — now serves several states instead. TrafficChallan.com is neither of them: this page is an independent directory that links to them.'
+  },
+  {
+    q: 'What is the difference between echallan.parivahan.gov.in and echallan.parivahan.nic.in?',
+    a: 'Both are national eChallan portals for MoRTH. The gov.in address is the older, legacy portal; the nic.in address is the NextGen eChallan, and states have been migrated onto it in batches. Of the ' + routings.length + ' states this site tracks, ' + counts.nextgen + ' now transact on NextGen and ' + counts.legacy + ' still transact on the legacy portal. The legacy portal has not been switched off — for a migrated state it shows a notice pointing users to NextGen — so if one address shows nothing, try the other before concluding there is no challan.'
+  },
+  {
+    q: 'Why can’t I find my challan on the Parivahan portal?',
+    a: 'A challan is only visible on the portal that holds it, so this is a routing problem: you are on a portal other than the one your challan sits on. Four things to check, in order — whether your state has been migrated to the other national portal; whether a state-run service handles its challan payment instead (' + stateRun.length + ' of the ' + routings.length + ' states here have one alongside the national portal); whether the challan has been forwarded to a court, which makes it searchable on vcourts.gov.in; and what the portal’s own wording says — “Challan Not Found” and the rest are decoded on our challan status page.'
+  },
+  ...(app
+    ? [{
+        q: 'Is there an official eChallan app?',
+        a: app.fact + ' Checked against the ministry’s own site on ' + prettyDate(app.verified_on) + '. We are not affiliated with the app or with any portal, and we do not distribute it.'
+      }]
+    : [])
+];
+
+const jsonld = [faqJsonLd(faqs)];
+---
+<Base
+  title="eChallan Parivahan: Official Portal Links by State"
+  brandSuffix={false}
+  description="Which official portal actually handles your e-challan — echallan.parivahan.gov.in, the NextGen nic.in portal, or your state's own. An independent, dated directory."
+  path="/echallan-parivahan/"
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'eChallan Parivahan portal directory', path: '/echallan-parivahan/' }]}
+  dateModified={lastVerified}
+>
+  <h1>eChallan Parivahan: which official portal handles your state&rsquo;s challans</h1>
+  <AnswerBox>
+    The national portal is <strong>echallan.parivahan.gov.in</strong> &mdash; the Ministry of Road Transport and
+    Highways&rsquo; eChallan service, run by the National Informatics Centre &mdash; and a newer national portal,
+    <strong>echallan.parivahan.nic.in</strong>, now serves several states. This page is an independent directory of
+    those official addresses, not the portal itself.
+  </AnswerBox>
+  <p>
+    <strong>The official address ends in .gov.in</strong> &mdash; or <strong>.nic.in</strong> for the NextGen portal.
+    You are reading TrafficChallan.com, an independent guide: we are not the eChallan portal, we take no payments and
+    we hold no challan or vehicle records. Any other address &mdash; a <code>.com</code>, a near-miss spelling, an app
+    store result &mdash; is a different site, whoever runs it. Type one of the addresses in the tables below into your
+    browser yourself, and check the challan there.
+  </p>
+  <LastVerified date={lastVerified} />
+  <p class="legal-note">
+    Independent directory of official portals. Nothing here is a challan search, and no payment is taken on this site
+    &mdash; every link below goes to a government portal that we checked on the date above.
+  </p>
+
+  <h2 id={slugify('Which address is the official one?')}>Which address is the official one?</h2>
+  <p>
+    Two national addresses, both run for MoRTH. Besides these, the other official routes are a state&rsquo;s own
+    portal and &mdash; once a challan has gone to court &mdash; a court portal. Both are covered further down.
+  </p>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr><th scope="col">Address to type</th><th scope="col">What it is</th></tr>
+      </thead>
+      <tbody>
+        {nationalRows.map((d) => (
+          <tr>
+            <td><code>{d.domain}</code></td>
+            <td data-label="What it is">{d.label}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    A handful of genuine state police properties do sit on other domains, which is exactly why &ldquo;not .gov.in&rdquo;
+    is not a test you can apply blindly &mdash; our
+    <a href="/fake-challan-sms/">check on whether a challan SMS is real</a> carries the full allow-list with a note on
+    each of those exceptions and how far to trust them.
+  </p>
+
+  <h2 id={slugify('Legacy vs NextGen: gov.in or nic.in?')}>
+    Legacy vs NextGen: echallan.parivahan.gov.in or echallan.parivahan.nic.in?
+  </h2>
+  <p>
+    The two addresses are identical up to the last few characters, and that ending decides where your challan is
+    visible &mdash; so it is the first thing to check when a challan seems to have vanished. The
+    <code>gov.in</code> address is the original portal; the <code>nic.in</code> address is the NextGen eChallan, and
+    states have been moved onto it in batches. Of the {routings.length} states this site tracks,
+    <strong>{counts.nextgen} transact on NextGen</strong> and <strong>{counts.legacy} still transact on the legacy
+    portal</strong>.
+  </p>
+  <p>
+    The legacy portal was not switched off when a state moved. For a migrated state it keeps serving a notice that
+    points you onward &mdash; which is why the same vehicle can show nothing on one address and its challan on the
+    other. The state records behind this site describe it directly:
+  </p>
+  <ul>
+    {migrationNotices.map((n) => (
+      <li><a href={`/${n.slug}-e-challan/`}>{n.name}</a> &mdash; <span class="verified">{n.label}</span></li>
+    ))}
+  </ul>
+  <p>
+    Practical rule: if one national address shows nothing, open the other before concluding there is no challan
+    &mdash; and if your state runs its own portal, check that too.
+  </p>
+
+  <h2 id={slugify('Which portal serves your state?')}>Which portal serves your state?</h2>
+  <p>
+    Grouped by where your challan is actually settled rather than alphabetically. First: states whose challans are
+    transacted on a national portal and nowhere else. Then: states where a state-run service also handles challan
+    payment &mdash; a police challan portal in most, a state payment gateway or assisted counter in others. Read each
+    label: it says what that particular service does, and they are not interchangeable.
+  </p>
+
+  <h3 id={slugify('States that use a national portal only')}>
+    National portal only &mdash; {nationalOnly.length} states
+  </h3>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">Portal</th>
+          <th scope="col">Where it takes you</th>
+        </tr>
+      </thead>
+      <tbody>
+        {nationalOnly.map((r) => (
+          <tr>
+            <td><a href={`/${r.slug}-e-challan/`}>{r.name}</a> <span class="chip">{r.abbr}</span></td>
+            <td data-label="Portal"><span class="chip">{NATIONAL_LABEL[r.national]}</span> <code>{r.nationalPortal?.host}</code></td>
+            <td data-label="Where it takes you">
+              {r.nationalPortal && (
+                <a href={r.nationalPortal.url} rel="noopener">{r.nationalPortal.label} <span class="ext" aria-hidden="true">&#8599;</span></a>
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id={slugify('States that also run their own challan portal')}>
+    A state-run service also handles payment &mdash; {stateRun.length} states
+  </h3>
+  <div class="table-wrap">
+    <table class="schedule">
+      <thead>
+        <tr>
+          <th scope="col">State</th>
+          <th scope="col">National portal</th>
+          <th scope="col">The state-run service</th>
+        </tr>
+      </thead>
+      <tbody>
+        {stateRun.map((r) => (
+          <tr>
+            <td><a href={`/${r.slug}-e-challan/`}>{r.name}</a> <span class="chip">{r.abbr}</span></td>
+            <td data-label="National portal"><span class="chip">{NATIONAL_LABEL[r.national]}</span> <code>{r.nationalPortal?.host}</code></td>
+            <td data-label="The state-run service">
+              <ul>
+                {r.stateOwn.map((p) => (
+                  <li>
+                    <a href={p.url} rel="noopener">{p.label} <span class="ext" aria-hidden="true">&#8599;</span></a>
+                    <br /><code>{p.host}</code>
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="verified">
+    Every address above comes from that state&rsquo;s own record on this site, each with its official sources and its
+    own last-checked date on the state page linked in the first column.
+  </p>
+
+  <section id="portal-finder" class="panel">
+    <h2 id={slugify('Find the official portal for your state')}>Find the official portal for your state</h2>
+    <p>
+      Type your state name, or just the two-letter prefix of your number plate (<strong>MH</strong>,
+      <strong>DL</strong>, <strong>KA</strong>&hellip;) &mdash; that prefix is all this needs, and
+      <strong>nothing you type here leaves your browser</strong>. This is not a challan search: it answers which
+      official portal to open, and the challan itself is looked up there.
+    </p>
+
+    <form id="route-form" class="finder-form">
+      <label for="route-input">Your state, or your number plate&rsquo;s two-letter prefix</label>
+      <input type="text" id="route-input" autocomplete="off" placeholder="MH or Maharashtra" />
+      <button type="submit" class="action action--primary">Show my portal</button>
+    </form>
+
+    <div id="route-result" class="finder-result" aria-live="polite"></div>
+
+    <noscript>
+      <p>
+        Without JavaScript, use the two tables just above &mdash; every state on this site is listed there with the
+        portal that serves it.
+      </p>
+    </noscript>
+  </section>
+
+  <script type="application/json" id="route-data" set:html={islandJson} />
+  <script>
+    import { resolveVehicleInput, type RtoStateEntry } from '../lib/portal-finder';
+
+    interface RoutedPortal { label: string; url: string; host: string }
+    interface RouteState {
+      slug: string;
+      name: string;
+      national: 'nextgen' | 'legacy' | 'none';
+      nationalLabel: string;
+      nationalPortal: RoutedPortal | null;
+      stateOwn: RoutedPortal[];
+    }
+    interface RouteData {
+      rtoStates: RtoStateEntry[];
+      states: RouteState[];
+      legacyRoot: string;
+      nextgenRoot: string;
+    }
+
+    const data: RouteData = JSON.parse(document.getElementById('route-data')!.textContent!);
+    const stateBySlug = new Map(data.states.map((s) => [s.slug, s]));
+    const form = document.getElementById('route-form') as HTMLFormElement;
+    const input = document.getElementById('route-input') as HTMLInputElement;
+    const result = document.getElementById('route-result') as HTMLDivElement;
+
+    function externalLink(href: string, label: string): HTMLAnchorElement {
+      const a = document.createElement('a');
+      a.href = href;
+      a.rel = 'noopener';
+      a.textContent = label + ' ';
+      const ext = document.createElement('span');
+      ext.className = 'ext';
+      ext.setAttribute('aria-hidden', 'true');
+      ext.textContent = '↗';
+      a.appendChild(ext);
+      return a;
+    }
+
+    function panel(): HTMLDivElement {
+      result.replaceChildren();
+      const wrap = document.createElement('div');
+      wrap.className = 'panel';
+      result.appendChild(wrap);
+      return wrap;
+    }
+
+    function renderState(state: RouteState) {
+      const wrap = panel();
+
+      const h3 = document.createElement('h3');
+      h3.textContent = state.name;
+      wrap.appendChild(h3);
+
+      const lead = document.createElement('p');
+      lead.textContent =
+        state.nationalPortal
+          ? `Transacted on the ${state.nationalLabel} national eChallan portal (${state.nationalPortal.host}).`
+          : 'This state transacts challans on its own portal.';
+      wrap.appendChild(lead);
+
+      const ul = document.createElement('ul');
+      if (state.nationalPortal) {
+        const li = document.createElement('li');
+        li.appendChild(externalLink(state.nationalPortal.url, state.nationalPortal.label));
+        ul.appendChild(li);
+      }
+      for (const p of state.stateOwn) {
+        const li = document.createElement('li');
+        li.appendChild(externalLink(p.url, p.label));
+        ul.appendChild(li);
+      }
+      wrap.appendChild(ul);
+
+      if (state.stateOwn.length) {
+        const note = document.createElement('p');
+        note.className = 'verified';
+        note.textContent =
+          'This state also runs its own challan portal — if the national portal shows nothing, check that one too.';
+        wrap.appendChild(note);
+      }
+
+      const full = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = `/${state.slug}-e-challan/`;
+      a.className = 'action action--secondary';
+      a.textContent = `Full ${state.name} e-challan guide`;
+      full.appendChild(a);
+      wrap.appendChild(full);
+    }
+
+    function renderUnknownCode(code: string) {
+      const wrap = panel();
+      const p = document.createElement('p');
+      p.textContent = `We don't have a dedicated ${code} guide yet — both national portals serve every state, so start there:`;
+      wrap.appendChild(p);
+      const ul = document.createElement('ul');
+      const li1 = document.createElement('li');
+      li1.appendChild(externalLink(data.legacyRoot, 'echallan.parivahan.gov.in (legacy)'));
+      ul.appendChild(li1);
+      const li2 = document.createElement('li');
+      li2.appendChild(externalLink(data.nextgenRoot, 'echallan.parivahan.nic.in (NextGen)'));
+      ul.appendChild(li2);
+      wrap.appendChild(ul);
+      const rto = document.createElement('p');
+      const rtoLink = document.createElement('a');
+      rtoLink.href = '/rto-codes/';
+      rtoLink.textContent = `Which city is ${code} from? See the full RTO code lookup`;
+      rto.appendChild(rtoLink);
+      wrap.appendChild(rto);
+    }
+
+    function renderInvalid() {
+      const wrap = panel();
+      const p = document.createElement('p');
+      // Deliberately does NOT echo what was typed: a registration number must
+      // never be rendered back onto the page.
+      p.textContent = "We couldn't recognise that — try your state name, or the two-letter prefix of your plate (MH, DL, KA…).";
+      wrap.appendChild(p);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const resolved = resolveVehicleInput(input.value, data.rtoStates);
+      if (resolved.kind === 'state') {
+        const state = stateBySlug.get(resolved.slug);
+        if (state) renderState(state);
+        else renderInvalid();
+      } else if (resolved.kind === 'unknown-code') {
+        renderUnknownCode(resolved.code);
+      } else {
+        renderInvalid();
+      }
+    });
+  </script>
+
+  <h2 id={slugify('Why can’t I find my challan on the Parivahan portal?')}>
+    Why can&rsquo;t I find my challan on the Parivahan portal?
+  </h2>
+  <p>
+    A challan is only visible on the portal that holds it, so every answer below is about routing &mdash; you are
+    looking at a portal other than the one your challan sits on. In the order worth checking:
+  </p>
+  <ol class="steps">
+    <li>
+      <strong>You are on the other national portal.</strong> {counts.nextgen} of the {routings.length} states here
+      transact on NextGen (<code>{NATIONAL_NEXTGEN_HOST}</code>) and {counts.legacy} on the legacy portal
+      (<code>{NATIONAL_LEGACY_HOST}</code>) &mdash; see
+      <a href={`#${slugify('Legacy vs NextGen: gov.in or nic.in?')}`}>the legacy/NextGen split</a> above.
+    </li>
+    <li>
+      <strong>A state-run service handles your state&rsquo;s challan payment.</strong> {stateRun.length} of the
+      {' '}{routings.length} states on this site have one alongside the national portal &mdash; the second table
+      above lists each of them.
+    </li>
+    <li>
+      <strong>It has gone to court.</strong> A challan forwarded to a virtual court becomes a court case, searchable
+      on <a href="https://vcourts.gov.in/virtualcourt/" rel="noopener nofollow">vcourts.gov.in</a> by vehicle,
+      challan or CNR number. What remains possible on the eChallan side depends on which court it went to &mdash;
+      our <a href="/challan-status/#sent-to-court">status decoder</a> sets out each case with its sources.
+    </li>
+    <li>
+      <strong>The portal is telling you something specific.</strong> &ldquo;Challan Not Found&rdquo;, &ldquo;under
+      investigation&rdquo; and the rest are decoded, with sourced next steps, on our
+      <a href="/challan-status/#challan-not-found">challan status page</a>.
+    </li>
+  </ol>
+
+  {app && (
+    <section>
+      <h2 id={slugify('Is there an official eChallan app?')}>Is there an official eChallan app?</h2>
+      <p>{app.fact}</p>
+      <p class="verified">
+        Checked on the ministry&rsquo;s own site on {prettyDate(app.verified_on)}:
+        <a href={app.source} rel="noopener nofollow">{hostOf(app.source)}</a>. We are not affiliated with
+        {' '}{app.name} or with any portal, we do not distribute it, and we cannot vouch for what any app does on your
+        phone &mdash; the point of the package name above is that you can check which listing you are looking at.
+      </p>
+    </section>
+  )}
+
+  <FaqSection faqs={faqs} />
+
+  <ShareBar text="echallan.parivahan.gov.in or the NextGen nic.in portal? Which official portal actually handles your state's challans" />
+
+  <RelatedLinks items={[
+    { href: '/fake-challan-sms/', label: 'Is that challan SMS real? The 60-second check' },
+    { href: '/challan-status/', label: 'Challan status decoder: what each status term means' },
+    { href: '/how-to-check-e-challan/', label: 'How to check an e-challan: every official way' },
+    { href: '/fines/', label: 'Full traffic fine list' }
+  ]} />
+
+  <SourceList sources={sourceUrls} />
+</Base>

@@ -232,6 +232,23 @@ export const OfficialPortalsSchema = z
       source: z.string().url()
     })).min(1),
     victim_help: z.array(z.object({ fact: z.string().min(40) })).min(1),
+    /**
+     * The one mobile app the ministry's own site points at. Carries its OWN
+     * verified_on because it can be added or re-checked without re-fetching
+     * every other row in this file — the file-level last_verified must never
+     * be bumped for a fact that was not itself re-verified that day
+     * (CONTENT_STANDARDS rule 2). `site` is a bare hostname on a government
+     * domain; `play_package` is an Android package name, not a URL, so no
+     * store link has to be trusted to identify the app.
+     */
+    official_app: z.object({
+      name: z.string().min(3),
+      fact: z.string().min(80),
+      site: z.string().regex(/\.(gov|nic)\.in$/, 'must be a gov.in / nic.in hostname'),
+      play_package: z.string().regex(/^[a-z][a-z0-9_.]*$/, 'must be an Android package name'),
+      source: z.string().url(),
+      verified_on: isoDate
+    }).optional(),
     sources: z.array(z.string().url()).min(1),
     last_verified: isoDate
   })

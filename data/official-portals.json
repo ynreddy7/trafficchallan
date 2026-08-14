@@ -420,7 +420,16 @@
       "fact": "Do not sit on it: under the amended TCCCPR, unwanted-commercial-communication complaints must be lodged within 7 days of receiving the message, so report promptly through every channel above."
     }
   ],
+  "official_app": {
+    "name": "mParivahan",
+    "fact": "MoRTH's own Parivahan Sewa site lists mParivahan under its \"Other Products & Services\" block and links exactly two addresses for it: the web address mparivahan.parivahan.gov.in, and one Google Play listing whose package name is com.nic.mparivahan. Those are the app addresses the ministry's site itself points to. The eChallan portal separately warns that fraudulent mobile apps impersonate its echallan services, so an app found by searching a store — rather than reached from the ministry's own site — is worth checking against the package name above before installing.",
+    "site": "mparivahan.parivahan.gov.in",
+    "play_package": "com.nic.mparivahan",
+    "source": "https://parivahan.gov.in/",
+    "verified_on": "2026-08-14"
+  },
   "sources": [
+    "https://parivahan.gov.in/",
     "https://echallan.parivahan.gov.in/",
     "https://echallan.parivahan.nic.in/",
     "https://vcourts.gov.in/virtualcourt/",
