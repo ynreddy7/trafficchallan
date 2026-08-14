@@ -129,6 +129,19 @@ const jsonld = [faqJsonLd(faqs)];
     </noscript>
   </section>
 
+  <h2 id={slugify('Where do I check my traffic challan status online?')}>
+    Where do I check my traffic challan status online?
+  </h2>
+  <p>
+    This page decodes the words a portal shows you — it is not itself a challan search, and we hold no challan
+    records. To look up the status, open the official portal that serves your state: both national eChallan
+    portals and every state-run service are listed in our
+    <a href="/echallan-parivahan/">directory of official portals</a>. There you search by challan number, vehicle
+    number or driving licence number, and the results table shows the status word this page explains.
+    <a href="/how-to-check-e-challan/">The online challan check guide</a> walks through each official route step
+    by step.
+  </p>
+
   {statuses.map((s) => (
     <section class="status-entry">
       <h2 id={s.slug}>{question(s.slug, s.term)}</h2>

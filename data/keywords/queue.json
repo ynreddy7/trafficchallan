@@ -3188,8 +3188,8 @@
       "min_seo_difficulty": 0,
       "type": "guide",
       "status": "covered",
-      "covered_by": "how-to-check-e-challan",
-      "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact High (grouped with \"challan check\"). The guide now carries \"challan status\" in two H2s (results table, old history) over content that already explained the Status column. The full four-word string was NOT forced into a heading — that would be stuffing (rule 4)."
+      "covered_by": "challan-status",
+      "note": "Ubersuggest competitor-gap report, 14-Aug-2026. Served by the H2 \"Where do I check my traffic challan status online?\" on /challan-status/, which carries the contiguous phrase and routes to the portal directory and the check guide; the how-to-check guide carries \"online challan check\" for the same cluster."
     },
     {
       "slug_suggestion": "echallan-parivahan",
