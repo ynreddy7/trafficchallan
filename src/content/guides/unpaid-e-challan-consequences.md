@@ -82,9 +82,9 @@ faqs:
 
 Once it reaches a court it is a case, not a bill: you plead guilty and pay online, or you contest it and appear before a magistrate.
 
-## How long before an unpaid challan becomes a traffic challan court case?
+## Traffic challan payment due date: how long before it becomes a court case?
 
-The national default is 90 days. NIC's own eChallan documentation states that if the challan is not paid within 90 days, "as per Rule 167(5) of the Central Motor Vehicle Rules (CMVR), the system automatically forwards the case to the Virtual Court, where adjudication proceedings begin."
+The national default time limit is 90 days. NIC's own eChallan documentation states that if the challan is not paid within 90 days, "as per Rule 167(5) of the Central Motor Vehicle Rules (CMVR), the system automatically forwards the case to the Virtual Court, where adjudication proceedings begin."
 
 States run tighter clocks of their own, and Delhi publishes the clearest one. Under Delhi Traffic Police's General Instructions for red light and overspeed violation detection cameras, red light violation notices and challans are sent to the Virtual Court **within 15 days** and are compounded there, never on the police website. Overspeed, stop-line and wrong-side detections stay payable on the Delhi Traffic Police site for **60 days**, then move to the Virtual Court, where you pay on receiving an SMS. If a challan is still not compounded in the Virtual Court within 60 days, it is sent to the regular court. Elsewhere the window is local — Andhra Pradesh's Prakasam district police post camera challans demanding payment within 15 days. Check your own [state page](/delhi-e-challan/) rather than assuming one national deadline.
 

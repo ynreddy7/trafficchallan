@@ -10,8 +10,8 @@ const newest = newestVerifiedDate();
 const year = new Date().getFullYear();
 ---
 <Base
-  title={`Traffic Fine List India ${year}: All Challan Amounts (MV Act)`}
-  description={`Complete list of Indian traffic fines under the Motor Vehicles Act ${year} — offence, section, first and repeat penalty. Sourced and independently verified.`}
+  title={`Traffic Challan Rate List ${year}: All Fines & Penalties`}
+  description={`Traffic challan rate list ${year}: every fine under the Motor Vehicles Act — offence, section, first and repeat penalty. Sourced and independently verified.`}
   path="/fines/"
   jsonld={[datasetJsonLd(
     'Indian traffic fine schedule (MV Act, as amended)',
@@ -26,7 +26,7 @@ const year = new Date().getFullYear();
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }]}
   dateModified={newest}
 >
-  <h1>Traffic fine list: every challan amount in India</h1>
+  <h1>Traffic challan rate list: every fine amount in India</h1>
   <AnswerBox>
     Traffic fines in India are set by the Motor Vehicles Act (amended 2019). Common penalties: riding
     without a helmet or driving without a licence or insurance run from ₹1,000 to ₹5,000 for a first

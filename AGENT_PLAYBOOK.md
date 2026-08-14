@@ -26,7 +26,7 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
    slug_suggestion in src/content/guides/, add what the note asks for, re-verify the
    guide's facts against its sources and bump its frontmatter last_verified — no new
    file is created, so these do not count against the velocity cap.
-6. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" or "superseded" + "covered_by" were retired during curation — never produce them; skip to the next "pending" item.)
+6. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" or "superseded" + "covered_by" were handled during curation — never produce them; skip to the next "pending" item.) Items with status "retired" are junk or out-of-scope clusters: runs never pick them up and never produce them.
 7. `npm test` must pass. Then `npm run publish:site -- --message "content: <what you added>"`.
    If the gate, tests, links or velocity cap fail: fix the cause or stop WITHOUT pushing;
    never bypass a gate.

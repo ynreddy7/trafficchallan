@@ -312,7 +312,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 15,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "punjab",
@@ -349,7 +350,8 @@
       "max_cpc": 5.25,
       "min_seo_difficulty": 31,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "chandigarh",
@@ -373,7 +375,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 21,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "pending",
@@ -398,7 +401,8 @@
       "max_cpc": 7.63,
       "min_seo_difficulty": 30,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "kolkata-traffic-challan",
@@ -434,7 +438,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 29,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "unpaid-e-challan-consequences"
     },
     {
       "slug_suggestion": "list",
@@ -446,7 +451,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 32,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fines-index (/fines/)"
     },
     {
       "slug_suggestion": "token",
@@ -459,7 +465,8 @@
       "min_seo_difficulty": 35,
       "type": "guide",
       "status": "covered",
-      "covered_by": "challan-discount"
+      "covered_by": "challan-discount",
+      "note": "Delhi Lok Adalat token H2 also added to the e-challan-lok-adalat guide on 2026-08-14; remains covered by challan-discount."
     },
     {
       "slug_suggestion": "photo",
@@ -472,7 +479,8 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 25,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "message",
@@ -484,7 +492,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 20,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "wheeler",
@@ -582,7 +591,8 @@
       "max_cpc": 19.56,
       "min_seo_difficulty": 28,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "challan-discount"
     },
     {
       "slug_suggestion": "rules",
@@ -606,7 +616,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 7,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "unpaid-e-challan-consequences"
     },
     {
       "slug_suggestion": "goa",
@@ -631,7 +642,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 6,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "unpaid-e-challan-consequences"
     },
     {
       "slug_suggestion": "rate-list",
@@ -643,7 +655,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 7,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fines-index (/fines/)"
     },
     {
       "slug_suggestion": "500-apk",
@@ -753,7 +766,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "waiver",
@@ -802,7 +816,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "app-download",
@@ -838,7 +853,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "machine",
@@ -850,7 +866,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "indore-traffic-challan",
@@ -874,7 +891,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 6,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "unpaid-e-challan-consequences"
     },
     {
       "slug_suggestion": "after-months",
@@ -923,7 +941,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "list-2026",
@@ -935,7 +954,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fines-index (/fines/)"
     },
     {
       "slug_suggestion": "police-star",
@@ -949,7 +969,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "mysore-traffic-challan",
@@ -973,7 +994,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "old-details",
@@ -985,7 +1007,8 @@
       "max_cpc": 5.72,
       "min_seo_difficulty": 11,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "link",
@@ -997,7 +1020,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 15,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "vahan",
@@ -1143,7 +1167,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "offence",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: duplicate of the no-parking offence item — kept no-parking (matches data/fines naming)"
     },
     {
       "slug_suggestion": "police-zirakpur",
@@ -1156,7 +1181,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "amount-list",
@@ -1168,7 +1194,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fines-index (/fines/)"
     },
     {
       "slug_suggestion": "fake-message",
@@ -1219,7 +1246,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "offence",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: duplicate of the wrong-side-driving offence item — kept wrong-side-driving (matches data/fines naming)"
     },
     {
       "slug_suggestion": "code-scanner",
@@ -1255,7 +1283,8 @@
       "max_cpc": 1.91,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "patna-traffic-challan",
@@ -1291,7 +1320,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "website",
@@ -1303,7 +1333,8 @@
       "max_cpc": 3.82,
       "min_seo_difficulty": 59,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "gov",
@@ -1315,7 +1346,8 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 60,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "site",
@@ -1339,7 +1371,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "niyam",
@@ -1375,7 +1408,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 15,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan"
     },
     {
       "slug_suggestion": "jump",
@@ -1411,7 +1445,8 @@
       "max_cpc": 5.72,
       "min_seo_difficulty": 16,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "otp",
@@ -1484,7 +1519,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "email",
@@ -1508,7 +1544,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "official-website",
@@ -1520,7 +1557,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 7,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "fake-challan-sms"
     },
     {
       "slug_suggestion": "rules-2026",
@@ -1556,7 +1594,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "police-quetta",
@@ -1568,7 +1607,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-yangon",
@@ -1580,7 +1620,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 13,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "0055",
@@ -1592,7 +1633,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "lawyer-near",
@@ -1616,7 +1658,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 18,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "9-traffic",
@@ -1628,7 +1671,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 18,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "vizag-traffic-challan",
@@ -1652,7 +1696,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "194d",
@@ -1700,7 +1745,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "115",
@@ -1736,7 +1782,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "300-rupees",
@@ -1748,7 +1795,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "police-400",
@@ -1760,7 +1808,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "code",
@@ -1785,7 +1834,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "500-rupees",
@@ -1797,7 +1847,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "8070",
@@ -1809,7 +1860,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "9915",
@@ -1822,7 +1874,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "days",
@@ -1834,7 +1887,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "bhopal-traffic-challan",
@@ -1882,7 +1936,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "expert-lawyer",
@@ -1906,7 +1961,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "enforcement",
@@ -1918,7 +1974,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "jharkhand-payment",
@@ -1967,7 +2024,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "number-search",
@@ -1979,7 +2037,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "status",
@@ -2004,7 +2063,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "under-section",
@@ -2028,7 +2088,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-yamunanagar",
@@ -2040,7 +2101,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-yelahanka",
@@ -2052,7 +2114,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "yatayat",
@@ -2076,7 +2139,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-zakho",
@@ -2088,7 +2152,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-zaxo",
@@ -2100,7 +2165,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-ziarat",
@@ -2112,7 +2178,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-zimbabwe",
@@ -2124,7 +2191,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-zambia",
@@ -2136,7 +2204,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-zrenjanin",
@@ -2148,7 +2217,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-zurich",
@@ -2160,7 +2230,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "184-mva",
@@ -2184,7 +2255,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "police-yanbu",
@@ -2196,7 +2268,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "four-wheeler",
@@ -2220,7 +2293,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "earn-money",
@@ -2232,7 +2306,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "police-model",
@@ -2244,7 +2319,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-yerawada",
@@ -2256,7 +2332,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-quota",
@@ -2268,7 +2345,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "youtube",
@@ -2280,7 +2358,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "8666",
@@ -2292,7 +2371,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "2000",
@@ -2304,7 +2384,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "ranchi-jharkhand",
@@ -2329,7 +2410,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "6-challan",
@@ -2341,7 +2423,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "challan-7",
@@ -2353,7 +2436,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "offence",
@@ -2365,7 +2449,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "179",
@@ -2402,7 +2487,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "police-game",
@@ -2414,7 +2500,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "game",
@@ -2426,7 +2513,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "181",
@@ -2450,7 +2538,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "jalandhar-traffic-challan",
@@ -2474,7 +2563,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "police-years",
@@ -2486,7 +2576,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "jharkhand-ranchi",
@@ -2523,7 +2614,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "6cr",
@@ -2535,7 +2627,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "police-yambol",
@@ -2547,7 +2640,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "2000-rupees",
@@ -2559,7 +2653,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "ksp",
@@ -2583,7 +2678,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "offence",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-yadgar",
@@ -2595,7 +2691,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-qasim",
@@ -2607,7 +2704,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "2022",
@@ -2619,7 +2717,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "waive-off",
@@ -2644,7 +2743,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "7-challan",
@@ -2656,7 +2756,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "police-full",
@@ -2668,7 +2769,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "notice-department",
@@ -2680,7 +2782,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "police-yatayat",
@@ -2692,7 +2795,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "job",
@@ -2704,7 +2808,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "weekend",
@@ -2716,7 +2821,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "9511",
@@ -2728,7 +2834,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: fragment/number noise with no coherent page intent"
     },
     {
       "slug_suggestion": "police-youtube",
@@ -2740,7 +2847,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: traffic-police department/career/misc query — not challan-payer intent"
     },
     {
       "slug_suggestion": "police-yerevan",
@@ -2752,7 +2860,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: foreign/non-India location or nonsense cluster — out of scope for an India e-challan site"
     },
     {
       "slug_suggestion": "1000-rupees",
@@ -2764,7 +2873,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: bare amount/year fragment — no standalone page; amounts are covered by /fines/ and /calculator/"
     },
     {
       "slug_suggestion": "extension",
@@ -2776,7 +2886,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "retired",
+      "note": "retired 2026-08-14: off-topic or no coherent challan-payer intent"
     },
     {
       "slug_suggestion": "nic",

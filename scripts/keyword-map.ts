@@ -25,6 +25,19 @@ export interface KeywordMap {
   unassigned: KeywordRow[];
 }
 
+/**
+ * Queue lifecycle statuses. The generator below only ever writes "pending";
+ * curation and coverage passes move items to:
+ * - "done" (+ completed date): a run produced the page
+ * - "covered" (+ covered_by): an existing page already captures the cluster
+ * - "superseded" (+ covered_by): replaced by a richer queue item
+ * - "retired" (+ note saying why): junk / out-of-scope — scheduled runs never
+ *   pick these up and never produce them (see AGENT_PLAYBOOK step 6)
+ * tests/queue-data.test.ts enforces this vocabulary over data/keywords/queue.json.
+ */
+export type QueueStatus = 'pending' | 'done' | 'covered' | 'superseded' | 'retired';
+export const QUEUE_STATUSES: readonly QueueStatus[] = ['pending', 'done', 'covered', 'superseded', 'retired'];
+
 export interface QueueItem {
   slug_suggestion: string;
   target_keyword: string;
@@ -33,7 +46,7 @@ export interface QueueItem {
   max_cpc: number;
   min_seo_difficulty: number;
   type: 'guide' | 'state' | 'offence';
-  status: 'pending';
+  status: QueueStatus;
 }
 
 // ---------------------------------------------------------------------------

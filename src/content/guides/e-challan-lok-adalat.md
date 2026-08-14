@@ -10,6 +10,9 @@ sources:
   - 'https://haryana.nalsa.gov.in/lok-adalat/'
   - 'https://andhrapradesh.nalsa.gov.in/lok-adalat/'
   - 'https://traffic.delhipolice.gov.in/lokadalat/assets/Instructions.pdf'
+  - 'https://traffic.delhipolice.gov.in/lokadalat/'
+  - >-
+    https://digilawyer.ai/latest-announcements/national-lok-adalat-challan-settlement-dates
   - 'https://delhi.nalsa.gov.in/notifications/'
   - 'https://www.wbtrafficpolice.com/loke-adalat.php'
   - 'https://traffic.delhipolice.gov.in/traffic-offences'
@@ -98,6 +101,12 @@ The caps are strict. A private vehicle may bring a maximum of five notices and t
 Booking is tied to a notified sitting rather than open year-round, so the portal only accepts appointments in the run-up to a scheduled Lok Adalat date. Delhi's wider two-track system is covered on [Delhi e-challan](/delhi-e-challan/).
 
 Most states have no such portal. Andhra Pradesh's SLSA simply says "Litigant public may approach the Legal Services Institution in the nearest court compound for settling their cases through National Lok Adalat" — you walk in, or ask the court where your case is pending to refer it. Uttar Pradesh routes through UPSLSA and its 74 District Legal Services Authorities, Madhya Pradesh's benches sit on a single day across all courts from taluka level upward, and Rajasthan's RSLSA holds statewide sittings several times a year. See [Uttar Pradesh](/uttar-pradesh-e-challan/), [Madhya Pradesh](/madhya-pradesh-e-challan/), [Rajasthan](/rajasthan-e-challan/), [Andhra Pradesh](/andhra-pradesh-e-challan/) and [Haryana](/haryana-e-challan/).
+
+## Delhi Lok Adalat token: when does booking open, and how many get in?
+
+Booking is a short window, not a standing service. As reported for the May 2026 edition, Delhi's token window opened on 4 May at 10:00 AM and ran to 7 May — five days before the 9 May sitting — and Delhi Traffic Police released around 50,000 challans per day for download on the token portal across the four booking days. DSLSA announces the exact windows, daily caps, per-vehicle limits and eligibility cutoffs afresh for every edition, so treat those figures as how the last edition ran rather than a standing rule, and watch `traffic.delhipolice.gov.in/lokadalat/` in the days before each sitting.
+
+For the live dates of the remaining National Lok Adalat sittings — with a countdown to the next one and a calendar reminder that includes the likely Delhi token day — see the [challan discount tracker](/challan-discount/).
 
 ## How much discount do you actually get at a Lok Adalat?
 

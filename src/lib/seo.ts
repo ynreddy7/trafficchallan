@@ -100,6 +100,40 @@ export function articleJsonLd(title: string, description: string, path: string, 
   };
 }
 
+/**
+ * Event node for one National Lok Adalat sitting — emitted per FUTURE sitting
+ * on /challan-discount/. The date comes straight from
+ * data/lok-adalat.json national_sittings (never invented here); future
+ * sittings carry status "scheduled" in that file, mirrored as EventScheduled.
+ * Deliberately NO offers/discount figures: Lok Adalat outcomes are decided by
+ * the bench case by case (CONTENT_STANDARDS rule 11). Valid schema.org is the
+ * bar, not Google rich-result eligibility.
+ */
+export function eventJsonLd(dateISO: string) {
+  const pretty = new Date(dateISO + 'T00:00:00Z').toLocaleDateString('en-IN', {
+    day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
+  });
+  return {
+    '@context': 'https://schema.org', '@type': 'Event',
+    name: `National Lok Adalat — ${pretty}`,
+    startDate: dateISO,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    organizer: {
+      '@type': 'Organization',
+      name: 'National Legal Services Authority (NALSA)',
+      url: 'https://nalsa.gov.in/'
+    },
+    location: {
+      '@type': 'Place',
+      name: 'District Legal Services Authorities across India',
+      address: { '@type': 'PostalAddress', addressCountry: 'IN' }
+    },
+    description:
+      'Statutory settlement sitting where pending cases, including compoundable traffic challans, are settled by compromise before a Lok Adalat bench. The settlement figure is decided by the bench on the day.'
+  };
+}
+
 /** WebApplication node for interactive tools (/calculator/). */
 export function webApplicationJsonLd(name: string, description: string, path: string) {
   return {
@@ -154,6 +188,24 @@ export function offenceTitle(seoName: string, min: number, max: number, year: nu
   const full = `${seoName} ${year}: ${fineAmountShort(min, max)} Penalty & Rules`;
   if (full.length <= TITLE_MAX) return full;
   return `${seoName} ${year}: Penalty & Rules`;
+}
+
+/**
+ * /challan-discount/ <title>: freshness-led when a future National Lok Adalat
+ * sitting exists ("… Next Lok Adalat 12 September"), falling back to the
+ * evergreen tracker title when none is scheduled yet (or the dated form would
+ * blow the SERP budget). The date comes from countdown.ts#nextSitting over
+ * data/lok-adalat.json — never hardcoded.
+ */
+export function discountTitle(year: number, nextSittingISO: string | null): string {
+  if (nextSittingISO) {
+    const d = new Date(nextSittingISO + 'T00:00:00Z').toLocaleDateString('en-IN', {
+      day: 'numeric', month: 'long', timeZone: 'UTC'
+    });
+    const full = `Traffic Challan Discount ${year}: Next Lok Adalat ${d}`;
+    if (full.length <= TITLE_MAX) return full;
+  }
+  return `Traffic Challan Discount ${year}: Live State-by-State Tracker`;
 }
 
 /**

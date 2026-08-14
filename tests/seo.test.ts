@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import {
   breadcrumbJsonLd, faqJsonLd, howToJsonLd, orgJsonLd, websiteJsonLd, datasetJsonLd, webPageJsonLd,
-  articleJsonLd, webApplicationJsonLd, stateTitle, stateH1, offenceTitle, fineAmountShort, lowerSeoName,
-  SITE_LAUNCH_DATE
+  articleJsonLd, webApplicationJsonLd, eventJsonLd, stateTitle, stateH1, offenceTitle, discountTitle,
+  fineAmountShort, lowerSeoName, SITE_LAUNCH_DATE
 } from '../src/lib/seo';
 
 describe('seo builders', () => {
@@ -84,6 +84,24 @@ describe('seo builders', () => {
     expect(pre.datePublished).toBe('2026-08-01');
   });
 
+  it('event node is a scheduled offline NALSA event with Place location and no offers', () => {
+    const e = eventJsonLd('2026-09-12') as any;
+    expect(e['@type']).toBe('Event');
+    expect(e.name).toBe('National Lok Adalat — 12 September 2026');
+    expect(e.startDate).toBe('2026-09-12');
+    expect(e.eventStatus).toBe('https://schema.org/EventScheduled');
+    expect(e.eventAttendanceMode).toBe('https://schema.org/OfflineEventAttendanceMode');
+    expect(e.organizer).toEqual({
+      '@type': 'Organization', name: 'National Legal Services Authority (NALSA)', url: 'https://nalsa.gov.in/'
+    });
+    expect(e.location['@type']).toBe('Place');
+    expect(e.location.name).toBe('District Legal Services Authorities across India');
+    expect(e.location.address.addressCountry).toBe('IN');
+    // Never any offers/discount figure: Lok Adalat outcomes are bench-discretionary.
+    expect(e.offers).toBeUndefined();
+    expect(JSON.stringify(e)).not.toMatch(/%|discount/i);
+  });
+
   it('webApplication node is a free UtilityApplication with absolute url', () => {
     const w = webApplicationJsonLd('Traffic Fine Calculator', 'desc', '/calculator/') as any;
     expect(w['@type']).toBe('WebApplication');
@@ -122,6 +140,18 @@ describe('query-language titles', () => {
   it('offence title drops the amount when the full form exceeds the budget', () => {
     const t = offenceTitle('Mobile Phone While Driving Fine', 1000, 5000, 2026);
     expect(t).toBe('Mobile Phone While Driving Fine 2026: Penalty & Rules');
+    expect(t.length).toBeLessThanOrEqual(62);
+  });
+  it('discount title is freshness-led when a future sitting exists, within ~62 chars', () => {
+    const t = discountTitle(2026, '2026-09-12');
+    expect(t).toBe('Traffic Challan Discount 2026: Next Lok Adalat 12 September');
+    expect(t.length).toBeLessThanOrEqual(62);
+    // longest month name still fits
+    expect(discountTitle(2026, '2026-12-12').length).toBeLessThanOrEqual(62);
+  });
+  it('discount title falls back to the evergreen tracker form with no future sitting', () => {
+    const t = discountTitle(2026, null);
+    expect(t).toBe('Traffic Challan Discount 2026: Live State-by-State Tracker');
     expect(t.length).toBeLessThanOrEqual(62);
   });
   it('lowerSeoName lowercases while preserving acronyms', () => {

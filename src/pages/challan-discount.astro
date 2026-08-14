@@ -9,7 +9,7 @@ import ShareBar from '../components/ShareBar.astro';
 import SourceList from '../components/SourceList.astro';
 import StepList from '../components/StepList.astro';
 import { loadSchemes, loadLokAdalat, loadStates, maxSchemeDate } from '../lib/data';
-import { faqJsonLd, datasetJsonLd } from '../lib/seo';
+import { faqJsonLd, datasetJsonLd, eventJsonLd, discountTitle } from '../lib/seo';
 import { slugify } from '../lib/format';
 import { nextSitting } from '../lib/countdown';
 import type { SchemeRecord } from '../lib/schemas';
@@ -133,11 +133,18 @@ const jsonld = [
     'State-by-state status of traffic e-challan discount, amnesty and one-time-settlement schemes in India, with government-order references, windows, percentages and National Lok Adalat dates. Every record carries sources and a last-verified date.',
     '/challan-discount/',
     [{ url: '/api/schemes.json', encodingFormat: 'application/json' }]
-  )
+  ),
+  // One Event node per FUTURE national sitting, straight from the data —
+  // past sittings never emit an event.
+  ...remaining.map((d) => eventJsonLd(d))
 ];
+
+// Freshness-led title while a sitting is upcoming; evergreen fallback after
+// the year's last sitting until the next cycle's dates land in the data.
+const pageTitle = discountTitle(new Date().getFullYear(), next);
 ---
 <Base
-  title="Traffic Challan Discount 2026: Live State-by-State Tracker"
+  title={pageTitle}
   description="Which states have a real traffic challan discount right now: live tracker of amnesty schemes with government orders, Lok Adalat dates and the rumours to skip."
   path="/challan-discount/"
   jsonld={jsonld}
@@ -185,8 +192,8 @@ const jsonld = [
   <h2 id={slugify('Which states have a challan discount right now?')}>Which states have a challan discount right now?</h2>
   <p>
     Every row is verified against the sourced order or official statement it cites — including the states where the
-    verified answer is "no scheme". A percentage appears only when a government order backs it; proposals and
-    rumours never get one.
+    verified answer is "no scheme". A percentage appears only when a government order backs it; proposals,
+    rumours and forwarded "offers" never get one.
   </p>
   <div class="table-wrap">
     <table class="schedule">

@@ -78,13 +78,13 @@ Two national e-challan portals run side by side, and picking the wrong one is a 
 
 The list does change. If a search returns nothing on one portal, run the same number on the other before concluding you have no challan.
 
-## How do I check traffic challan status, step by step?
+## Traffic challan enquiry by vehicle number, step by step
 
 **On the legacy portal** (echallan.parivahan.gov.in/index/accused-challan): choose Challan Number, Vehicle Number or DL Number, type the number with no spaces or dashes, enter the captcha and click Get Detail. That is the entire search. Identity checks — OTP to the mobile registered on Vahan, Aadhaar OTP, or DL number with date of birth — only appear when you go to pay or view full details.
 
 **On NextGen** (echallan.parivahan.nic.in/challan/challan-services): the services page opens as seven tiles — Check Pending Challan Status, Pay Challan, Download Challan Print, Download Payment Receipt, Check Pending Transaction, Raise Grievance and Check Grievance Status. Click the first one. NextGen asks for more than the old site did: the Vehicle Number tab wants the registration number **plus the Registration Date in DD/MM/YYYY**, and the DL tab wants the licence number plus date of birth. Both are printed on your RC and licence. If the date does not match the Vahan record exactly, the search returns nothing — which reads like "no challans pending" but is not the same thing. When in doubt, use the Challan Number tab with the number from your SMS or notice, which needs no date at all.
 
-## What does the traffic challan list actually show?
+## Challan details and photo: what the results actually show
 
 The results table gives Violator Name, DL/RC Number, Challan No, Transaction ID, State, Department, Challan Date, Amount, Status and Payment Source, with links for Challan Print and Receipt. Two columns matter more than people expect. **Department** tells you whether traffic police or the transport department booked it, which decides who you complain to. **Status** separates a pending challan from a disposed one — a challan you paid at the roadside should already show as settled, and if it does not, that is a receipt problem, not a new fine.
 
@@ -104,6 +104,10 @@ Where a state runs its own system, it often holds city-police challans that neve
 | [Madhya Pradesh](/madhya-pradesh-e-challan/) | echallan.mponline.gov.in + legacy Parivahan | State portal searches by vehicle number only — no challan-number or DL search |
 | [Gujarat](/gujarat-e-challan/) | NextGen + legacy Gujarat Police portal | The old Gujarat portal now holds only challans dated before 13/06/2023 |
 | [Tamil Nadu](/tamil-nadu-e-challan/), [Haryana](/haryana-e-challan/), [Rajasthan](/rajasthan-e-challan/) | NextGen | No separate state challan search documented |
+
+## How do I view old challan history?
+
+The same searches cover history, not just what is due: the results table's Status column separates a pending challan from a disposed one, and the Challan Print and Receipt links stay available for records the portal still holds, so a challan you already paid should show as settled with its receipt. mParivahan carries challan history for the same vehicle or licence alongside the virtual RC and DL. Two quirks from the state table above matter for old challan details: a state's own portal often holds older records the national portal has dropped, and Gujarat's legacy police portal now holds only challans dated before 13/06/2023. A challan that has vanished from every challan portal may simply have been forwarded to court — look it up on Virtual Courts instead (covered below).
 
 ## Can I check a challan on mParivahan, or by traffic challan message?
 
