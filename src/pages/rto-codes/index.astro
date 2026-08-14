@@ -1,48 +1,23 @@
 ---
-import Base from '../layouts/Base.astro';
-import AnswerBox from '../components/AnswerBox.astro';
-import FaqSection from '../components/FaqSection.astro';
-import LastVerified from '../components/LastVerified.astro';
-import ShareBar from '../components/ShareBar.astro';
-import { loadRtoFiles, loadStates } from '../lib/data';
-import { faqJsonLd, datasetJsonLd } from '../lib/seo';
-import { slugify } from '../lib/format';
-import type { RtoStateRecord } from '../lib/schemas';
+import Base from '../../layouts/Base.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import ShareBar from '../../components/ShareBar.astro';
+import { loadRtoFiles, loadStates } from '../../lib/data';
+import { faqJsonLd, datasetJsonLd } from '../../lib/seo';
+import { slugify } from '../../lib/format';
+import { rtoStateHref } from '../../lib/rto-hub';
 
 const rtoStates = [...loadRtoFiles()].sort((a, b) => a.state_name.localeCompare(b.state_name));
 const siteStateSlugs = [...new Set(loadStates().map((s) => s.slug))];
-const siteSlugSet = new Set(siteStateSlugs);
 
 const totalCodes = rtoStates.reduce((n, r) => n + r.codes.length, 0);
 const lastVerified = rtoStates.map((r) => r.last_verified).sort().at(-1)!;
 const codeCount = new Intl.NumberFormat('en-IN').format(totalCodes);
 
-// Per-state verification disclosure, derived straight from the verification
-// block so the page can never overclaim (CONTENT_STANDARDS rule 12).
-const disclosure = (r: RtoStateRecord) => {
-  const n = r.codes.length;
-  const codes = (k: number) => `${k} code${k === 1 ? '' : 's'}`;
-  if (r.verification.method === 'full') {
-    return `All ${codes(n)} verified against the official state transport department list.`;
-  }
-  const sampled = r.verification.sample_size ?? 0;
-  return r.verification.official_list_available
-    ? `Sample-verified: ${sampled} of ${codes(n)} checked against the official transport department list and independent directories.`
-    : `Sample-verified: ${sampled} of ${codes(n)} checked against ${r.sources.length} independent sources — no fetchable official list.`;
-};
-
-// 130 distinct source URLs across the 36 states is too long for one
-// aggregated list, so sources render inside each state's section instead.
-// Repeated hostnames within a state get a counter so every URL stays visible.
-const sourceLabels = (sources: string[]) => {
-  const seen = new Map<string, number>();
-  return sources.map((url) => {
-    const host = new URL(url).hostname.replace(/^www\./, '');
-    const n = (seen.get(host) ?? 0) + 1;
-    seen.set(host, n);
-    return { url, label: n === 1 ? host : `${host} (${n})` };
-  });
-};
+const prettyDate = (d: string) =>
+  new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 
 const faqs = [
   {
@@ -101,8 +76,8 @@ const jsonld = [
     Shahdara.
   </AnswerBox>
   <p>
-    Type any plate or code into the lookup below to decode it on the spot, or scroll down for the full
-    list of all {codeCount} codes across {rtoStates.length} states and union territories.
+    Type any plate or code into the lookup below to decode it on the spot, or open your state in the directory
+    below for its full code list — {codeCount} codes across {rtoStates.length} states and union territories.
   </p>
   <LastVerified date={lastVerified} />
 
@@ -116,45 +91,38 @@ const jsonld = [
     <p class="verified">Checks run in your browser — nothing you type leaves this page.</p>
     <div id="rto-result" class="finder-result" aria-live="polite"></div>
     <noscript>
-      <p>The lookup needs JavaScript — without it, find your code in the state-by-state tables below.</p>
+      <p>The lookup needs JavaScript — without it, open your state's code list from the directory below.</p>
     </noscript>
   </section>
 
-  <h2 id={slugify('Every RTO code in India, state by state')}>Every RTO code in India, state by state</h2>
+  <h2 id={slugify('RTO code lists by state and union territory')}>RTO code lists by state and union territory</h2>
   <p>
-    Jump to a state below. Each section lists every code with its registering office, how that state's list was
+    Open a state for its full code table — every code with its registering office, how that state's list was
     verified, and the sources it was checked against.
   </p>
-  <nav class="jump-nav" aria-label="Jump to state">
-    <ul>
-      {rtoStates.map((r) => <li><a href={`#${r.slug}`}>{r.state_name}</a></li>)}
-    </ul>
-  </nav>
-
-  {rtoStates.map((r) => (
-    <section>
-      <h2 id={r.slug}>{r.state_name} RTO codes ({r.series.join(', ')})</h2>
-      <p class="verified">{disclosure(r)}</p>
-      <div class="table-wrap">
-        <table class="schedule">
-          <thead>
-            <tr><th scope="col">Code</th><th scope="col">Office</th></tr>
-          </thead>
-          <tbody>
-            {r.codes.map((c) => (
-              <tr><td>{c.code}</td><td data-label="Office">{c.office}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <LastVerified date={r.last_verified} />
-      <p class="verified">
-        Sources: {sourceLabels(r.sources).map((s, i) => (
-          <>{i > 0 && ' · '}<a href={s.url} rel="noopener nofollow">{s.label}</a></>
+  <div class="table-wrap">
+    <table class="schedule">
+      <caption>RTO code lists by state and union territory</caption>
+      <thead>
+        <tr>
+          <th scope="col">State / UT</th>
+          <th scope="col">Series</th>
+          <th scope="col">Codes</th>
+          <th scope="col">Last verified</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rtoStates.map((r) => (
+          <tr>
+            <td><a href={rtoStateHref(r.slug)}>{r.state_name}</a></td>
+            <td data-label="Series">{r.series.join(', ')}</td>
+            <td data-label="Codes">{r.codes.length}</td>
+            <td data-label="Last verified"><time datetime={r.last_verified}>{prettyDate(r.last_verified)}</time></td>
+          </tr>
         ))}
-      </p>
-    </section>
-  ))}
+      </tbody>
+    </table>
+  </div>
 
   <FaqSection faqs={faqs} />
 
@@ -162,7 +130,8 @@ const jsonld = [
 
   <script type="application/json" id="rto-data" set:html={islandJson} />
   <script>
-    import { lookupRto, type RtoLookupState } from '../lib/rto-lookup';
+    import { lookupRto, type RtoLookupState } from '../../lib/rto-lookup';
+    import { rtoStateHref, rtoCodeHref } from '../../lib/rto-hub';
 
     interface RtoIslandData { states: RtoLookupState[]; siteSlugs: string[] }
     const data: RtoIslandData = JSON.parse(document.getElementById('rto-data')!.textContent!);
@@ -187,10 +156,17 @@ const jsonld = [
       return el;
     }
 
-    function stateLinks(wrap: HTMLElement, state: { slug: string; state_name: string }) {
+    function stateLinks(wrap: HTMLElement, state: { slug: string; state_name: string }, code?: string) {
       const line = document.createElement('p');
+      if (code) {
+        const codeLink = document.createElement('a');
+        codeLink.href = rtoCodeHref(state.slug, code);
+        codeLink.textContent = `${code} in the ${state.state_name} code list`;
+        line.appendChild(codeLink);
+        line.appendChild(document.createTextNode(' · '));
+      }
       const all = document.createElement('a');
-      all.href = `#${state.slug}`;
+      all.href = rtoStateHref(state.slug);
       all.textContent = `All ${state.state_name} codes`;
       line.appendChild(all);
       if (siteSlugs.has(state.slug)) {
@@ -213,7 +189,7 @@ const jsonld = [
         h3.textContent = `${r.code} — ${r.office}, ${r.state.state_name}`;
         wrap.appendChild(h3);
         p(wrap, `A ${r.code} plate was registered at the ${r.office} office in ${r.state.state_name}.`);
-        stateLinks(wrap, r.state);
+        stateLinks(wrap, r.state, r.code);
       } else if (r.kind === 'state') {
         const h3 = document.createElement('h3');
         h3.textContent = `${r.series} — ${r.state.state_name}`;
@@ -221,7 +197,7 @@ const jsonld = [
         p(
           wrap,
           `${r.series} plates are registered in ${r.state.state_name}, which has ${r.codes_count} RTO code${r.codes_count === 1 ? '' : 's'}. ` +
-            'If you typed a code with a number we do not list, it may be newly created — the state section below has every code we have verified.'
+            "If you typed a code with a number we do not list, it may be newly created — the state's code list page has every code we have verified."
         );
         stateLinks(wrap, r.state);
       } else if (r.kind === 'bh') {

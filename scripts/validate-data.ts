@@ -30,16 +30,26 @@ function loadGuideMeta(): GuideMeta[] {
 }
 
 try {
+  const rtoFiles = loadRtoFiles();
+  // /rto-codes/{state}/ hub pages: one per data/rto/ file, generated from the
+  // same loader src/pages/rto-codes/[state].astro routes from, so the registry
+  // can never drift from the built pages. Slugs are path-scoped
+  // ("rto-codes/maharashtra") because the bare state name already lives in
+  // other namespaces ("maharashtra-e-challan", "fines/maharashtra").
+  const rtoHubPages: PageMeta[] = rtoFiles.map((r) => ({
+    slug: `rto-codes/${r.slug}`,
+    target_keyword: `${r.state_name.toLowerCase()} rto code list`
+  }));
   const violations = runGates({
     states: loadStates(),
     offences: loadOffences(),
     guides: loadGuideMeta(),
     schemes: loadSchemes(),
     lokAdalat: loadLokAdalat(),
-    rtoFiles: loadRtoFiles(),
+    rtoFiles,
     statusFile: loadStatusFile(),
     portalsFile: loadOfficialPortals(),
-    pages: FEATURE_PAGES,
+    pages: [...FEATURE_PAGES, ...rtoHubPages],
     now: new Date()
   });
   if (violations.length) {

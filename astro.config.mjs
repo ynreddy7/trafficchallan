@@ -26,9 +26,12 @@ const TRUST_PAGE_DATE = '2026-08-13';
  * /challan-status/ gets the challan-statuses.json date, which also joins
  * the global max; /fake-challan-sms/ gets the official-portals.json date,
  * which also joins the global max;
- * /rto-codes/ gets the max across data/rto/ files only (its dates never
- * join the global max — slow-moving directory data must not bump
- * site-wide freshness); trust pages get the fixed site-launch date.
+ * each per-state RTO hub (/rto-codes/{state}/, one per data/rto/ file,
+ * mirroring src/pages/rto-codes/[state].astro) gets its own file's date,
+ * and /rto-codes/ (the lookup index) gets the max across data/rto/ files
+ * (RTO dates never join the global max — slow-moving directory data must
+ * not bump site-wide freshness); trust pages get the fixed site-launch
+ * date.
  * Anything not in the map is left without a lastmod by the caller.
  */
 function buildLastmodMap() {
@@ -113,14 +116,19 @@ function buildLastmodMap() {
     allDates.push(portalsFile.last_verified);
   }
 
-  // RTO directory files: their max is /rto-codes/'s own lastmod ONLY —
-  // deliberately NOT pushed into allDates (mirrors data.ts, where
-  // newestVerifiedDate() excludes RTO files by design).
+  // RTO directory files: each file's date is its own hub page's
+  // (/rto-codes/{state}/) lastmod — mirroring the dateModified prop in
+  // src/pages/rto-codes/[state].astro — and their max is /rto-codes/'s (the
+  // lookup index). Deliberately NOT pushed into allDates (mirrors data.ts,
+  // where newestVerifiedDate() excludes RTO files by design).
   const rtoDates = [];
   const rtoDir = join(process.cwd(), 'data', 'rto');
   for (const file of readdirSync(rtoDir).filter((f) => f.endsWith('.json'))) {
     const rec = JSON.parse(readFileSync(join(rtoDir, file), 'utf-8'));
-    if (rec.last_verified) rtoDates.push(rec.last_verified);
+    if (rec.slug && rec.last_verified) {
+      map.set(`/rto-codes/${rec.slug}/`, rec.last_verified);
+      rtoDates.push(rec.last_verified);
+    }
   }
   const rtoMax = [...rtoDates].sort().at(-1);
   if (rtoMax) map.set('/rto-codes/', rtoMax);

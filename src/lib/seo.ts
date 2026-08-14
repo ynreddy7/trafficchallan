@@ -55,6 +55,22 @@ export function datasetJsonLd(
 }
 
 /**
+ * ItemList node for a directory page (e.g. a /rto-codes/{state}/ hub): one
+ * ListItem per entry, each pointing at its own anchor on the page. Names and
+ * URLs come straight from the caller's data records — never invented here.
+ */
+export function itemListJsonLd(name: string, items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org', '@type': 'ItemList',
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((it, i) => ({
+      '@type': 'ListItem', position: i + 1, name: it.name, url: abs(it.path)
+    }))
+  };
+}
+
+/**
  * WebPage node carrying machine-readable dates — the strongest single AEO
  * lever per the GEO-16 citation-prediction study (see
  * .superpowers/upgrade/research.json, aeo.tactics[0]). datePublished is the

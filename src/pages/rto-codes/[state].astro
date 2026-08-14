@@ -1,0 +1,116 @@
+---
+import Base from '../../layouts/Base.astro';
+import AnswerBox from '../../components/AnswerBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import LastVerified from '../../components/LastVerified.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { loadRtoFiles, loadStates } from '../../lib/data';
+import { faqJsonLd, itemListJsonLd } from '../../lib/seo';
+import { slugify } from '../../lib/format';
+import { hasFineListPage } from '../../lib/fine-list';
+import { rtoHubTitle, rtoDisclosure, rtoSourceLabels, rtoCodeHref, rtoHubRelated } from '../../lib/rto-hub';
+import type { RtoStateRecord } from '../../lib/schemas';
+
+// One hub page per data/rto/ file — the same loader the /rto-codes/ index and
+// the gate's page registry (scripts/validate-data.ts) use, so routes, index
+// links and registry entries can never drift apart.
+export async function getStaticPaths() {
+  return loadRtoFiles().map((r) => ({ params: { state: r.slug }, props: { record: r } }));
+}
+
+interface Props { record: RtoStateRecord }
+const { record: r } = Astro.props;
+
+const siteStates = loadStates();
+const siteStateSlugs = new Set(siteStates.map((s) => s.slug));
+const fineListSlugs = new Set(siteStates.filter(hasFineListPage).map((s) => s.slug));
+
+const n = r.codes.length;
+const seriesText = r.series.join(', ');
+const seriesOr = r.series.join(' or ');
+const codesWord = `code${n === 1 ? '' : 's'}`;
+// Example code → office straight from the data: the first entry (usually the
+// state capital's own office).
+const example = r.codes[0];
+const title = rtoHubTitle(r.state_name, r.series, n);
+const path = `/rto-codes/${r.slug}/`;
+
+// FAQs are data-derived only: counts, series letters and offices come from the
+// record; Telangana additionally carries the TS/TG-both-valid fact already
+// published on the /rto-codes/ index FAQ.
+const faqs = [
+  {
+    q: `How many RTO codes does ${r.state_name} have?`,
+    a: `${r.state_name} has ${n} RTO ${codesWord} on the ${r.series.join(' and ')} series, and the table above lists each one with the office that issued it. New codes are added whenever the state carves out a new transport office.`
+  },
+  {
+    q: `Which letters do ${r.state_name} number plates start with?`,
+    a: `${r.state_name} registrations start with ${seriesOr}, followed by the two-digit office number — ${example.code} is the ${example.office} office.`
+  }
+];
+if (r.slug === 'telangana') {
+  faqs.push({
+    q: 'Are old TS codes still valid in Telangana?',
+    a: 'Yes. A number plate keeps its series for the life of the registration, so TS plates issued before Telangana switched its new registrations to TG remain valid.'
+  });
+}
+
+const jsonld = [
+  faqJsonLd(faqs),
+  itemListJsonLd(
+    `${r.state_name} RTO codes and offices`,
+    r.codes.map((c) => ({ name: `${c.code} — ${c.office}`, path: rtoCodeHref(r.slug, c.code) }))
+  )
+];
+---
+<Base
+  title={title}
+  brandSuffix={false}
+  description={`All ${n} ${r.state_name} RTO ${codesWord} (${seriesText} series) with the registering office for each — how the list was verified, its official sources and a last-verified date.`}
+  path={path}
+  jsonld={jsonld}
+  breadcrumbs={[
+    { name: 'Home', path: '/' },
+    { name: 'RTO code lookup', path: '/rto-codes/' },
+    { name: `${r.state_name} RTO codes`, path }
+  ]}
+  dateModified={r.last_verified}
+>
+  <h1>{r.state_name} RTO code list ({seriesText}): every code and office</h1>
+  <AnswerBox>
+    {r.state_name} number plates start with {seriesOr} and the state has {n} RTO {codesWord} —
+    {example.code} is {example.office}. The table below lists every code with its registering office.
+  </AnswerBox>
+  <p>
+    The two digits after {seriesOr} name the Regional Transport Office that registered the vehicle.
+    To decode a full plate or another state's code, use the <a href="/rto-codes/">RTO code lookup</a>.
+  </p>
+  <LastVerified date={r.last_verified} />
+
+  <h2 id={slugify(`${r.state_name} RTO codes and offices`)}>{r.state_name} RTO codes and offices</h2>
+  <p class="verified">{rtoDisclosure(r)}</p>
+  <div class="table-wrap">
+    <table class="schedule">
+      <caption>{r.state_name} RTO codes and offices</caption>
+      <thead>
+        <tr><th scope="col">Code</th><th scope="col">Office</th></tr>
+      </thead>
+      <tbody>
+        {r.codes.map((c) => (
+          <tr id={c.code.toLowerCase()}>
+            <td>{c.code}</td>
+            <td data-label="Office">{c.office}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="verified">
+    Sources: {rtoSourceLabels(r.sources).map((s, i) => (
+      <>{i > 0 && ' · '}<a href={s.url} rel="noopener nofollow">{s.label}</a></>
+    ))}
+  </p>
+
+  <RelatedLinks items={rtoHubRelated(r, siteStateSlugs, fineListSlugs)} />
+  <FaqSection faqs={faqs} />
+</Base>
