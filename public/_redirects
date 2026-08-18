@@ -1,0 +1,169 @@
+# _redirects - Cloudflare Pages legacy-URL map for trafficchallan.com
+#
+# WHAT THIS IS
+# This domain was drop-caught. Before we bought it, the same hostname ran a
+# WordPress blog. This file forwards the handful of that blog's URLs whose
+# subject matter a page on this site actually covers, so a stray old link
+# lands on something useful instead of a 404. Nothing else.
+#
+# HOW MUCH IS AT STAKE: ESSENTIALLY NOTHING. MEASURED, NOT GUESSED.
+# Do not over-invest in this file. The recoverable value is about zero:
+#   * Wayback Machine CDX index for the host, queried 2026-08-19
+#     (http://web.archive.org/cdx/search/cdx?url=trafficchallan.com&matchType=domain):
+#     across the entire archive there are 127 captures and NOT ONE capture of
+#     any inner page of the apex host. Only "/", "/robots.txt", "/favicon.ico"
+#     and "/about-us" were ever crawled - and "/about-us" returned 404 on all
+#     nine of its captures (2014-10-05 ... 2016-11-29), i.e. it never existed.
+#   * A Common Crawl index check across 17 crawls spanning 2018-2026 returned
+#     zero captures of this host, including while the blog was live and
+#     publishing. (Measured before this file was written; the Common Crawl
+#     index API was answering 504 on 2026-08-19 and this was not re-run.)
+#   * Bing shows zero indexed pages for the host.
+# If crawlers never fetched those URLs, essentially nobody links to them. This
+# file exists because it costs a few minutes and catches any stray link, NOT
+# because there is link equity waiting to be reclaimed. Nothing in this repo
+# should ever claim otherwise.
+#
+# WHERE THE OLD URL LIST CAME FROM
+# The inner pages themselves are unarchived, so the list was reconstructed by
+# parsing every internal <a href> out of the three archived apex homepages
+# that returned 200 with the blog on them:
+#   https://web.archive.org/web/20240726015355id_/https://trafficchallan.com/
+#   https://web.archive.org/web/20240923220128id_/https://trafficchallan.com/
+#   https://web.archive.org/web/20250331121826id_/https://trafficchallan.com/
+# (fetch those id_ URLs with `curl --compressed`; without it you get gzip bytes
+# that look like an empty page). That yields 184 distinct old paths: 141 /tag/
+# archives, 26 dated /YYYY/MM/DD/slug/ posts, and the WordPress furniture -
+# author archives, /category/, /page/N/, /sample-page/, feeds, /wp-json/,
+# /xmlrpc.php. The 2025-03-31 capture is a second, later WordPress install
+# using /index.php/ permalinks; its URLs are in here too.
+#
+# THE RULE FOR ADDING ANYTHING HERE
+# Google's site-move guidance, verbatim (read 2026-08-19,
+# https://developers.google.com/search/docs/crawling-indexing/site-move-with-url-changes):
+#   "Don't redirect many old URLs to one irrelevant single URL destination,
+#    such as the home page of the new site. This can confuse users and might
+#    be treated as a soft 404 error."
+# So: an old path is redirected ONLY when a live page here covers the same
+# subject. Where there is no good match it is left to 404 - a 404 is the
+# honest answer and is safer than a topic-flip redirect.
+# 43 of the 184 recovered paths qualified. 141 did not, and are deliberately
+# absent:
+#   * About two thirds of the old blog was exam results, government-job
+#     recruitment and celebrity-net-worth churn (UGC NET, KSET, DSSSB, AP TET,
+#     IIT Dhanbad recruitment, "sarkari result", Munawar Faruqui income, Tata
+#     Technologies IPO ...). Pointing those at challan pages is precisely the
+#     expired-domain topic flip Google's spam policy targets. They 404.
+#   * Toll-plaza and NHAI tags, rights / police-jurisdiction tags, Gujarati
+#     news tags, and one-word autotags (/tag/bike/, /tag/car/, /tag/road/,
+#     /tag/india/) have no page here that answers them. They 404.
+#   * Author archives, /page/N/, /sample-page/, feeds, /wp-json/ and
+#     /xmlrpc.php are WordPress furniture, not content. They 404. Never
+#     recreate them: that content is not ours, and rebuilding a previous
+#     owner's pages to catch residual links is expired-domain abuse.
+#
+# SYNTAX AND LIMITS - confirmed 2026-08-19 against Cloudflare's own docs,
+# https://developers.cloudflare.com/pages/configuration/redirects/
+#   * one rule per line: "[source] [destination] [code?]"; 302 is the default
+#     status code, so every line here states 301 explicitly
+#   * "Lines starting with a # will be treated as comments."
+#   * 2,000 static + 100 dynamic redirects, 2,100 combined. We ship 47 lines,
+#     all static - 2.4% of the static budget.
+#   * "Each redirect declaration has a 1,000-character limit." The longest
+#     line here is 225 characters.
+#   * query strings CANNOT be matched in the source (documented unsupported),
+#     which is why nothing here tries to match ?p=123 style URLs
+#   * "Redirects are always followed, regardless of whether or not an asset
+#     matches the incoming request." A rule here would therefore SHADOW a live
+#     page at the same path - tests/redirects.test.ts fails if any source
+#     collides with a path this site builds.
+#   * "If there are multiple redirects for the same source path, the top-most
+#     redirect is applied." Duplicate sources are also a test failure.
+# No splats (*) or placeholders (:name) are used anywhere in this file. A
+# pattern rule cannot know whether the path it swallows is on-topic, and this
+# whole file is an exercise in only redirecting what we have checked one URL
+# at a time.
+#
+# EVERY DESTINATION IS VERIFIED TO EXIST. tests/redirects.test.ts parses this
+# file and asserts each destination is a page this repo actually builds; a
+# redirect to a 404 is worse than no redirect. If you delete or rename a page,
+# that test tells you which line here to fix.
+#
+# The percent-encoded Gujarati sources are listed twice, in the lower-case hex
+# the old WordPress install emitted in its own links and in the upper-case hex
+# RFC 3986 normalises to. Whether Cloudflare's matcher case-folds percent
+# escapes is not documented; two lines is cheaper than finding out in
+# production.
+
+# The 2025 WordPress re-install (/index.php/ permalinks). Its one real post
+#  and its five tags were all about paying a challan online; the e-challan
+#  category archive is the generic check-your-challan entry point.
+/index.php/2025/03/31/how-to-pay-challan-online/ /how-to-pay-e-challan-online/ 301
+/index.php/tag/online-challan/ /how-to-pay-e-challan-online/ 301
+/index.php/tag/online-echallan-payment/ /how-to-pay-e-challan-online/ 301
+/index.php/tag/echallan/ /how-to-check-e-challan/ 301
+/index.php/tag/echallan-india/ /how-to-check-e-challan/ 301
+/index.php/tag/vehicle-challan-2/ /how-to-check-e-challan/ 301
+/index.php/category/e-challan/ /how-to-check-e-challan/ 301
+
+# Tag archives about paying an e-challan online, including the Hindi
+#  "kaise bhare" / "kaise kare" phrasings -> the how-to-pay guide.
+/tag/e-challan-online-payment/ /how-to-pay-e-challan-online/ 301
+/tag/e-challan-online-kaise-bhare/ /how-to-pay-e-challan-online/ 301
+/tag/e-challan-online-payment-kaise-kare/ /how-to-pay-e-challan-online/ 301
+/tag/how-to-pay-online/ /how-to-pay-e-challan-online/ 301
+/tag/traffic-challan-online/ /how-to-pay-e-challan-online/ 301
+
+# The national portal tag -> our echallan.parivahan.gov.in router page.
+/tag/echallan-parivahan-gov-in/ /echallan-parivahan/ 301
+
+# Gujarat e-challan tags -> the Gujarat state page. The old blog was run out
+#  of Gujarat and tagged city-level variants (Gandhinagar, Vadodara, Surat,
+#  Ahmedabad, Jamnagar); "RTO memo" is the Gujarati term for the challan
+#  itself, so these are challan queries, not RTO-code queries.
+/tag/e-challan-gujarat/ /gujarat-e-challan/ 301
+/tag/e-challan-gujarat-online/ /gujarat-e-challan/ 301
+/tag/e-challan-gujarat-online-payment/ /gujarat-e-challan/ 301
+/tag/echallan-payment-gujarat-gov-in/ /gujarat-e-challan/ 301
+/tag/e-challan-gandhinagar/ /gujarat-e-challan/ 301
+/tag/e-challan-vadodara-memo/ /gujarat-e-challan/ 301
+/tag/e-challan-vadodara-online-payment/ /gujarat-e-challan/ 301
+/tag/gujarat-rto-memo-online-payment/ /gujarat-e-challan/ 301
+/tag/rto-memo-check-online-surat/ /gujarat-e-challan/ 301
+/tag/how-to-pay-online-e-challan-in-ahmedabad/ /gujarat-e-challan/ 301
+/tag/jamnagar-%e0%aa%9f%e0%ab%8d%e0%aa%b0%e0%aa%be%e0%aa%ab%e0%aa%bf%e0%aa%95-%e0%aa%aa%e0%ab%8b%e0%aa%b2%e0%ab%80%e0%aa%b8-%e0%aa%a6%e0%ab%8d%e0%aa%b5%e0%aa%be%e0%aa%b0%e0%aa%be-%e0%aa%b8%e0%aa%98/ /gujarat-e-challan/ 301
+/tag/jamnagar-%E0%AA%9F%E0%AB%8D%E0%AA%B0%E0%AA%BE%E0%AA%AB%E0%AA%BF%E0%AA%95-%E0%AA%AA%E0%AB%8B%E0%AA%B2%E0%AB%80%E0%AA%B8-%E0%AA%A6%E0%AB%8D%E0%AA%B5%E0%AA%BE%E0%AA%B0%E0%AA%BE-%E0%AA%B8%E0%AA%98/ /gujarat-e-challan/ 301
+
+# Gujarati-language Gujarat traffic-rules content -> the Gujarat fine list.
+#  Decoded, these are the tag "Gujarat motar vahan niyamo" (Gujarat motor
+#  vehicle rules) and a 2024-06-06 post titled "Gujarat's traffic rules
+#  and ...".
+/tag/%e0%aa%97%e0%ab%81%e0%aa%9c%e0%aa%b0%e0%aa%be%e0%aa%a4-%e0%aa%ae%e0%ab%8b%e0%aa%9f%e0%aa%b0-%e0%aa%b5%e0%aa%be%e0%aa%b9%e0%aa%a8-%e0%aa%a8%e0%aa%bf%e0%aa%af%e0%aa%ae%e0%ab%8b/ /fines/gujarat/ 301
+/tag/%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4-%E0%AA%AE%E0%AB%8B%E0%AA%9F%E0%AA%B0-%E0%AA%B5%E0%AA%BE%E0%AA%B9%E0%AA%A8-%E0%AA%A8%E0%AA%BF%E0%AA%AF%E0%AA%AE%E0%AB%8B/ /fines/gujarat/ 301
+/2024/06/06/%e0%aa%97%e0%ab%81%e0%aa%9c%e0%aa%b0%e0%aa%be%e0%aa%a4%e0%aa%a8%e0%aa%be-%e0%aa%9f%e0%ab%8d%e0%aa%b0%e0%aa%be%e0%aa%ab%e0%aa%bf%e0%aa%95-%e0%aa%a8%e0%aa%bf%e0%aa%af%e0%aa%ae%e0%ab%8b-%e0%aa%85/ /fines/gujarat/ 301
+/2024/06/06/%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AA%A8%E0%AA%BE-%E0%AA%9F%E0%AB%8D%E0%AA%B0%E0%AA%BE%E0%AA%AB%E0%AA%BF%E0%AA%95-%E0%AA%A8%E0%AA%BF%E0%AA%AF%E0%AA%AE%E0%AB%8B-%E0%AA%85/ /fines/gujarat/ 301
+
+# India-wide fines and traffic-rules tags -> the all-India fine list. The
+#  first is Gujarati for "Motor Vehicles Act". The bike/car-documents tags
+#  are document-compliance queries, which the fine list answers (RC,
+#  licence, insurance, PUC).
+/tag/%e0%aa%ae%e0%ab%8b%e0%aa%9f%e0%aa%b0-%e0%aa%b5%e0%aa%be%e0%aa%b9%e0%aa%a8-%e0%aa%85%e0%aa%a7%e0%aa%bf%e0%aa%a8%e0%aa%bf%e0%aa%af%e0%aa%ae/ /fines/ 301
+/tag/%E0%AA%AE%E0%AB%8B%E0%AA%9F%E0%AA%B0-%E0%AA%B5%E0%AA%BE%E0%AA%B9%E0%AA%A8-%E0%AA%85%E0%AA%A7%E0%AA%BF%E0%AA%A8%E0%AA%BF%E0%AA%AF%E0%AA%AE/ /fines/ 301
+/tag/latest-traffic-fines/ /fines/ 301
+/tag/traffic-rules-fine-list-2024/ /fines/ 301
+/tag/list-of-traffic-violation-u0026-fines-in-india/ /fines/ 301
+/tag/new-traffic-penalty-rate/ /fines/ 301
+/tag/traffic-challan-rate/ /fines/ 301
+/tag/four-wheeler-traffic-fine/ /fines/ 301
+/tag/latest-traffic-rules/ /fines/ 301
+/tag/traffic-rules/ /fines/ 301
+/tag/new-traffic-rules-in-india-2024/ /fines/ 301
+/tag/two-wheeler-traffic-rules-in-india-2024/ /fines/ 301
+/tag/bike-traffic-rules/ /fines/ 301
+/tag/car-traffic-rules/ /fines/ 301
+/tag/bike-documents/ /fines/ 301
+/tag/car-documents/ /fines/ 301
+/tag/traffic-challan/ /fines/ 301
+
+# The only licence tag -> the only licence page we have.
+/tag/driving-license/ /fines/driving-without-licence/ 301

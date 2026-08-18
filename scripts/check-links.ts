@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import fg from 'fast-glob';
 import { extractLocalHrefs, extractExternalHrefs, resolveToDistFile, classifyExternalFailure, classifyExternalStatus } from '../src/lib/linkcheck';
+import { parseRedirects, checkRedirects } from '../src/lib/redirects';
 
 const UA = 'TrafficChallanBot/1.0 (+https://trafficchallan.com/about/)';
 const checkExternalFlag = process.argv.includes('--external');
@@ -88,6 +89,24 @@ async function main() {
   console.log(`internal: ${files.length} page(s), ${internalChecked} link(s) checked, ${internalBroken.length} broken`);
   for (const b of internalBroken) console.error(`  BROKEN internal: ${b.href}  (found in ${b.file})`);
 
+  // public/_redirects, checked against the real build rather than a derived
+  // route list: every legacy URL we forward must land on a page that exists
+  // in dist/. tests/redirects.test.ts runs the same checker against paths
+  // derived from source, so this stays a second, stronger witness.
+  const redirectProblems: string[] = [];
+  const redirectsFile = 'dist/_redirects';
+  if (!existsSync(redirectsFile)) {
+    redirectProblems.push('dist/_redirects is missing — public/_redirects did not reach the build output');
+  } else {
+    const rules = parseRedirects(readFileSync(redirectsFile, 'utf-8'));
+    const distPaths = new Set(
+      files.map((f) => '/' + f.replace(/^dist\//, '').replace(/index\.html$/, ''))
+    );
+    redirectProblems.push(...checkRedirects(rules, distPaths));
+    console.log(`redirects: ${rules.length} rule(s) checked, ${redirectProblems.length} problem(s)`);
+  }
+  for (const p of redirectProblems) console.error(`  BAD redirect: ${p}`);
+
   const externalDead: ExternalResult[] = [];
   const externalWarned: ExternalResult[] = [];
 
@@ -108,7 +127,7 @@ async function main() {
     for (const d of externalDead) console.error(`  DEAD external: ${d.url} — ${d.detail}`);
   }
 
-  if (internalBroken.length || externalDead.length) {
+  if (internalBroken.length || externalDead.length || redirectProblems.length) {
     console.error('check-links: FAILED');
     process.exit(1);
   }
