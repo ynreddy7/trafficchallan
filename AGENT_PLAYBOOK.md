@@ -117,8 +117,10 @@ The /challan-discount/ tracker is only worth existing if it is current. On EVERY
    data/lok-adalat.json — they never count against the velocity cap.
 
 ## Monthly verification run (separate schedule)
-1. `git pull`. For EVERY file in data/states and data/fines, open each source URL and
-   portal URL. Confirm every amount/step/URL is still correct.
+1. `git pull`, then `npm run parked:drain` (same reason as the content run: a blocked run
+   may be holding finished work on the `content-queue` branch). For EVERY file in
+   data/states and data/fines, open each source URL and portal URL. Confirm every
+   amount/step/URL is still correct.
 2. Same for data/schemes/*.json and data/lok-adalat.json: every scheme (all statuses,
    including `closed` and `none`) and every sitting/token fact is re-checked against
    its sources this run.
