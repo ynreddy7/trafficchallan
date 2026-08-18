@@ -140,3 +140,29 @@ export function newestVerifiedDate(): string {
   if (!dates.length) throw new Error('newestVerifiedDate: no dated records found');
   return dates.sort().at(-1)!;
 }
+
+/**
+ * dateModified / LastVerified for /data/ — the newest last_verified across
+ * exactly the four datasets that page documents: states, offences, schemes +
+ * lok-adalat, and the RTO files.
+ *
+ * Deliberately NOT newestVerifiedDate(): /data/ documents no guide, no
+ * challan-status decoder and no official-portals allow-list, so re-verifying
+ * those must not freshen it; and unlike the global max it DOES include RTO
+ * dates, because the RTO directory is one of the four datasets it publishes.
+ *
+ * This MUST stay in agreement with astro.config.mjs's buildLastmodMap(),
+ * which independently computes the same max for the '/data/' sitemap
+ * <lastmod> entry — change both together.
+ */
+export function dataPageDate(): string {
+  const dates = [
+    ...loadStates().map((s) => s.last_verified),
+    ...loadOffences().map((o) => o.last_verified),
+    ...loadSchemes().map((s) => s.last_verified),
+    loadLokAdalat().last_verified,
+    ...loadRtoFiles().map((r) => r.last_verified)
+  ];
+  if (!dates.length) throw new Error('dataPageDate: no dated records found');
+  return dates.sort().at(-1)!;
+}

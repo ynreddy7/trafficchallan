@@ -9,7 +9,8 @@ import ShareBar from '../components/ShareBar.astro';
 import SourceList from '../components/SourceList.astro';
 import StepList from '../components/StepList.astro';
 import { loadSchemes, loadLokAdalat, loadStates, maxSchemeDate } from '../lib/data';
-import { faqJsonLd, datasetJsonLd, eventJsonLd, discountTitle } from '../lib/seo';
+import { faqJsonLd, eventJsonLd, discountTitle } from '../lib/seo';
+import { datasetNode, findDataset } from '../lib/open-data';
 import { slugify } from '../lib/format';
 import { nextSitting } from '../lib/countdown';
 import type { SchemeRecord } from '../lib/schemas';
@@ -128,12 +129,9 @@ const islandJson = JSON.stringify(islandData).replace(/</g, '\\u003c');
 
 const jsonld = [
   faqJsonLd(faqs),
-  datasetJsonLd(
-    'Indian traffic challan discount & amnesty scheme tracker',
-    'State-by-state status of traffic e-challan discount, amnesty and one-time-settlement schemes in India, with government-order references, windows, percentages and National Lok Adalat dates. Every record carries sources and a last-verified date.',
-    '/challan-discount/',
-    [{ url: '/api/schemes.json', encodingFormat: 'application/json' }]
-  ),
+  // Same node /data/ publishes for this dataset, pointed at this page — one
+  // descriptor, so the two can never disagree about what the data contains.
+  datasetNode(findDataset('discount-schemes'), { path: '/challan-discount/', sameAsPath: '/data/#discount-schemes' }),
   // One Event node per FUTURE national sitting, straight from the data —
   // past sittings never emit an event.
   ...remaining.map((d) => eventJsonLd(d))

@@ -42,12 +42,16 @@ function buildLastmodMap() {
   // page (mirrors src/lib/fine-list.ts hasFineListPage()); its lastmod is
   // computed after the fines loop below, once the newest fine date is known.
   const fineListStates = [];
+  // Kept separately from allDates because /data/ documents exactly four
+  // datasets (states + fines + schemes/lok-adalat + RTO) and no others.
+  const stateDates = [];
   const statesDir = join(process.cwd(), 'data', 'states');
   for (const file of readdirSync(statesDir).filter((f) => f.endsWith('.json'))) {
     const rec = JSON.parse(readFileSync(join(statesDir, file), 'utf-8'));
     if (rec.slug && rec.last_verified) {
       map.set(`/${rec.slug}-e-challan/`, rec.last_verified);
       allDates.push(rec.last_verified);
+      stateDates.push(rec.last_verified);
       if (Object.keys(rec.fine_overrides ?? {}).length > 0) fineListStates.push(rec);
     }
   }
@@ -136,6 +140,16 @@ function buildLastmodMap() {
   }
   const rtoMax = [...rtoDates].sort().at(-1);
   if (rtoMax) map.set('/rto-codes/', rtoMax);
+
+  // /data/ (the open-data page) documents exactly four datasets — states,
+  // fines, schemes + lok-adalat, and the RTO files — so its lastmod is the max
+  // across those four and nothing else. Deliberately NOT the global max: it
+  // documents no guide, no challan-status decoder and no official-portals
+  // allow-list, and unlike the global max it DOES include RTO dates. Mirrors
+  // src/lib/data.ts dataPageDate(), which the page uses for its dateModified
+  // prop — change both together.
+  const dataPageMax = [...stateDates, ...fineDates, ...schemeDates, ...rtoDates].sort().at(-1);
+  if (dataPageMax) map.set('/data/', dataPageMax);
 
   const newest = allDates.sort().at(-1);
   if (newest) {

@@ -3,12 +3,16 @@ import { getCollection } from 'astro:content';
 import { loadStates, loadOffences, loadRtoFiles } from '../lib/data';
 import { hasFineListPage } from '../lib/fine-list';
 import { ORIGIN } from '../lib/seo';
+import { openDatasets } from '../lib/open-data';
 
 export const GET: APIRoute = async () => {
   const states = loadStates();
   const offences = loadOffences();
   const rtoStates = [...loadRtoFiles()].sort((a, b) => a.state_name.localeCompare(b.state_name));
   const guides = await getCollection('guides');
+  // Counted from the dataset descriptors /data/ renders, so this line and the
+  // page can never disagree about how many endpoints exist.
+  const endpointCount = openDatasets().reduce((n, d) => n + d.endpoints.length, 0);
   const lines = [
     '# TrafficChallan',
     '',
@@ -42,11 +46,14 @@ export const GET: APIRoute = async () => {
     `- [Challan discount & Lok Adalat tracker](${ORIGIN}/challan-discount/): state-by-state discount/amnesty scheme status with government-order sources, next National Lok Adalat date, Delhi token steps`,
     '',
     '## Data',
+    `- [Open data & API documentation](${ORIGIN}/data/): the human-readable documentation for all ${endpointCount} endpoints below — per-dataset record counts, the field-by-field schema of every payload (derived from the validation schemas themselves), the CC BY 4.0 licence terms and exactly what they do and do not cover, copy-paste citation lines, and a measured provenance note per dataset stating what share of its citations are official government sources and what share are third-party`,
     `- [Fine schedule (JSON)](${ORIGIN}/api/fines.json): every offence record, machine-readable, CC BY 4.0 with attribution`,
     `- [Fine schedule (CSV)](${ORIGIN}/api/fines.csv): same fine schedule as CSV`,
     `- [State records (JSON)](${ORIGIN}/api/states.json): every state's portals, check/pay steps and fine overrides, machine-readable`,
     `- [Discount schemes (JSON)](${ORIGIN}/api/schemes.json): per-state discount/amnesty scheme status + Lok Adalat dates, machine-readable`,
-    `- [RTO codes (JSON)](${ORIGIN}/api/rto-codes.json): every RTO code with its registering office and state, machine-readable`
+    `- [RTO codes (JSON)](${ORIGIN}/api/rto-codes.json): every RTO code with its registering office and state, machine-readable`,
+    '',
+    `All ${endpointCount} endpoints send Access-Control-Allow-Origin: *. There is no API key and no sign-up. Every JSON payload is an envelope with \`updated\` (the newest last_verified inside it), \`source\`, \`license\` and one key holding the records.`
   ];
   return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };

@@ -37,11 +37,19 @@ const description =
   description={description}
   path="/compare/"
   jsonld={[
-    datasetJsonLd(
-      'Traffic fine comparison across Indian states',
-      'State-notified fine amounts for common traffic offences compared against the central Motor Vehicles Act figure, state by state.',
-      '/compare/'
-    )
+    datasetJsonLd({
+      name: 'Traffic fine comparison across Indian states',
+      description:
+        'State-notified fine amounts for common traffic offences compared against the central Motor Vehicles Act figure, state by state. Every figure carries the notification it came from and the date it was last verified.',
+      path: '/compare/',
+      dateModified: newestVerified,
+      sameAsPath: '/data/#state-records',
+      keywords: ['traffic fines', 'India', 'state comparison', 'Motor Vehicles Act', 'e-challan'],
+      distributions: [
+        { url: '/api/states.json', encodingFormat: 'application/json' },
+        { url: '/api/fines.json', encodingFormat: 'application/json' }
+      ]
+    })
   ]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Compare', path: '/compare/' }]}
   dateModified={newestVerified}

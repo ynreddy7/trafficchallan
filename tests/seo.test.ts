@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   breadcrumbJsonLd, faqJsonLd, howToJsonLd, orgJsonLd, websiteJsonLd, datasetJsonLd, webPageJsonLd,
   articleJsonLd, webApplicationJsonLd, eventJsonLd, stateTitle, stateH1, offenceTitle, discountTitle,
-  fineListTitle, fineListH1, fineAmountShort, lowerSeoName, SITE_LAUNCH_DATE
+  fineListTitle, fineListH1, fineAmountShort, lowerSeoName, SITE_LAUNCH_DATE, LICENSE_URL
 } from '../src/lib/seo';
 
 describe('seo builders', () => {
@@ -31,21 +31,75 @@ describe('seo builders', () => {
     expect(h.step[0]['@type']).toBe('HowToStep');
   });
   it('dataset carries absolute url', () => {
-    expect((datasetJsonLd('Fines', 'desc', '/fines/') as any).url).toBe('https://trafficchallan.com/fines/');
+    const d = datasetJsonLd({ name: 'Fines', description: 'desc', path: '/fines/', dateModified: '2026-08-12' }) as any;
+    expect(d.url).toBe('https://trafficchallan.com/fines/');
   });
   it('dataset omits distribution when none given', () => {
-    const d = datasetJsonLd('Fines', 'desc', '/fines/') as any;
+    const d = datasetJsonLd({ name: 'Fines', description: 'desc', path: '/fines/', dateModified: '2026-08-12' }) as any;
     expect(d.distribution).toBeUndefined();
   });
   it('dataset carries DataDownload distributions with absolute contentUrl', () => {
-    const d = datasetJsonLd('Fines', 'desc', '/fines/', [
-      { url: '/api/fines.json', encodingFormat: 'application/json' },
-      { url: '/api/fines.csv', encodingFormat: 'text/csv' }
-    ]) as any;
+    const d = datasetJsonLd({
+      name: 'Fines', description: 'desc', path: '/fines/', dateModified: '2026-08-12',
+      distributions: [
+        { url: '/api/fines.json', encodingFormat: 'application/json' },
+        { url: '/api/fines.csv', encodingFormat: 'text/csv' }
+      ]
+    }) as any;
     expect(d.distribution).toHaveLength(2);
     expect(d.distribution[0]).toEqual({
       '@type': 'DataDownload', contentUrl: 'https://trafficchallan.com/api/fines.json', encodingFormat: 'application/json'
     });
+  });
+
+  // Google's Dataset reference (read 2026-08-19) requires name + description
+  // and recommends the rest; these are the properties datasetJsonLd promises.
+  it('dataset emits the licence, spatial/temporal coverage, version and catalog on every node', () => {
+    const d = datasetJsonLd({ name: 'Fines', description: 'desc', path: '/fines/', dateModified: '2026-08-12' }) as any;
+    expect(d.license).toBe('https://creativecommons.org/licenses/by/4.0/');
+    expect(d.license).toBe(LICENSE_URL);
+    expect(d.spatialCoverage).toEqual({
+      '@type': 'Place', name: 'India', address: { '@type': 'PostalAddress', addressCountry: 'IN' }
+    });
+    // Open-ended ISO 8601 interval — never a closed one nobody has checked.
+    expect(d.temporalCoverage).toBe('2026-08-12/..');
+    expect(d.dateModified).toBe('2026-08-12');
+    expect(d.version).toBe('2026-08-12');
+    expect(d.isAccessibleForFree).toBe(true);
+    expect(d.creator['@type']).toBe('Organization');
+    expect(d.includedInDataCatalog).toEqual({
+      '@type': 'DataCatalog', name: 'TrafficChallan open data', url: 'https://trafficchallan.com/data/'
+    });
+  });
+  it('dataset emits keywords, identifier, sameAs, citation, variableMeasured and measurementTechnique when given', () => {
+    const d = datasetJsonLd({
+      name: 'Fines', description: 'desc', path: '/data/#fine-schedule', dateModified: '2026-08-12',
+      keywords: ['traffic fines', 'India'],
+      identifierPath: '/api/fines.json',
+      sameAsPath: '/fines/',
+      citation: [{ name: 'MV Act 1988 s.200', url: 'https://www.indiacode.nic.in/x' }],
+      variables: [{ name: 'base_fine_min', description: 'Lowest rupee figure.' }],
+      measurementTechnique: 'Read from the statute text on India Code.'
+    }) as any;
+    expect(d.keywords).toEqual(['traffic fines', 'India']);
+    expect(d.identifier).toBe('https://trafficchallan.com/api/fines.json');
+    expect(d.sameAs).toBe('https://trafficchallan.com/fines/');
+    expect(d.citation).toEqual([
+      { '@type': 'CreativeWork', name: 'MV Act 1988 s.200', url: 'https://www.indiacode.nic.in/x' }
+    ]);
+    expect(d.variableMeasured).toEqual([
+      { '@type': 'PropertyValue', name: 'base_fine_min', description: 'Lowest rupee figure.' }
+    ]);
+    expect(d.measurementTechnique).toBe('Read from the statute text on India Code.');
+  });
+  it('dataset omits the optional recommended properties rather than emitting empties', () => {
+    const d = datasetJsonLd({
+      name: 'Fines', description: 'desc', path: '/fines/', dateModified: '2026-08-12',
+      keywords: [], citation: [], variables: []
+    }) as any;
+    for (const k of ['keywords', 'identifier', 'sameAs', 'citation', 'variableMeasured', 'measurementTechnique']) {
+      expect(d[k]).toBeUndefined();
+    }
   });
 
   it('webPage jsonld carries site-launch datePublished, mirrored dateModified/lastReviewed and isPartOf, when dateModified is on/after launch', () => {

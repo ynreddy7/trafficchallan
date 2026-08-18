@@ -5,7 +5,8 @@ import FaqSection from '../../components/FaqSection.astro';
 import LastVerified from '../../components/LastVerified.astro';
 import ShareBar from '../../components/ShareBar.astro';
 import { loadRtoFiles, loadStates } from '../../lib/data';
-import { faqJsonLd, datasetJsonLd } from '../../lib/seo';
+import { faqJsonLd } from '../../lib/seo';
+import { datasetNode, findDataset } from '../../lib/open-data';
 import { slugify } from '../../lib/format';
 import { rtoStateHref } from '../../lib/rto-hub';
 
@@ -53,12 +54,9 @@ const islandJson = JSON.stringify(islandData).replace(/</g, '\\u003c');
 
 const jsonld = [
   faqJsonLd(faqs),
-  datasetJsonLd(
-    'Indian RTO code directory — all states and union territories',
-    `Every Regional Transport Office code in India (${codeCount} codes across ${rtoStates.length} states and union territories) with the registering office each code belongs to, verified against official state transport department lists where published and against sampled independent directories elsewhere, with per-state sources and last-verified dates.`,
-    '/rto-codes/',
-    [{ url: '/api/rto-codes.json', encodingFormat: 'application/json' }]
-  )
+  // Same node /data/ publishes for this dataset, pointed at this page — one
+  // descriptor, so the two can never disagree about what the data contains.
+  datasetNode(findDataset('rto-codes'), { path: '/rto-codes/', sameAsPath: '/data/#rto-codes' })
 ];
 ---
 <Base

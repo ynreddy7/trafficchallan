@@ -1800,3 +1800,46 @@ details p:last-child {
   padding: 0.3rem 0.6rem;
   border-radius: var(--radius-sm);
 }
+
+/* --- /data/ open-data page ------------------------------------------------ */
+
+/* Field and endpoint names are literals readers retype — monospace so a
+   trailing underscore or a dot cannot be mistaken for punctuation. No
+   system mono is guaranteed, so the stack ends at the generic family. */
+code {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+/* Copy-paste citation lines. Deliberately not a <pre>: the lines must wrap on
+   a phone, and they are still one selectable block. */
+.cite-block {
+  background: var(--surface-tint);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 0.95rem;
+  margin: 0 0 1.4rem;
+}
+.cite-block p {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0 0 0.75rem;
+  overflow-wrap: anywhere;
+}
+.cite-block p:last-child {
+  margin-bottom: 0;
+}
+
+/* Per-dataset block: a hairline keeps four documented datasets, each with its
+   own schema tables, from reading as one undifferentiated wall. */
+.dataset {
+  border-top: 1px solid var(--rule);
+  margin-top: 2.6rem;
+}
+.dataset > h2:first-child {
+  margin-top: 1.6rem;
+}

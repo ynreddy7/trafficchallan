@@ -39,15 +39,94 @@ export function howToJsonLd(name: string, steps: string[]) {
 }
 export interface DatasetDistribution { url: string; encodingFormat: string }
 
-export function datasetJsonLd(
-  name: string,
-  description: string,
-  path: string,
-  distributions?: DatasetDistribution[]
-) {
+/** The one licence every published dataset carries. Version-specific URL, as
+ *  Google's Dataset docs require ("Provide version-specific URLs; avoid
+ *  generic license pages"). */
+export const LICENSE_URL = 'https://creativecommons.org/licenses/by/4.0/';
+export const LICENSE_LABEL = 'CC BY 4.0';
+
+export interface DatasetJsonLdInput {
+  name: string;
+  description: string;
+  /** Page describing the dataset — schema.org `url`. */
+  path: string;
+  /** Newest last_verified across the dataset's records. Drives dateModified,
+   *  `version` and the open-ended `temporalCoverage` interval. */
+  dateModified: string;
+  distributions?: DatasetDistribution[];
+  keywords?: string[];
+  /** Canonical endpoint path, emitted as `identifier` (a URL is one of the
+   *  types schema.org accepts; we mint no DOIs, so the stable endpoint URL is
+   *  the honest identifier rather than an invented one). */
+  identifierPath?: string;
+  /** Primary sources the data rests on and that reusers should cite alongside
+   *  it — never the dataset itself (Google: "Do not use for citing the
+   *  dataset itself"). */
+  citation?: { name: string; url: string }[];
+  /** Field-level documentation → `variableMeasured`. Derived from the zod
+   *  schemas by src/lib/schema-doc.ts, so it cannot drift from the payload. */
+  variables?: { name: string; description: string }[];
+  /** How the records were verified → `measurementTechnique`. */
+  measurementTechnique?: string;
+  /** Reference page that unambiguously identifies the dataset → `sameAs`. */
+  sameAsPath?: string;
+}
+
+/**
+ * Dataset node, built against Google's Dataset structured-data reference
+ * (developers.google.com/search/docs/appearance/structured-data/dataset,
+ * read 2026-08-19).
+ *
+ * Required there: name, description. Recommended and emitted here: creator,
+ * citation, identifier, isAccessibleForFree, keywords, license,
+ * measurementTechnique, sameAs, spatialCoverage, temporalCoverage,
+ * variableMeasured, version, url, plus distribution.contentUrl /
+ * distribution.encodingFormat for each download.
+ *
+ * `dateModified`, `inLanguage` and `includedInDataCatalog` are NOT on
+ * Google's list. They are valid schema.org (Dataset is a CreativeWork) and
+ * are kept deliberately: dateModified mirrors the page's visible
+ * "Last verified" date, which is this site's whole freshness contract.
+ *
+ * Not emitted: funder (there is none), alternateName, hasPart/isPartOf
+ * (the catalog relationship is carried by includedInDataCatalog instead).
+ */
+export function datasetJsonLd(input: DatasetJsonLdInput) {
+  const {
+    name, description, path, dateModified, distributions, keywords,
+    identifierPath, citation, variables, measurementTechnique, sameAsPath
+  } = input;
   return {
     '@context': 'https://schema.org', '@type': 'Dataset',
-    name, description, url: abs(path), creator: orgJsonLd(), isAccessibleForFree: true, inLanguage: 'en-IN',
+    name, description,
+    url: abs(path),
+    ...(sameAsPath ? { sameAs: abs(sameAsPath) } : {}),
+    ...(identifierPath ? { identifier: abs(identifierPath) } : {}),
+    creator: orgJsonLd(),
+    license: LICENSE_URL,
+    isAccessibleForFree: true,
+    inLanguage: 'en-IN',
+    ...(keywords && keywords.length ? { keywords } : {}),
+    spatialCoverage: {
+      '@type': 'Place', name: 'India',
+      address: { '@type': 'PostalAddress', addressCountry: 'IN' }
+    },
+    // Open-ended ISO 8601 interval: the records state the position as verified
+    // on `dateModified` and stand until re-verified. Claiming a closed
+    // interval would assert an end date nobody has checked.
+    temporalCoverage: `${dateModified}/..`,
+    dateModified,
+    version: dateModified,
+    ...(measurementTechnique ? { measurementTechnique } : {}),
+    ...(citation && citation.length
+      ? { citation: citation.map((c) => ({ '@type': 'CreativeWork', name: c.name, url: c.url })) }
+      : {}),
+    ...(variables && variables.length
+      ? { variableMeasured: variables.map((v) => ({ '@type': 'PropertyValue', name: v.name, description: v.description })) }
+      : {}),
+    includedInDataCatalog: {
+      '@type': 'DataCatalog', name: 'TrafficChallan open data', url: abs('/data/')
+    },
     ...(distributions && distributions.length
       ? { distribution: distributions.map((d) => ({ '@type': 'DataDownload', contentUrl: abs(d.url), encodingFormat: d.encodingFormat })) }
       : {})

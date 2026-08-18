@@ -1,0 +1,255 @@
+---
+import Base from '../layouts/Base.astro';
+import AnswerBox from '../components/AnswerBox.astro';
+import LastVerified from '../components/LastVerified.astro';
+import ShareBar from '../components/ShareBar.astro';
+import { dataPageDate } from '../lib/data';
+import { LICENSE_URL, LICENSE_LABEL, ORIGIN } from '../lib/seo';
+import { openDatasets, datasetNode, findDataset } from '../lib/open-data';
+import { slugify } from '../lib/format';
+
+const datasets = openDatasets();
+const lastVerified = dataPageDate();
+
+const endpointCount = datasets.reduce((n, d) => n + d.endpoints.length, 0);
+const totalCitations = datasets.reduce((n, d) => n + d.provenance.citations, 0);
+const totalOfficial = datasets.reduce((n, d) => n + d.provenance.official, 0);
+// Looked up by label rather than by position so reordering a dataset's stat
+// list can never silently change what the meta description claims.
+const rtoCodeCount = findDataset('rto-codes', datasets).counts.find((c) => c.label === 'RTO codes')!.value;
+
+const prettyDate = (d: string) =>
+  new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+const num = (n: number) => new Intl.NumberFormat('en-IN').format(n);
+
+// One Dataset node per dataset, built by the shared descriptor so this page
+// and the hub page each dataset drives emit identical markup. Field choice
+// follows Google's Dataset structured-data reference (read 2026-08-19) — see
+// src/lib/seo.ts#datasetJsonLd for required vs recommended.
+const jsonld = datasets.map((d) => datasetNode(d));
+---
+<Base
+  title="India Traffic Challan Open Data: Free APIs, CC BY 4.0"
+  brandSuffix={false}
+  description={`Free JSON and CSV datasets behind trafficchallan.com: MV Act fine schedule, state e-challan records, discount schemes and ${num(rtoCodeCount)} RTO codes. CC BY 4.0.`}
+  path="/data/"
+  jsonld={jsonld}
+  breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Open data', path: '/data/' }]}
+  dateModified={lastVerified}
+>
+  <h1>Open data: India traffic fines, e-challan portals and RTO codes</h1>
+  <AnswerBox>
+    This site publishes {datasets.length} of its datasets as {endpointCount} open endpoints — the Motor
+    Vehicles Act fine schedule, state e-challan records, discount schemes and India's RTO code directory.
+    They are free to reuse, including commercially, under CC BY 4.0.
+  </AnswerBox>
+  <p>
+    No key, no sign-up, no registration. Every record carries the URLs it was verified against and the date it
+    was last checked, and every dataset below states how well sourced it actually is — measured from those same
+    URLs, not asserted. Across those {datasets.length} datasets that is {num(totalOfficial)} official citations out of
+    {' '}{num(totalCitations)}.
+  </p>
+  <LastVerified date={lastVerified} />
+
+  <nav class="jump-nav" aria-label="Datasets on this page">
+    <ul>
+      <li><a href="#licence">Licence</a></li>
+      <li><a href="#citation">How to cite</a></li>
+      <li><a href="#envelope">Response format</a></li>
+      <li><a href="#provenance">Provenance</a></li>
+      {datasets.map((d) => <li><a href={`#${d.id}`}>{d.heading}</a></li>)}
+    </ul>
+  </nav>
+
+  <h2 id="licence">Licence: {LICENSE_LABEL}</h2>
+  <p>
+    These datasets are published under the
+    {' '}<a href={LICENSE_URL} rel="noopener">Creative Commons Attribution 4.0 International licence</a>
+    {' '}(CC BY 4.0). You may copy, redistribute, adapt and build on them, for any purpose including
+    commercially, as long as you give credit, link to the licence, and say if you changed anything. The
+    suggested credit line is in <a href="#citation">How to cite</a> below.
+  </p>
+  <p>
+    Being precise about <strong>what</strong> that licence covers matters more than the badge. What we can
+    license is our own work: the selection and arrangement of these records, the verification metadata
+    (<code>last_verified</code>, the RTO <code>verification</code> block and its sample sizes, the scheme
+    <code>status</code> classification), and the descriptive text we wrote — descriptions, notes, step lists
+    and FAQ answers.
+  </p>
+  <p>
+    What we do <strong>not</strong> claim, and could not license to you: the underlying facts themselves. A
+    statutory fine amount, a Motor Vehicles Act section number, the name of an RTO office, the address of a
+    government portal — those are facts published by the government, and they are not ours. We claim no rights
+    over any Government of India or state government publication that this data is drawn from or that it links
+    to. That is why every record carries its own source URLs: the primary material is one click away, and you
+    can take it from there directly.
+  </p>
+  <p class="legal-note">
+    The licence deed itself makes the same point about material we could not license in the first place:
+    &ldquo;You do not have to comply with the license for elements of the material in the public domain or
+    where your use is permitted by an applicable exception or limitation.&rdquo;
+    (<a href={LICENSE_URL} rel="noopener">creativecommons.org/licenses/by/4.0/</a>, read 19 August 2026.)
+    This is our licensing position, not legal advice.
+  </p>
+
+  <h2 id="citation">How to cite</h2>
+  <p>Copy the line for the dataset you used:</p>
+  <div class="cite-block">
+    {datasets.map((d) => <p>{d.citationLine}</p>)}
+  </div>
+  <p>
+    The version string is the dataset's newest <code>last_verified</code> date, which is also the
+    {' '}<code>updated</code> field in the response envelope — quote it so readers know which snapshot you
+    worked from.
+  </p>
+
+  <h2 id="envelope">How the endpoints respond</h2>
+  <p>
+    Every JSON endpoint returns the same envelope: <code>updated</code> (the newest
+    {' '}<code>last_verified</code> inside the payload), <code>source</code> (the human page for this data),
+    {' '}<code>license</code>, and one key holding the records. The CSV endpoint returns a header row followed
+    by one row per offence.
+  </p>
+  <p>
+    All {endpointCount} endpoints send <code>Access-Control-Allow-Origin: *</code>, so they work from browser JavaScript.
+    They are static files on a CDN: there is no API key, no sign-up and no rate limit imposed by us. They are
+    regenerated when the site rebuilds, so poll no more often than daily — the <code>updated</code> field tells
+    you whether anything actually moved.
+  </p>
+  <div class="table-wrap">
+    <table class="schedule">
+      <caption>All {endpointCount} endpoints</caption>
+      <thead>
+        <tr>
+          <th scope="col">Endpoint</th>
+          <th scope="col">Format</th>
+          <th scope="col">Dataset</th>
+          <th scope="col">Records</th>
+          <th scope="col">Last verified</th>
+        </tr>
+      </thead>
+      <tbody>
+        {datasets.flatMap((d) => d.endpoints.map((e) => (
+          <tr>
+            <td><a href={e.path}><code>{e.path}</code></a></td>
+            <td data-label="Format">{e.formatLabel}</td>
+            <td data-label="Dataset"><a href={`#${d.id}`}>{d.heading}</a></td>
+            <td data-label="Records">{num(d.counts[0].value)} {d.counts[0].label.toLowerCase()}</td>
+            <td data-label="Last verified"><time datetime={d.lastVerified}>{prettyDate(d.lastVerified)}</time></td>
+          </tr>
+        )))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="provenance">Provenance at a glance</h2>
+  <p>
+    Counted from the <code>sources</code> array on every record in these datasets, at build time. &ldquo;Official&rdquo;
+    means an Indian government hostname (<code>.gov.in</code> or <code>.nic.in</code>) or one of a small set of
+    department-run sites on other domains that we fetched and confirmed individually — never a domain assumed
+    official from its suffix. Everything else counts as third-party, including reputable press.
+  </p>
+  <div class="table-wrap">
+    <table class="schedule">
+      <caption>Source citations by dataset</caption>
+      <thead>
+        <tr>
+          <th scope="col">Dataset</th>
+          <th scope="col">Files</th>
+          <th scope="col">Citations</th>
+          <th scope="col">Official</th>
+          <th scope="col">Third-party</th>
+          <th scope="col">Official share</th>
+        </tr>
+      </thead>
+      <tbody>
+        {datasets.map((d) => (
+          <tr>
+            <td><a href={`#${d.id}`}>{d.heading}</a></td>
+            <td data-label="Files" class="tnum">{d.provenance.files}</td>
+            <td data-label="Citations" class="tnum">{d.provenance.citations}</td>
+            <td data-label="Official" class="tnum">{d.provenance.official}</td>
+            <td data-label="Third-party" class="tnum">{d.provenance.thirdParty}</td>
+            <td data-label="Official share" class="tnum">{d.provenance.officialPct}%</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p>
+    The RTO directory is the outlier and we would rather you heard it here than found it yourself: most of its
+    citations are commercial directories — insurance, used-car and vehicle-information sites — not
+    transport departments. The detail is under
+    that dataset below.
+  </p>
+
+  {datasets.map((d) => (
+    <section class="dataset">
+      <h2 id={d.id}>{d.heading}</h2>
+      <p>{d.blurb}</p>
+      <ul class="stat-strip">
+        {d.counts.map((c) => <li>{c.label}: <strong class="tnum">{num(c.value)}</strong></li>)}
+      </ul>
+      <p class="verified">
+        Last verified <time datetime={d.lastVerified}>{prettyDate(d.lastVerified)}</time> ·
+        {' '}<a href={d.page}>the pages built from it</a>
+      </p>
+
+      <h3 id={slugify(`${d.heading} endpoints`)}>Endpoints</h3>
+      <ul>
+        {d.endpoints.map((e) => (
+          <li>
+            <a href={e.path}><code>{ORIGIN}{e.path}</code></a> — {e.formatLabel}{e.note ? ` · ${e.note}` : ''}
+          </li>
+        ))}
+      </ul>
+      <p>
+        Records sit under <code>{d.payloadKey}</code> in the envelope.
+      </p>
+
+      {d.tables.map((t) => (
+        <>
+          <h3 id={slugify(t.caption)}>{t.caption}</h3>
+          <p>{t.intro}</p>
+          <div class="table-wrap">
+            <table class="schedule">
+              <caption>{t.caption}</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Field</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Always present</th>
+                  <th scope="col">What it means</th>
+                </tr>
+              </thead>
+              <tbody>
+                {t.rows.map((r) => (
+                  <tr>
+                    <td><code>{r.name}</code></td>
+                    <td data-label="Type">{r.type}</td>
+                    <td data-label="Always present">{r.required ? 'Yes' : 'Optional'}</td>
+                    <td data-label="What it means">{r.meaning}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ))}
+
+      <h3 id={slugify(`${d.heading} provenance`)}>Provenance: how this was verified</h3>
+      {d.provenanceNote.map((para) => <p>{para}</p>)}
+    </section>
+  ))}
+
+  <h2 id="corrections">Corrections</h2>
+  <p>
+    Found a wrong amount, a dead portal, an RTO code that does not exist, or a source that no longer says what
+    we say it says? Tell us on the <a href="/contact/">contact page</a> and point at the record — every record
+    has a <code>slug</code>. Corrections to the data take priority over anything else we are writing, and the
+    record's <code>last_verified</code> moves only when the fact itself is re-checked against its sources. How
+    we verify and correct is set out in the <a href="/editorial-policy/">editorial policy</a>.
+  </p>
+
+  <ShareBar text="Free, documented open data on Indian traffic fines, e-challan portals and RTO codes — CC BY 4.0, trafficchallan.com/data/" />
+</Base>

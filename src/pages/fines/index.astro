@@ -17,16 +17,21 @@ const year = new Date().getFullYear();
   brandSuffix={false}
   description={`Traffic challan rate list ${year}: every fine under the Motor Vehicles Act — offence, section, first and repeat penalty. Sourced and independently verified.`}
   path="/fines/"
-  jsonld={[datasetJsonLd(
-    'Indian traffic fine schedule (MV Act, as amended)',
-    'Offence-wise penalties under the Motor Vehicles Act with state variations, sourced from official notifications.',
-    '/fines/',
-    [
+  jsonld={[datasetJsonLd({
+    name: 'Indian traffic fine schedule (MV Act, as amended)',
+    description:
+      'Offence-wise penalties under the Motor Vehicles Act with state variations, sourced from official notifications. Every record carries its source URLs and the date it was last verified.',
+    path: '/fines/',
+    dateModified: newest,
+    sameAsPath: '/data/#fine-schedule',
+    identifierPath: '/api/fines.json',
+    keywords: ['traffic fines', 'India', 'Motor Vehicles Act', 'e-challan', 'road traffic penalties'],
+    distributions: [
       { url: '/api/fines.json', encodingFormat: 'application/json' },
       { url: '/api/fines.csv', encodingFormat: 'text/csv' },
       { url: '/api/states.json', encodingFormat: 'application/json' }
     ]
-  )]}
+  })]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }]}
   dateModified={newest}
 >
