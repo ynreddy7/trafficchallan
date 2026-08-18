@@ -107,8 +107,13 @@ const jsonld = datasets.map((d) => datasetNode(d));
   <p>
     Every JSON endpoint returns the same envelope: <code>updated</code> (the newest
     {' '}<code>last_verified</code> inside the payload), <code>source</code> (the human page for this data),
-    {' '}<code>license</code>, and one key holding the records. The CSV endpoint returns a header row followed
-    by one row per offence.
+    {' '}<code>license</code>, <code>license_url</code>, <code>license_note</code>, and one key holding the
+    records. The CSV endpoint returns a header row followed by one row per offence.
+  </p>
+  <p>
+    <code>license_note</code> travels with the payload deliberately: the envelope is what a reuser or a
+    dataset registry actually downloads, and the scoping in <a href="#licence">Licence</a> above has to be
+    readable there too — not only on this page. It says the same thing in the same words.
   </p>
   <p>
     All {endpointCount} endpoints send <code>Access-Control-Allow-Origin: *</code>, so they work from browser JavaScript.
@@ -227,7 +232,11 @@ const jsonld = datasets.map((d) => datasetNode(d));
                   <tr>
                     <td><code>{r.name}</code></td>
                     <td data-label="Type">{r.type}</td>
-                    <td data-label="Always present">{r.required ? 'Yes' : 'Optional'}</td>
+                    <td data-label="Always present">
+                      {r.required
+                        ? (r.defaultsTo ? `Yes — defaults to ${r.defaultsTo}` : 'Yes')
+                        : 'Optional'}
+                    </td>
                     <td data-label="What it means">{r.meaning}</td>
                   </tr>
                 ))}

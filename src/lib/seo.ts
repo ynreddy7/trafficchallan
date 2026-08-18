@@ -45,6 +45,25 @@ export interface DatasetDistribution { url: string; encodingFormat: string }
 export const LICENSE_URL = 'https://creativecommons.org/licenses/by/4.0/';
 export const LICENSE_LABEL = 'CC BY 4.0';
 
+/**
+ * The licence block every JSON endpoint carries in its envelope.
+ *
+ * The envelope is the artifact a dataset registry or a reuser actually
+ * downloads, so the grant has to be scoped IN THE PAYLOAD, not only on /data/.
+ * A bare `license: "CC BY 4.0 with attribution to TrafficChallan"` over a
+ * payload of statutory amounts, MV Act section numbers, RTO office names and
+ * government portal addresses would name us as licensor of material that is
+ * not ours to license. `license_note` says exactly what the grant covers and
+ * what it does not, in the same words as /data/#licence — change both
+ * together.
+ */
+export const API_LICENSE = `${LICENSE_LABEL} with attribution to TrafficChallan`;
+export const API_LICENSE_URL = LICENSE_URL;
+export const API_LICENSE_NOTE =
+  `${LICENSE_LABEL} covers this compilation, its verification metadata and our descriptive text. ` +
+  'The underlying statutory amounts, section numbers, office names and portal addresses are government ' +
+  `facts in which no rights are claimed — ${ORIGIN}/data/#licence`;
+
 export interface DatasetJsonLdInput {
   name: string;
   description: string;

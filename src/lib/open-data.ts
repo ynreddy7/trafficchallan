@@ -94,7 +94,7 @@ const RTO_MEANINGS: Record<string, string> = {
   state_name: 'State or union territory name.',
   series: 'Two-letter registration series the state or UT uses. Some carry more than one.',
   codes: 'Every RTO code with the office that registers under it.',
-  verification: 'How this list was checked: method "full" (against a fetchable official list) or "sampled", the sample size where sampled, and whether an official list is published at all.',
+  verification: 'How this list was checked: method "full" (against a fetchable official list) or "sampled", the sample size where sampled, and official_list_available — whether we found a fetchable official list for that state. That last flag records the outcome of our search, not what the transport department publishes.',
   sources: 'Every URL the record was verified against.',
   last_verified: 'The day the record was last checked against those sources.'
 };
@@ -397,14 +397,24 @@ export function openDatasets(): OpenDataset[] {
   const fullyVerified = rto.filter((r) => r.verification.method === 'full').length;
   const sampled = rto.filter((r) => r.verification.method === 'sampled').length;
   const officialListStates = rto.filter((r) => r.verification.official_list_available).length;
+  // The sampled states split in two, and the split is the honest part: some
+  // samples were checked against official office pages, the rest could only be
+  // cross-checked across independent directories because no official page for
+  // them was found. `filesWithoutOfficial` is measured from the records' own
+  // sources, so these two always sum to `sampled`.
+  const noOfficialCitation = new Set(rtoProv.filesWithoutOfficial);
+  const sampledWithoutOfficial = rto.filter(
+    (r) => r.verification.method === 'sampled' && noOfficialCitation.has(r.slug)
+  ).length;
+  const sampledAgainstOfficial = sampled - sampledWithoutOfficial;
   const rtoData: OpenDataset = {
     id: 'rto-codes',
     name: 'Indian RTO code directory',
     heading: 'RTO code directory',
     blurb:
-      'Every Regional Transport Office code we hold, with the office that registers under it, grouped by state and union territory — plus, per state, how the list was verified and whether the transport department publishes an official list at all.',
+      'Every Regional Transport Office code we hold, with the office that registers under it, grouped by state and union territory — plus, per state, how the list was verified and whether we found an official list published by the transport department.',
     description:
-      'Regional Transport Office codes for Indian states and union territories: each two-letter series, each RTO code with the registering office it belongs to, and a per-state verification block recording whether the list was checked in full against a fetchable official list or verified by sample, the sample size, and whether the state transport department publishes an official list at all. Every state file carries its source URLs and a last-verified date.',
+      'Regional Transport Office codes for Indian states and union territories: each two-letter series, each RTO code with the registering office it belongs to, and a per-state verification block recording whether the list was checked in full against a fetchable official list or verified by sample, the sample size, and whether we found a fetchable official list published by the state transport department. Every state file carries its source URLs and a last-verified date.',
     page: '/rto-codes/',
     endpoints: [
       { path: '/api/rto-codes.json', encodingFormat: 'application/json', formatLabel: 'JSON' }
@@ -433,7 +443,7 @@ export function openDatasets(): OpenDataset[] {
       }
     ],
     measurementTechnique:
-      'Where the state transport department publishes a fetchable official list, that list is the source of record and the state is marked verification.method "full"; where it does not, a sample of codes is checked against official office pages and the state is marked "sampled", with the sample size stored on the record.',
+      `Where we could find a fetchable official list published by the state transport department, that list is the source of record and the state is marked verification.method "full" — ${fullyVerified} of ${rto.length}. The remaining ${sampled} are marked "sampled", with the sample size stored on the record, and they split two ways: ${sampledAgainstOfficial} samples were checked against official transport-department or office pages, and ${sampledWithoutOfficial} could only be cross-checked across independent vehicle-information directories because we found no official page for them at all.`,
     tables: [
       {
         caption: 'RTO state record fields (/api/rto-codes.json)',
@@ -444,7 +454,7 @@ export function openDatasets(): OpenDataset[] {
     provenance: rtoProv,
     provenanceNote: [
       ...baseProvenanceNote(rtoProv, 'state and UT files'),
-      `Most of this dataset's citations — ${rtoProv.thirdParty} of ${rtoProv.citations} — are commercial directories — insurance, used-car and vehicle-information sites — not transport departments. Only ${officialListStates} of the ${rto.length} states and union territories publish a fetchable official code list at all, which is why ${sampled} of ${rto.length} are marked verification.method "sampled" — a sample of codes checked against official office pages — against ${fullyVerified} checked in full.`,
+      `Most of this dataset's citations — ${rtoProv.thirdParty} of ${rtoProv.citations} — are commercial directories — insurance, used-car and vehicle-information sites — not transport departments. We could find a fetchable official code list for only ${officialListStates} of the ${rto.length} states and union territories, which is why ${sampled} of ${rto.length} are marked verification.method "sampled" against ${fullyVerified} checked in full. That is a statement about our search, not about what those transport departments publish: a state may publish a list we could not fetch or did not find. Of the ${sampled} sampled states, ${sampledAgainstOfficial} had their sample checked against official office pages; for the other ${sampledWithoutOfficial} the sample could only be cross-checked across independent directories.`,
       'Use it as a working directory, not as an authoritative register. New codes are created whenever a state carves out a new office, so a code missing from this data may simply be newer than the list. Where a state\'s verification block says "sampled", the codes we did not sample are exactly as reliable as the directories they came from.'
     ],
     citationLine: citationLine('Indian RTO code directory', rtoDate, '/api/rto-codes.json')

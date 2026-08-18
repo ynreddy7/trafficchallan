@@ -1,6 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE_LAUNCH_DATE } from '../lib/seo';
+import { openDatasets, findDataset } from '../lib/open-data';
+
+// The sourcing standard below is stated with MEASURED figures, not asserted
+// ones: the same build-time provenance measurement /data/ publishes drives the
+// numbers here, so this page can never claim a standard the data does not meet.
+const datasets = openDatasets();
+const fines = findDataset('fine-schedule', datasets);
+const states = findDataset('state-records', datasets);
+const schemes = findDataset('discount-schemes', datasets);
+const rto = findDataset('rto-codes', datasets);
 ---
 <Base
   title="Editorial Policy"
@@ -18,12 +28,35 @@ import { SITE_LAUNCH_DATE } from '../lib/seo';
 
   <h2>Sources</h2>
   <p>
-    Every factual claim on TrafficChallan — a fine amount, a Motor Vehicles Act section, a portal URL, a
-    payment method, a procedural step — is sourced to an official government document: parivahan.gov.in,
-    a state police or transport department portal, India Code, or a gazette notification. We do not treat
-    forum posts, news articles, or other aggregator sites as sources for facts, even when we might link to
-    them for context. Where a state has notified its own fine amount that differs from the national
-    schedule, we cite that state notification specifically rather than assuming the national figure applies.
+    Fine amounts, Motor Vehicles Act sections, portal URLs, payment methods and procedural steps are
+    sourced to an official government document: parivahan.gov.in, a state police or transport department
+    portal, India Code, or a gazette notification. Forum posts, news reports and aggregator sites are never
+    sources for any of those, even when we link to them for context. Where a state has notified its own
+    fine amount that differs from the national schedule, we cite that state notification specifically
+    rather than assuming the national figure applies. Both datasets meet that standard in full:
+    {fines.provenance.official} of {fines.provenance.citations} citations across the fine schedule and
+    {' '}{states.provenance.official} of {states.provenance.citations} across the state records are
+    official — {fines.provenance.officialPct}% and {states.provenance.officialPct}%, counted at build time
+    from the records themselves.
+  </p>
+  <p>
+    Two of our datasets do not meet that standard, and we would rather say so here than let you find it
+    yourself. The <a href="/rto-codes/">RTO office directory</a> is
+    {' '}{rto.provenance.officialPct}% officially sourced ({rto.provenance.official} of
+    {' '}{rto.provenance.citations} citations); {rto.provenance.filesWithoutOfficial.length} of its
+    {' '}{rto.provenance.files} state files rest entirely on independent commercial directories —
+    insurance, used-car and vehicle-information sites — because we could not find a fetchable official
+    code list for most states. The
+    {' '}<a href="/challan-discount/">discount and amnesty scheme tracker</a> is
+    {' '}{schemes.provenance.officialPct}% official: a scheme we record as a rumour or a proposal is by
+    definition a claim that no government order confirms, so press reporting and fact-checks are the only
+    evidence there is — and our schema refuses to store a discount percentage on those records at all.
+  </p>
+  <p>
+    So the rule is per record, not per site: every record names the URLs it was actually checked against,
+    and the measured official share of each dataset is published — and re-measured on every build — at
+    {' '}<a href="/data/#provenance">the open-data page</a>. Where a page rests on something other than an
+    official document, the page says so on its face.
   </p>
 
   <h2>Corrections</h2>
@@ -50,7 +83,7 @@ import { SITE_LAUNCH_DATE } from '../lib/seo';
     Content on this site is researched and drafted with AI assistance, then checked against the sourcing
     standards above before publication. We're saying this plainly rather than hiding it: AI helps us pull
     together and phrase information faster, but it does not get to invent facts — every number and rule
-    still has to trace back to an official source, and that discipline doesn't change based on how a page
-    was drafted.
+    still has to trace back to the sources listed on the record, held to the standard set out above, and
+    that discipline doesn't change based on how a page was drafted.
   </p>
 </Base>

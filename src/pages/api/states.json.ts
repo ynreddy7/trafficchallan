@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { loadStates } from '../../lib/data';
-import { ORIGIN } from '../../lib/seo';
+import { ORIGIN, API_LICENSE, API_LICENSE_URL, API_LICENSE_NOTE } from '../../lib/seo';
 
 export const GET: APIRoute = async () => {
   const states = loadStates();
@@ -8,7 +8,9 @@ export const GET: APIRoute = async () => {
   const body = {
     updated,
     source: `${ORIGIN}/`,
-    license: 'CC BY 4.0 with attribution to TrafficChallan',
+    license: API_LICENSE,
+    license_url: API_LICENSE_URL,
+    license_note: API_LICENSE_NOTE,
     states
   };
   return new Response(JSON.stringify(body, null, 2), {

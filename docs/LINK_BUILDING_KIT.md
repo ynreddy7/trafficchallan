@@ -259,8 +259,9 @@ checked. Provenance is measured from those URLs rather than asserted, and is
 uneven across the four datasets: the fine schedule and the state records are
 100% officially sourced, the schemes dataset 47%, and the RTO directory 35% —
 85 of its 130 citations are commercial directories rather than transport
-department publications, because only 15 of the 36 states and union territories
-publish a fetchable official code list at all. The RTO directory should be
+department publications, because we could find a fetchable official code list
+for only 15 of the 36 states and union territories — a statement about our
+search, not about what those departments publish. The RTO directory should be
 treated as indicative and re-verified against a state's own publication before
 any use where correctness matters.
 
@@ -351,9 +352,12 @@ Description:
 Independent, non-government reference for Indian traffic challans. Look up the
 Motor Vehicles Act penalty for an offence, see how the amount changes state to
 state, find the official portal for your state, and check whether a challan SMS
-is a scam. Every figure is sourced to a government document and carries the date
-it was last verified. No sign-up, no payments taken — payment always happens on
-the official portal. The underlying data is published as free CC BY 4.0 JSON/CSV.
+is a scam. Fine amounts and portal details are sourced to government documents;
+every record carries the URLs it was checked against and the date, and the
+measured official-source share of each dataset is published at
+trafficchallan.com/data/. No sign-up, no payments taken — payment always happens
+on the official portal. The underlying data is published as free CC BY 4.0
+JSON/CSV.
 ```
 
 ---

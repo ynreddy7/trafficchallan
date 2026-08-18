@@ -1,12 +1,14 @@
 import type { APIRoute } from 'astro';
 import { loadSchemes, loadLokAdalat, maxSchemeDate } from '../../lib/data';
-import { ORIGIN } from '../../lib/seo';
+import { ORIGIN, API_LICENSE, API_LICENSE_URL, API_LICENSE_NOTE } from '../../lib/seo';
 
 export const GET: APIRoute = async () => {
   const body = {
     updated: maxSchemeDate(),
     source: `${ORIGIN}/challan-discount/`,
-    license: 'CC BY 4.0 with attribution to TrafficChallan',
+    license: API_LICENSE,
+    license_url: API_LICENSE_URL,
+    license_note: API_LICENSE_NOTE,
     schemes: loadSchemes(),
     lok_adalat: loadLokAdalat()
   };

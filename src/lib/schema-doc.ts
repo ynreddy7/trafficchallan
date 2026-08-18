@@ -26,10 +26,30 @@ export function unwrapObject(schema: ZodTypeAny): { shape: Record<string, ZodTyp
   return s;
 }
 
-/** True when the field may be absent from a record (optional or defaulted). */
+/**
+ * True when the KEY may be absent from the served JSON.
+ *
+ * ZodDefault deliberately does NOT count. The API serves records that have
+ * already been through `schema.parse()` (src/lib/data.ts#loadDir), and zod
+ * materialises a default during parsing — so a defaulted field is always a key
+ * in the payload, carrying its default value where the source file omitted it.
+ * Calling that "optional" on /data/ would contradict the very payload the page
+ * documents. Only ZodOptional / ZodNullable can leave the key out.
+ */
 export function isOptionalField(t: ZodTypeAny): boolean {
   const name = def(t)?.typeName;
-  return name === 'ZodOptional' || name === 'ZodDefault' || name === 'ZodNullable';
+  return name === 'ZodOptional' || name === 'ZodNullable';
+}
+
+/**
+ * The default a ZodDefault field falls back to, rendered as JSON for the
+ * published table ("{}", "[]"), or undefined for every other field. The value
+ * comes from the schema itself, so the documented default cannot drift from
+ * the one zod actually writes into the record.
+ */
+export function defaultLabel(t: ZodTypeAny): string | undefined {
+  if (def(t)?.typeName !== 'ZodDefault') return undefined;
+  return JSON.stringify(def(t).defaultValue());
 }
 
 const stringLabel = (t: ZodTypeAny): string => {
@@ -75,7 +95,11 @@ export function typeLabel(t: ZodTypeAny): string {
 export interface FieldRow {
   name: string;
   type: string;
+  /** True when the key is always present in the served JSON — defaults included. */
   required: boolean;
+  /** For a defaulted field: the value the key carries when the source file
+   *  omits it, as JSON. Absent on every other field. */
+  defaultsTo?: string;
   meaning: string;
 }
 
@@ -108,10 +132,14 @@ export function fieldRows(
     );
   }
 
-  return names.map((name) => ({
-    name,
-    type: typeLabel(shape[name]),
-    required: !isOptionalField(shape[name]),
-    meaning: meanings[name]
-  }));
+  return names.map((name) => {
+    const defaultsTo = defaultLabel(shape[name]);
+    return {
+      name,
+      type: typeLabel(shape[name]),
+      required: !isOptionalField(shape[name]),
+      ...(defaultsTo !== undefined ? { defaultsTo } : {}),
+      meaning: meanings[name]
+    };
+  });
 }

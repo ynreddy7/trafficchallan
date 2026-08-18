@@ -3,13 +3,21 @@ import Base from '../../layouts/Base.astro';
 import AnswerBox from '../../components/AnswerBox.astro';
 import FineTable from '../../components/FineTable.astro';
 import { loadOffences, loadStates, newestVerifiedDate } from '../../lib/data';
-import { datasetJsonLd } from '../../lib/seo';
+import { datasetNode, findDataset } from '../../lib/open-data';
 import { slugify } from '../../lib/format';
 import { hasFineListPage } from '../../lib/fine-list';
 
 const offences = loadOffences();
 const listStates = loadStates().filter(hasFineListPage);
+// Page freshness (sitemap lastmod, dateModified) is the site-wide max —
+// mirrors buildLastmodMap()'s '/fines/' entry in astro.config.mjs.
 const newest = newestVerifiedDate();
+// The Dataset node is a claim about the fine schedule itself, so its version
+// and dateModified come from that dataset's own newest last_verified — NOT
+// from `newest`. Two Dataset nodes carrying the same `identifier`
+// (/api/fines.json) must declare the same name and version, and /data/
+// publishes the endpoint's envelope `updated` as that version.
+const fineSchedule = findDataset('fine-schedule');
 const year = new Date().getFullYear();
 ---
 <Base
@@ -17,21 +25,7 @@ const year = new Date().getFullYear();
   brandSuffix={false}
   description={`Traffic challan rate list ${year}: every fine under the Motor Vehicles Act — offence, section, first and repeat penalty. Sourced and independently verified.`}
   path="/fines/"
-  jsonld={[datasetJsonLd({
-    name: 'Indian traffic fine schedule (MV Act, as amended)',
-    description:
-      'Offence-wise penalties under the Motor Vehicles Act with state variations, sourced from official notifications. Every record carries its source URLs and the date it was last verified.',
-    path: '/fines/',
-    dateModified: newest,
-    sameAsPath: '/data/#fine-schedule',
-    identifierPath: '/api/fines.json',
-    keywords: ['traffic fines', 'India', 'Motor Vehicles Act', 'e-challan', 'road traffic penalties'],
-    distributions: [
-      { url: '/api/fines.json', encodingFormat: 'application/json' },
-      { url: '/api/fines.csv', encodingFormat: 'text/csv' },
-      { url: '/api/states.json', encodingFormat: 'application/json' }
-    ]
-  })]}
+  jsonld={[datasetNode(fineSchedule, { path: '/fines/', sameAsPath: '/data/#fine-schedule' })]}
   breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Fines', path: '/fines/' }]}
   dateModified={newest}
 >
@@ -45,7 +39,7 @@ const year = new Date().getFullYear();
     Some states have notified different amounts — see the <a href="/compare/">state-by-state comparison</a>
     or each offence page below.
   </p>
-  <p class="verified">Table last verified: {newest}</p>
+  <p class="verified">Table last verified: {fineSchedule.lastVerified}</p>
   <FineTable offences={offences} />
   <p>Select any offence for the exact legal section, repeat-offence penalty, licence consequences and state-wise variations.</p>
 

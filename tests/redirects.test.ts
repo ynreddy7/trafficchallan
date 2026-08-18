@@ -2,7 +2,10 @@ import { describe, it, expect } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import fg from 'fast-glob';
-import { parseRedirects, checkRedirects, isDynamic, MAX_STATIC_RULES, MAX_TOTAL_RULES, MAX_LINE_LENGTH } from '../src/lib/redirects';
+import {
+  parseRedirects, checkRedirects, isDynamic, decodeSource, isOffTopicSource,
+  MAX_STATIC_RULES, MAX_TOTAL_RULES, MAX_LINE_LENGTH
+} from '../src/lib/redirects';
 import { loadStates, loadOffences, loadRtoFiles } from '../src/lib/data';
 import { hasFineListPage } from '../src/lib/fine-list';
 
@@ -141,14 +144,47 @@ describe('public/_redirects (the real file)', () => {
     expect(Math.max(...rules.map((r) => r.raw.length))).toBeLessThanOrEqual(MAX_LINE_LENGTH);
   });
 
-  it('redirects nothing off-topic to a challan page', () => {
+  it('redirects nothing off-topic to a challan page, encoded or not', () => {
     // The old site was two-thirds exam-results and celebrity-finance churn.
     // Redirecting those here is the expired-domain topic flip Google's spam
-    // policy targets, so no source may carry one of their marker terms.
-    const offTopic = /(ugc-net|kset|dsssb|ap-tet|ap-dsc|recruitment|syllabus|result|sarkari|net-worth|income|ipo|toll|linguistic|rights|samachar|news)/i;
+    // policy targets, so no source may carry one of their marker terms — in
+    // its raw OR its percent-decoded form, since 8 of the shipped lines are
+    // percent-encoded Gujarati.
     for (const rule of rules) {
-      expect(offTopic.test(rule.source), `line ${rule.line}: ${rule.source} looks off-topic for ${rule.destination}`).toBe(false);
+      expect(
+        isOffTopicSource(rule.source),
+        `line ${rule.line}: ${rule.source} (${decodeSource(rule.source)}) looks off-topic for ${rule.destination}`
+      ).toBe(false);
     }
+  });
+
+  it('the off-topic guard actually reads the encoded Gujarati this file is full of', () => {
+    // Proving the guard against the shape it will really meet. The header of
+    // public/_redirects commits to leaving the old blog's Gujarati news tags
+    // at 404; an ASCII-only pattern would have waved every one of them
+    // through, which is how an off-topic rule ships green.
+    const gujaratiNewsTags = ['ગુજરાતી-સમાચાર', 'આજના-તાજા-સમાચાર', 'vtv-ગુજરાતી'];
+    for (const tag of gujaratiNewsTags) {
+      const decoded = `/tag/${tag}/`;
+      const encoded = `/tag/${encodeURIComponent(tag)}/`;
+      expect(isOffTopicSource(decoded), `${decoded} must be refused`).toBe(true);
+      expect(isOffTopicSource(encoded), `${encoded} must be refused`).toBe(true);
+      // WordPress emitted lower-case hex; RFC 3986 normalises to upper-case.
+      // Both forms appear in this file, so both must be caught.
+      expect(isOffTopicSource(encoded.toLowerCase()), `${encoded.toLowerCase()} must be refused`).toBe(true);
+    }
+    // Result / recruitment churn in Gujarati, the other half of the old blog.
+    expect(isOffTopicSource(`/tag/${encodeURIComponent('પરિણામ')}/`)).toBe(true);
+    expect(isOffTopicSource(`/tag/${encodeURIComponent('ભરતી')}/`)).toBe(true);
+    // On-topic Gujarati stays redirectable — the guard is a filter, not a ban
+    // on the script. This is a real shipped source (line 141).
+    expect(isOffTopicSource(`/tag/${encodeURIComponent('ગુજરાત-મોટર-વાહન-નિયમો')}/`)).toBe(false);
+  });
+
+  it('decodeSource survives a malformed escape instead of throwing', () => {
+    // A bad escape must not take the whole guard down with it.
+    expect(decodeSource('/tag/%zz/')).toBe('/tag/%zz/');
+    expect(() => isOffTopicSource('/tag/%zz/')).not.toThrow();
   });
 
   it('states the measured link-equity finding so nobody over-invests here', () => {

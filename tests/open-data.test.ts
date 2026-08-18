@@ -1,10 +1,13 @@
 import { describe, it, expect } from 'vitest';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import fg from 'fast-glob';
 import { z } from 'zod';
 import {
   sourceHost, isGovHost, classifySource, isOfficialSource, provenanceOf,
   OFFICIAL_NON_GOV_HOSTS
 } from '../src/lib/provenance';
-import { typeLabel, fieldRows, unwrapObject, isOptionalField } from '../src/lib/schema-doc';
+import { typeLabel, fieldRows, unwrapObject, isOptionalField, defaultLabel } from '../src/lib/schema-doc';
 import { openDatasets, findDataset, datasetNode } from '../src/lib/open-data';
 import {
   OffenceSchema, StateSchema, SchemeSchema, RtoStateSchema, LokAdalatSchema, isoDate
@@ -13,7 +16,7 @@ import {
   loadOffences, loadStates, loadSchemes, loadRtoFiles, loadLokAdalat, dataPageDate
 } from '../src/lib/data';
 import { FINES_CSV_HEADER } from '../src/lib/csv';
-import { LICENSE_URL } from '../src/lib/seo';
+import { LICENSE_URL, API_LICENSE, API_LICENSE_NOTE } from '../src/lib/seo';
 
 describe('provenance classifier', () => {
   it('strips www and lower-cases the host', () => {
@@ -107,8 +110,40 @@ describe('schema-doc type labels', () => {
     expect(typeLabel(z.string().url().optional())).toBe('string (URL)');
     expect(typeLabel(z.record(z.string(), z.string()).default({}))).toBe('object keyed by string → string');
     expect(isOptionalField(z.string().optional())).toBe(true);
-    expect(isOptionalField(z.string().default('x'))).toBe(true);
+    expect(isOptionalField(z.string().nullable())).toBe(true);
     expect(isOptionalField(z.string())).toBe(false);
+  });
+
+  // The bug this guards: a defaulted field is NOT optional in the payload. The
+  // API serves parsed records, and zod materialises the default during
+  // parsing, so the key is always there. Documenting it as "Optional" would
+  // make /data/ contradict the JSON it documents.
+  it('a defaulted field is always present in the parsed record', () => {
+    const schema = z.object({ a: z.string(), b: z.record(z.string(), z.string()).default({}) });
+    const parsed = schema.parse({ a: 'x' });
+    expect('b' in parsed).toBe(true);
+    expect(parsed.b).toEqual({});
+    expect(isOptionalField(schema.shape.b)).toBe(false);
+    expect(defaultLabel(schema.shape.b)).toBe('{}');
+    expect(defaultLabel(z.array(z.string()).default([]))).toBe('[]');
+    expect(defaultLabel(z.string())).toBeUndefined();
+    expect(defaultLabel(z.string().optional())).toBeUndefined();
+  });
+
+  it('the real defaulted fields are documented as present, and the API agrees', () => {
+    // Every state record carries fine_overrides and every scheme record
+    // carries history, even where the source file omits them.
+    for (const s of loadStates()) expect('fine_overrides' in s).toBe(true);
+    for (const s of loadSchemes()) expect('history' in s).toBe(true);
+    // ...and the published table says so, rather than calling them optional.
+    const all = openDatasets();
+    const row = (id: string, table: number, name: string) =>
+      findDataset(id, all).tables[table].rows.find((r) => r.name === name)!;
+    expect(row('state-records', 0, 'fine_overrides')).toMatchObject({ required: true, defaultsTo: '{}' });
+    expect(row('discount-schemes', 0, 'history')).toMatchObject({ required: true, defaultsTo: '[]' });
+    // A genuinely optional field still reads Optional.
+    expect(row('fine-schedule', 0, 'statute_quote').required).toBe(false);
+    expect(row('fine-schedule', 0, 'statute_quote').defaultsTo).toBeUndefined();
   });
 
   it('peels superRefine wrappers down to the object', () => {
@@ -307,5 +342,81 @@ describe('citation lines and dataset JSON-LD', () => {
 
   it('findDataset refuses an unknown id rather than emitting nothing', () => {
     expect(() => findDataset('nope', all)).toThrowError(/no dataset with id "nope"/);
+  });
+
+  // Two Dataset nodes that declare the same `identifier` are, to a registry,
+  // the same dataset. If they disagree about `name` or `version` the site is
+  // publishing two answers to one question — and /data/ tells readers the
+  // version string IS the endpoint's envelope `updated`, so a hub page that
+  // stamped a page-level date on the node would contradict the payload.
+  it('a hub node changes only url and sameAs — never name, version or identifier', () => {
+    for (const d of all) {
+      const canonical = datasetNode(d) as any;
+      const hub = datasetNode(d, { path: d.page, sameAsPath: `/data/#${d.id}` }) as any;
+      expect(hub.identifier).toBe(canonical.identifier);
+      expect(hub.name).toBe(canonical.name);
+      expect(hub.version).toBe(canonical.version);
+      expect(hub.dateModified).toBe(canonical.dateModified);
+      expect(hub.description).toBe(canonical.description);
+    }
+  });
+
+  it('no page hand-writes a Dataset node — they all come from the one descriptor', () => {
+    // The regression this catches: /fines/ and /compare/ once built their own
+    // datasetJsonLd() calls and drifted from /data/ on both name and version
+    // while sharing its identifier. datasetJsonLd is the low-level builder;
+    // pages go through datasetNode(findDataset(...)).
+    const pagesDir = join(process.cwd(), 'src', 'pages');
+    const offenders = fg.sync('**/*.{astro,ts}', { cwd: pagesDir })
+      .filter((f) => /datasetJsonLd\s*\(/.test(readFileSync(join(pagesDir, f), 'utf-8')));
+    expect(offenders, 'pages must build Dataset nodes with datasetNode(findDataset(...))').toEqual([]);
+  });
+
+  it('every Dataset node in a real build agrees with every other on its identifier', () => {
+    // dist/ is gitignored, so this only runs after `npm run build` — but when
+    // it does, it checks the markup that actually ships rather than the
+    // builders behind it.
+    const dist = join(process.cwd(), 'dist');
+    if (!existsSync(dist)) return;
+    const byIdentifier = new Map<string, { name: string; version: string; file: string }>();
+    for (const file of fg.sync('**/*.html', { cwd: dist })) {
+      const html = readFileSync(join(dist, file), 'utf-8');
+      for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+        const parsed = JSON.parse(m[1]);
+        for (const node of (Array.isArray(parsed) ? parsed : [parsed]) as any[]) {
+          if (node['@type'] !== 'Dataset' || !node.identifier) continue;
+          const prev = byIdentifier.get(node.identifier);
+          if (!prev) {
+            byIdentifier.set(node.identifier, { name: node.name, version: node.version, file });
+            continue;
+          }
+          expect(node.name, `${file} vs ${prev.file}: same identifier ${node.identifier}, different name`).toBe(prev.name);
+          expect(node.version, `${file} vs ${prev.file}: same identifier ${node.identifier}, different version`).toBe(prev.version);
+        }
+      }
+    }
+    expect(byIdentifier.size).toBeGreaterThan(0);
+  });
+});
+
+describe('the JSON endpoints scope the licence in the payload itself', () => {
+  // The envelope is the artifact a reuser downloads and a registry ingests, so
+  // "CC BY 4.0 with attribution to TrafficChallan" cannot stand alone over a
+  // payload of statutory amounts, section numbers, office names and government
+  // portal addresses — none of which are ours to license.
+  const dist = join(process.cwd(), 'dist', 'api');
+
+  it('carries license, license_url and a note disclaiming the government facts', () => {
+    if (!existsSync(dist)) return;
+    const endpoints = ['fines.json', 'states.json', 'schemes.json', 'rto-codes.json'];
+    for (const name of endpoints) {
+      const body = JSON.parse(readFileSync(join(dist, name), 'utf-8'));
+      expect(body.license, name).toBe(API_LICENSE);
+      expect(body.license_url, name).toBe(LICENSE_URL);
+      expect(body.license_note, name).toBe(API_LICENSE_NOTE);
+      expect(body.license_note, name).toMatch(/no rights are claimed/);
+      expect(body.license_note, name).toContain('https://trafficchallan.com/data/#licence');
+      expect(body.updated, name).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    }
   });
 });

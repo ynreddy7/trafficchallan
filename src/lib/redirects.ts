@@ -67,6 +67,58 @@ export function parseRedirects(text: string): RedirectRule[] {
   return rules;
 }
 
+/**
+ * The percent-decoded form of a source path, or the path unchanged when it
+ * carries no escapes or cannot be decoded.
+ *
+ * public/_redirects is mostly non-Latin: the previous owner's WordPress
+ * install emitted Gujarati tag slugs as percent-encoded UTF-8, and 8 of the 47
+ * shipped lines are in that form. Anything that inspects a source for MEANING
+ * has to look at the decoded text as well, or it is reading hex.
+ * decodeURIComponent throws on a malformed escape ("%zz"), so a failure falls
+ * back to the raw string rather than taking the whole check down.
+ */
+export function decodeSource(source: string): string {
+  try {
+    return decodeURIComponent(source);
+  } catch {
+    return source;
+  }
+}
+
+/**
+ * Marker terms for the previous owner's off-topic content — exam results,
+ * government-job recruitment, celebrity finance, and the Gujarati-language
+ * news churn. Redirecting any of it at a challan page is the expired-domain
+ * topic flip Google's spam policy targets, and public/_redirects commits in
+ * writing to leaving those paths at 404.
+ *
+ * Latin and Gujarati both, because the file's own header records that the
+ * recovered set contains Gujarati news tags — an ASCII-only pattern would
+ * wave through the exact URL class the file promises to refuse, in the
+ * encoded shape that is the NORM here rather than the exception:
+ * સમાચાર / ન્યૂઝ (news), પરિણામ (result), ભરતી (recruitment), નોકરી (job),
+ * અભ્યાસક્રમ (syllabus). "vtv" is in the Latin half for the same reason — it is
+ * a Gujarati news broadcaster, not a challan topic.
+ *
+ * A marker can only ever REFUSE a redirect, never create a wrong one, so the
+ * list errs wide on purpose. The Indic terms are written as \u escapes so the
+ * pattern itself stays ASCII and cannot be damaged by an encoding round-trip;
+ * the comment above is the readable copy.
+ */
+export const OFF_TOPIC_MARKERS =
+  /(ugc-net|kset|dsssb|ap-tet|ap-dsc|recruitment|syllabus|result|sarkari|net-worth|income|ipo|toll|linguistic|rights|samachar|news|vtv|\u0938\u092E\u093E\u091A\u093E\u0930|\u0AB8\u0AAE\u0ABE\u0A9A\u0ABE\u0AB0|\u0AA8\u0ACD\u0AAF\u0AC2\u0A9D|\u0AAA\u0AB0\u0ABF\u0AA3\u0ABE\u0AAE|\u0AAD\u0AB0\u0AA4\u0AC0|\u0AA8\u0ACB\u0A95\u0AB0\u0AC0|\u0A85\u0AAD\u0ACD\u0AAF\u0ABE\u0AB8\u0A95\u0ACD\u0AB0\u0AAE)/i;
+
+/**
+ * True when a source path carries an off-topic marker in EITHER its raw or its
+ * percent-decoded form. Both are tested because an encoded source is the
+ * normal case in this file, so a guard that only reads the raw string would
+ * pass an encoded off-topic rule straight through.
+ */
+export function isOffTopicSource(source: string): boolean {
+  return OFF_TOPIC_MARKERS.test(source) || OFF_TOPIC_MARKERS.test(decodeSource(source));
+}
+
 /** A rule is "dynamic" (the 100-rule bucket) if it uses a splat or a placeholder. */
 export function isDynamic(rule: RedirectRule): boolean {
   return rule.source.includes('*') || /:[A-Za-z]\w*/.test(rule.source);
