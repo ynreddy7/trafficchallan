@@ -3,7 +3,11 @@
 You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchallan.
 
 ## Every run
-1. `git pull`. Read CONTENT_STANDARDS.md. Run `npm install` if lockfile changed.
+1. `git pull`, then `npm run parked:drain` — a previous run may have been blocked by a
+   gate and parked its finished work on the `content-queue` branch. Draining merges it
+   in so this run publishes it instead of redoing it. If drain reports files, the queue
+   items they cover are already marked done; take the next pending item.
+   Read CONTENT_STANDARDS.md. Run `npm install` if lockfile changed.
 2. Run the Discount watch (next section) BEFORE taking a queue item.
 3. Take the TOP item with status "pending" from data/keywords/queue.json.
 4. Research it per CONTENT_STANDARDS (official sources only, verify today). Legal-process
@@ -28,8 +32,16 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
    file is created, so these do not count against the velocity cap.
 6. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" or "superseded" + "covered_by" were handled during curation — never produce them; skip to the next "pending" item.) Items with status "retired" are junk or out-of-scope clusters: runs never pick them up and never produce them.
 7. `npm test` must pass. Then `npm run publish:site -- --message "content: <what you added>"`.
-   If the gate, tests, links or velocity cap fail: fix the cause or stop WITHOUT pushing;
-   never bypass a gate.
+   If a gate, tests, links or the velocity cap fail: fix the cause, or stop. NEVER bypass a
+   gate and never push to main yourself — publishing is publish.ts's job, past the gates.
+   You do NOT need to rescue the work by hand: on a velocity-cap block publish.ts parks it
+   automatically (commits it and pushes the `content-queue` branch, which is never
+   deployed — Cloudflare Pages builds main only), and the next run drains it. If publish
+   reports a fallback branch like `content-queue-<sha>`, the shared branch had moved and a
+   human must merge that branch by hand — say so in your run summary.
+   Do not `git commit` blocked work to main locally and stop: a scheduled run's sandbox is
+   thrown away, so a local-only commit is the same as deleting the work. This happened on
+   14 and 17 Aug 2026 — the 17th re-researched and re-lost the same Mumbai guide.
 
 ## Navigational queries, and keywords we already cover
 Two whole classes of keyword look like content gaps and are not. Neither is ever fixed
