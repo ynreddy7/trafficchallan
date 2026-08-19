@@ -167,3 +167,8 @@
 
 # The only licence tag -> the only licence page we have.
 /tag/driving-license/ /fines/driving-without-licence/ 301
+
+# Our own URL change (19 Aug 2026), not a legacy path: the seat-belt offence
+# slug gained a hyphen so "seat belt" tokenises as two words the way people
+# search it. Kept permanently -- the old URL was live and indexable.
+/fines/driving-without-seatbelt/ /fines/driving-without-seat-belt/ 301

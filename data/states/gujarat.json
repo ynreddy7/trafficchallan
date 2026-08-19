@@ -164,10 +164,6 @@
       "amount_text": "₹500 under s.194D. Gujarat's notified schedule lists no repeat-offence figure and no licence disqualification.",
       "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
     },
-    "driving-without-seatbelt": {
-      "amount_text": "₹500 under s.194B for failure to use safety belts while driving, with no separate repeat-offence figure listed.",
-      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
-    },
     "driving-without-licence": {
       "amount_text": "₹2,000 for a two-wheeler and ₹3,000 for other vehicles under s.181, which also covers under-age driving and breach of learner-licence conditions.",
       "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
@@ -190,6 +186,10 @@
     },
     "driving-without-puc": {
       "amount_text": "₹500, rising to ₹1,000 on repeat, where no PUC certificate has been obtained (s.177); a measured breach of emission standards under s.190(2) is ₹1,000 for two/three-wheelers and LMVs and ₹3,000 for other vehicles.",
+      "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
+    },
+    "driving-without-seat-belt": {
+      "amount_text": "₹500 under s.194B for failure to use safety belts while driving, with no separate repeat-offence figure listed.",
       "source": "https://cot.gujarat.gov.in/penalty-structure.htm"
     }
   },

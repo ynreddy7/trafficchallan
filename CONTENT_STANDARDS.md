@@ -75,3 +75,12 @@
     portal or app, including misspellings and URL typos) is served by /echallan-parivahan/,
     never by a page of its own. Rewording adds no facts, so it does not bump last_verified.
     See AGENT_PLAYBOOK "Navigational queries, and keywords we already cover".
+
+15. COVERED MEANS THE WORDS ARE THERE. A queue item may only be marked `covered`
+    when the keyword's distinctive words actually appear in the rendered text of
+    the page named in `covered_by` — verified with `npm run gaps:check`, not
+    assumed. A covered item is never built again, so a wrong `covered_by` removes
+    the keyword from the roadmap permanently while nothing on the site serves it.
+    Head terms (traffic, challan, e-challan, online, india) do not count as
+    distinctive; and never reproduce a searcher's misspelling to satisfy a check —
+    retire the item instead, with a note saying why.

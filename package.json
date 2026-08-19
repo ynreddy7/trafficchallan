@@ -11,7 +11,8 @@
     "test": "vitest run",
     "check:links": "tsx scripts/check-links.ts",
     "publish:site": "tsx scripts/publish.ts",
-    "parked:drain": "tsx scripts/parked.ts drain"
+    "parked:drain": "tsx scripts/parked.ts drain",
+    "gaps:check": "tsx scripts/coverage.ts"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.0",

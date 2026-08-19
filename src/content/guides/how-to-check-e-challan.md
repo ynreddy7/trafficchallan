@@ -84,6 +84,15 @@ The list does change. If a search returns nothing on one portal, run the same nu
 
 **On NextGen** (echallan.parivahan.nic.in/challan/challan-services): the services page opens as seven tiles — Check Pending Challan Status, Pay Challan, Download Challan Print, Download Payment Receipt, Check Pending Transaction, Raise Grievance and Check Grievance Status. Click the first one. NextGen asks for more than the old site did: the Vehicle Number tab wants the registration number **plus the Registration Date in DD/MM/YYYY**, and the DL tab wants the licence number plus date of birth. Both are printed on your RC and licence. If the date does not match the Vahan record exactly, the search returns nothing — which reads like "no challans pending" but is not the same thing. When in doubt, use the Challan Number tab with the number from your SMS or notice, which needs no date at all.
 
+### Does a bike challan check differ from a car challan check?
+
+No. Every route above searches by registration number, driving licence number or
+challan number — never by vehicle class — so a bike challan check, a car challan
+check and a commercial-vehicle challan check are the same three portals and the
+same three tabs. What does change with the vehicle is the *amount*: several
+offences carry different penalties for a two-wheeler, a light motor vehicle and a
+goods vehicle, which the [fine list](/fines/) sets out offence by offence.
+
 ## Challan details, photo and status: what the results actually show
 
 The results table gives Violator Name, DL/RC Number, Challan No, Transaction ID, State, Department, Challan Date, Amount, Status and Payment Source, with links for Challan Print and Receipt. Two columns matter more than people expect. **Department** tells you whether traffic police or the transport department booked it, which decides who you complain to. **Status** separates a pending challan from a disposed one — a challan you paid at the roadside should already show as settled, and if it does not, that is a receipt problem, not a new fine.

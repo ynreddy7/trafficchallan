@@ -102,8 +102,8 @@
       "max_cpc": 1.43,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "covered",
-      "covered_by": "homepage"
+      "status": "retired",
+      "note": "Retired 19-Aug-2026: \"e challan 24\" is digit noise, not an intent. The coverage check (npm run gaps:check) proved the homepage never says \"24\", so the covered_by was fiction."
     },
     {
       "slug_suggestion": "e-challan-discount-scheme",
@@ -156,6 +156,21 @@
       "min_seo_difficulty": 16,
       "type": "guide",
       "status": "pending"
+    },
+    {
+      "slug_suggestion": "virtual-court-challan",
+      "target_keyword": "virtual court challan",
+      "cluster_keywords": [
+        "virtual court challan",
+        "vcourts challan",
+        "e challan virtual court"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "pending",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\". The only keyword in the report with no page that answers it: /challan-status/ decodes \"Sent to Court\" and court-challan-vs-on-spot explains the split, but neither is the canonical vcourts.gov.in walkthrough. Build it from vcourts.gov.in itself — departments covered per state, the four search tabs, OTP vs engine/chassis verification, pay vs \"I wish to contest\", and what a contest means (appear in person or by lawyer). Legal content: CONTENT_STANDARDS rule 13 applies."
     },
     {
       "slug_suggestion": "odisha",
@@ -823,8 +838,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "covered",
-      "covered_by": "fake-challan-sms"
+      "status": "retired",
+      "note": "Retired 19-Aug-2026: \"e challan xyz\" is a lookalike-domain query. /fake-challan-sms/ deliberately names no specific look-alike domain, so the word never appears and the covered_by was fiction. Serving this would mean accusing a named domain, which we do not do without evidence we can publish."
     },
     {
       "slug_suggestion": "app-download",
@@ -3276,6 +3291,552 @@
       "status": "covered",
       "covered_by": "rto-codes",
       "note": "Ubersuggest competitor-gap report, 14-Aug-2026, impact Medium / effort Low. Answered honestly by the /rto-codes/ H2 \"RTO details of a vehicle: what the number plate tells you\": we decode the registering RTO from the plate, client-side, and state plainly that we hold and publish NO owner records. Any future work here must keep that boundary — never imply an owner lookup."
+    },
+    {
+      "slug_suggestion": "e-challan-parivahan-gov-in-payment",
+      "target_keyword": "e challan parivahan gov in payment",
+      "cluster_keywords": [
+        "e challan parivahan gov in payment"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "parivahan-challan-check",
+      "target_keyword": "parivahan challan check",
+      "cluster_keywords": [
+        "parivahan challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-parivahan-challan",
+      "target_keyword": "e parivahan challan",
+      "cluster_keywords": [
+        "e parivahan challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-parivahan-gov-in",
+      "target_keyword": "e challan parivahan gov in",
+      "cluster_keywords": [
+        "e challan parivahan gov in"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "echal-lan-parivahan-gov-in",
+      "target_keyword": "echal lan parivahan gov in",
+      "cluster_keywords": [
+        "echal lan parivahan gov in"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "chalan-parivahan-com",
+      "target_keyword": "chalan parivahan com",
+      "cluster_keywords": [
+        "chalan parivahan com"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "parivahan-e-challan",
+      "target_keyword": "parivahan e challan",
+      "cluster_keywords": [
+        "parivahan e challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-online-check",
+      "target_keyword": "challan online check",
+      "cluster_keywords": [
+        "challan online check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "traffic-challan-check",
+      "target_keyword": "traffic challan check",
+      "cluster_keywords": [
+        "traffic challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-check-online",
+      "target_keyword": "challan check online",
+      "cluster_keywords": [
+        "challan check online"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "vahan-challan-check-online",
+      "target_keyword": "vahan challan check online",
+      "cluster_keywords": [
+        "vahan challan check online"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-check-by-vehicle-number",
+      "target_keyword": "challan check by vehicle number",
+      "cluster_keywords": [
+        "challan check by vehicle number"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-check-by-vehicle-number",
+      "target_keyword": "e challan check by vehicle number",
+      "cluster_keywords": [
+        "e challan check by vehicle number"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "rto-challan-check",
+      "target_keyword": "rto challan check",
+      "cluster_keywords": [
+        "rto challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "rto-challan-check-online",
+      "target_keyword": "rto challan check online",
+      "cluster_keywords": [
+        "rto challan check online"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-details",
+      "target_keyword": "e challan details",
+      "cluster_keywords": [
+        "e challan details"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "check-challan-with-photo",
+      "target_keyword": "check challan with photo",
+      "cluster_keywords": [
+        "check challan with photo"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "bike-challan-check",
+      "target_keyword": "bike challan check",
+      "cluster_keywords": [
+        "bike challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "car-challan-check",
+      "target_keyword": "car challan check",
+      "cluster_keywords": [
+        "car challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "vehicle-challan-check",
+      "target_keyword": "vehicle challan check",
+      "cluster_keywords": [
+        "vehicle challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-check-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "payment-of-e-challan",
+      "target_keyword": "payment of e challan",
+      "cluster_keywords": [
+        "payment of e challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "online-challan-payment",
+      "target_keyword": "online challan payment",
+      "cluster_keywords": [
+        "online challan payment"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "online-challan-paid",
+      "target_keyword": "online challan paid",
+      "cluster_keywords": [
+        "online challan paid"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-online",
+      "target_keyword": "e challan online",
+      "cluster_keywords": [
+        "e challan online"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-payment",
+      "target_keyword": "e challan payment",
+      "cluster_keywords": [
+        "e challan payment"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-pay",
+      "target_keyword": "challan pay",
+      "cluster_keywords": [
+        "challan pay"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-status",
+      "target_keyword": "e challan status",
+      "cluster_keywords": [
+        "e challan status"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "challan-status",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-status",
+      "target_keyword": "challan status",
+      "cluster_keywords": [
+        "challan status"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "challan-status",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-in-delhi",
+      "target_keyword": "challan in delhi",
+      "cluster_keywords": [
+        "challan in delhi"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-check-delhi",
+      "target_keyword": "challan check delhi",
+      "cluster_keywords": [
+        "challan check delhi"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "delhi-traffic-police",
+      "target_keyword": "delhi traffic police",
+      "cluster_keywords": [
+        "delhi traffic police"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "e-challan-delhi",
+      "target_keyword": "e challan delhi",
+      "cluster_keywords": [
+        "e challan delhi"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "challan-delhi-traffic-police",
+      "target_keyword": "challan delhi traffic police",
+      "cluster_keywords": [
+        "challan delhi traffic police"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "delhi-challan-check",
+      "target_keyword": "delhi challan check",
+      "cluster_keywords": [
+        "delhi challan check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "check-traffic-challan-delhi",
+      "target_keyword": "check traffic challan delhi",
+      "cluster_keywords": [
+        "check traffic challan delhi"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "delhi-traffic-challan",
+      "target_keyword": "delhi traffic challan",
+      "cluster_keywords": [
+        "delhi traffic challan"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "delhi-e-challan",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "rto-fine-check",
+      "target_keyword": "rto fine check",
+      "cluster_keywords": [
+        "rto fine check"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "rto-codes",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "rto-no-plate",
+      "target_keyword": "rto no plate",
+      "cluster_keywords": [
+        "rto no plate"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "rto-codes",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
+    },
+    {
+      "slug_suggestion": "rto-number-plate",
+      "target_keyword": "rto number plate",
+      "cluster_keywords": [
+        "rto number plate"
+      ],
+      "est_volume": 0,
+      "max_cpc": 0,
+      "min_seo_difficulty": 0,
+      "type": "guide",
+      "status": "covered",
+      "covered_by": "rto-codes",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\"."
     }
   ]
 }

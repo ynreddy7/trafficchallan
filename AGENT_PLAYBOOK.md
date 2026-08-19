@@ -30,8 +30,15 @@ You are the TrafficChallan content agent. Repo: github.com/ynreddy7/trafficchall
    slug_suggestion in src/content/guides/, add what the note asks for, re-verify the
    guide's facts against its sources and bump its frontmatter last_verified — no new
    file is created, so these do not count against the velocity cap.
-6. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" or "superseded" + "covered_by" were handled during curation — never produce them; skip to the next "pending" item.) Items with status "retired" are junk or out-of-scope clusters: runs never pick them up and never produce them.
-7. `npm test` must pass. Then `npm run publish:site -- --message "content: <what you added>"`.
+6. Run `npm run gaps:check` (after the build). It re-reads every queue item marked
+   covered and checks the keyword's distinctive words are really in that page's
+   rendered text. Anything it lists is a keyword the queue claims and the site does
+   not hold — the run will never build it and nothing will ever rank for it. Fix the
+   page's phrasing, or set the item back to "pending". This is how a 50-keyword
+   competitor gap accumulated unnoticed in August 2026: the queue said covered and
+   nobody checked. Never mark an item covered without the words being on the page.
+7. Mark the queue item: set its "status" to "done" and add "completed": "YYYY-MM-DD" (today). (Items with status "covered" or "superseded" + "covered_by" were handled during curation — never produce them; skip to the next "pending" item.) Items with status "retired" are junk or out-of-scope clusters: runs never pick them up and never produce them.
+8. `npm test` must pass. Then `npm run publish:site -- --message "content: <what you added>"`.
    If a gate, tests, links or the velocity cap fail: fix the cause, or stop. NEVER bypass a
    gate and never push to main yourself — publishing is publish.ts's job, past the gates.
    You do NOT need to rescue the work by hand: on a velocity-cap block publish.ts parks it
@@ -124,7 +131,9 @@ The /challan-discount/ tracker is only worth existing if it is current. On EVERY
 2. Same for data/schemes/*.json and data/lok-adalat.json: every scheme (all statuses,
    including `closed` and `none`) and every sitting/token fact is re-checked against
    its sources this run.
-3. When data/rto exists: sample-verify 5 codes in each of 3 states against the official
+3. Run `npm run gaps:check` after building and clear anything it reports, the same
+   way the content run does — a covered_by that no longer holds is a silent gap.
+4. When data/rto exists: sample-verify 5 codes in each of 3 states against the official
    state transport list (or official RTO office pages where no list is published),
    rotating which 3 states are sampled each month.
 4. Fix drift; update last_verified to today for records actually re-verified.

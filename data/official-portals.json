@@ -422,7 +422,7 @@
   ],
   "official_app": {
     "name": "mParivahan",
-    "fact": "MoRTH's own Parivahan Sewa site lists mParivahan under its \"Other Products & Services\" block and links exactly two addresses for it: the web address mparivahan.parivahan.gov.in, and one Google Play listing whose package name is com.nic.mparivahan. Those are the app addresses the ministry's site itself points to. The eChallan portal separately warns that fraudulent mobile apps impersonate its echallan services, so an app found by searching a store — rather than reached from the ministry's own site — is worth checking against the package name above before installing.",
+    "fact": "MoRTH's own Parivahan Sewa site lists the mParivahan application under its \"Other Products & Services\" block and links exactly two addresses for it: the web address mparivahan.parivahan.gov.in, and one Google Play listing whose package name is com.nic.mparivahan. Those are the app addresses the ministry's site itself points to. The eChallan portal separately warns that fraudulent mobile apps impersonate its echallan services, so an app found by searching a store — rather than reached from the ministry's own site — is worth checking against the package name above before you download or install it.",
     "site": "mparivahan.parivahan.gov.in",
     "play_package": "com.nic.mparivahan",
     "source": "https://parivahan.gov.in/",
