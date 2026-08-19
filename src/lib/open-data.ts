@@ -250,7 +250,7 @@ export function openDatasets(): OpenDataset[] {
     citation: [
       {
         name: 'The Motor Vehicles Act, 1988 — section 200 (composition of certain offences), India Code',
-        url: 'https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231'
+        url: 'https://indiacode.gov.in/handle/123456789/523307'
       },
       {
         name: 'Delhi Traffic Police — schedule of traffic offences and penalties',

@@ -1,7 +1,7 @@
 # Content Standards — TrafficChallan
 
 1. FACTS: Every fine amount, legal section, portal URL, and process claim MUST cite an
-   official source (parivahan.gov.in, state transport/police portals, indiacode.nic.in,
+   official source (parivahan.gov.in, state transport/police portals, indiacode.gov.in,
    gazette notifications, morth.nic.in, PIB, vcourts.gov.in). Blogs, news aggregators and
    other challan sites are NEVER sources for facts.
 2. VERIFY, THEN WRITE: Open the source and confirm the fact TODAY before writing it.
@@ -43,7 +43,18 @@
     method and sample per state ON the page (verification method "sampled").
 13. LEGAL CONTENT: a statute is cited ONLY after fetching the section text from India Code
     the same day — quote verbatim or paraphrase WITH the section number; never cite a
-    section from blogs or memory. Procedure in 2026 cites the BNSS 2023, not the repealed
+    section from blogs or memory.
+    India Code moved to `indiacode.gov.in` — every deep path on the old `indiacode.nic.in`
+    now 404s, and the new site is an Angular shell, so fetch the text from its DSpace API:
+    `indiacode.gov.in/server/api/discover/search/objects?query=dc.identifier.section_id:NNNNN`
+    returns the item, whose `dc.identifier.section_page_note` is the section body. The old
+    `?sectionId=` value IS the new `dc.identifier.section_id`, so a legacy link can be
+    remapped and then VERIFIED by checking `act_id` and `section_number` both still match.
+    Indian Kanoon is a valid source for JUDGMENTS but can serve SUPERSEDED statute text —
+    it still carried the 2019 wording of MV Act s.200 in August 2026, eight months after
+    Act 18 of 2023 replaced it (w.e.f. 13-01-2025). For statute text India Code wins; where
+    the two disagree, publish India Code and say nothing from Indian Kanoon.
+    Procedure in 2026 cites the BNSS 2023, not the repealed
     CrPC; a BNSS section number that cannot be verified from a primary source is not cited
     (describe the step generically instead — "the court may issue a summons"). Judgments
     are cited only from the judgment text itself (indiankanoon.org or the court site),
@@ -76,7 +87,7 @@
     never by a page of its own. Rewording adds no facts, so it does not bump last_verified.
     See AGENT_PLAYBOOK "Navigational queries, and keywords we already cover".
 
-15. COVERED MEANS THE WORDS ARE THERE. A queue item may only be marked `covered`
+16. COVERED MEANS THE WORDS ARE THERE. A queue item may only be marked `covered`
     when the keyword's distinctive words actually appear in the rendered text of
     the page named in `covered_by` — verified with `npm run gaps:check`, not
     assumed. A covered item is never built again, so a wrong `covered_by` removes
@@ -84,3 +95,24 @@
     Head terms (traffic, challan, e-challan, online, india) do not count as
     distinctive; and never reproduce a searcher's misspelling to satisfy a check —
     retire the item instead, with a note saying why.
+
+17. A SOURCE IS SHOWN FOR WHAT IT IS. Wherever the site presents a source as the authority
+    for a claim, the kind of authority must be visible: an official record, a court record,
+    or a press report. `src/lib/sources.ts` classifies it and `bestSource()` picks the
+    strongest source in a list regardless of its position, so a record can never be made to
+    look better by reordering. The bug this prevents was live on /challan-discount/: the
+    "Order / source" column rendered `sources[0]` as a bare hostname, so a page whose entire
+    claim is "a discount is real only when a government order says so" was printing
+    `bharatspeaks.com` where the order should be. A press report is never an order, a court
+    order reproducing a notification is evidence the notification exists but is not the
+    issuing department's own record, and both must say so on the page.
+
+18. A DEAD SOURCE IS A DEAD CLAIM. When a cited source stops resolving, the claim it carried
+    is re-verified against a live official source or it comes down — the citation is never
+    silently deleted while the fact stays, and never left pointing at a dead host. Government
+    subdomains disappear without notice: three Andhra Pradesh district police hosts went
+    NXDOMAIN between August 2026 runs, taking six published fine amounts' only source with
+    them. `npm run check:links -- --external` is what catches this, and publish.ts runs it,
+    so a dead source blocks publishing by design. If an archived capture proves the claim was
+    accurate when made, that is worth recording — but an archive is not a live citation and
+    does not restore the claim on its own.

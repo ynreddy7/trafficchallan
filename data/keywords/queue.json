@@ -3080,7 +3080,7 @@
       "status": "pending",
       "note": "Challans arriving after you sold the vehicle because the RC was never transferred. Cover: MV Act s.50 unilateral intimation by the transferor (verify the section text from India Code on the day of writing), Forms 29/30, the Supreme Court's Naveen Kumar v. Vijay Kumar (2018) 3 SCC 1 holding on registered-owner liability (verified citation available in repo git history/research — still re-fetch the judgment text from indiankanoon before citing), and the escalation ladder (RTO intimation -> state transport grievance -> challan grievance ticket). NEVER advise filing a stolen-vehicle FIR as a workaround.",
       "sources_hint": [
-        "https://www.indiacode.nic.in/ (MV Act 1988 s.50 — fetch section text same-day)",
+        "https://indiacode.gov.in/ (MV Act 1988 s.50 — fetch section text same-day)",
         "https://indiankanoon.org/ (Naveen Kumar v. Vijay Kumar, (2018) 3 SCC 1)",
         "https://parivahan.gov.in/ (Forms 29/30, RC transfer flow)",
         "https://echallan.parivahan.gov.in/index/grievance"
@@ -3100,7 +3100,7 @@
       "status": "pending",
       "note": "What 'digitally impounded' / 'blacklisted' actually means. Distinguish carefully: MV Act s.206 (physical seizure of documents/licence) and s.207 (detention of the vehicle) vs the VAHAN database blacklist flag that blocks RC transactions (transfer, fitness, NOC) until challans clear — these are different mechanisms with different legal bases. Verify s.206/s.207 text from India Code same-day; describe the VAHAN flag only from official portal behaviour/state transport notices, never as a statutory term.",
       "sources_hint": [
-        "https://www.indiacode.nic.in/ (MV Act 1988 s.206, s.207 — fetch same-day)",
+        "https://indiacode.gov.in/ (MV Act 1988 s.206, s.207 — fetch same-day)",
         "https://vahan.parivahan.gov.in/",
         "https://echallan.parivahan.gov.in/"
       ]
@@ -3119,7 +3119,7 @@
       "status": "pending",
       "note": "The timeline of an unpaid e-challan: no documented expiry or automatic lapse; department -> court forwarding; the court flow per BNSS 2023 (summons ss.63-64, warrant s.90 — RE-VERIFY every BNSS section number from India Code on the day of writing, never from memory or blogs), careful framing with zero outcome predictions. CHECK OVERLAP FIRST: the existing unpaid-e-challan-consequences guide covers consequences — if the timeline angle cannot stand alone, do this as a guide-update to that file instead of a new page.",
       "sources_hint": [
-        "https://www.indiacode.nic.in/ (BNSS 2023 sections — fetch same-day)",
+        "https://indiacode.gov.in/ (BNSS 2023 sections — fetch same-day)",
         "https://vcourts.gov.in/virtualcourt/",
         "https://echallan.parivahan.gov.in/"
       ]

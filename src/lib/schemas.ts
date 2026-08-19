@@ -118,17 +118,26 @@ export const LokAdalatSchema = z.object({
   delhi_token: z.object({
     portal: z.string().url(),
     opens_days_before: z.number().int().positive(),
+    // DSLSA has published a download window for exactly one edition. The number
+    // above is that single observation, so it never renders as a rule without
+    // this sentence naming the edition it came from.
+    opens_days_before_basis: z.string().min(30),
     daily_cap_note: z.string().min(30),
     limits_note: z.string().min(30)
   }),
   delhi_extras: z.object({
-    digital_lok_adalat_note: z.string().min(30),
     evening_courts_url: z.string().url(),
     weekend_courts_note: z.string().min(30)
   }),
+  // A state legal services authority can move its own sitting off the NALSA
+  // date. `sitting_date` is set when the state has published a replacement
+  // date, so the exception is machine-readable and can carry its own Event
+  // node rather than living only in prose.
   state_notes: z.array(z.object({
     state_slug: z.string().regex(/^[a-z][a-z-]*$/),
-    note: z.string().min(30)
+    note: z.string().min(30),
+    sitting_date: isoDate.optional(),
+    replaces_date: isoDate.optional()
   })),
   sources: z.array(z.string().url()).min(1),
   last_verified: isoDate

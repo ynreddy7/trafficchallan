@@ -1015,6 +1015,34 @@ tbody tr:nth-child(even) {
 .schedule tr[data-severity='rumour'] td:first-child {
   border-left-color: var(--rail-danger);
 }
+/* State exceptions to a national sitting date (/challan-discount/). A reader in
+   an affected state is being told the headline date is not theirs, so this must
+   read as a correction to the date above it, not as a footnote below it. */
+.state-exception {
+  margin-top: 0.9rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--ink-attention);
+}
+.state-exception p {
+  margin: 0 0 0.4rem;
+}
+.state-exception ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.state-exception li + li {
+  margin-top: 0.4rem;
+}
+
+/* What kind of authority a cited source carries. Rendered next to the hostname
+   in the "Order / source" column, where a bare domain would otherwise read as
+   the government order itself. */
+.source-kind {
+  white-space: nowrap;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
 /* Scheme-status words (/challan-discount/): colour always accompanies the
    word, never replaces it. Green stays inline-only per the signage rules. */
 .status-word {

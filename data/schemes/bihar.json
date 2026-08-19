@@ -2,17 +2,18 @@
   "slug": "bihar",
   "state_name": "Bihar",
   "status": "live",
-  "scheme_name": "One-Time Traffic Challan Settlement Scheme",
+  "scheme_name": "One Time Traffic Challan Settlement Scheme, 2026",
   "percent_by_class": {
-    "specified_offences": "up to 50% relief on the pending fine"
+    "compoundable_offences": "about 50% relief, per the notification's own schedule"
   },
-  "window": { "start": "2026-05-09", "end": "2027-03-31" },
-  "order_ref": "Notification No. 3261 dated 30 April 2026 (e-gazette; recorded in the Patna High Court order of 4 May 2026)",
-  "note": "Bihar's one-time settlement took effect at the 9 May 2026 National Lok Adalat under Patna High Court supervision and remains operational through financial year 2026-27. It gives up to 50% relief on e-challans pending more than 90 days for specified offences; serious violations such as using a handheld mobile while driving are excluded and attract the full penalty. Settlement happens at National Lok Adalat sittings. The Patna High Court's 4 May 2026 order records the notification (No. 3261 dated 30 April 2026), but the notification text itself is not online — the up-to-50% figure is as reported in press, so confirm the relief shown against your challan on the official portal before paying.",
+  "window": { "start": "2026-04-30", "end": "2027-03-31" },
+  "order_ref": "Notification No. 3261 dated 30 April 2026 (Cabinet-approved, e-gazette published; recorded in the Patna High Court orders of 4 May and 23 June 2026 in CWJC No. 20071 of 2025)",
+  "note": "Bihar notified a one-time settlement on 30 April 2026 and first ran it at the 9 May 2026 National Lok Adalat, where the High Court records that about 36,722 cases were disposed of. The Patna High Court's judgment of 23 June 2026 states that 'the amount of fines prescribed for compoundable traffic challans have been reduced by about 50% and are detailed accordingly in the said notification' — so the relief is not a flat 50% cut but a schedule of amounts, and it applies to compoundable offences only. The same judgment records that the notification 'extends only to the financial year 2026-27', which ends 31 March 2027, and that the government may consider extending it year on year. The notification's own text is not published anywhere we can reach: every Bihar government domain we tried failed to respond, so the scheme is evidenced only through the High Court record. Confirm the amount shown against your own challan on the official portal before paying.",
   "history": [],
   "sources": [
+    "https://indiankanoon.org/doc/175588204/",
     "https://indiankanoon.org/doc/199092032/",
-    "https://www.gktoday.in/bihar-launches-one-time-traffic-challan-settlement-scheme/"
+    "https://indiankanoon.org/doc/40087776/"
   ],
-  "last_verified": "2026-08-13"
+  "last_verified": "2026-08-20"
 }

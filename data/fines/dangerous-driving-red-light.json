@@ -26,10 +26,10 @@
     }
   ],
   "sources": [
-    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28460&sectionno=184&orderno=204",
-    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231",
-    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28483&sectionno=206&orderno=237",
-    "https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28486&sectionno=209&orderno=240",
+    "https://indiacode.gov.in/handle/123456789/523289",
+    "https://indiacode.gov.in/handle/123456789/523307",
+    "https://indiacode.gov.in/handle/123456789/523314",
+    "https://indiacode.gov.in/handle/123456789/523317",
     "https://traffic.delhipolice.gov.in/traffic-offences",
     "https://vcourts.gov.in/virtualcourt/",
     "https://cdnbbsr.s3waas.gov.in/s35dec707028b05bcbd3a1db5640f842c5/uploads/2025/04/202504251593727433.pdf",

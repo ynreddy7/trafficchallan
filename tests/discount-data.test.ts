@@ -28,13 +28,13 @@ const validLokAdalat = {
   delhi_token: {
     portal: 'https://traffic.delhipolice.gov.in/lokadalat/',
     opens_days_before: 5,
+    opens_days_before_basis: 'the 9 May 2026 sitting, the only edition for which a window has been published.',
     daily_cap_note: '50,000 challans released per day, up to 2 lakh in total per edition.',
-    limits_note: 'A maximum of 5 challans per vehicle in March 2026; limits are announced per edition.'
+    limits_note: 'No closing date was published; the window runs until the overall cap is exhausted.'
   },
   delhi_extras: {
-    digital_lok_adalat_note: 'DSLSA launched a Digital Lok Adalat application on 14 February 2026.',
     evening_courts_url: 'https://traffic.delhipolice.gov.in/evecourtddc/',
-    weekend_courts_note: 'Weekend courts run from 5 July 2026 at all district court complexes.'
+    weekend_courts_note: 'Weekend courts have run at district court complexes since July 2026.'
   },
   state_notes: [],
   sources: ['https://nalsa.gov.in/national-lok-adalat/'],

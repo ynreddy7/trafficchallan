@@ -223,13 +223,20 @@ export function articleJsonLd(title: string, description: string, path: string, 
  * the bench case by case (CONTENT_STANDARDS rule 11). Valid schema.org is the
  * bar, not Google rich-result eligibility.
  */
-export function eventJsonLd(dateISO: string) {
+export function eventJsonLd(dateISO: string, opts: { stateName?: string } = {}) {
   const pretty = new Date(dateISO + 'T00:00:00Z').toLocaleDateString('en-IN', {
     day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC'
   });
+  // Never "across India": a state authority can move its own sitting, so the
+  // unscoped phrasing became false the moment Karnataka shifted off 12 Sep 2026.
+  const place = opts.stateName
+    ? `District Legal Services Authorities in ${opts.stateName}`
+    : 'District Legal Services Authorities';
   return {
     '@context': 'https://schema.org', '@type': 'Event',
-    name: `National Lok Adalat — ${pretty}`,
+    name: opts.stateName
+      ? `National Lok Adalat (${opts.stateName}) — ${pretty}`
+      : `National Lok Adalat — ${pretty}`,
     startDate: dateISO,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
@@ -240,7 +247,7 @@ export function eventJsonLd(dateISO: string) {
     },
     location: {
       '@type': 'Place',
-      name: 'District Legal Services Authorities across India',
+      name: place,
       address: { '@type': 'PostalAddress', addressCountry: 'IN' }
     },
     description:

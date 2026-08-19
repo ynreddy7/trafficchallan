@@ -20,17 +20,16 @@ sources:
   - 'https://echallan.parivahan.nic.in/assets/i18n/en.json'
   - 'https://echallan.parivahan.gov.in/index/accused-challan'
   - >-
-    https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28486&sectionno=209&orderno=240
+    https://indiacode.gov.in/handle/123456789/523317
   - >-
-    https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28483&sectionno=206&orderno=237
+    https://indiacode.gov.in/handle/123456789/523314
   - >-
-    https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231
+    https://indiacode.gov.in/handle/123456789/523307
   - >-
-    https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28406&sectionno=133&orderno=143
+    https://indiacode.gov.in/handle/123456789/523231
   - >-
-    https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28463&sectionno=187&orderno=207
+    https://indiacode.gov.in/handle/123456789/523292
   - 'https://btp.karnataka.gov.in/105/contactless-enforcement/en'
-  - 'https://prakasampolice.ap.gov.in/CommandControl.html'
 faqs:
   - q: How do I tell whether my challan has already been sent to court?
     a: >-
@@ -86,7 +85,7 @@ Once it reaches a court it is a case, not a bill: you plead guilty and pay onlin
 
 The national default time limit is 90 days. NIC's own eChallan documentation states that if the challan is not paid within 90 days, "as per Rule 167(5) of the Central Motor Vehicle Rules (CMVR), the system automatically forwards the case to the Virtual Court, where adjudication proceedings begin."
 
-States run tighter clocks of their own, and Delhi publishes the clearest one. Under Delhi Traffic Police's General Instructions for red light and overspeed violation detection cameras, red light violation notices and challans are sent to the Virtual Court **within 15 days** and are compounded there, never on the police website. Overspeed, stop-line and wrong-side detections stay payable on the Delhi Traffic Police site for **60 days**, then move to the Virtual Court, where you pay on receiving an SMS. If a challan is still not compounded in the Virtual Court within 60 days, it is sent to the regular court. Elsewhere the window is local — Andhra Pradesh's Prakasam district police post camera challans demanding payment within 15 days. Check your own [state page](/delhi-e-challan/) rather than assuming one national deadline.
+States run tighter clocks of their own, and Delhi publishes the clearest one. Under Delhi Traffic Police's General Instructions for red light and overspeed violation detection cameras, red light violation notices and challans are sent to the Virtual Court **within 15 days** and are compounded there, never on the police website. Overspeed, stop-line and wrong-side detections stay payable on the Delhi Traffic Police site for **60 days**, then move to the Virtual Court, where you pay on receiving an SMS. If a challan is still not compounded in the Virtual Court within 60 days, it is sent to the regular court. Elsewhere the window is local and often shorter than people expect. Check your own [state page](/delhi-e-challan/) rather than assuming one national deadline.
 
 The closest thing to an "expiry" is Section 209, which bars conviction for overspeeding (Section 183) or dangerous driving (Section 184) unless the driver was warned at the time, or a notice specifying the offence was served or sent by registered post within fourteen days, or a summons was served within twenty-eight days. That covers those two sections only — no general rule makes an ordinary unpaid challan lapse.
 

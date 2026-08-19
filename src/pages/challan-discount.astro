@@ -13,6 +13,7 @@ import { faqJsonLd, eventJsonLd, discountTitle } from '../lib/seo';
 import { datasetNode, findDataset } from '../lib/open-data';
 import { slugify } from '../lib/format';
 import { nextSitting } from '../lib/countdown';
+import { bestSource, sourceKindLabel } from '../lib/sources';
 import type { SchemeRecord } from '../lib/schemas';
 
 const schemes = loadSchemes();
@@ -89,12 +90,28 @@ const rumourAnchor = slugify("Is the '80% discount' message real?");
 // countdown (liveFaqSentence, next/remaining, lokAdalat notes) so the on-page
 // FAQ and faqJsonLd can never contradict what the rest of the page renders.
 const lastOfYear = remaining.length ? remaining[remaining.length - 1] : null;
+// A state legal services authority can move its own sitting off the NALSA date
+// (Karnataka did, for 12 Sep 2026). Nothing on this page may imply one national
+// date without carrying the exceptions, so every claim about "the next sitting"
+// is written against this list rather than around it.
+const stateNameBySlug = new Map<string, string>([
+  ...loadStates().map((s) => [s.slug, s.name] as const),
+  ...schemes.map((s) => [s.slug, s.state_name] as const)
+]);
+const stateNotes = lokAdalat.state_notes.map((n) => ({
+  ...n,
+  state_name: stateNameBySlug.get(n.state_slug) ?? n.state_slug,
+  has_state_page: siteStateSlugs.has(n.state_slug)
+}));
+const stateNoteFaqTail = stateNotes.length
+  ? ` ${stateNotes.map((n) => n.note).join(' ')}`
+  : '';
 const nextSittingFaq = next
   ? `The next National Lok Adalat sits on ${pretty(next)}${
       lastOfYear && lastOfYear !== next
         ? `, and the last one of the year on ${pretty(lastOfYear)}`
         : ' — the last one of the year'
-    }. They follow the NALSA calendar — four second Saturdays a year — and courts across India sit on the same date.`
+    }. They follow the NALSA calendar — four second Saturdays a year — and most states sit on that date, but a state legal services authority can move its own sitting.${stateNoteFaqTail}`
   : 'No further National Lok Adalat sitting is scheduled yet — state legal services authorities publish the next cycle’s dates, and this page updates as soon as the first one does. They follow the NALSA calendar — four second Saturdays a year.';
 const faqs = [
   {
@@ -115,7 +132,7 @@ const faqs = [
   },
   {
     q: 'How do I get a token for the Delhi traffic Lok Adalat?',
-    a: `Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens — about ${lokAdalat.delhi_token.opens_days_before} days before the sitting, with exact dates announced afresh by DSLSA for each edition. Enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. ${lokAdalat.delhi_token.daily_cap_note}`
+    a: `Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens. DSLSA announces the window afresh for each edition and has published nothing yet for 12 September 2026, so there is no date to book against at the moment. When it does open: enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. ${lokAdalat.delhi_token.daily_cap_note}`
   }
 ];
 
@@ -134,7 +151,12 @@ const jsonld = [
   datasetNode(findDataset('discount-schemes'), { path: '/challan-discount/', sameAsPath: '/data/#discount-schemes' }),
   // One Event node per FUTURE national sitting, straight from the data —
   // past sittings never emit an event.
-  ...remaining.map((d) => eventJsonLd(d))
+  ...remaining.map((d) => eventJsonLd(d)),
+  // States that moved off the national date get their own node, so the
+  // structured data cannot say a state is sitting on a day it is not.
+  ...stateNotes
+    .filter((n) => n.sitting_date && n.sitting_date >= todayISO)
+    .map((n) => eventJsonLd(n.sitting_date!, { stateName: n.state_name }))
 ];
 
 // Freshness-led title while a sitting is upcoming; evergreen fallback after
@@ -158,13 +180,14 @@ const pageTitle = discountTitle(new Date().getFullYear(), next);
   </AnswerBox>
   <p>
     {liveSentence}
-    {next && <>{' '}The next National Lok Adalat sits on {pretty(next)}.</>}
+    {next && <>{' '}The next National Lok Adalat sits on {pretty(next)} in most states.</>}
   </p>
   <LastVerified date={lastVerified} />
 
   <section class="panel">
     <h2 id={slugify('When is the next National Lok Adalat?')}>When is the next National Lok Adalat?</h2>
     {next ? (
+      <>
       <p>
         {/* The span's server text stays neutral and absolute — the client script
             replaces it with a relative phrase computed on the visitor's day. */}
@@ -173,12 +196,29 @@ const pageTitle = discountTitle(new Date().getFullYear(), next);
           ? ` ${remaining.length} sittings remain in 2026: ${remaining.map(prettyShort).join(' and ')}.`
           : ' It is the last sitting of 2026.'}
       </p>
+      {stateNotes.length > 0 && (
+        <div class="state-exception">
+          <p><strong>Not every state sits on that date.</strong></p>
+          <ul>
+            {stateNotes.map((n) => (
+              <li>
+                {n.note}
+                {n.has_state_page && (
+                  <>{' '}<a href={`/${n.state_slug}-e-challan/`}>{n.state_name} e-challan guide</a>.</>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      </>
     ) : (
       <p>No further National Lok Adalat sitting is scheduled yet — the next cycle's dates are published by the state legal services authorities.</p>
     )}
     <p class="verified">
-      The .ics reminder covers each remaining sitting (alerts 7 days and 1 day before) plus the likely Delhi
-      token-window date — "likely" because DSLSA announces the exact dates afresh for every edition.
+      The .ics reminder covers each remaining sitting (alerts 7 days and 1 day before) plus a prompt to check the
+      Delhi token portal. That prompt is a reminder to look, not a published date: DSLSA notifies each edition
+      separately and has published nothing yet for September.
     </p>
     <div class="action-row">
       {/* Rendered hidden and un-hidden by the island once its click handler is
@@ -225,7 +265,17 @@ const pageTitle = discountTitle(new Date().getFullYear(), next);
             <td data-label="Window">{windowText(s)}</td>
             <td data-label="Order / source">
               {s.order_ref && <div>{s.order_ref}</div>}
-              <a href={s.sources[0]} rel="noopener nofollow">{new URL(s.sources[0]).hostname}</a>
+              {(() => {
+                // Strongest source wins regardless of array order, and its kind
+                // is always shown — a press hostname alone in a column headed
+                // "Order / source" reads as the order itself.
+                const best = bestSource(s.sources);
+                return best && (
+                  <a href={best.url} rel="noopener nofollow">
+                    {new URL(best.url).hostname} <span class="source-kind">({sourceKindLabel(best.kind)})</span>
+                  </a>
+                );
+              })()}
             </td>
           </tr>
         ))}
@@ -241,15 +291,23 @@ const pageTitle = discountTitle(new Date().getFullYear(), next);
     that does not exist in any order.
   </p>
   <p>
-    What the sitting does guarantee: a settled case closes the same day, the award is deemed a decree of a civil
-    court with no appeal, and court fees already paid are refunded. How the sittings work, which challans qualify
-    (drunk driving and red-light cases under Section 184 cannot be compounded) and what happens if you miss your
-    slot are covered in our full <a href="/e-challan-lok-adalat/">e-challan Lok Adalat guide</a>.
+    What the sitting does guarantee comes from Section 21 of the Legal Services Authorities Act 1987: an award is
+    "deemed to be a decree of a civil court", it is "final and binding on all the parties to the dispute, and no
+    appeal shall lie to any court against the award", and where the case was referred by a court the court-fee
+    already paid is refunded.
+  </p>
+  <p>
+    Which challans qualify is set by Section 200 of the Motor Vehicles Act, and it is narrower than most people
+    expect. Drunk driving is Section 185, which does not appear in the Section 200 list at all. Dangerous driving
+    is Section 184, and Section 200 admits only <em>clause (c) of the Explanation</em> to it — using a handheld
+    communication device while driving. Jumping a red light is clause (a) of that same Explanation, so it is not
+    compoundable either. How the sittings work and what happens if you miss your slot are covered in our full
+    <a href="/e-challan-lok-adalat/">e-challan Lok Adalat guide</a>.
   </p>
 
   <h2 id={slugify('How does the Delhi token system work?')}>How does the Delhi token system work?</h2>
   <StepList steps={[
-    `Wait for the token window: Delhi's portal opens about ${lokAdalat.delhi_token.opens_days_before} days before each National Lok Adalat sitting, and DSLSA announces the exact dates afresh for every edition.`,
+    `Wait for the token window. There is no standing rule for when it opens: DSLSA issues a fresh notification for every edition, and the only window it has published so far opened ${lokAdalat.delhi_token.opens_days_before} days ahead — for ${lokAdalat.delhi_token.opens_days_before_basis}.`,
     'Open traffic.delhipolice.gov.in/lokadalat/ and enter your vehicle number and the captcha. An OTP goes to the vehicle owner’s registered mobile number — update the number on the portal first if it is not registered.',
     'After OTP verification, select the challans and notices to be taken up, choose a court complex and a forenoon or afternoon slot.',
     'Submit and print the appointment slip. Carry the printout and the challans to the court complex on the sitting day — if you miss the date, you must book afresh for the next Lok Adalat.'
@@ -258,9 +316,8 @@ const pageTitle = discountTitle(new Date().getFullYear(), next);
     {lokAdalat.delhi_token.daily_cap_note} {lokAdalat.delhi_token.limits_note}
   </p>
   <p>
-    {lokAdalat.delhi_extras.digital_lok_adalat_note} Outside Lok Adalat dates, Delhi also runs
+    {lokAdalat.delhi_extras.weekend_courts_note} Delhi also runs
     <a href={lokAdalat.delhi_extras.evening_courts_url} rel="noopener">evening traffic courts</a>.
-    {lokAdalat.delhi_extras.weekend_courts_note}
   </p>
 
   <h2 id={rumourAnchor}>Is the '80% discount' message real?</h2>
@@ -345,8 +402,8 @@ const pageTitle = discountTitle(new Date().getFullYear(), next);
             events.push({
               uid: `delhi-token-${tokenDate}@trafficchallan.com`,
               date: tokenDate,
-              summary: 'Delhi Lok Adalat token window likely opens',
-              description: `Delhi's token portal has opened about ${data.opensDaysBefore} days before recent sittings, but DSLSA announces the exact dates afresh for each edition — check ${data.portal} on this day.`,
+              summary: 'Check the Delhi Lok Adalat token portal',
+              description: `A reminder to look, not a published date. DSLSA notifies each edition separately and has published a download window for only one sitting so far, which opened ${data.opensDaysBefore} days ahead — check ${data.portal} on this day.`,
               alarmDaysBefore: [1]
             });
           }

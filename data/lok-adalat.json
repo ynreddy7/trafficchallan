@@ -20,26 +20,37 @@
   "delhi_token": {
     "portal": "https://traffic.delhipolice.gov.in/lokadalat/",
     "opens_days_before": 5,
-    "daily_cap_note": "As reported for the May 2026 edition, Delhi Traffic Police released around 50,000 challans per day for download on the token portal across the four booking days; DSLSA announces the exact caps afresh per edition.",
-    "limits_note": "As reported for the May 2026 edition, the token window opened on 4 May at 10:00 AM and ran to 7 May — five days before the 9 May sitting; DSLSA announces the exact windows, per-vehicle limits and eligibility cutoffs afresh for each edition."
+    "opens_days_before_basis": "the 9 May 2026 sitting, whose download window opened on 4 May — the only edition for which DSLSA has published a window at all",
+    "daily_cap_note": "For the 9 May 2026 sitting, DSLSA's notification (Ref. No. 06/DSLSA/ADRW/NLAs/2026/4595 dated 9 April 2026) said that compoundable challans pending till 31 January 2026 would be taken up, and that violators could download the challan slips from the Delhi Traffic Police link \"from 04.05.2026 at 10 a.m. onwards, subject to a maximum limit of 50,000 challans per day, till exhausting the overall limit of 2 lakh challans\".",
+    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — on its own terms the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. Nothing has been published yet for the 12 September 2026 sitting: DSLSA issues a fresh notification for each edition, and the 9 May one was issued 30 days ahead."
   },
   "delhi_extras": {
-    "digital_lok_adalat_note": "DSLSA organised a special Lok Adalat exclusively for traffic challans across all Delhi district court complexes on 14 February 2026 and launched a Digital Lok Adalat application for settling traffic matters.",
     "evening_courts_url": "https://traffic.delhipolice.gov.in/evecourtddc/",
-    "weekend_courts_note": "As reported in July 2026, weekend traffic courts run from 5 July 2026 at all Delhi district court complexes — second Saturday and every Sunday, 10 am to 4 pm — for compoundable challans only; evening courts sit 5 pm to 7 pm on working days. Challan slips are downloaded from the Delhi Traffic Police portal, choosing a court complex and slot."
+    "weekend_courts_note": "Outside National Lok Adalat dates, Delhi's district court complexes have run weekend traffic courts since July 2026, alongside evening traffic courts on working days. Challan slips are downloaded from the Delhi Traffic Police portal, choosing a court complex and a slot; the rosters are published as circulars by the district courts."
   },
-  "state_notes": [],
+  "state_notes": [
+    {
+      "state_slug": "karnataka",
+      "sitting_date": "2026-09-19",
+      "replaces_date": "2026-09-12",
+      "note": "Karnataka is not sitting on 12 September 2026. The Karnataka State Legal Services Authority postponed the third National Lok Adalat to Saturday 19 September 2026, 2.00 p.m. to 5.30 p.m., by letter No. KSLSA:08/NLA/2026 dated 18 August 2026, addressed to every District Legal Services Authority in the state. If your challan is in Karnataka, 19 September is the date that applies to you."
+    }
+  ],
   "sources": [
+    "https://nalsa.gov.in/national-lok-adalat/",
+    "https://telangana.nalsa.gov.in/event/national-lok-adalat-schedule-2025/",
+    "https://dslsa.org/notice-for-national-lok-adalat-for-the-year-2026/",
+    "https://cdnbbsr.s3waas.gov.in/s395b7a6d9a47c56ff9118bb45379fc884/uploads/2026/04/202604092083114420.pdf",
+    "https://karnataka.nalsa.gov.in/notifications/",
+    "https://cdnbbsr.s3waas.gov.in/s38182fa34e3615c643a9dddca59ab80f9/uploads/2026/08/202608191881854162.pdf",
+    "https://haryana.nalsa.gov.in/lok-adalat/",
+    "https://andhrapradesh.nalsa.gov.in/lok-adalat/",
     "https://meghalaya.nalsa.gov.in/news/schedule-of-national-lok-adalat-2026/",
     "https://sikkim.nalsa.gov.in/national-lok-adalat-scheduled-to-be-held-on-12th-september-2026/",
-    "https://nalsa.gov.in/national-lok-adalat/",
     "https://traffic.delhipolice.gov.in/lokadalat/",
-    "https://traffic.delhipolice.gov.in/special-lok-adalat/",
     "https://traffic.delhipolice.gov.in/evecourtddc/",
-    "https://dslsa.org/",
-    "https://www.livelaw.in/events/dslsa-organises-special-traffic-lok-adalat-launches-digital-lok-adalat-application-delhi-523288",
-    "https://lawchakra.in/other-courts/delhi-weekend-traffic-violation-case/",
-    "https://digilawyer.ai/latest-announcements/national-lok-adalat-challan-settlement-dates"
+    "https://delhidistrictcourts.nic.in/circulars",
+    "https://dslsa.org/"
   ],
-  "last_verified": "2026-08-13"
+  "last_verified": "2026-08-20"
 }

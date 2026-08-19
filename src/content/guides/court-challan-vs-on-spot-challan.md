@@ -17,7 +17,7 @@ sources:
   - 'https://nalsa.gov.in/lok-adalat/faqs'
   - 'https://haryana.nalsa.gov.in/lok-adalat/'
   - >-
-    https://www.indiacode.nic.in/show-data?actid=AC_CEN_30_42_00009_198859_1517807326286&sectionId=28477&sectionno=200&orderno=231
+    https://indiacode.gov.in/handle/123456789/523307
 faqs:
   - q: My challan is non-compoundable. Can I pay it online anyway to avoid court?
     a: >-

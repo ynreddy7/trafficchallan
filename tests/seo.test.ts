@@ -149,11 +149,23 @@ describe('seo builders', () => {
       '@type': 'Organization', name: 'National Legal Services Authority (NALSA)', url: 'https://nalsa.gov.in/'
     });
     expect(e.location['@type']).toBe('Place');
-    expect(e.location.name).toBe('District Legal Services Authorities across India');
+    // Never "across India": a state authority can move its own sitting, so the
+    // unscoped node must not claim every state is sitting that day.
+    expect(e.location.name).toBe('District Legal Services Authorities');
     expect(e.location.address.addressCountry).toBe('IN');
     // Never any offers/discount figure: Lok Adalat outcomes are bench-discretionary.
     expect(e.offers).toBeUndefined();
     expect(JSON.stringify(e)).not.toMatch(/%|discount/i);
+  });
+
+  it('event node scopes name and location to a state that moved its sitting', () => {
+    // Karnataka postponed the 12 Sep 2026 sitting to 19 Sep by KSLSA letter
+    // 08/NLA/2026. Its node must not be confusable with the national one.
+    const e = eventJsonLd('2026-09-19', { stateName: 'Karnataka' }) as any;
+    expect(e.name).toBe('National Lok Adalat (Karnataka) — 19 September 2026');
+    expect(e.startDate).toBe('2026-09-19');
+    expect(e.location.name).toBe('District Legal Services Authorities in Karnataka');
+    expect(e.offers).toBeUndefined();
   });
 
   it('webApplication node is a free UtilityApplication with absolute url', () => {
