@@ -2,17 +2,17 @@ import { describe, it, expect } from 'vitest';
 import { loadStates, loadOffences, fineListDate } from '../src/lib/data';
 import { hasFineListPage, fineListRows } from '../src/lib/fine-list';
 
-// The 10 states that carry verified fine_overrides today — the ONLY states
+// The 11 states that carry verified fine_overrides today — the ONLY states
 // that get a /fines/{state}/ list page. Telangana (never adopted the 2019 MV
 // Amendment schedule), Madhya Pradesh and Jammu & Kashmir carry no verified
 // state amounts and must never appear here.
 const EXPECTED_LIST_STATES = [
   'andhra-pradesh', 'delhi', 'gujarat', 'haryana', 'karnataka',
-  'maharashtra', 'rajasthan', 'tamil-nadu', 'uttar-pradesh', 'west-bengal'
+  'maharashtra', 'odisha', 'rajasthan', 'tamil-nadu', 'uttar-pradesh', 'west-bengal'
 ];
 
 describe('hasFineListPage (real repo data — mirrors getStaticPaths in src/pages/fines/[slug].astro)', () => {
-  it('selects exactly the 10 verified-override states', () => {
+  it('selects exactly the 11 verified-override states', () => {
     const slugs = loadStates().filter(hasFineListPage).map((s) => s.slug).sort();
     expect(slugs).toEqual(EXPECTED_LIST_STATES);
   });

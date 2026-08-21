@@ -1,0 +1,176 @@
+{
+  "slug": "odisha",
+  "name": "Odisha",
+  "abbr": "OD",
+  "target_keyword": "traffic challan odisha",
+  "last_verified": "2026-08-19",
+  "portals": [
+    {
+      "label": "MoRTH eChallan (legacy portal) — Know Your Challan Status / accused-challan, the link the Odisha Motor Vehicle Department's own site names for checking and paying",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "Virtual Courts (e-Committee, Supreme Court of India) — 'Odisha(Odisha Traffic CTC-BBSR Commissionerate)', for challans referred to the J.M.F.C. (Transport), Cuttack court",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    },
+    {
+      "label": "Odisha Motor Vehicle Department — How to Pay Echallan Fees (official payment guidance)",
+      "url": "https://odishatransport.gov.in/content/How-to-Pay-Echallan-Fees/1",
+      "scope": "check"
+    },
+    {
+      "label": "Odisha Motor Vehicle Department — Offences and Penalties (official fine schedule PDF)",
+      "url": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf",
+      "scope": "check"
+    },
+    {
+      "label": "State Transport Authority, Odisha — Contact Details (helpline)",
+      "url": "https://odishatransport.gov.in/contact/contact-details/1",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Open the portal the Odisha Motor Vehicle Department itself names for this: echallan.parivahan.gov.in/index/accused-challan. The department's own 'How to Pay Echallan Fees' page states a challan can be looked up 'challan number wise', 'vehicle number wise' or 'Driving License wise'.",
+    "Pick the matching field on the portal, enter the value plus the captcha shown, and submit to see any pending e-challans against it — including challans the state calls 'automatic challans generated through the Intelligent Enforcement Management System (IEMS)' in its own One Time Settlement notification, alongside challans enforcement staff issue manually.",
+    "If the violation happened inside the Commissionerate of Police, Cuttack-Bhubaneswar area and has already gone to court, search it instead on the Virtual Courts portal at vcourts.gov.in/virtualcourt/ — select 'Odisha(Odisha Traffic CTC-BBSR Commissionerate)' and search by Mobile Number, CNR Number, Party Name or Challan/Vehicle Number.",
+    "This is Odisha's only Virtual Court department. A challan referred to court from anywhere else in the state is not on vcourts.gov.in at all and has to be tracked through the local court instead."
+  ],
+  "pay_steps": [
+    "The Motor Vehicle Department's official guidance is to pay 'online going through the link' echallan.parivahan.gov.in — from your retrieved challan, choose the payment option and complete the transaction on the portal's own gateway.",
+    "Save the payment receipt the portal issues immediately; Odisha has no separate state-run receipt lookup for echallan.parivahan.gov.in payments.",
+    "For a Cuttack-Bhubaneswar Commissionerate challan already on the Virtual Court, open the case on vcourts.gov.in/virtualcourt/, choose 'I wish to pay the proposed fine', verify the OTP sent to the mobile number on record, tick the terms-and-conditions and Special Summons acknowledgement boxes, then click 'Accept & Pay' — you are taken to the payment gateway and a receipt is issued immediately on success. This exact flow is documented in the Orissa High Court's own Virtual Courts user manual.",
+    "If the mobile number or name on the challan is wrong, the same Virtual Court screen offers 'pay the fine by verifying Engine No. and Chassis No.' instead of OTP, per the High Court manual.",
+    "If you want to contest rather than pay, choose 'I wish to contest the case' on the Virtual Court screen instead; after OTP verification you get an acknowledgement naming the assigned court and hearing date."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the MoRTH/NIC national app; the ministry's own Parivahan Sewa site names it as the app for challan lookup, alongside RC/DL services.",
+    "No Odisha-specific pull-SMS query code is documented on the Motor Vehicle Department's own e-challan pages. SMS is outbound only: the department states that when an e-challan is issued, 'an SMS notification is sent to the vehicle's registered mobile number along with the details of the traffic offence.'"
+  ],
+  "court_challan_process": "Odisha's only online court route for traffic e-challans is a pilot, not a statewide system. With effect from 2 August 2021, the Orissa High Court designated the Court of J.M.F.C. (Transport), Cuttack as the state's 'Virtual Court' for e-challans arising within the jurisdiction of the Commissionerate of Police, Cuttack-Bhubaneswar, and that is the sole department Odisha carries on vcourts.gov.in — listed as 'Odisha(Odisha Traffic CTC-BBSR Commissionerate)'. On that portal a case is searched by Mobile Number, CNR Number, Party Name or Challan/Vehicle Number; the violator can then choose to pay the proposed fine or contest it, in either case after OTP verification (or, if the registered mobile/name is wrong, after verifying the engine and chassis number instead). Choosing to pay leads to the payment gateway and an immediate receipt; choosing to contest returns an acknowledgement naming the physical court and hearing date the case has been assigned to, per the Orissa High Court's own Virtual Courts user manual. Outside the Cuttack-Bhubaneswar Commissionerate area, or for an offence that is not compoundable, a challan referred to court is not on vcourts.gov.in at all and has to be pursued through the jurisdictional local court instead — no statewide online alternative is documented. Long-pending compoundable challans across Odisha are also cleared in bulk at National Lok Adalat sittings held on the national calendar (see nalsa.gov.in), organised in-state by the Odisha State Legal Services Authority; that authority's own site did not load when this page was last checked, so re-verify current sitting dates and venues there directly before relying on this page for Lok Adalat specifics.",
+  "payment_methods": [
+    "echallan.parivahan.gov.in's own payment gateway, reached after retrieving a pending challan — the Motor Vehicle Department names this as the payment route; the gateway page itself did not load when this page was last checked, so the exact instruments it offers were not independently re-confirmed today — check the options presented at checkout.",
+    "Virtual Court ePay gateway at vcourts.gov.in, for a Cuttack-Bhubaneswar Commissionerate challan already forwarded to the J.M.F.C. (Transport), Cuttack court — OTP-verified, with an immediate receipt on success.",
+    "mParivahan (MoRTH/NIC national app) for challan lookup and payment."
+  ],
+  "contacts": [
+    {
+      "label": "State Transport Authority, Odisha — toll-free helpline (10 AM–6 PM, working days)",
+      "value": "1800-345-1073"
+    },
+    {
+      "label": "State Transport Authority, Odisha — phone",
+      "value": "+91-671-2507042"
+    },
+    {
+      "label": "State Transport Authority, Odisha — email",
+      "value": "ori-transportcomm[at]nic[dot]in"
+    },
+    {
+      "label": "eChallan helpdesk (MoRTH/NIC, national)",
+      "value": "helpdesk-echallan[at]gov[dot]in / 0120-4925505"
+    },
+    {
+      "label": "High Court of Orissa — e-Services / Virtual Courts queries",
+      "value": "highcourt[dot]or[at]nic[dot]in"
+    },
+    {
+      "label": "Police emergency (national ERSS)",
+      "value": "100 / 112"
+    },
+    {
+      "label": "Cyber crime helpline (national, for e-challan/payment fraud)",
+      "value": "1930"
+    }
+  ],
+  "quirks": [
+    "Odisha still routes citizens to the legacy echallan.parivahan.gov.in portal, not the NextGen echallan.parivahan.nic.in system. The Motor Vehicle Department's own 'How to Pay Echallan Fees' page names only the legacy link, unlike states such as Karnataka or Gujarat whose notice boards have moved users to NextGen.",
+    "Odisha's Virtual Court is a pilot limited to one jurisdiction, not a statewide service. It has covered only e-challans from within the Commissionerate of Police, Cuttack-Bhubaneswar area since 2 August 2021, run through the Court of J.M.F.C. (Transport), Cuttack — per the Orissa High Court's own Virtual Courts user manual. A challan referred to court from elsewhere in Odisha will not appear on vcourts.gov.in at all.",
+    "Challans can be generated with no officer present. The state's own One Time Settlement notification describes 'automatic challans generated through the Intelligent Enforcement Management System (IEMS)' running alongside challans issued manually by Transport Department and police enforcement staff.",
+    "Odisha ran a One-Time Settlement Scheme letting violators pay roughly half the notified fine on e-challans pending as of 31 July 2025, for a six-month window from the date of the notification; challans on which a Prosecution Report had already been filed in court were excluded. That window has closed — see /challan-discount/ for whether a new drive is running.",
+    "Most of Odisha's own notified e-challan penalty figures do not undercut the central Motor Vehicles (Amendment) Act 2019 amounts. Several — using a mobile phone while driving, jumping a red light, drunken driving, and using a vehicle without registration/fitness certificate — sit at the exact ceiling of the central statutory range rather than below it, unlike states that notified reduced compounding amounts of their own.",
+    "Odisha Police's own site (odishapolice.gov.in / police.odisha.gov.in) and the Odisha State Legal Services Authority site did not load when this page was checked, so this page relies on the Transport Department, the Orissa High Court and vcourts.gov.in instead. Re-verify police-specific helpline numbers and Lok Adalat venue details directly against those sites once reachable, rather than treating their absence here as confirmation nothing exists."
+  ],
+  "faqs": [
+    {
+      "q": "Which website do I use to check an Odisha traffic e-challan?",
+      "a": "echallan.parivahan.gov.in/index/accused-challan — the Odisha Motor Vehicle Department's own 'How to Pay Echallan Fees' page names this as the portal, and says a challan can be searched 'challan number wise', 'vehicle number wise' or 'Driving License wise'. Odisha has not moved to the NextGen echallan.parivahan.nic.in system that some other states now use."
+    },
+    {
+      "q": "Is there a separate Odisha state portal for paying e-challans?",
+      "a": "No. The Motor Vehicle Department's e-challan guidance names only echallan.parivahan.gov.in for checking and paying. Other systems listed under the department's 'Online Services' menu, such as SmartQ (smartq.odishatransport.gov.in), handle learner-licence test appointments and other RTO transactions, not e-challans."
+    },
+    {
+      "q": "My Odisha challan went to court — can I settle it online?",
+      "a": "Only if it was booked inside the Commissionerate of Police, Cuttack-Bhubaneswar area. That is the sole jurisdiction covered by Odisha's Virtual Court, run through the Court of J.M.F.C. (Transport), Cuttack since 2 August 2021 — search it on vcourts.gov.in/virtualcourt/ under 'Odisha(Odisha Traffic CTC-BBSR Commissionerate)'. A challan referred to court from anywhere else in Odisha is not on that portal at all, and has to be pursued through the local court."
+    },
+    {
+      "q": "Does Odisha currently offer a discount on old pending challans?",
+      "a": "Not as a standing scheme. Odisha ran a One-Time Settlement Scheme cutting fines by roughly half on e-challans pending as of 31 July 2025, for a six-month window from its notification date; challans already sent to court as a Prosecution Report were excluded. That window has closed. Check /challan-discount/ for whether a new drive has since been announced."
+    },
+    {
+      "q": "Why is my Odisha challan for jumping a red light or drunk driving so high?",
+      "a": "Odisha's own notified e-challan penalty figures for several offences sit at the top of the central Motor Vehicles (Amendment) Act 2019 range rather than below it. Jumping a red light and using a mobile phone while driving are both charged at ₹5,000 for a first offence (rising to ₹10,000 for a repeat) — the ceiling of the central ₹1,000–5,000 band — and drunken driving is charged at ₹10,000 first / ₹15,000 repeat, matching the central figures exactly. Unlike states that notified lower amounts, Odisha has not reduced these."
+    }
+  ],
+  "fine_overrides": {
+    "driving-without-helmet": {
+      "amount_text": "₹1,000 for both a first and a second/subsequent offence under s.194(D) — a flat figure, per Odisha's official Offences and Penalties schedule.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "driving-without-seatbelt": {
+      "amount_text": "₹1,000 flat under s.194B(1) for a driver or passenger without a seat belt, and ₹1,000 flat under s.194B(2) for carrying a child under 14 without a safety belt or child restraint system.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "driving-without-licence": {
+      "amount_text": "₹5,000 for both a first and a second/subsequent offence under s.181 (driving without a valid driving licence) — matching the central ₹5,000 figure exactly, with no state reduction.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "driving-without-insurance": {
+      "amount_text": "₹2,000 for a first offence and ₹4,000 for a second/subsequent offence under s.196 (plying without insurance) — identical to the central Motor Vehicles (Amendment) Act 2019 figures.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "overspeeding": {
+      "amount_text": "₹2,000 flat for an LMV/two-wheeler and ₹4,000 flat for a heavy or medium vehicle under s.183(1), for both a first and a later offence — Odisha applies the ceiling of the central ₹1,000–2,000 (LMV) and ₹2,000–4,000 (heavy) ranges rather than escalating separately for repeats.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "dangerous-driving-red-light": {
+      "amount_text": "₹5,000 for a first 'Jumping Red Light' offence under s.184(a), rising to ₹10,000 for a repeat — Odisha applies the ceiling of the central ₹1,000–5,000 first-offence range as its flat first-offence figure.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "mobile-phone-while-driving": {
+      "amount_text": "₹5,000 for a first offence under s.184(c) 'Using Mobile Phone while Driving', rising to ₹10,000 for a repeat — again the ceiling of the central first-offence range, applied flat.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "driving-without-rc": {
+      "amount_text": "₹5,000 for a first offence ('Using vehicle without registration and F.C.') rising to ₹10,000 for a repeat, under s.192 — the ceiling of the central ₹2,000–5,000 first-offence range.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "driving-without-puc": {
+      "amount_text": "₹10,000 for both a first and a second/subsequent offence for violating air and noise pollution standards under s.190(2) — matching the central ₹10,000 ceiling exactly; the department's separate Pollution Centre penalty page states the same figure for both a first and a 2nd-and-subsequent offence.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    },
+    "drunk-driving": {
+      "amount_text": "₹10,000 for a first offence and ₹15,000 for a second/subsequent offence under s.185 — identical to the central Motor Vehicles (Amendment) Act 2019 figures.",
+      "source": "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf"
+    }
+  },
+  "sources": [
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://odishatransport.gov.in/",
+    "https://odishatransport.gov.in/content/Meaning-of-E-Challan/1",
+    "https://odishatransport.gov.in/content/How-It-is-Issued/1",
+    "https://odishatransport.gov.in/content/How-to-Pay-Echallan-Fees/1",
+    "https://odishatransport.gov.in/content/Penalty/1",
+    "https://odishatransport.gov.in/content/DL-Suspension/1",
+    "https://odishatransport.gov.in/Application/uploadDocuments/LinkDoc/LinkDoc20220303_161759.pdf",
+    "https://odishatransport.gov.in/Application/uploadDocuments/Notification/Rules_1758113323.PDF",
+    "https://odishatransport.gov.in/contact/contact-details/1",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://www.orissahighcourt.nic.in/virtual-courts/",
+    "https://www.orissahighcourt.nic.in/eservices/user-manual-virtual-courts-odisha.pdf",
+    "https://nalsa.gov.in/lok-adalats",
+    "https://parivahan.gov.in/"
+  ]
+}

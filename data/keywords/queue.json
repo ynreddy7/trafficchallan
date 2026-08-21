@@ -67,8 +67,9 @@
       "max_cpc": 6.68,
       "min_seo_difficulty": 32,
       "type": "guide",
-      "status": "pending",
-      "note": "City intent (Mumbai portals, discount drives, court/Lok Adalat venues) is distinct from the maharashtra-e-challan state page — write the city guide, do not fold back into the state page."
+      "status": "done",
+      "note": "City intent (Mumbai portals, discount drives, court/Lok Adalat venues) is distinct from the maharashtra-e-challan state page — write the city guide, do not fold back into the state page.",
+      "completed": "2026-08-18"
     },
     {
       "slug_suggestion": "receipt",
@@ -182,7 +183,8 @@
       "max_cpc": 5.72,
       "min_seo_difficulty": 18,
       "type": "state",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-08-19"
     },
     {
       "slug_suggestion": "ahmedabad-traffic-challan",
