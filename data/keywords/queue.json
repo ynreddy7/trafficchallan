@@ -144,7 +144,8 @@
       "max_cpc": 3.82,
       "min_seo_difficulty": 29,
       "type": "guide",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-08-21"
     },
     {
       "slug_suggestion": "jaipur-traffic-challan",
