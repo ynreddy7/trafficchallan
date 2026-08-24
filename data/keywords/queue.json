@@ -157,7 +157,8 @@
       "max_cpc": 14.31,
       "min_seo_difficulty": 16,
       "type": "guide",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-08-24"
     },
     {
       "slug_suggestion": "virtual-court-challan",
