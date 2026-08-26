@@ -172,8 +172,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 0,
       "type": "guide",
-      "status": "pending",
-      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\". The only keyword in the report with no page that answers it: /challan-status/ decodes \"Sent to Court\" and court-challan-vs-on-spot explains the split, but neither is the canonical vcourts.gov.in walkthrough. Build it from vcourts.gov.in itself — departments covered per state, the four search tabs, OTP vs engine/chassis verification, pay vs \"I wish to contest\", and what a contest means (appear in person or by lawyer). Legal content: CONTENT_STANDARDS rule 13 applies."
+      "status": "done",
+      "note": "Ubersuggest competitor-gap report, 19-Aug-2026 (50 keywords across 5 pages). Volumes not published by that report — est_volume 0 records \"unknown\", not \"none\". The only keyword in the report with no page that answers it: /challan-status/ decodes \"Sent to Court\" and court-challan-vs-on-spot explains the split, but neither is the canonical vcourts.gov.in walkthrough. Build it from vcourts.gov.in itself — departments covered per state, the four search tabs, OTP vs engine/chassis verification, pay vs \"I wish to contest\", and what a contest means (appear in person or by lawyer). Legal content: CONTENT_STANDARDS rule 13 applies.",
+      "completed": "2026-08-26"
     },
     {
       "slug_suggestion": "odisha",
