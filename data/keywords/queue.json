@@ -199,7 +199,8 @@
       "max_cpc": 11.45,
       "min_seo_difficulty": 25,
       "type": "guide",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-08-28"
     },
     {
       "slug_suggestion": "chennai-traffic-challan",
