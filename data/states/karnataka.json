@@ -144,10 +144,12 @@
     "Official Karnataka pages disagree on the mobile-phone fine. The gazette sets Rs 1,500 (2W/3W), Rs 3,000 (LMV) and Rs 5,000 (others), and the BTP Spot Fines table agrees; but the BTP FAQ states 'Rs.1,500/- for Two / Three Wheeler, Rs.1,500/- for LMV and Rs.5,000/- for other Vehicles'. The FAQ's LMV figure appears to be an error.",
     "Official pages also disagree on the pollution offence. The gazette compounds a breach of air-pollution standards under s.190(2) at Rs 1,500 (2W/3W) and Rs 3,000 (LMV, heavy and others), while the BTP Spot Fines row for 'Emitting Black Smoke' under 190(2) still shows Rs 500 first offence and Rs 1,000 for repeats.",
     "Several offences are not compoundable at all in Karnataka and go straight to court: BTP's Spot Fines list marks drunken driving (s.185), driving without permit and driving without a fitness certificate as 'Court Fine'. The compounding notification also bars police officers from compounding ss. 113/114/115 r/w 194, 182, 62A r/w 182B, 182A(1), 182A(3), 182A(4), 190, 192, 192A, 194 and 194A.",
-    "The Rs 500 helmet fine does not remove the central consequence - section 194D also carries disqualification of the driving licence for three months, which the state notification does not and cannot waive.",
+    "The Rs 500 helmet fine does not remove the central consequence - the central Motor Vehicles Act 1988 s.194D itself (text fetched from indiacode.gov.in on 01-Sep-2026: 'shall be punishable with a fine of one thousand rupees and he shall be disqualified for holding licence for a period of three months') carries a three-month licence disqualification alongside its Rs 1,000 fine. Karnataka's s.200 notification only reduces the compounding fee to Rs 500; it neither states nor can waive the disqualification.",
+    "Karnataka's s.200 compounding notification for s.194-D (the section 200 pdf) prices the offence at a flat Rs 500 with no separate row for a pillion rider, so it is not itself a source for a pillion-specific figure. Whether Bengaluru Traffic Police compounds a pillion's bare head at the same Rs 500 is documented on btp.karnataka.gov.in's spot-fines/FAQ pages, not the transport department notification — and those BTP pages could not be reached on 01-Sep-2026 (see the connectivity note below) to re-confirm it, so this page states the pillion figure as unconfirmed rather than asserting it.",
     "Karnataka has run recurring limited-window challan-discount drives; dates are announced via press - check btp.karnataka.gov.in or ksp.karnataka.gov.in before assuming one is active.",
     "Bengaluru enforcement is largely contactless: AI cameras (ITEMS) at 50 junctions plus safe-city surveillance, with the challan pushed by SMS and a physical IMS/IMV 133 notice posted to the Vahan address. The notice carries a QR code that shows the photo evidence and allows both payment and a dispute.",
-    "District police 'Traffic Fines' pages on the karnataka.gov.in network (Mysuru, Raichur, Koppal) silently redirect to the district homepage - the fine schedule they used to host is gone, so the transport department gazette PDF is the only reliable state source."
+    "District police 'Traffic Fines' pages on the karnataka.gov.in network (Mysuru, Raichur, Koppal) silently redirect to the district homepage - the fine schedule they used to host is gone, so the transport department gazette PDF is the only reliable state source.",
+    "Monthly re-verification attempted 01-Sep-2026: transport.karnataka.gov.in (the section 200 pdf underlying every fine_overrides figure), btp.karnataka.gov.in (Spot Fines and FAQ), kspapp.ksp.gov.in and karnatakaone.gov.in all failed to load — every attempt reset mid-handshake rather than returning a 404 or DNS failure, consistent with a legacy-TLS/cipher issue on the fetching side rather than the sites being down (all hostnames still resolve in DNS). What DID load checked out unchanged: vcourts.gov.in still carries 'Karnataka(Traffic Department)', and indiacode.gov.in's own DSpace record for the Motor Vehicles Act 1988 confirms s.194D's central Rs 1,000 fine plus three-month disqualification and s.129's headgear duty extending to a person 'driving or riding or being carried on a motorcycle' (i.e. covering a pillion) in unchanged verbatim text. The Karnataka-specific fine figures and the BTP pillion/disqualification claims could not be re-read from a live Karnataka source this cycle, so last_verified is not bumped for this run; re-attempt transport.karnataka.gov.in and btp.karnataka.gov.in next cycle."
   ],
   "faqs": [
     {
@@ -160,7 +162,7 @@
     },
     {
       "q": "Is the helmet fine in Karnataka Rs 1,000 or Rs 500?",
-      "a": "Rs 500. Karnataka used its power under section 200 of the Motor Vehicles Act to notify its own compounding amounts, and gazette notification TD 250 TDO 2019 dated 21-09-2019 sets Rs 500 for not wearing protective head gear under section 194-D, against the Rs 1,000 in the central MV (Amendment) Act 2019. Bengaluru Traffic Police list the same Rs 500 for both rider and pillion. Note that section 194D also carries a three-month licence disqualification, which the state cannot waive."
+      "a": "Rs 500 for the rider. Karnataka used its power under section 200 of the Motor Vehicles Act to notify its own compounding amounts, and gazette notification TD 250 TDO 2019 dated 21-09-2019 sets Rs 500 for not wearing protective head gear under section 194-D, against the Rs 1,000 in the central MV (Amendment) Act 2019 — but that notification's table does not itself distinguish rider from pillion. Bengaluru Traffic Police's spot-fines page is the source that would confirm a pillion figure specifically; it could not be reached to re-verify as of 01-Sep-2026, so treat a pillion-rider figure as unconfirmed rather than settled until you check btp.karnataka.gov.in directly. Separately, section 194D of the central Motor Vehicles Act itself (indiacode.gov.in) carries a three-month licence disqualification alongside its fine, which Karnataka's state notification neither states nor can waive — it only reduces the compounding fee."
     },
     {
       "q": "Can I pay a drunk-driving challan online in Karnataka?",
@@ -185,7 +187,7 @@
   ],
   "fine_overrides": {
     "driving-without-helmet": {
-      "amount_text": "₹500 for the rider and ₹500 for the pillion under s.194-D, half the ₹1,000 central figure. The central three-month licence disqualification still applies.",
+      "amount_text": "₹500 under s.194-D for a rider not wearing protective headgear, half the ₹1,000 central figure — this is what Karnataka's own s.200 compounding notification sets, and that notification's table is not broken out by rider vs pillion. Bengaluru Traffic Police's spot-fines guidance is the page that would confirm whether a pillion attracts the same ₹500, but it could not be reached to re-check on 01-Sep-2026 (see quirks) — treat the pillion figure as unconfirmed this cycle rather than settled. Separately, s.194D of the central Motor Vehicles Act 1988 itself (not this state notification) also disqualifies the licence for three months; Karnataka's s.200 power only reduces the compounding fee, not that disqualification.",
       "source": "https://transport.karnataka.gov.in/storage/pdf-files/section%20200.pdf"
     },
     "driving-without-licence": {
@@ -238,6 +240,7 @@
     "https://www.karnatakaone.gov.in/Info/Public/BangalorePoliceServices",
     "https://vcourts.gov.in/virtualcourt/",
     "https://ksp.karnataka.gov.in/page/FAQ/Traffic/en",
-    "https://parivahan.gov.in/"
+    "https://parivahan.gov.in/",
+    "https://indiacode.gov.in/handle/123456789/1798"
   ]
 }

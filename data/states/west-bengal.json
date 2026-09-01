@@ -3,7 +3,7 @@
   "name": "West Bengal",
   "abbr": "WB",
   "target_keyword": "west bengal e challan",
-  "last_verified": "2026-08-12",
+  "last_verified": "2026-09-01",
   "portals": [
     {
       "label": "Sanjog - West Bengal unified pending challan portal (Kolkata Traffic Police + WB Traffic Police + Transport Dept)",
@@ -128,7 +128,7 @@
     "kolkatatrafficpolice.net, the old Kolkata Traffic Police payment site, now 302-redirects its root to https://sanjog.wb.gov.in/. Its individual deep pages (eNOC by vehicle, eNOC by driving licence) still work if you go to them directly.",
     "The Kolkata Traffic Police FAQ still documents the pre-migration payment flow - vehicle number, last 5 chassis characters, Email ID, Mobile No., 'Get OTP' then 'Confirm' - which no longer matches what Sanjog actually asks for.",
     "The West Bengal Traffic Police page titled 'Online payment of Traffic Fines via e-Challan' (its GRIPS page) no longer explains GRIPS at all: it simply points at the LEGACY echallan.parivahan.gov.in/index/accused-challan URL, even though WB has since been moved to the NextGen portal.",
-    "Kolkata Traffic Police's 'Offence & Penalties' page returns HTTP 200 but the body is only the sentence 'kolkatatrafficpolice.gov.in under routine maintenance work'. The Kolkata fine schedule is effectively offline; use the West Bengal Traffic Police Schedule II page instead.",
+    "Re-checked 1 September 2026: Kolkata Traffic Police's 'Offence & Penalties' page still returns HTTP 200 with only the sentence 'kolkatatrafficpolice.gov.in under routine maintenance work' — over a year in this state. The site's own homepage nav still points its 'Offence & Penalties' link at this same stub (no relocated page exists elsewhere on the domain), and transport.wb.gov.in's offences page still carries no rupee figures either, so wbtrafficpolice.com/offences-and-penalties.php remains the only live official page with actual fine amounts; the stub URL has been dropped from sources below rather than left citing a dead page (CONTENT_STANDARDS rule 18).",
     "West Bengal adopted the Motor Vehicles (Amendment) Act 2019 penalties late. The operative state compounding schedule is Notification No. 208-WT/3M-128/97 (Pt. III)(D) dated 24 January 2022 of the Transport Department - roughly two and a half years after the central amendment.",
     "The PUC / air-pollution fine was cut by Notification No. 1553-WT/TPT-18011/47/2024 dated 9 August 2024, which partially modified serial 14 of Schedule II to ₹2,000 / ₹5,000 / ₹10,000 by offence count. The Schedule II table published on the same West Bengal Traffic Police website still shows the superseded flat ₹10,000 - the 2024 notification is the current one.",
     "Drunk driving under Section 185 does not appear anywhere in West Bengal's Schedule II list of compoundable offences, so it cannot be settled by paying a challan online or on the spot - it goes to court.",
@@ -199,7 +199,6 @@
     "https://kolkatatrafficpolice.gov.in/faqs.html",
     "https://kolkatatrafficpolice.gov.in/helpline.html",
     "https://kolkatatrafficpolice.gov.in/contact_us.html",
-    "https://kolkatatrafficpolice.gov.in/offence_and_penalties.html",
     "https://kolkatatrafficpolice.net/",
     "https://kolkatatrafficpolice.net/CasedDetailsWithNOC.aspx",
     "https://kolkatatrafficpolice.net/OLDLNOC.aspx",

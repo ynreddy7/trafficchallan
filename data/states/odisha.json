@@ -3,7 +3,6 @@
   "name": "Odisha",
   "abbr": "OD",
   "target_keyword": "traffic challan odisha",
-  "last_verified": "2026-08-19",
   "portals": [
     {
       "label": "MoRTH eChallan (legacy portal) — Know Your Challan Status / accused-challan, the link the Odisha Motor Vehicle Department's own site names for checking and paying",
@@ -90,7 +89,7 @@
     "Challans can be generated with no officer present. The state's own One Time Settlement notification describes 'automatic challans generated through the Intelligent Enforcement Management System (IEMS)' running alongside challans issued manually by Transport Department and police enforcement staff.",
     "Odisha ran a One-Time Settlement Scheme letting violators pay roughly half the notified fine on e-challans pending as of 31 July 2025, for a six-month window from the date of the notification; challans on which a Prosecution Report had already been filed in court were excluded. That window has closed — see /challan-discount/ for whether a new drive is running.",
     "Most of Odisha's own notified e-challan penalty figures do not undercut the central Motor Vehicles (Amendment) Act 2019 amounts. Several — using a mobile phone while driving, jumping a red light, drunken driving, and using a vehicle without registration/fitness certificate — sit at the exact ceiling of the central statutory range rather than below it, unlike states that notified reduced compounding amounts of their own.",
-    "Odisha Police's own site (odishapolice.gov.in / police.odisha.gov.in) and the Odisha State Legal Services Authority site did not load when this page was checked, so this page relies on the Transport Department, the Orissa High Court and vcourts.gov.in instead. Re-verify police-specific helpline numbers and Lok Adalat venue details directly against those sites once reachable, rather than treating their absence here as confirmation nothing exists."
+    "Odisha Police's own site (odishapolice.gov.in / police.odisha.gov.in) still did not load when re-checked on 1 September 2026, so this page continues to rely on the Transport Department, the Orissa High Court and vcourts.gov.in for enforcement detail. The Odisha State Legal Services Authority now has a working site at oslsa.odisha.gov.in (the older oslsa.nic.in address 301-redirects there) with About Us, Legal Aid and Lok Adalat sections indexed — re-verify current National Lok Adalat sitting dates and venues there directly rather than treating this page as a schedule."
   ],
   "faqs": [
     {
@@ -171,6 +170,8 @@
     "https://www.orissahighcourt.nic.in/virtual-courts/",
     "https://www.orissahighcourt.nic.in/eservices/user-manual-virtual-courts-odisha.pdf",
     "https://nalsa.gov.in/lok-adalats",
+    "https://oslsa.odisha.gov.in/",
     "https://parivahan.gov.in/"
-  ]
+  ],
+  "last_verified": "2026-09-01"
 }
