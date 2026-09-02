@@ -22,7 +22,7 @@
     "opens_days_before": 5,
     "opens_days_before_basis": "the 9 May 2026 sitting, whose download window opened on 4 May — the only edition for which DSLSA has published a window at all",
     "daily_cap_note": "For the 9 May 2026 sitting, DSLSA's notification (Ref. No. 06/DSLSA/ADRW/NLAs/2026/4595 dated 9 April 2026) said that compoundable challans pending till 31 January 2026 would be taken up, and that violators could download the challan slips from the Delhi Traffic Police link \"from 04.05.2026 at 10 a.m. onwards, subject to a maximum limit of 50,000 challans per day, till exhausting the overall limit of 2 lakh challans\".",
-    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — on its own terms the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. As of 1 September 2026 (re-checked against dslsa.org's public-notices listing, its National Lok Adalat page, and its site search), nothing has been published yet for the 12 September 2026 sitting: DSLSA issues a fresh notification for each edition, and the 9 May one was issued 30 days ahead, so a September notification is still due."
+    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — on its own terms the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. As of 2 September 2026 (re-checked against dslsa.org's public-notices listing, its National Lok Adalat page, and the Delhi Traffic Police Lok Adalat portal), nothing has been published yet for the 12 September 2026 sitting: DSLSA issues a fresh notification for each edition, and the 9 May one was issued 30 days ahead, so a September notification is still due."
   },
   "delhi_extras": {
     "evening_courts_url": "https://traffic.delhipolice.gov.in/evecourtddc/",
@@ -52,5 +52,5 @@
     "https://delhidistrictcourts.nic.in/circulars",
     "https://dslsa.org/"
   ],
-  "last_verified": "2026-09-01"
+  "last_verified": "2026-09-02"
 }

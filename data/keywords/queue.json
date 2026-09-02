@@ -212,7 +212,8 @@
       "max_cpc": 3.82,
       "min_seo_difficulty": 20,
       "type": "guide",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-09-02"
     },
     {
       "slug_suggestion": "cars24",
