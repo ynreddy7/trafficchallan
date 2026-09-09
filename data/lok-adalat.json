@@ -20,9 +20,9 @@
   "delhi_token": {
     "portal": "https://traffic.delhipolice.gov.in/lokadalat/",
     "opens_days_before": 5,
-    "opens_days_before_basis": "the 9 May 2026 sitting, whose download window opened on 4 May — the only edition for which DSLSA has published a window at all",
-    "daily_cap_note": "For the 9 May 2026 sitting, DSLSA's notification (Ref. No. 06/DSLSA/ADRW/NLAs/2026/4595 dated 9 April 2026) said that compoundable challans pending till 31 January 2026 would be taken up, and that violators could download the challan slips from the Delhi Traffic Police link \"from 04.05.2026 at 10 a.m. onwards, subject to a maximum limit of 50,000 challans per day, till exhausting the overall limit of 2 lakh challans\".",
-    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — on its own terms the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. As of 2 September 2026 (re-checked against dslsa.org's public-notices listing, its National Lok Adalat page, and the Delhi Traffic Police Lok Adalat portal), nothing has been published yet for the 12 September 2026 sitting: DSLSA issues a fresh notification for each edition, and the 9 May one was issued 30 days ahead, so a September notification is still due."
+    "opens_days_before_basis": "the 10 October 2026 sitting, whose download window opens on 5 October — the most recent edition DSLSA has published a window for (the 9 May 2026 sitting's window opened 5 days ahead too, on 4 May)",
+    "daily_cap_note": "For the 10 October 2026 sitting, DSLSA's notification (Ref. No. 10/DSLSA/ADRW/NLAs/2026/10673 dated 25 August 2026) said that compoundable challans pending till 30.06.2026 would be taken up, and that violators could download the challan slips from the Delhi Traffic Police link \"from 05.10.2026 at 10 a.m. onwards, subject to a maximum limit of 50,000 challans per day, till exhausting the overall limit of 2 lakh challans\".",
+    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — as with the May edition, the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. Delhi is not sitting on 12 September 2026: the Delhi High Court declared that Saturday a court sitting day for subordinate courts (Notification No.85/G-4/Genl.-I/DHC dated 21.08.2026), so DSLSA postponed Delhi's National Lok Adalat to 10 October 2026 (Ref. No. 10/DSLSA/ADRW/NLAs/2026/10673 dated 25 August 2026). Re-checked 9 September 2026 against dslsa.org's public-notices listing and the notification PDF itself; the 12 September date on the NALSA calendar still applies to the other states we track."
   },
   "delhi_extras": {
     "evening_courts_url": "https://traffic.delhipolice.gov.in/evecourtddc/",
@@ -34,6 +34,12 @@
       "sitting_date": "2026-09-19",
       "replaces_date": "2026-09-12",
       "note": "Karnataka is not sitting on 12 September 2026. The Karnataka State Legal Services Authority postponed the third National Lok Adalat to Saturday 19 September 2026, 2.00 p.m. to 5.30 p.m., by letter No. KSLSA:08/NLA/2026 dated 18 August 2026, addressed to every District Legal Services Authority in the state. If your challan is in Karnataka, 19 September is the date that applies to you."
+    },
+    {
+      "state_slug": "delhi",
+      "sitting_date": "2026-10-10",
+      "replaces_date": "2026-09-12",
+      "note": "Delhi is not sitting on 12 September 2026 either. DSLSA postponed the National Lok Adalat in every Delhi court complex to Saturday 10 October 2026, by Ref. No. 10/DSLSA/ADRW/NLAs/2026/10673 dated 25 August 2026, because the Delhi High Court had just declared 12 September a court sitting day for courts subordinate to it (Notification No.85/G-4/Genl.-I/DHC dated 21 August 2026). If your challan is in Delhi, 10 October is the date that applies to you, and the traffic-challan token download window opens 5 October 2026."
     }
   ],
   "sources": [
@@ -50,7 +56,9 @@
     "https://traffic.delhipolice.gov.in/lokadalat/",
     "https://traffic.delhipolice.gov.in/evecourtddc/",
     "https://delhidistrictcourts.nic.in/circulars",
-    "https://dslsa.org/"
+    "https://dslsa.org/",
+    "https://dslsa.org/notification-for-national-lok-adalat-to-be-held-on-10-10-2026/",
+    "https://cdnbbsr.s3waas.gov.in/s395b7a6d9a47c56ff9118bb45379fc884/uploads/2026/09/202609031779401457.pdf"
   ],
-  "last_verified": "2026-09-02"
+  "last_verified": "2026-09-09"
 }

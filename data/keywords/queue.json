@@ -225,7 +225,8 @@
       "max_cpc": 1.91,
       "min_seo_difficulty": 18,
       "type": "guide",
-      "status": "pending"
+      "status": "done",
+      "completed": "2026-09-09"
     },
     {
       "slug_suggestion": "parivahan",

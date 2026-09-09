@@ -132,7 +132,7 @@ const faqs = [
   },
   {
     q: 'How do I get a token for the Delhi traffic Lok Adalat?',
-    a: `Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens. DSLSA announces the window afresh for each edition and has published nothing yet for 12 September 2026, so there is no date to book against at the moment. When it does open: enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. ${lokAdalat.delhi_token.daily_cap_note}`
+    a: `Book on traffic.delhipolice.gov.in/lokadalat/ once the window opens. ${lokAdalat.state_notes.find((n) => n.state_slug === 'delhi')?.note ?? "DSLSA announces the window afresh for each edition."} Enter your vehicle number, verify the OTP sent to the registered mobile number, pick a court complex and slot, and print the appointment slip. ${lokAdalat.delhi_token.daily_cap_note}`
   }
 ];
 
