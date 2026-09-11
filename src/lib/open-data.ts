@@ -254,7 +254,7 @@ export function openDatasets(): OpenDataset[] {
       },
       {
         name: 'Delhi Traffic Police — schedule of traffic offences and penalties',
-        url: 'https://traffic.delhipolice.gov.in/traffic-offences'
+        url: 'https://traffic.delhipolice.gov.in/en/traffic-violations-penalties'
       }
     ],
     measurementTechnique:

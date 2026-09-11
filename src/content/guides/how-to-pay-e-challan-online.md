@@ -20,7 +20,7 @@ sources:
   - 'https://echallan.tspolice.gov.in/publicview/'
   - 'https://sanjog.wb.gov.in/payFine'
   - 'https://echallan.parivahan.nic.in/challan/challan-services'
-  - 'https://traffic.delhipolice.gov.in/traffic-offences'
+  - 'https://traffic.delhipolice.gov.in/en/traffic-violations-penalties'
   - >-
     https://traffic.delhipolice.gov.in/sites/default/files/uploads/2020/General_Instructions_RLVD.pdf
   - 'https://gurgaon.haryanapolice.gov.in/offences-penalties'

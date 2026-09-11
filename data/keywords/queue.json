@@ -253,7 +253,8 @@
       "max_cpc": 7.63,
       "min_seo_difficulty": 17,
       "type": "guide",
-      "status": "pending"
+      "status": "pending",
+      "note": "Attempted 2026-09-11: jhpolice.gov.in and echallan.jhpolice.gov.in (Jharkhand Police, which hosts the state e-challan portal) were unreachable all run (connection timeouts / 503s across ~10 attempts over several minutes, via both direct fetch and curl). The central echallan.parivahan.gov.in and echallan.parivahan.nic.in were also erroring (503 / SSL_ERROR_SYSCALL) even after parivahan.gov.in's main domain recovered from a separate transient blip and came back up — so the core fact every reader needs (which portal actually handles a Ranchi challan) could not be verified today. No Jharkhand state page exists yet either (see the separate \"jharkhand\" state queue item), so there is no fallback link for generic check/pay steps. Left pending rather than publishing a page built on unverifiable or filler content — retry when these portals are back up."
     },
     {
       "slug_suggestion": "app",

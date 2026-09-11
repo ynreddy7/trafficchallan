@@ -7,7 +7,7 @@ target_keyword: court challan vs on spot challan
 last_verified: '2026-08-12'
 sources:
   - 'https://vcourts.gov.in/virtualcourt/'
-  - 'https://traffic.delhipolice.gov.in/traffic-offences'
+  - 'https://traffic.delhipolice.gov.in/en/traffic-violations-penalties'
   - >-
     https://traffic.delhipolice.gov.in/sites/default/files/uploads/2020/General_Instructions_RLVD.pdf
   - 'https://traffic.delhipolice.gov.in/echallan/index/update-mobile'

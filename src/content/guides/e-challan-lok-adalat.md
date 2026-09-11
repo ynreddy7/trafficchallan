@@ -15,7 +15,7 @@ sources:
     https://digilawyer.ai/latest-announcements/national-lok-adalat-challan-settlement-dates
   - 'https://delhi.nalsa.gov.in/notifications/'
   - 'https://www.wbtrafficpolice.com/loke-adalat.php'
-  - 'https://traffic.delhipolice.gov.in/traffic-offences'
+  - 'https://traffic.delhipolice.gov.in/en/traffic-violations-penalties'
   - 'https://btp.karnataka.gov.in/'
   - 'https://ksp.karnataka.gov.in/page/FAQ/Traffic/en'
   - >-

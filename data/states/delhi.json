@@ -98,31 +98,31 @@
   "fine_overrides": {
     "overspeeding": {
       "amount_text": "₹2,000 for a light motor vehicle and ₹4,000 for a medium or heavy transport vehicle, the same for first and subsequent offences (112.1/183(1) MVA) — Delhi compounds at the top of the statutory band",
-      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+      "source": "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
     },
     "driving-without-puc": {
       "amount_text": "₹10,000 for the first and any subsequent offence (115 CMVR / 190(2) MVA) — Delhi compounds at the statutory ceiling",
-      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+      "source": "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
     },
     "driving-without-rc": {
       "amount_text": "₹5,000 for the first offence and ₹10,000 for a subsequent offence, listed as 'RC Violation — 39/192 MVA'; the same amounts apply to a defective, fancy or missing number plate under 50, 51 CMVR / 39 / 192 MVA",
-      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+      "source": "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
     },
     "mobile-phone-while-driving": {
       "amount_text": "₹5,000 for the first offence and ₹10,000 for a subsequent offence, listed as 'Use of Hand-Held Communication Devices While Driving — 184 M.V.A'",
-      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+      "source": "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
     },
     "dangerous-driving-red-light": {
       "amount_text": "Court challan — Delhi notifies no compounding amount for 'Jumping Red Light', 'Violation of Stop Sign', 'Driving Dangerously' or 'Driving against the authorized flow of traffic' under 184 MVA; the schedule's footnote says the final amount is subject to the discretion of the Hon'ble court",
-      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+      "source": "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
     },
     "drunk-driving": {
       "amount_text": "Court challan — Delhi notifies no compounding amount for 'Drunken Driving' under 185 MVA; the final amount is subject to the discretion of the Hon'ble court",
-      "source": "https://traffic.delhipolice.gov.in/traffic-offences"
+      "source": "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
     }
   },
   "sources": [
-    "https://traffic.delhipolice.gov.in/traffic-offences",
+    "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties",
     "https://traffic.delhipolice.gov.in/faq",
     "https://traffic.delhipolice.gov.in/sites/default/files/uploads/2020/General_Instructions_RLVD.pdf",
     "https://traffic.delhipolice.gov.in/notice/pay-notice/",
@@ -136,5 +136,5 @@
     "https://indiacode.gov.in/handle/123456789/523231",
     "https://indiacode.gov.in/handle/123456789/523292"
   ],
-  "last_verified": "2026-09-01"
+  "last_verified": "2026-09-11"
 }
