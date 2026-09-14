@@ -24,15 +24,20 @@ function hashSeed(seed: string): number {
 /**
  * Deterministically picks `count` guides for a page, rotated by the page's
  * slug, so contextual link equity spreads across ALL guides instead of the
- * same two being pinned site-wide. Consecutive picks from a hashed start
- * index; with the current 13 state + 10 fine pages every guide gets several
- * inbound contextual links (tests/links.test.ts asserts full coverage from
- * state pages alone).
+ * same two being pinned site-wide. Picks walk a per-seed stride (a second,
+ * independently-salted hash, never 0 mod guides.length) instead of always
+ * stepping by 1 — fixed consecutive windows only cover every guide when the
+ * guide count happens to divide evenly into state-count * count, which broke
+ * the moment guide and state counts both landed on 14 (tests/links.test.ts
+ * asserts full coverage from state pages alone; adjust this rotation, not
+ * that test, if a future data change breaks it again).
  */
 export function rotatedGuides(seed: string, guides: GuideRef[], count = 2): GuideRef[] {
-  if (guides.length <= count) return [...guides];
-  const start = hashSeed(seed) % guides.length;
-  return Array.from({ length: count }, (_, i) => guides[(start + i) % guides.length]);
+  const len = guides.length;
+  if (len <= count) return [...guides];
+  const start = hashSeed(seed) % len;
+  const stride = 1 + (hashSeed(`${seed}:stride`) % (len - 1));
+  return Array.from({ length: count }, (_, i) => guides[(start + i * stride) % len]);
 }
 
 export function relatedForState(state: StateRecord, offences: OffenceRecord[], guides: GuideRef[]): LinkItem[] {
