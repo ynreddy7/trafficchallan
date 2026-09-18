@@ -36,7 +36,7 @@ export function rotatedGuides(seed: string, guides: GuideRef[], count = 2): Guid
   const len = guides.length;
   if (len <= count) return [...guides];
   const start = hashSeed(seed) % len;
-  const stride = 1 + (hashSeed(`${seed}:stride`) % (len - 1));
+  const stride = 1 + (hashSeed(`${seed}:s`) % (len - 1));
   return Array.from({ length: count }, (_, i) => guides[(start + i * stride) % len]);
 }
 
