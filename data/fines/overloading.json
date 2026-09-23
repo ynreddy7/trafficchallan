@@ -1,0 +1,42 @@
+{
+  "slug": "overloading",
+  "name": "Overloading a goods or passenger vehicle",
+  "seo_name": "Overloading Fine",
+  "target_keyword": "overloading fine india",
+  "mva_section": "Section 194, Motor Vehicles Act 1988 (amounts substituted and sub-section (1A) inserted by the Motor Vehicles (Amendment) Act 2019, s. 78, w.e.f. 1-9-2019)",
+  "description": "Section 194(1) punishes driving, or causing or allowing a vehicle to be driven, in contravention of the permissible-weight limits set under Sections 113, 114 or 115: a fine of ₹20,000 plus ₹2,000 for every tonne of excess load, together with liability to pay the charges for off-loading that excess — and the vehicle may not move again until the excess load is actually removed. A separate sub-section, 194(1A), inserted by the 2019 Amendment, punishes a different kind of overloading — a load (or any part of it) that extends laterally beyond the body of the vehicle, or beyond the permissible limit to the front, rear or in height — with a flat fine of ₹20,000 plus off-loading charges, and the same bar on moving until the load is rearranged within limits (an exemption applies where the Central or State Government has specifically authorised carriage of that load). Section 194(2) separately fines ₹40,000 a driver who refuses to submit the vehicle for weighing when directed by an authorised officer, or who removes load before it can be weighed. Section 194 sits on the list of offences a State Government may compound under Section 200, so many states set their own compounding amount by gazette notification rather than always enforcing the central figure — check your state's own notification before assuming the amount above applies unchanged.",
+  "base_fine_text": "₹20,000 plus ₹2,000 for every tonne of excess load, plus liability for off-loading charges, under Section 194(1) — the vehicle cannot proceed until the excess load is removed",
+  "base_fine_min": 20000,
+  "base_fine_max": 20000,
+  "repeat_fine_text": "Same ₹20,000 plus ₹2,000/tonne — Section 194(1) does not set a separate, higher amount for a second or subsequent offence",
+  "licence_impact": "Section 194 itself carries no driving-licence disqualification or endorsement — the consequence is the fine plus off-loading liability, and the vehicle is barred from moving again until the excess or misplaced load is corrected. Refusing to stop for weighing under Section 194(2) draws its own separate ₹40,000 fine.",
+  "compoundable_online": true,
+  "faqs": [
+    {
+      "q": "Does the overloading fine increase with more excess weight?",
+      "a": "Yes, for weight overload under Section 194(1): the fine is ₹20,000 plus an additional ₹2,000 for every tonne the load exceeds the permissible limit, on top of the charges for off-loading the excess. That per-tonne addition does not apply to Section 194(1A), which fines a flat ₹20,000 for a load that extends laterally, to the front, to the rear or in height beyond the permissible limit regardless of how much it exceeds it."
+    },
+    {
+      "q": "Can the vehicle be driven away after an overloading challan?",
+      "a": "No. Both Section 194(1) and Section 194(1A) bar the vehicle from moving again until the excess load is removed, or the load is rearranged so it no longer extends beyond the permissible limit — the fine does not by itself clear the vehicle to continue."
+    },
+    {
+      "q": "What happens if the driver refuses to have the vehicle weighed?",
+      "a": "Section 194(2) separately fines ₹40,000 a driver who refuses to stop and submit the vehicle for weighing after being directed to do so by an officer authorised under Section 114, or who removes the load, or part of it, before it can be weighed."
+    },
+    {
+      "q": "Is the overloading fine the same in every state?",
+      "a": "Not necessarily. Section 194 is on the list of offences a State Government may compound under Section 200 of the Motor Vehicles Act, at whatever amount it notifies by gazette — several states have published their own compounding figure for Section 194(1) that differs from the central ₹20,000 plus ₹2,000/tonne shown here. Check your state's own notification, or the amount printed on your challan, before assuming the central figure applies."
+    }
+  ],
+  "sources": [
+    "https://indiacode.gov.in/handle/123456789/523301",
+    "https://indiacode.gov.in/handle/123456789/523307",
+    "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
+  ],
+  "last_verified": "2026-09-23",
+  "statute_quote": {
+    "text": "Whoever drivers a motor vehicle or causes or allows a motor vehicle to be drives in contravention of the provisions of section 113 or section 114 or section 115 shall be punishable with fine of twenty thousand rupees and an additional amount of two thousand rupees per tonne of excess load, together with the liability to pay charges for off-loading of the excess load.",
+    "attribution": "Section 194(1), Motor Vehicles Act 1988 (amount substituted by the Motor Vehicles (Amendment) Act 2019, s. 78, w.e.f. 1-9-2019)"
+  }
+}
