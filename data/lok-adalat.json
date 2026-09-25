@@ -22,7 +22,7 @@
     "opens_days_before": 5,
     "opens_days_before_basis": "the 10 October 2026 sitting, whose download window opens on 5 October — the most recent edition DSLSA has published a window for (the 9 May 2026 sitting's window opened 5 days ahead too, on 4 May)",
     "daily_cap_note": "For the 10 October 2026 sitting, DSLSA's notification (Ref. No. 10/DSLSA/ADRW/NLAs/2026/10673 dated 25 August 2026) said that compoundable challans pending till 30.06.2026 would be taken up, and that violators could download the challan slips from the Delhi Traffic Police link \"from 05.10.2026 at 10 a.m. onwards, subject to a maximum limit of 50,000 challans per day, till exhausting the overall limit of 2 lakh challans\".",
-    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — as with the May edition, the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. Delhi is not sitting on 12 September 2026: the Delhi High Court declared that Saturday a court sitting day for subordinate courts (Notification No.85/G-4/Genl.-I/DHC dated 21.08.2026), so DSLSA postponed Delhi's National Lok Adalat to 10 October 2026 (Ref. No. 10/DSLSA/ADRW/NLAs/2026/10673 dated 25 August 2026). Re-checked 23 September 2026 against dslsa.org's notification page for the 10 October sitting; no change to the token dates or caps."
+    "limits_note": "That notification set no closing date for the download window and no per-vehicle limit — as with the May edition, the window runs until the overall 2 lakh cap is exhausted, not until a fixed date. Delhi is not sitting on 12 September 2026: the Delhi High Court declared that Saturday a court sitting day for subordinate courts (Notification No.85/G-4/Genl.-I/DHC dated 21.08.2026), so DSLSA postponed Delhi's National Lok Adalat to 10 October 2026 (Ref. No. 10/DSLSA/ADRW/NLAs/2026/10673 dated 25 August 2026). Re-checked 25 September 2026 directly against the Ref. No. 10673 PDF and dslsa.org's notification listing; no newer notification has superseded it and no change to the token dates or caps."
   },
   "delhi_extras": {
     "evening_courts_url": "https://traffic.delhipolice.gov.in/evecourtddc/",
@@ -60,5 +60,5 @@
     "https://dslsa.org/notification-for-national-lok-adalat-to-be-held-on-10-10-2026/",
     "https://cdnbbsr.s3waas.gov.in/s395b7a6d9a47c56ff9118bb45379fc884/uploads/2026/09/202609031779401457.pdf"
   ],
-  "last_verified": "2026-09-23"
+  "last_verified": "2026-09-25"
 }

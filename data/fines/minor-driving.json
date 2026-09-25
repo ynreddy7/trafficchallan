@@ -1,0 +1,41 @@
+{
+  "slug": "minor-driving",
+  "name": "Offences by juveniles (a minor driving a motor vehicle)",
+  "seo_name": "Minor Driving Challan",
+  "target_keyword": "minor driving challan",
+  "mva_section": "Section 199A, Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, s. 85, w.e.f. 1-9-2019)",
+  "description": "Section 199A does not fine the minor directly for simply driving — it fixes liability on the guardian of the juvenile or the owner of the vehicle. Under Section 199A(1), when a juvenile (a person who has not completed 18 years of age) commits any offence under the Motor Vehicles Act, the guardian or the owner is deemed guilty of that offence and is liable to be proceeded against and punished for it, unless the guardian or owner proves the offence was committed without their knowledge or that they exercised all due diligence to prevent it — the section adds a presumption that the juvenile used the vehicle with the guardian's or owner's consent. Section 199A(2) makes the guardian or owner separately punishable, in addition to the penalty under sub-section (1), with imprisonment up to three years and a fine of ₹25,000. Section 199A(4) cancels the vehicle's registration for twelve months, and Section 199A(5) bars the juvenile from being granted any learner's licence under Section 8 or driving licence under Section 9 until they turn 25. Section 199A(6) separately makes the juvenile punishable with whatever fine the underlying offence (helmet, licence, speeding, etc.) carries, with any custodial sentence handled under the Juvenile Justice Act, 2000. Section 199A(3) removes all of this if the juvenile already held a valid learner's or driving licence covering the class of vehicle being driven — that case is not an 'offence by a juvenile' at all, just an ordinary traffic offence by a licensed driver. Delhi Traffic Police's own penalty schedule lists 'Offences relating to Juvenile' against '199A MVA' as a court challan, not a fine payable on the spot or online, because the punishment includes imprisonment.",
+  "base_fine_text": "₹25,000 fine plus imprisonment up to 3 years for the juvenile's guardian or the vehicle's owner, under Section 199A(2) — on top of any penalty for the underlying traffic offence itself, and separate from the juvenile's own liability for that offence under Section 199A(6)",
+  "base_fine_min": 25000,
+  "base_fine_max": 25000,
+  "repeat_fine_text": "Same ₹25,000 fine and up to 3 years' imprisonment for the guardian or owner — Section 199A sets no separate, higher amount for a repeat offence",
+  "licence_impact": "The vehicle's registration is cancelled for 12 months under Section 199A(4). The juvenile is barred from being granted any learner's licence (Section 8) or driving licence (Section 9) until they turn 25, under Section 199A(5) — this bar does not apply, and none of Section 199A applies at all, if the juvenile already held a valid learner's or driving licence for that class of vehicle when the offence occurred (Section 199A(3)).",
+  "compoundable_online": false,
+  "faqs": [
+    {
+      "q": "Who is fined when a minor is caught driving — the minor or the parent?",
+      "a": "The guardian of the juvenile or the owner of the vehicle is deemed guilty and faces the punishment under Section 199A(1)-(2): imprisonment up to 3 years and a ₹25,000 fine. The guardian or owner escapes this only by proving the offence happened without their knowledge or that they took all due diligence to prevent it — the law otherwise presumes the juvenile had their consent to use the vehicle. The juvenile is separately punished too, but only with the fine that applies to whatever traffic offence they actually committed (Section 199A(6)), not the ₹25,000/imprisonment penalty, and any custodial element for the juvenile is handled under the Juvenile Justice Act, 2000 rather than the Motor Vehicles Act."
+    },
+    {
+      "q": "Does Section 199A apply if the minor already holds a licence?",
+      "a": "No. Section 199A(3) excludes a juvenile who already held a valid learner's licence under Section 8 or a driving licence under Section 9 covering the class of vehicle they were operating — that is treated as an ordinary traffic offence by a licensed driver, not an 'offence by a juvenile', and the guardian/owner liability, the 12-month registration cancellation and the licence bar to age 25 do not apply."
+    },
+    {
+      "q": "Can a minor-driving challan be paid online like a normal fine?",
+      "a": "No. Delhi Traffic Police's penalty schedule lists offences under Section 199A as a court challan rather than a fixed on-the-spot or online amount, because the punishment includes imprisonment up to 3 years in addition to the ₹25,000 fine — that combination is not something a traffic police officer can compound on the spot."
+    },
+    {
+      "q": "What happens to the vehicle after a minor is caught driving it?",
+      "a": "Section 199A(4) cancels the vehicle's registration for twelve months, regardless of whether the guardian or owner is separately convicted under sub-section (2)."
+    }
+  ],
+  "sources": [
+    "https://indiacode.gov.in/handle/123456789/538138",
+    "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
+  ],
+  "last_verified": "2026-09-25",
+  "statute_quote": {
+    "text": "Where an offence under this Act has been committed by a juvenile, the guardian of such juvenile or the owner of the motor vehicle shall be deemed to be guilty of the contravention and shall be liable to be proceeded against and punished accordingly: Provided that nothing in this sub-section shall render such guardian or owner liable to any punishment provided in this Act, if he proves that the offence was committed without his knowledge or that he exercised all due diligence to prevent the commission of such offence.",
+    "attribution": "Section 199A(1), Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, s. 85, w.e.f. 1-9-2019)"
+  }
+}
