@@ -4,7 +4,7 @@
   "seo_name": "Driving Without RC Fine",
   "target_keyword": "driving without rc fine india",
   "mva_section": "Section 192 read with Section 39, Motor Vehicles Act 1988",
-  "description": "Section 39 forbids driving, or permitting the driving of, any motor vehicle in a public place unless it is registered under Chapter IV, its certificate of registration is neither suspended nor cancelled, and it carries a registration mark displayed in the prescribed manner. Section 192 punishes contravention of Section 39, and the court may impose a lesser punishment for reasons to be recorded. An Explanation inserted by the Motor Vehicles (Amendment) Act 2019 (in force 1-10-2020) deems use of a vehicle in contravention of Section 56 — the fitness certificate requirement — to be a contravention of Section 39, punishable in the same way.",
+  "description": "Section 39 forbids driving, or permitting the driving of, any motor vehicle in a public place unless it is registered under Chapter IV, its certificate of registration is neither suspended nor cancelled, and it carries a registration mark displayed in the prescribed manner. Section 192 punishes contravention of Section 39, and the court may impose a lesser punishment for reasons to be recorded. An Explanation inserted by the Motor Vehicles (Amendment) Act 2019 (in force 1-10-2020) deems use of a vehicle in contravention of Section 56 — the fitness certificate requirement — to be a contravention of Section 39, punishable in the same way. That 'registration mark displayed in the prescribed manner' clause is also how a defective, illegible, fancy, stylised or non-HSRP number plate gets fined: Delhi Traffic Police's own penalty schedule lists 'Defective/Fancy/Not displaying Number Plate' against '50, 51 CMVR / 39/192 MVA' — Rules 50 and 51 of the Central Motor Vehicles Rules, 1989 set the display format, and a plate that does not meet it is treated as a contravention of Section 39, punished under Section 192 exactly like an unregistered vehicle.",
   "base_fine_text": "First offence: a fine of not less than ₹2,000 and up to ₹5,000",
   "base_fine_min": 2000,
   "base_fine_max": 5000,
@@ -23,6 +23,10 @@
     {
       "q": "Can my vehicle be seized for having no valid registration?",
       "a": "Yes. Section 207 allows a police officer or an officer authorised by the State Government to seize and detain a vehicle he believes is being used in contravention of Section 39, and to hold it in temporary safe custody until the transport authority verifies the documents and orders release."
+    },
+    {
+      "q": "Is there a separate number plate fine for a defective, fancy or non-standard plate?",
+      "a": "It is fined under this same law, not a separate one. Delhi Traffic Police's penalty schedule lists 'Defective/Fancy/Not displaying Number Plate' against '50, 51 CMVR / 39/192 MVA' — Rules 50 and 51 of the Central Motor Vehicles Rules, 1989 set the size, font and colour a registration mark must follow, and a vehicle whose plate breaks those rules (illegible, stylised script, missing a High Security Registration Plate, or not displayed at all) is treated as failing Section 39's 'displayed in the prescribed manner' requirement — punished under Section 192 with the same fine as an unregistered vehicle: not less than ₹2,000 up to ₹5,000 for a first offence, and not less than ₹5,000 up to ₹10,000 (or up to 1 year's imprisonment) for a repeat offence."
     }
   ],
   "sources": [
@@ -32,5 +36,5 @@
     "https://indiacode.gov.in/handle/123456789/523307",
     "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
   ],
-  "last_verified": "2026-09-11"
+  "last_verified": "2026-09-28"
 }
