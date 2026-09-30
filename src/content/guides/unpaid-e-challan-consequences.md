@@ -4,7 +4,7 @@ description: >-
   An unpaid e-challan goes to a Virtual Court after 90 days, and licence and RC
   applications stop being processed. The full timeline, state by state.
 target_keyword: what happens if e challan is not paid
-last_verified: '2026-08-12'
+last_verified: '2026-09-30'
 sources:
   - 'https://informatics.nic.in/files/websites/april-2025/echallan.php'
   - 'https://vcourts.gov.in/virtualcourt/help.php'
@@ -30,6 +30,9 @@ sources:
   - >-
     https://indiacode.gov.in/handle/123456789/523292
   - 'https://btp.karnataka.gov.in/105/contactless-enforcement/en'
+  - 'https://indiacode.gov.in/handle/123456789/546634'
+  - 'https://indiacode.gov.in/handle/123456789/546174'
+  - 'https://indiacode.gov.in/handle/123456789/546637'
 faqs:
   - q: How do I tell whether my challan has already been sent to court?
     a: >-
@@ -89,6 +92,16 @@ States run tighter clocks of their own, and Delhi publishes the clearest one. Un
 
 The closest thing to an "expiry" is Section 209, which bars conviction for overspeeding (Section 183) or dangerous driving (Section 184) unless the driver was warned at the time, or a notice specifying the offence was served or sent by registered post within fourteen days, or a summons was served within twenty-eight days. That covers those two sections only — no general rule makes an ordinary unpaid challan lapse.
 
+## E-challan not paid for 1 year: what actually happens
+
+There is no point at which an unpaid challan simply expires — not at 90 days, not at one year, not later. Once it is forwarded to a Virtual Court (or a regular court, in states without one), it stays open as a pending case until it is paid, contested and decided, or cleared at a Lok Adalat. A challan that has sat unpaid for a year is still in exactly that state: an open court case, not a debt that lapses on its own.
+
+What can escalate over that time is the court's own process for compelling a response. Under BNSS Section 63, "every summons issued by a Court under this Sanhita shall be... in writing... signed by the presiding officer of such Court... and shall bear the seal of the Court; or... in an encrypted or any other form of electronic communication and shall bear the image of the seal of the Court or digital signature." Section 64 then governs how it is served: "every summons shall be served by a police officer, or subject to such rules as the State Government may make in this behalf, by an officer of the Court issuing it or other public servant," served personally where practicable, or electronically where it bears the image of the court's seal, with the serving police station or court registrar required to maintain a register of the address, email and phone number used.
+
+If a summons doesn't produce a response, Section 90 lets the court "issue, after recording its reasons in writing, a warrant for his arrest" — either if the court has reason to believe, before or after issuing the summons, that the person has absconded or will not obey it, or if the person fails to appear despite the summons being proved served in time and offers no reasonable excuse. Section 93 confirms these summons-and-warrant provisions apply generically to every summons and warrant issued under the Sanhita, not to any one offence.
+
+None of this runs on a fixed clock. No court or authority publishes a schedule for when a year-old challan moves from summons to warrant — that is a case-by-case judicial decision, and this page does not predict it. What is documented is only the mechanism: a court may compel appearance by summons and, on non-compliance, by warrant, for as long as the case stays open. The Rule 167(7) licence/RC block described below also keeps running for as long as the challan is unpaid, regardless of how much time has passed.
+
 ## What is a traffic challan notice, and how is it different from a challan?
 
 Confusing the two costs people money. An e-challan is raised against the driver. A **notice** is usually raised against the registered owner — Delhi issues these under Section 133 of the Motor Vehicles Act, which obliges the owner, on demand by an authorised police officer, to give the name, address and licence details of whoever was driving. Section 133 fixes no time period, so your deadline is whatever the notice itself states. Failing to comply is a separate offence under Section 187, punishable with imprisonment up to six months, or a fine of ₹5,000, or both.
@@ -128,3 +141,5 @@ Often, yes, through a National Lok Adalat. The 2026 calendar runs on the second 
 ## What should you do if you have an unpaid challan right now?
 
 Check the national portal and your state portal — one is not always a mirror of the other — and check the notice page separately if your state runs one. If the challan is still open, clear it: [how to pay an e-challan online](/how-to-pay-e-challan-online/) covers the OTP and gateway steps, and the [fines list](/fines/) shows what each section carries. If it already shows a court status, go to the Virtual Court rather than waiting for a summons.
+
+This is general information, not legal advice. For your specific case, consult an advocate.
