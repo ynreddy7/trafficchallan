@@ -3,12 +3,13 @@
   "state_name": "Delhi",
   "status": "proposal",
   "scheme_name": "Reported one-time challan amnesty (no order published)",
-  "note": "No challan amnesty is in force in Delhi. A one-time amnesty has been reported repeatedly in the press since late 2025, the reporting saying it stalled on legal advice that challans already before a court cannot be waived without judicial approval — but we have found no notification, gazette entry or departmental order for it, and press reporting alone is not evidence of an order under our sourcing rule. Treat the scheme as reported, not enacted, and expect no discount until an order is actually published. Delhi's settlement routes that do exist are the National Lok Adalat token system, the weekday evening traffic courts, and weekend traffic courts running at district court complexes since July 2026.",
+  "note": "No challan amnesty is in force in Delhi. The Delhi Cabinet approved a one-time amnesty in principle around 12 November 2025 — reported waivers of 50-80% depending on vehicle class on compoundable challans up to 10 years old — but reporting through this check on 1 October 2026 says the proposal stalled on legal advice that challans already before a court cannot be waived without judicial approval, and the Cabinet referred it back to the Law Department to redraft a legally compliant version; no notification, gazette entry or departmental order has been published for it, and press reporting alone is not evidence of an order under our sourcing rule. The Delhi District Courts circulars list, checked again today, carries no circular on this scheme either. Treat the scheme as reported, not enacted, and expect no discount until an order is actually published. Delhi's settlement routes that do exist are the National Lok Adalat token system, the weekday evening traffic courts, and weekend traffic courts running at district court complexes since July 2026.",
   "history": [],
   "sources": [
     "https://delhidistrictcourts.nic.in/circulars",
     "https://bharatspeaks.com/delhis-traffic-fine-amnesty-scheme-hits-legal-roadblock-government-orders-fresh-review/",
-    "https://the420.in/delhi-traffic-challan-amnesty-legal-delay-2-46-crore-fines/"
+    "https://the420.in/delhi-traffic-challan-amnesty-legal-delay-2-46-crore-fines/",
+    "https://dailypioneer.com/news/amnesty-scheme-may-waive-all-pending-traffic-fines"
   ],
-  "last_verified": "2026-09-01"
+  "last_verified": "2026-10-01"
 }

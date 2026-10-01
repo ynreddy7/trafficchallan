@@ -2,7 +2,7 @@
   "slug": "west-bengal",
   "state_name": "West Bengal",
   "status": "none",
-  "note": "No challan discount or settlement scheme is in force in West Bengal as of 13 August 2026 — no scheme is published on the state's official channels. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
+  "note": "No challan discount or settlement scheme is in force in West Bengal — a press/G.O. search on 1 October 2026 found no new scheme announced by the West Bengal transport department or Kolkata/state traffic police since the last check (Kolkata Traffic Police has run such a scheme before, a one-time fine settlement in Dec 2018-Feb 2019, but nothing current is in force). Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal. The official echallan.parivahan.gov.in portal and transport.wb.gov.in (this record's official sources) returned repeated HTTP 503 errors on 1 October 2026 and could not be fetched this cycle; last_verified is left unchanged pending reachable portals.",
   "history": [],
   "sources": [
     "https://echallan.parivahan.gov.in/index/accused-challan"

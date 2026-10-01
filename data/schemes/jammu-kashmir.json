@@ -2,10 +2,10 @@
   "slug": "jammu-kashmir",
   "state_name": "Jammu & Kashmir",
   "status": "none",
-  "note": "No challan discount or settlement scheme is in force in Jammu & Kashmir as of 13 August 2026 — no scheme is published on the state's official channels. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
+  "note": "No challan discount or settlement scheme is in force in Jammu & Kashmir — reconfirmed on 1 October 2026 via a current press/G.O. search, which shows no new scheme announced. The J&K Traffic Police site (jktrafficpolice.nic.in) and the central e-challan portal could not be reached during this check due to connectivity failures, so this cycle's check rests on the press/G.O. search alone and should be re-checked against the official site next cycle. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
   "history": [],
   "sources": [
     "https://echallan.parivahan.gov.in/index/accused-challan"
   ],
-  "last_verified": "2026-09-01"
+  "last_verified": "2026-10-01"
 }

@@ -71,12 +71,9 @@
     { "code": "KA70", "office": "Bantwal" },
     { "code": "KA71", "office": "Athani" }
   ],
-  "verification": { "method": "sampled", "sample_size": 7, "official_list_available": false },
+  "verification": { "method": "sampled", "sample_size": 5, "official_list_available": false },
   "sources": [
-    "https://transport.karnataka.gov.in/",
-    "https://www.acko.com/rto/karnataka/",
-    "https://groww.in/rto/karnataka",
-    "https://www.insurancedekho.com/rto/karnataka"
+    "https://transport.karnataka.gov.in/"
   ],
-  "last_verified": "2026-08-13"
+  "last_verified": "2026-10-01"
 }

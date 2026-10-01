@@ -2,10 +2,10 @@
   "slug": "gujarat",
   "state_name": "Gujarat",
   "status": "none",
-  "note": "No challan discount or settlement scheme is in force in Gujarat as of 13 August 2026 — no scheme is published on the state's official channels. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
+  "note": "No challan discount or settlement scheme is in force in Gujarat — reconfirmed on 1 October 2026 via a current press/G.O. search, which shows no new scheme announced. Neither the state's official RTO/transport site nor the central e-challan portal (echallan.parivahan.gov.in) could be reached during this check due to connectivity failures, so this cycle's check rests on the press/G.O. search alone and should be re-checked against the official site next cycle. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
   "history": [],
   "sources": [
     "https://echallan.parivahan.gov.in/index/accused-challan"
   ],
-  "last_verified": "2026-09-01"
+  "last_verified": "2026-10-01"
 }
