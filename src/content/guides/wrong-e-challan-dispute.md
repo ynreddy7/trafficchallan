@@ -4,7 +4,7 @@ description: >-
   How to file a wrong challan complaint on India's e-challan grievance ticket
   system, contest it in Virtual Court, and what evidence to keep.
 target_keyword: wrong challan complaint
-last_verified: '2026-08-12'
+last_verified: '2026-10-02'
 sources:
   - 'https://echallan.parivahan.gov.in/gsticket/'
   - 'https://echallan.parivahan.gov.in/index/grievance'
@@ -18,6 +18,12 @@ sources:
   - 'https://traffic.delhipolice.gov.in/faq'
   - 'https://mahatrafficechallan.gov.in/MH-Echallan-Grievance'
   - 'https://www.pib.gov.in/PressReleasePage.aspx?PRID=1747285'
+  - 'https://pgportal.gov.in/'
+  - 'https://indiacode.gov.in/handle/123456789/513335'
+  - 'https://indiacode.gov.in/handle/123456789/513336'
+  - 'https://indiacode.gov.in/handle/123456789/513350'
+  - 'https://indiacode.gov.in/handle/123456789/524440'
+  - 'https://indiacode.gov.in/handle/123456789/524271'
 faqs:
   - q: How long does an e-challan grievance ticket take to be resolved?
     a: >-
@@ -140,6 +146,18 @@ If the mobile number on the challan is not yours, Virtual Courts accepts verific
 Largely, yes — know that before you click Pay. Compounding is a disposal, not a deposit: Kolkata Traffic Police explain that the fee is non-refundable because the case is closed on the spot under section 200 of the Motor Vehicles Act, whereas a sum taken as cash bail can be refunded or adjusted by court order if you appear. Delhi Traffic Police put it bluntly: "Pay-up: Pay the compounding amount against a receipt or Contest: Surrender a document (like driving license) against a challan receipt and attend the court on a given date."
 
 The one thing you must not do is pay twice. A court-forwarded challan often remains payable on the portal, which warns you to settle it in one venue only — "Double Payment Done" is a standing grievance category because this happens constantly.
+
+## The grievance ticket was rejected or went nowhere — what next?
+
+<div class="answer-box">If the portal rejects your ticket or never resolves it, the next rungs are a direct complaint to the state police traffic cell, then a CPGRAMS complaint at pgportal.gov.in, then an RTI for the enforcement device's calibration record, and finally a contest in Virtual Court.</div>
+
+**1. Go back to the state's own channel first.** Where one exists, it sits above the national portal and can see context gsticket cannot — [Maharashtra's dedicated helpline](/maharashtra-e-challan/) (844 844 8960), the [Hyderabad Traffic Cell](https://htp.gov.in/wrong_challan.html) at 040-27852721, or Karnataka's IMV 133 dispute route from the QR code on the Vahan notice. A state channel can act on a ticket the national portal closed without explanation.
+
+**2. File on CPGRAMS if the state channel also stalls.** [pgportal.gov.in](https://pgportal.gov.in/) describes itself as "a single portal connected to all the Ministries/Departments of Government of India and States," available "24x7 to lodge their grievances to the public authorities on any subject related to service delivery" — a stalled or wrongly-rejected challan grievance against a state transport or traffic department is service delivery, so it qualifies. Filing gives a registration number to track; if the resolution you get back is rated "Poor," the portal enables a further appeal on that same ticket. CPGRAMS does not itself rule on the challan — it escalates the service failure (no reply, wrong rejection) to a department above the one that issued it.
+
+**3. RTI the enforcement device's calibration record where the challan came from a camera, speed gun or radar.** Under the Legal Metrology Act, 2009, "verification" of a weighing or measuring instrument expressly "includes re-verification and calibration" ([s.2(v)](https://indiacode.gov.in/handle/123456789/524271)), and a "weight or measure" itself "includes a weighing or measuring instrument" (s.2(w)) — so a speed gun or radar used to generate your challan falls within the Act. [Section 24](https://indiacode.gov.in/handle/123456789/524440) requires such an instrument to be verified before it is put to use. File an RTI application under [s.6](https://indiacode.gov.in/handle/123456789/513335) of the Right to Information Act, 2005, with the traffic department's Public Information Officer, asking for the specific device's make, ID, location and its last verification/calibration certificate. The PIO must reply "within thirty days of the receipt of the request" under [s.7(1)](https://indiacode.gov.in/handle/123456789/513336), failing which the request "shall be deemed to have refused." A refusal, non-reply or unsatisfactory reply can be taken to a first appeal within 30 days to an officer senior to the PIO, and from there to a second appeal within 90 days to the State or Central Information Commission, both under [s.19](https://indiacode.gov.in/handle/123456789/513350). A certificate that has lapsed is evidence for your case; this site cannot tell you whether it will succeed, and what a lapsed certificate means for your specific challan is a question for an advocate, not a prediction this page will make.
+
+**4. Contest in Virtual Court.** Where the challan has already moved past the portal — under 90-day referral or because compounding was never offered — the remedy is the [Virtual Court contest](#how-do-i-contest-a-wrong-challan-in-virtual-court-instead-of-paying) described above, carrying forward whatever the RTI returned as evidence. This is general information, not legal advice; for your specific case, consult an advocate.
 
 ## What if the challan is correct but the amount is not affordable?
 
