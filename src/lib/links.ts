@@ -36,11 +36,11 @@ export function rotatedGuides(seed: string, guides: GuideRef[], count = 2): Guid
   const len = guides.length;
   if (len <= count) return [...guides];
   const start = hashSeed(seed) % len;
-  // Salt re-tuned 2026-10-05 (17 guides / 14 states) after a new guide shifted
-  // ahmedabad-traffic-challan out of every state's pick — see the function
-  // doc above: adjust this salt, not tests/links.test.ts, if a future data
-  // change breaks full coverage again.
-  const stride = 1 + (hashSeed(`${seed}:s553`) % (len - 1));
+  // Salt re-tuned 2026-10-07 (18 guides / 14 states) after adding
+  // digitally-impounded-vehicle shifted a guide out of every state's pick —
+  // see the function doc above: adjust this salt, not tests/links.test.ts,
+  // if a future data change breaks full coverage again.
+  const stride = 1 + (hashSeed(`${seed}:s1216`) % (len - 1));
   return Array.from({ length: count }, (_, i) => guides[(start + i * stride) % len]);
 }
 
