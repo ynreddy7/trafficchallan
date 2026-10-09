@@ -4,7 +4,7 @@ description: >-
   An unpaid e-challan goes to a Virtual Court after 90 days, and licence and RC
   applications stop being processed. The full timeline, state by state.
 target_keyword: what happens if e challan is not paid
-last_verified: '2026-09-30'
+last_verified: '2026-10-09'
 sources:
   - 'https://informatics.nic.in/files/websites/april-2025/echallan.php'
   - 'https://vcourts.gov.in/virtualcourt/help.php'
@@ -34,6 +34,17 @@ sources:
   - 'https://indiacode.gov.in/handle/123456789/546174'
   - 'https://indiacode.gov.in/handle/123456789/546637'
 faqs:
+  - q: Are there traffic challan late fees for paying an e-challan late?
+    a: >-
+      No. No separate late fees, surcharge or interest is added for paying
+      after a delay — NIC's own eChallan documentation, which runs the
+      national system, describes only the Rule 167(5)/(7) consequences above
+      (Virtual Court referral after 90 days, then the licence/registration
+      block) and names no additional late fee for late payment. The
+      compounding amount itself stays the same figure whether you pay on day
+      one or day 89; what changes is the venue and the collateral
+      consequences, not the price. Some states run a shorter clock for camera
+      offences — see the payment due date section above.
   - q: How do I tell whether my challan has already been sent to court?
     a: >-
       On the NextGen e-challan portal the Pay button disappears and a "Sent To
