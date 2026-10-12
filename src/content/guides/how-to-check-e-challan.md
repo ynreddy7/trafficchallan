@@ -99,6 +99,12 @@ The results table gives Violator Name, DL/RC Number, Challan No, Transaction ID,
 
 Always open Challan Print before paying. For camera-detected violations it carries the photographic evidence, and that image is what tells you whether the number plate in the picture is actually yours. If it is not, go to [disputing a wrong e-challan](/wrong-e-challan-dispute/) rather than paying.
 
+## How do I download my e-challan — the copy, the receipt, or the app?
+
+"Download" means three different things here. For the **challan copy** (the notice itself, with the photographic evidence for a camera-detected offence), use the Download Challan Print tile on the NextGen services page, or the Challan Print link the legacy portal shows against a search result. For a **payment receipt**, it is the separate Download Payment Receipt tile on NextGen, or the Receipt link on the legacy result row — always save this one immediately after paying. Neither needs an app; both are downloads straight from the portal you searched on.
+
+If what you actually want is the **app**, that is mParivahan, the official MoRTH/NIC citizen app — download it only from the Google Play Store or Apple App Store, never from a link in an SMS or WhatsApp message (see [is the message I received genuine?](#is-the-traffic-challan-message-i-received-genuine) above). Our [directory of official portals](/echallan-parivahan/) lists the app alongside each state's portal if you are not sure which one applies to you.
+
 ## Which states have their own e-challan portal?
 
 Where a state runs its own system, it often holds city-police challans that never reach the national portal — or holds older ones the national portal has dropped.

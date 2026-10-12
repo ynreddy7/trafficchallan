@@ -716,7 +716,8 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "pending",
+      "note": "Checked 2026-10-12: researched the scam this keyword is about (fake e-challan SMS/WhatsApp messages carrying a malicious APK, often quoting a round fine like ₹500) — PIB Fact Check and CERT-In have both warned about it, per multiple news reports, but the primary posts are not independently fetchable today: x.com/PIBFactCheck returns HTTP 402 to this fetcher, factcheck.pib.gov.in requires a login with no public listing, and cert-in.org.in's advisory list did not surface a matching entry. CONTENT_STANDARDS rule 1/2 require opening and verifying an official source the same day, not relaying news paraphrase of a tweet. Left pending rather than writing from secondhand summaries. The existing line on how-to-check-e-challan.md (\"no official process ever asks you to install an APK file\") already covers the bare word \"apk\"; what is missing is a verifiable official citation for the ₹500-style scam pattern specifically. Retry when x.com or factcheck.pib.gov.in is reachable, or when an official state-police press page carrying the same warning can be fetched directly."
     },
     {
       "slug_suggestion": "download",
@@ -728,8 +729,10 @@
       "max_cpc": 2.86,
       "min_seo_difficulty": 53,
       "type": "guide",
-      "status": "pending",
-      "note": "Left pending because the intent splits two ways and neither owning page carries the phrase in a heading: \"download the challan copy/receipt\" (Download Challan Print / Download Payment Receipt, covered in prose by how-to-check-e-challan) vs \"download the app\" (echallan-parivahan). Fix by phrasing on whichever page wins the intent — not by a new page."
+      "status": "covered",
+      "note": "Resolved 2026-10-12 per the standing note: the dominant intent (download the challan copy or payment receipt, not the app) already had the facts on how-to-check-e-challan.md but only in prose, not a heading. Added a new H2 \"How do I download my e-challan — the copy, the receipt, or the app?\" that carries the word in the reader's phrasing and also resolves the app-download reading (mParivahan, official stores only) in the same section, cross-linking to /echallan-parivahan/. No new facts added — all three points (Download Challan Print / Download Payment Receipt tiles, mParivahan from Play/App Store) were already verified and sourced on this page as of its 2026-08-13 last_verified, so that date is unchanged per rule 15.",
+      "covered_by": "how-to-check-e-challan",
+      "completed": "2026-10-12"
     },
     {
       "slug_suggestion": "off",
