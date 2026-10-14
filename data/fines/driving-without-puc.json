@@ -3,18 +3,18 @@
   "name": "Driving without a valid PUC certificate",
   "seo_name": "PUC Challan Fine",
   "target_keyword": "puc challan fine",
-  "mva_section": "Section 190(2), Motor Vehicles Act 1988 (penalties substituted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)",
-  "description": "Section 190(2) punishes any person who drives, or causes or allows to be driven, a motor vehicle in a public place that violates the standards prescribed in relation to road safety, control of noise and air pollution. A Pollution Under Control certificate is the document that evidences compliance with the emission standards, which is why an expired or missing PUC is booked under this sub-section. The 2019 amendment replaced the old flat ₹1,000 first-offence fine with imprisonment up to three months or a fine up to ₹10,000 or both, and added a mandatory three-month licence disqualification for the first offence.",
-  "base_fine_text": "First offence: imprisonment up to 3 months, or a fine which may extend to ₹10,000, or both — and disqualification from holding a licence for three months. There is no statutory minimum, but Delhi's notified schedule compounds it at the ₹10,000 ceiling",
+  "mva_section": "Section 190(2)(i), Motor Vehicles Act 1988 (sub-sections (1) and (2) substituted by the Jan Vishwas (Amendment of Provisions) Act 2026 (Act 8 of 2026), s.2 and Schedule, w.e.f. 15-8-2026, replacing the Motor Vehicles (Amendment) Act 2019 wording, w.e.f. 1-9-2019)",
+  "description": "Section 190(2) penalises any person who drives, or causes or allows to be driven, a motor vehicle in a public place that violates prescribed standards. Clause (i) covers road safety and air-pollution standards — the clause a Pollution Under Control certificate's absence or expiry is booked under; clause (ii) separately covers noise pollution. The 2019 amendment had made a first offence under clause (i) punishable with imprisonment up to three months or a fine up to ₹10,000 or both, plus a mandatory three-month licence disqualification. The Jan Vishwas (Amendment of Provisions) Act 2026 rewrote sub-sections (1) and (2) with effect from 15 August 2026: a first contravention of clause (i) now draws only a penalty which may extend to ₹10,000 plus the three-month disqualification — imprisonment no longer applies to a first offence. A second or subsequent contravention still carries imprisonment up to six months, or a fine up to ₹10,000, or both. Clause (ii) (noise pollution) now gets a recorded warning for a first contravention and a penalty up to ₹10,000 for a later one.",
+  "base_fine_text": "First offence: a penalty which may extend to ₹10,000, plus disqualification from holding a licence for three months — no imprisonment applies to a first offence since the 15 August 2026 rewrite. Delhi's notified schedule compounds it at the ₹10,000 ceiling",
   "base_fine_min": 0,
   "base_fine_max": 10000,
-  "repeat_fine_text": "Second or subsequent offence: imprisonment up to 6 months, or a fine which may extend to ₹10,000, or both (the mandatory disqualification is written only into the first-offence limb)",
+  "repeat_fine_text": "Second or subsequent offence: imprisonment up to 6 months, or a fine which may extend to ₹10,000, or both (the mandatory disqualification is written only into the first-offence limb; this repeat-offence wording is unchanged by the 2026 amendment)",
   "licence_impact": "Section 190(2) itself disqualifies the person from holding a licence for three months on the first offence. Section 206(4) separately obliges the officer to seize the driving licence of a driver believed to have committed a Section 190 offence and forward it to the licensing authority for disqualification or revocation proceedings under Section 19.",
   "compoundable_online": true,
   "faqs": [
     {
       "q": "How much is the PUC challan actually charged at?",
-      "a": "The statute sets a ceiling, not a fixed sum: a fine 'which may extend to ten thousand rupees'. States fix the compounding amount within that. Delhi's published schedule lists 'W/O PUCC — 115 CMVR / 190(2) MVA' at ₹10,000 for both the first and any subsequent offence, i.e. at the statutory maximum."
+      "a": "The statute sets a ceiling, not a fixed sum: since the 15 August 2026 rewrite, a first offence draws a penalty 'which may extend to ten thousand rupees'. States fix the compounding amount within that. Delhi's published schedule lists 'W/O PUCC — 115 CMVR / 190(2) MVA' at ₹10,000 for both the first and any subsequent offence, i.e. at the statutory maximum."
     },
     {
       "q": "Can my licence really be suspended for an expired PUC?",
@@ -31,5 +31,9 @@
     "https://indiacode.gov.in/handle/123456789/523307",
     "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
   ],
-  "last_verified": "2026-10-01"
+  "last_verified": "2026-10-14",
+  "statute_quote": {
+    "text": "Any person who drives or causes or allows to be driven, in any public place a motor vehicle, which violates the standards prescribed,––– (i) in relation to road safety or control of air-pollution, shall be liable for the first contravention with penalty which may extend to ten thousand rupees and he shall be disqualified for holding licence for a period of three months and for any second or subsequent offence with imprisonment for a term which may extend to six months or with fine which may extend to ten thousand rupees, or with both",
+    "attribution": "Section 190(2)(i), Motor Vehicles Act 1988 (as substituted by the Jan Vishwas (Amendment of Provisions) Act 2026 (Act 8 of 2026), s.2 and Schedule, w.e.f. 15-8-2026)"
+  }
 }

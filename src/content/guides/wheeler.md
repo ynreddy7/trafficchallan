@@ -4,7 +4,7 @@ description: >-
   E-challan check and pay steps are the same for any vehicle; what differs for
   a 2- or 3-wheeler is the offence — triple riding, helmet, excess passengers.
 target_keyword: e challan 2 wheeler
-last_verified: '2026-09-18'
+last_verified: '2026-10-14'
 sources:
   - 'https://indiacode.gov.in/handle/123456789/523226'
   - 'https://indiacode.gov.in/handle/123456789/538133'
@@ -49,13 +49,13 @@ Searchers looking for "e challan 2 wheeler" or "e challan 3 wheeler" are usually
 
 ## Two-wheeler offences: triple riding and the helmet rule
 
-Section 128 of the Motor Vehicles Act, 1988 sets the rule directly: "No driver of a two-wheeled motor cycle shall carry more than one person in addition to himself on the motor cycle and no such person shall be carried otherwise than sitting on a proper seat securely fixed to the motor cycle behind the driver's seat with appropriate safety measures." A violation — commonly called triple riding — is penalised under Section 194C: "Whoever drives a motor cycle or causes or allows a motor cycle to be driven in contravention of the provisions of section 128 ... shall be punishable with a fine of one thousand rupees and he shall be disqualified for holding licence for a period of three months."
+Section 128 of the Motor Vehicles Act, 1988 sets the rule directly: "No driver of a two-wheeled motor cycle shall carry more than one person in addition to himself on the motor cycle and no such person shall be carried otherwise than sitting on a proper seat securely fixed to the motor cycle behind the driver's seat with appropriate safety measures." A violation — commonly called triple riding — is penalised under Section 194C: "Whoever drives a motor cycle or causes or allows a motor cycle to be driven in contravention of the provisions of section 128 ... shall be liable for a penalty of one thousand rupees and he shall be disqualified for holding licence for a period of three months." (The Jan Vishwas (Amendment of Provisions) Act 2026, Act 8 of 2026, substituted "liable for a penalty" for the earlier "punishable with a fine" w.e.f. 15-8-2026 — the ₹1,000 amount and disqualification are unchanged.)
 
 The helmet rule is a separate section — Section 129, penalised under Section 194D at ₹1,000 — and applies to the driver and every pillion rider individually, so a two-wheeler carrying the legal one pillion rider can still draw two helmet challans if neither person is wearing protective headgear. See the [driving without helmet fine page](/fines/driving-without-helmet/) for state-notified amounts, which can differ from this central figure.
 
 ## Three-wheeler offences: excess passengers and overloading
 
-A three-wheeler registered to carry passengers for hire — an auto-rickshaw or e-rickshaw — is a "transport vehicle" under the Act, so carrying more passengers than its registration certificate or permit authorises is fined under Section 194A: "Whoever drives a transport vehicle or causes or allows a transport vehicle to be driven while carrying more passengers than is authorised in the registration certificate of such transport vehicle or the permit conditions applicable to such transport vehicle shall be punishable with a fine of two hundred rupees per excess passenger", and the section itself bars the vehicle from moving again until the excess passengers are off-loaded and alternative transport is arranged for them.
+A three-wheeler registered to carry passengers for hire — an auto-rickshaw or e-rickshaw — is a "transport vehicle" under the Act, so carrying more passengers than its registration certificate or permit authorises is fined under Section 194A: "Whoever drives a transport vehicle or causes or allows a transport vehicle to be driven while carrying more passengers than is authorised in the registration certificate of such transport vehicle or the permit conditions applicable to such transport vehicle shall be liable for a penalty of two hundred rupees per excess passenger", and the section itself bars the vehicle from moving again until the excess passengers are off-loaded and alternative transport is arranged for them. (Here too, the Jan Vishwas (Amendment of Provisions) Act 2026 substituted "liable for a penalty" for "punishable with a fine" w.e.f. 15-8-2026, without changing the ₹200-per-passenger amount.)
 
 A goods three-wheeler carrying cargo beyond its permitted weight instead falls under Section 194 (overloading), which fines twenty thousand rupees plus two thousand rupees per tonne of excess load, on top of the cost of off-loading — the same overloading provision that applies to any goods vehicle, not something specific to three-wheelers.
 

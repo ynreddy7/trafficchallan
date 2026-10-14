@@ -3,8 +3,8 @@
   "name": "Driving without a seat belt",
   "seo_name": "Seat Belt Challan Fine",
   "target_keyword": "seat belt fine india",
-  "mva_section": "Section 194B, Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)",
-  "description": "Section 194B was inserted by the Motor Vehicles (Amendment) Act 2019 and has two limbs. Sub-section (1) punishes a driver who drives without wearing a safety belt or who carries passengers not wearing seat belts. Sub-section (2) separately punishes driving, or allowing a vehicle to be driven, with a child under fourteen who is not secured by a safety belt or a child restraint system. Both limbs carry a fine of one thousand rupees, and a State Government may by gazette notification exclude transport vehicles carrying standing passengers from sub-section (1).",
+  "mva_section": "Section 194B, Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019; 'punishable with a fine' was changed to 'liable for a penalty' by the Jan Vishwas (Amendment of Provisions) Act 2026 (Act 8 of 2026), s.2 and Schedule, w.e.f. 15-8-2026 — the ₹1,000 amount is unchanged)",
+  "description": "Section 194B was inserted by the Motor Vehicles (Amendment) Act 2019 and has two limbs. Sub-section (1) penalises a driver who drives without wearing a safety belt or who carries passengers not wearing seat belts. Sub-section (2) separately penalises driving, or allowing a vehicle to be driven, with a child under fourteen who is not secured by a safety belt or a child restraint system. Both limbs carry a penalty of one thousand rupees, and a State Government may by gazette notification exclude transport vehicles carrying standing passengers from sub-section (1). Since 15 August 2026, both limbs read 'liable for a penalty' rather than 'punishable with a fine' — the Jan Vishwas (Amendment of Provisions) Act 2026's wording change decriminalising the offence — with the ₹1,000 amount unchanged.",
   "base_fine_text": "₹1,000 for the driver, and ₹1,000 where a child under fourteen is not secured by a seat belt or child restraint system",
   "base_fine_min": 1000,
   "base_fine_max": 1000,
@@ -18,7 +18,7 @@
     },
     {
       "q": "Is there a separate penalty for a child not in a car seat?",
-      "a": "Yes. Section 194B(2) is a distinct offence: driving, or allowing a vehicle to be driven, with a child who has not attained fourteen years and is not secured by a safety belt or a child restraint system is punishable with a fine of one thousand rupees."
+      "a": "Yes. Section 194B(2) is a distinct offence: driving, or allowing a vehicle to be driven, with a child who has not attained fourteen years and is not secured by a safety belt or a child restraint system is liable for a penalty of one thousand rupees."
     },
     {
       "q": "Can a seat belt challan be paid online without going to court?",
@@ -31,9 +31,9 @@
     "https://indiacode.gov.in/handle/123456789/523314",
     "https://traffic.delhipolice.gov.in/en/traffic-violations-penalties"
   ],
-  "last_verified": "2026-10-01",
+  "last_verified": "2026-10-14",
   "statute_quote": {
-    "text": "(1) Whoever drives a motor vehicle without wearing a safety belt or carries passengers not wearing seat belts shall be punishable with a fine of one thousand rupees: Provided that the State Government, may by notification in the Official Gazette, exclude the application of this sub-section to transport vehicles to carry standing passengers or other specified classes of transport vehicles.",
-    "attribution": "Section 194B(1), Motor Vehicles Act 1988 (inserted by the Motor Vehicles (Amendment) Act 2019, w.e.f. 1-9-2019)"
+    "text": "(1) Whoever drives a motor vehicle without wearing a safety belt or carries passengers not wearing seat belts shall be liable for a penalty of one thousand rupees: Provided that the State Government, may by notification in the Official Gazette, exclude the application of this sub-section to transport vehicles to carry standing passengers or other specified classes of transport vehicles.",
+    "attribution": "Section 194B(1), Motor Vehicles Act 1988 (as substituted by the Jan Vishwas (Amendment of Provisions) Act 2026 (Act 8 of 2026), s.2 and Schedule, w.e.f. 15-8-2026)"
   }
 }

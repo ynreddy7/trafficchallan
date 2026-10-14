@@ -5,7 +5,7 @@ description: >-
   or electronically under Section 136A, priced under that section or Section
   177.
 target_keyword: e challan traffic rules
-last_verified: '2026-09-21'
+last_verified: '2026-10-14'
 sources:
   - 'https://indiacode.gov.in/handle/123456789/538697'
   - 'https://indiacode.gov.in/handle/123456789/523280'
@@ -31,10 +31,10 @@ faqs:
       booked under — it names the rule you broke. Some sections carry their
       own fine (Section 184, dangerous driving, for instance); others define
       a duty with no fine attached, in which case Section 177, the Act's
-      general penalty clause, supplies one — up to ₹500 for a first offence
-      and up to ₹1,500 for a second or subsequent one. See
-      [traffic challan 119/177](/119-177/) for a worked example of how that
-      pairing works.
+      general penalty clause, supplies one — since 15 August 2026, a recorded
+      warning for a first offence and a penalty of up to ₹1,500 for a second
+      or subsequent one. See [traffic challan 119/177](/119-177/) for a
+      worked example of how that pairing works.
   - q: Can every traffic rule violation be paid online, or do some require a court appearance?
     a: >-
       Not every rule. Section 200 of the Motor Vehicles Act lets a state
@@ -68,7 +68,7 @@ In plain terms: the camera or speed gun that caught you is not an ad-hoc tool, i
 
 ## Which rule sets the amount you owe?
 
-The section printed on your challan is the rule you're said to have broken, and most sections that create a duty — wearing a helmet, carrying insurance, stopping at a signal — also fix their own fine, which a state can then lower for on-the-spot settlement under its own notification. Where a section defines a duty but fixes no fine of its own, Section 177 of the Act, the general penalty clause, supplies one: a fine of up to ₹500 for a first offence and up to ₹1,500 for a second or subsequent offence. Section 119/177, the "disobeyed a signal or sign" challan, is the clearest everyday example of this pairing — see [traffic challan 119/177](/119-177/).
+The section printed on your challan is the rule you're said to have broken, and most sections that create a duty — wearing a helmet, carrying insurance, stopping at a signal — also fix their own penalty, which a state can then lower for on-the-spot settlement under its own notification. Where a section defines a duty but fixes no penalty of its own, Section 177 of the Act, the general penalty clause, supplies one. The Jan Vishwas (Amendment of Provisions) Act 2026 rewrote Section 177 with effect from 15 August 2026: a first contravention now draws only a recorded warning, and a second or subsequent one draws a penalty of up to ₹1,500 — replacing the earlier flat ₹500 first-offence fine. Section 119/177, the "disobeyed a signal or sign" challan, is the clearest everyday example of this pairing — see [traffic challan 119/177](/119-177/).
 
 Not every offence can simply be paid off, either. Section 200 of the Act lists the specific sections a state government may let its officers "compound" — settle for a fixed, gazette-notified amount, before or after a case is filed in court — among them Sections 177, 178, 179, 181, 183, 184 (for its handheld-device clause), 190(2), 192, 194, 194A through 194F, 196 and 198. An offence left off a state's own compounding notification, most commonly drunken driving, is not a pay-and-close matter regardless of how it was recorded; it goes to court. Check your own state's fine page for what your specific challan is compoundable at, and see the [full fines index](/fines/) for individual offences.
 
