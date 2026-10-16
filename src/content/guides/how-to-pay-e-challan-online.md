@@ -69,6 +69,17 @@ faqs:
       vehicle's engine and chassis number instead, checked against RTO data. In
       practice that means you need the owner's or licence-holder's credentials
       to hand, whoever is sitting at the keyboard.
+  - q: Can I pay or check an e-challan without OTP, if I can't access the registered mobile number?
+    a: >-
+      Yes — OTP to the Vahan-registered mobile number is not the only identity
+      check either system accepts. On the legacy and NextGen portals, Aadhaar
+      OTP or a 16-digit Virtual Aadhaar ID work instead, and a challan raised
+      against a driving licence can be cleared with the DL number and date of
+      birth, no mobile OTP involved. On Virtual Courts, if the mobile number on
+      the challan itself is wrong or unreachable, the platform verifies you
+      against the vehicle's engine and chassis number checked against RTO data
+      instead. Update the Vahan mobile number once you are through, so the next
+      challan does not have the same problem.
 ---
 <div class="answer-box">Pay an e-challan on one of the two national MoRTH portals: <strong>echallan.parivahan.gov.in</strong> (Delhi, Telangana, UP, AP, MP and others) or the NextGen portal <strong>echallan.parivahan.nic.in</strong>, which serves 27 states and UTs including Maharashtra, Karnataka, Tamil Nadu, Gujarat and West Bengal.</div>
 

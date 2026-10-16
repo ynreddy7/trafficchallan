@@ -5,10 +5,12 @@ description: >-
   record lives on the official portal. What to check before you buy or sell a
   used car.
 target_keyword: traffic challan cars24
-last_verified: '2026-09-09'
+last_verified: '2026-10-16'
 sources:
   - 'https://echallan.parivahan.gov.in/'
   - 'https://morth.gov.in/'
+  - 'https://indiacode.gov.in/handle/123456789/523086'
+  - 'https://indiacode.gov.in/handle/123456789/523140'
 faqs:
   - q: Is CARS24's traffic challan checker accurate?
     a: >-
@@ -27,16 +29,20 @@ faqs:
       up registration applications once they cross the unpaid window. See
       what happens if an e-challan is not paid for the exact rule and
       timeline.
-  - q: 'I bought a used car and it already has old challans on it — who pays?'
+  - q: 'I bought a second-hand vehicle and it already has pending challans on it — who pays?'
     a: >-
-      The challan was raised against whoever was driving, or against the
-      registered owner at the time of the offence, not against whoever holds
-      the keys today. It does not transfer to you automatically just because
-      you now drive the car. In practice, though, it is your problem if it is
-      unpaid: it stays attached to that vehicle's registration number, so it
-      can still hold up registration paperwork you file after buying it. Get
-      a written challan-clear confirmation from the seller before paying, not
-      after.
+      Section 2(30) of the Motor Vehicles Act defines "owner" as "a person in
+      whose name a motor vehicle stands registered" — so a challan for an
+      offence committed before the sale is legally the previous owner's, the
+      person named on the Registration Certificate (RC) at the time, not
+      yours just because you now hold the keys. It does not transfer to you
+      automatically. In practice, though, an unpaid one is still your
+      problem: it stays attached to that vehicle's registration number, so it
+      can hold up the RC transfer paperwork you file after buying it. Get a
+      written challan-clear confirmation from the seller before paying, not
+      after — see [challan on a sold vehicle](/sold-vehicle-challans/) for
+      the seller-side rule (Section 50) that should already have put the
+      transfer report on record.
   - q: How do I check a used car's challan history before buying it?
     a: >-
       Look it up by registration number on the official portal rather than

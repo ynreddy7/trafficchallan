@@ -5,10 +5,10 @@ description: >-
   Section 50 and Section 2(30) of the MV Act decide who stays liable, and
   what to do.
 target_keyword: challan on sold vehicle
-last_verified: '2026-10-05'
+last_verified: '2026-10-16'
 sources:
   - 'https://indiacode.gov.in/handle/123456789/523140'
-  - 'https://indiacode.gov.in/handle/123456789/578295'
+  - 'https://indiacode.gov.in/handle/123456789/523086'
   - 'https://indiankanoon.org/doc/127802803/'
 faqs:
   - q: I sold my vehicle years ago. Why am I still getting challans on it?
