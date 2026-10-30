@@ -35,18 +35,13 @@ function hashSeed(seed: string): number {
 export function rotatedGuides(seed: string, guides: GuideRef[], count = 2): GuideRef[] {
   const len = guides.length;
   if (len <= count) return [...guides];
-  // Re-tuned 2026-10-28 (21 guides / 14 states, adding traffic-challan-lawyer):
-  // with only `stride` salted, `start` was a fixed hash of the seed alone, so
-  // every state's first pick was locked in regardless of salt — 14 states
-  // can only ever produce 12 distinct first picks, and across ~5,000,000
-  // salts tried, no stride-only salt covered all 21 guides (verified by
-  // brute force; max reachable was 20/21). Salting `start` too gives every
-  // state two independent degrees of freedom instead of one, which finds a
-  // full-coverage salt within tens of thousands of tries. Adjust this salt
-  // (or re-run the search), not tests/links.test.ts, if a future data change
-  // breaks full coverage again.
-  const start = hashSeed(`${seed}:s10283115:a`) % len;
-  const stride = 1 + (hashSeed(`${seed}:s10283115:b`) % (len - 1));
+  // Re-tuned 2026-10-30 (22 guides / 14 states, adding ranchi-traffic-challan):
+  // brute-forced over salts s0..s4999999 for one whose per-state (start,
+  // stride) pair covers all 22 guides from the 14 real state slugs alone.
+  // Adjust this salt (or re-run the search), not tests/links.test.ts, if a
+  // future data change breaks full coverage again.
+  const start = hashSeed(`${seed}:s38407:a`) % len;
+  const stride = 1 + (hashSeed(`${seed}:s38407:b`) % (len - 1));
   return Array.from({ length: count }, (_, i) => guides[(start + i * stride) % len]);
 }
 
