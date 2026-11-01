@@ -2,7 +2,7 @@
   "slug": "rajasthan",
   "state_name": "Rajasthan",
   "status": "none",
-  "note": "No challan discount or settlement scheme is in force in Rajasthan as of 1 October 2026 — the state transport department's own site carries no scheme notice, and a press/G.O. search the same day found nothing new announced. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
+  "note": "No challan discount or settlement scheme is in force in Rajasthan — last confirmed against the state transport department's own site on 1 October 2026, which carried no scheme notice. On 1 November 2026 both listed sources (echallan.parivahan.gov.in and transport.rajasthan.gov.in) returned HTTP 503 and could not be re-fetched; a supplementary press search the same day found discount schemes newly running in Kerala, Bihar and Karnataka but nothing announced for Rajasthan. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal. last_verified is left unchanged pending a reachable official source.",
   "history": [],
   "sources": [
     "https://echallan.parivahan.gov.in/index/accused-challan",

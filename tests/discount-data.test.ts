@@ -276,7 +276,7 @@ describe('loaders on the seeded repo data', () => {
     const bySlug = new Map(schemes.map((s) => [s.slug, s]));
     expect(bySlug.get('bihar')?.status).toBe('live');
     expect(bySlug.get('karnataka')?.status).toBe('closed');
-    expect(bySlug.get('kerala')?.status).toBe('closed');
+    expect(bySlug.get('kerala')?.status).toBe('live');
     expect(bySlug.get('maharashtra')?.status).toBe('proposal');
     expect(bySlug.get('telangana')?.status).toBe('none');
   });

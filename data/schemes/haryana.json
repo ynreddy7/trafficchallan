@@ -2,11 +2,11 @@
   "slug": "haryana",
   "state_name": "Haryana",
   "status": "none",
-  "note": "No challan discount or settlement scheme is in force in Haryana — reconfirmed on 1 October 2026 against the Haryana state transport department's site (hartrans.gov.in) and a current press/G.O. search, neither of which shows any new scheme announced. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
+  "note": "No challan discount or settlement scheme is in force in Haryana — reconfirmed on 1 November 2026 against the Haryana state transport department's site (hartrans.gov.in, which loaded in full today with no discount/amnesty scheme mentioned) and a current press search, neither of which shows any new scheme announced. The central e-challan portal (echallan.parivahan.gov.in) returned HTTP 503 Service Unavailable when tried today. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
   "history": [],
   "sources": [
     "https://echallan.parivahan.gov.in/index/accused-challan",
     "https://hartrans.gov.in/"
   ],
-  "last_verified": "2026-10-01"
+  "last_verified": "2026-11-01"
 }

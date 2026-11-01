@@ -2,10 +2,11 @@
   "slug": "uttar-pradesh",
   "state_name": "Uttar Pradesh",
   "status": "none",
-  "note": "No challan discount or settlement scheme is in force in Uttar Pradesh — a press/G.O. search on 1 October 2026 found no new scheme announced by the Uttar Pradesh transport department or police since the last check. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal. The official echallan.parivahan.gov.in portal and uptransport.upsdc.gov.in (this record's official sources) returned repeated HTTP 503 errors on 1 October 2026 and could not be fetched this cycle; last_verified is left unchanged pending reachable portals.",
+  "note": "No challan discount or settlement scheme is in force in Uttar Pradesh — re-verified on 1 November 2026 against uppolice.gov.in, which loaded and carries no challan discount, concession or settlement notice (only an unrelated tender for auctioning seized vehicles). The official echallan.parivahan.gov.in portal and uptransport.upsdc.gov.in again returned HTTP 503/timeouts on 1 November 2026 and could not be fetched this cycle. A supplementary press search the same day found no new scheme announced by the Uttar Pradesh transport department or police. Discounts here come only through National Lok Adalat sittings, where the bench decides each case individually. Check and pay challans at the full amount on the official e-challan portal.",
   "history": [],
   "sources": [
-    "https://echallan.parivahan.gov.in/index/accused-challan"
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://uppolice.gov.in/"
   ],
-  "last_verified": "2026-09-01"
+  "last_verified": "2026-11-01"
 }
