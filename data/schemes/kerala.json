@@ -10,7 +10,7 @@
     "start": "2026-11-01",
     "end": "2027-01-31"
   },
-  "note": "Kerala's Motor Vehicles Department opened a new e-Challan Amnesty Scheme on 1 November 2026, running until 31 January 2027: a 50% concession on fines for eligible MV Act/Rules challans issued by the MVD or Kerala Police up to 31 March 2026, where no court proceedings have started; later challans get no discount. It follows an e-Challan Amnesty Scheme announced in the state's revised 2026-27 Budget (presented 19 June 2026), but no G.O. or circular number for the scheme itself was found online as of this check. Confirmed instead against the MVD's own live application portal (services.mvd.kerala.gov.in/etax/otc), which today runs a 'One Time Challan Settlement Under Amnesty Scheme' application flow stating eligible challans are those 'generated up to March 31, 2026' with 'Payment deadline: January 31, 2027' — matching the press reports — and corroborated by two independent press reports (Onmanorama, 8 Oct 2026; The South First). Since the underlying order text itself was not read, readers should confirm the exact amount due on the MVD portal before paying.",
+  "note": "Kerala's Motor Vehicles Department opened a new e-Challan Amnesty Scheme on 1 November 2026, running until 31 January 2027: a 50% concession on fines for eligible MV Act/Rules challans issued by the MVD or Kerala Police up to 31 March 2026, where no court proceedings have started; later challans get no discount. It follows an e-Challan Amnesty Scheme announced in the state's revised 2026-27 Budget (presented 19 June 2026), but no G.O. or circular number for the scheme itself was found online as of this check. Confirmed instead against the MVD's own live application portal (services.mvd.kerala.gov.in/etax/otc), which today runs a 'One Time Challan Settlement Under Amnesty Scheme' application flow stating eligible challans are those 'generated up to March 31, 2026' with 'Payment deadline: January 31, 2027' — matching the press reports — and corroborated by two independent press reports (Onmanorama, 8 Oct 2026; The South First). Since the underlying order text itself was not read, readers should confirm the exact amount due on the MVD portal before paying. Re-checked 2 November 2026: the MVD's live application portal (services.mvd.kerala.gov.in/etax/otc) still runs the One Time Challan Settlement Under Amnesty Scheme flow, still stating challans 'generated up to March 31, 2026' are covered with a 'Payment deadline: January 31, 2027'. Onmanorama (8 Oct 2026) and The South First both still resolve with unchanged facts — 50% concession, pre-31 March 2026 challans only, court-proceedings-already-started excluded, 1 Nov 2026 to 31 Jan 2027 window. No newer order or press coverage found. Facts unchanged.",
   "history": [
     {
       "period": "2026 (Jan–Apr)",
@@ -26,5 +26,5 @@
     "https://thesouthfirst.com/keralam/with-over-1-crore-challans-pending-keralam-announces-50-cut-on-traffic-fines/",
     "https://services.mvd.kerala.gov.in/etax/otc/application-closed"
   ],
-  "last_verified": "2026-11-01"
+  "last_verified": "2026-11-02"
 }
