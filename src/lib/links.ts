@@ -35,13 +35,13 @@ function hashSeed(seed: string): number {
 export function rotatedGuides(seed: string, guides: GuideRef[], count = 2): GuideRef[] {
   const len = guides.length;
   if (len <= count) return [...guides];
-  // Re-tuned 2026-10-30 (22 guides / 14 states, adding ranchi-traffic-challan):
+  // Re-tuned 2026-11-04 (23 guides / 14 states, adding four-wheeler):
   // brute-forced over salts s0..s4999999 for one whose per-state (start,
-  // stride) pair covers all 22 guides from the 14 real state slugs alone.
+  // stride) pair covers all 23 guides from the 14 real state slugs alone.
   // Adjust this salt (or re-run the search), not tests/links.test.ts, if a
   // future data change breaks full coverage again.
-  const start = hashSeed(`${seed}:s38407:a`) % len;
-  const stride = 1 + (hashSeed(`${seed}:s38407:b`) % (len - 1));
+  const start = hashSeed(`${seed}:s594308:a`) % len;
+  const stride = 1 + (hashSeed(`${seed}:s594308:b`) % (len - 1));
   return Array.from({ length: count }, (_, i) => guides[(start + i * stride) % len]);
 }
 
