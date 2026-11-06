@@ -58,7 +58,7 @@ faqs:
 ---
 <div class="answer-box">An e-challan fines a specific Motor Vehicles Act rule you broke. It's recorded by an officer on the spot, or electronically under Section 136A, then priced under that rule's own section — or Section 177, the Act's general penalty, if none applies.</div>
 
-Every e-challan traces back to two things: the traffic rule you're said to have broken, and the Motor Vehicles Act section that fixes what it costs. Understanding both is what lets you tell a genuine challan from a wrong one, and a pay-online offence from one that needs a court date.
+Every e-challan traces back to two things: the traffic rule (niyam) you're said to have broken, and the Motor Vehicles Act section that fixes what it costs. Understanding both is what lets you tell a genuine challan from a wrong one, and a pay-online offence from one that needs a court date.
 
 ## What legal rule lets police issue an e-challan electronically?
 

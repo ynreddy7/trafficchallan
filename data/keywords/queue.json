@@ -1476,7 +1476,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 14,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "rules",
+      "note": "niyam is the Hindi word for rule; the e-challan traffic rules guide already answers this intent. Added a one-time natural gloss — \"the traffic rule (niyam) you're said to have broken\" — to the intro paragraph so the distinctive word is on the page. Wording-only; last_verified not bumped (rule 2/15)."
     },
     {
       "slug_suggestion": "report",
@@ -1628,7 +1630,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 5,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "how-to-pay-e-challan-online",
+      "note": "The grievance section already names the official contact helpdesk-echallan@gov.in; reworded \"or helpdesk-echallan@gov.in\" to \"or by email at helpdesk-echallan@gov.in\" so the distinctive word is on the page. Wording-only; last_verified not bumped (rule 2/15)."
     },
     {
       "slug_suggestion": "police-lines",
@@ -2060,7 +2064,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 4,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "traffic-challan-lawyer",
+      "note": "Already substantively answered by the lawyer guide's \"What if I don't qualify for free legal aid?\" section. Reworded that line to \"you hire and pay your own expert lawyer — a private advocate — yourself\" so the distinctive words are on the page. Wording-only; last_verified not bumped (rule 2/15)."
     },
     {
       "slug_suggestion": "entry-tally",
@@ -2786,7 +2792,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "karnataka-e-challan",
+      "note": "Navigational — KSP (Karnataka State Police) is the Bengaluru Traffic Police payment channel, already documented on the Karnataka state page: \"KSP App (Karnataka State Police) - named by Bengaluru Traffic Police as a channel where contactless-enforcement challans can be paid\" (sms_app_methods, rendered as visible list text) plus the kspapp.ksp.gov.in payment flow in check/pay steps. No wording change needed; word already on the page."
     },
     {
       "slug_suggestion": "police-zebra",
@@ -3019,7 +3027,9 @@
       "max_cpc": 0,
       "min_seo_difficulty": 12,
       "type": "guide",
-      "status": "pending"
+      "status": "covered",
+      "covered_by": "echallan-parivahan",
+      "note": "Navigational — confusion between the legacy echallan.parivahan.gov.in and NextGen echallan.parivahan.nic.in addresses, exactly the pattern AGENT_PLAYBOOK's Navigational-queries section describes. The portal directory already carries an H2 \"Legacy vs NextGen: echallan.parivahan.gov.in or echallan.parivahan.nic.in?\" with \"nic.in\" rendered as visible text. No wording change needed; word already on the page."
     },
     {
       "slug_suggestion": "kerala",

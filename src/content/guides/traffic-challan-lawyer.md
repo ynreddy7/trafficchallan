@@ -60,7 +60,7 @@ Bring identity proof, any certificate or affidavit proving your Section 12 categ
 
 ## What if I don't qualify for free legal aid?
 
-Then it is an ordinary engagement: you hire and pay a private advocate yourself. Section 12 decides who gets legal services for free, not who may be represented — anyone can engage an advocate for a contested or court challan regardless of income. Confirm any advocate you engage is currently enrolled by checking with the State Bar Council for the state where they practise; this site does not run a lawyer directory and makes no referral.
+Then it is an ordinary engagement: you hire and pay your own expert lawyer — a private advocate — yourself. Section 12 decides who gets legal services for free, not who may be represented — anyone can engage an advocate for a contested or court challan regardless of income. Confirm any advocate you engage is currently enrolled by checking with the State Bar Council for the state where they practise; this site does not run a lawyer directory and makes no referral.
 
 ## Do I need a lawyer at all if I'm just paying online?
 
