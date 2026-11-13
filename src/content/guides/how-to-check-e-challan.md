@@ -120,7 +120,7 @@ Where a state runs its own system, it often holds city-police challans that neve
 | [Gujarat](/gujarat-e-challan/) | NextGen + legacy Gujarat Police portal | The old Gujarat portal now holds only challans dated before 13/06/2023 |
 | [Tamil Nadu](/tamil-nadu-e-challan/), [Haryana](/haryana-e-challan/), [Rajasthan](/rajasthan-e-challan/) | NextGen | No separate state challan search documented |
 
-## How do I view old challan history and check challan status?
+## How do I view my traffic challan report — old challan history and status?
 
 The same searches cover history, not just what is due: the results table's Status column separates a pending challan from a disposed one, and the Challan Print and Receipt links stay available for records the portal still holds, so a challan you already paid should show as settled with its receipt. mParivahan carries challan history for the same vehicle or licence alongside the virtual RC and DL. Two quirks from the state table above matter for old challan details: a state's own portal often holds older records the national portal has dropped, and Gujarat's legacy police portal now holds only challans dated before 13/06/2023. A challan that has vanished from every challan portal may simply have been forwarded to court — look it up on Virtual Courts instead (covered below).
 
