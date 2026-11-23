@@ -1,0 +1,124 @@
+{
+  "slug": "chhattisgarh",
+  "name": "Chhattisgarh",
+  "abbr": "CG",
+  "target_keyword": "traffic challan cg",
+  "portals": [
+    {
+      "label": "NextGen eChallan – Check Pending Challan Status / Pay Challan (serves Chhattisgarh)",
+      "url": "https://echallan.parivahan.nic.in/challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – E-Challan Payment Services hub (all citizen services)",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "MoRTH eChallan (legacy portal) – the page Chhattisgarh Transport Department's own site still links to for e-challan payment",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – Grievance Entry Form (wrong / disputed challan)",
+      "url": "https://echallan.parivahan.nic.in/grievance",
+      "scope": "check"
+    },
+    {
+      "label": "Virtual Courts – select \"Chhattisgarh(Traffic Department)\" or \"Chhattisgarh(Transport Department)\" to settle a court-referred challan",
+      "url": "https://vcourts.gov.in/virtualcourt/",
+      "scope": "both"
+    },
+    {
+      "label": "Chhattisgarh Transport Department (state portal; RTO locator, Vahan/Sarathi and VLTD helplines)",
+      "url": "https://cgtransport.gov.in",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Go to the NextGen eChallan services hub at https://echallan.parivahan.nic.in/challan/challan-services and click the \"Check Pending Challan Status\" tile. Chhattisgarh's own Transport Department site (cgtransport.gov.in) still links its e-challan payment guide to the older echallan.parivahan.gov.in page, but that legacy portal failed to load on repeated checks today (consistent 503/connection-reset errors across five attempts) — NextGen is the portal that actually works for a CG vehicle today.",
+    "On the \"CHECK PENDING CHALLAN STATUS\" screen pick one of the three tabs: \"Challan Number\", \"Vehicle Number\" or \"DL Number\".",
+    "\"Challan Number\" needs only the challan number. \"Vehicle Number\" needs the vehicle number plus its Registration Date (DD/MM/YYYY). \"DL Number\" needs the DL number plus Date of Birth.",
+    "Type the code shown in the captcha box (use the refresh icon or the audio option if it is unclear), then click \"GET DETAILS\".",
+    "Read the result rows — the portal shows Violator Name, DL/RC Number, Challan No, Transaction ID, State (CG), Department, Challan Date, Amount, Status and Payment Source.",
+    "If the challan does not show up on the e-challan portal at all, it has probably been forwarded to court — check it on https://vcourts.gov.in/virtualcourt/ by selecting \"Chhattisgarh(Traffic Department)\" (for police-issued challans) or \"Chhattisgarh(Transport Department)\" (for RTO/transport-enforcement challans)."
+  ],
+  "pay_steps": [
+    "From https://echallan.parivahan.nic.in/challan/challan-services click the \"Pay Challan\" tile — the same three-tab search screen (Challan Number / Vehicle Number / DL Number) opens, headed \"PAY CHALLAN\".",
+    "Enter your identifier plus whichever second field the tab demands, fill the captcha box and click \"GET DETAILS\".",
+    "Check the offence description and the compounding amount shown against the challan before paying.",
+    "Select the pending challan and proceed to the payment gateway to complete the payment online (card, net banking or UPI).",
+    "Download and save the payment receipt immediately from the services hub once the payment confirms.",
+    "If a payment was deducted but the challan still shows pending, do not pay again — use the NextGen \"Check Pending Transaction\" service first, then file a grievance at https://echallan.parivahan.nic.in/grievance if it stays unresolved.",
+    "If the challan has already gone to a Virtual Court, pay it there instead: open https://vcourts.gov.in/virtualcourt/, pick the correct Chhattisgarh department (Traffic or Transport), search under \"Challan/Vehicle No.\", verify the OTP and choose Accept & Pay.",
+    "Offences the Motor Vehicles Act does not allow to be compounded (for example drunken driving under section 185) cannot be paid online at all and must go through the court."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the official MoRTH/NIC citizen app, which carries challan history linked to a vehicle's RC/DL and links through to online payment. The NextGen portal carries a standing warning never to trust a look-alike app or site asking for OTP or payment details.",
+    "No Chhattisgarh-specific SMS short code or state challan-enquiry SMS service could be confirmed on any official Chhattisgarh Police or Transport Department page as of 23-Nov-2026 — treat any SMS number quoted on third-party sites as unverified."
+  ],
+  "court_challan_process": "Chhattisgarh runs Virtual Courts for traffic challans with two separate department listings on vcourts.gov.in/virtualcourt/ — \"Chhattisgarh(Traffic Department)\" and \"Chhattisgarh(Transport Department)\" — so a vehicle owner must pick the correct one depending on who issued the challan. After selecting the department, the portal offers four search routes (Mobile Number, CNR Number, Party Name, Challan/Vehicle No.); a found challan can be accepted and paid online by OTP, while a contested one may still require appearing before the concerned Judicial Magistrate. Offences the Motor Vehicles Act bars from being compounded (drunken driving under section 185 is the clear example) go to court regardless, and any compoundable challan left unpaid online eventually migrates there too. Beyond the Virtual Court, the Chhattisgarh State Legal Services Authority's own site (chhattisgarh.nalsa.gov.in) confirms it has taken part in three National Lok Adalats in 2026 so far, all on the national calendar: 14 March 2026 (inaugurated at Durg), 9 May 2026 (inaugurated virtually from Mungeli across all 23 districts) and 12 September 2026. The fourth 2026 sitting is scheduled nationally for 12 December 2026 by DSLSA's own notification (Ref. No. 12/DSLSA/ADRW/NLAs/2026/13439 dated 3 November 2026); chhattisgarh.nalsa.gov.in had not yet published a CG-specific page for it as of this check (its news list still shows only the March/May/September sittings), consistent with the date being three weeks away. This is general information, not legal advice. For your specific case, consult an advocate.",
+  "payment_methods": [
+    "Online on the NextGen eChallan portal (echallan.parivahan.nic.in) through its integrated payment gateway — the primary working route for Chhattisgarh challans today",
+    "Online through the mParivahan app, the official MoRTH/NIC citizen app that carries challan history and payment",
+    "Online through the Virtual Court at vcourts.gov.in, selecting the correct Chhattisgarh department, once a challan has gone to court",
+    "In person, before the issuing traffic police unit, RTO or the court, for offences Chhattisgarh/the Motor Vehicles Act does not allow to be compounded online"
+  ],
+  "contacts": [
+    {
+      "label": "National police / traffic emergency helpline",
+      "value": "112"
+    },
+    {
+      "label": "Chhattisgarh Transport Department — Vahan & Sarathi helpline",
+      "value": "0771-2511085"
+    },
+    {
+      "label": "Chhattisgarh Transport Department — VLTD (vehicle tracking device) helpline",
+      "value": "0771-3540444"
+    }
+  ],
+  "quirks": [
+    "The legacy echallan.parivahan.gov.in page — the one cgtransport.gov.in's own e-challan payment guide links to — failed to load on every attempt made today (23-Nov-2026): five separate checks all returned either HTTP 503 or a proxy tunnel failure (ws_closed_mid_exchange), never a successful page. This matches a wider national parivahan/state-transactional-portal outage first observed on this site 2026-09-14. The NextGen portal (echallan.parivahan.nic.in and its /challan, /challan/challan-services and /grievance paths) loaded successfully (HTTP 200) on every attempt today, so it is the one that actually works for a Chhattisgarh vehicle right now, even though the state's own department site has not updated its link.",
+    "Searching \"e challan cg\" or \"cg echallan\" can surface echallan.cg.nic.in / cg.nic.in/eChallan — this is Chhattisgarh's general government-receipts (e-GRAS-style) payment system for state dues such as sales tax, excise duty and land revenue, documented in the state's own Treasury Manual. It is NOT the vehicle traffic-challan portal; do not try to pay a traffic fine there.",
+    "No Chhattisgarh-specific traffic fine schedule could be found published on any official .gov.in domain as of this check (cgpolice.gov.in itself failed to load today, and cgtransport.gov.in carries no offence/penalty table). Treat the central Motor Vehicles (Amendment) Act, 2019 amounts as the applicable figures unless your own e-challan states otherwise, and confirm the exact payable amount on the e-challan itself before paying.",
+    "The NextGen eChallan pages render almost entirely in client-side JavaScript — a plain fetch of the page returns only its title, the same behaviour already documented for other NextGen-migrated states on this site (Haryana, Gujarat, Jammu & Kashmir). The search fields and results described above come from those states' own on-portal documentation, since the shared NextGen infrastructure is identical across states; only the state code and department routing differ.",
+    "Chhattisgarh has two separate entries on the Virtual Courts dropdown — \"Chhattisgarh(Traffic Department)\" and \"Chhattisgarh(Transport Department)\" — rather than a single combined listing. Picking the wrong one will not find a challan issued by the other department."
+  ],
+  "faqs": [
+    {
+      "q": "Which website actually handles Chhattisgarh (CG) e-challans?",
+      "a": "The NextGen portal at echallan.parivahan.nic.in/challan. Chhattisgarh's own Transport Department site still links to the older echallan.parivahan.gov.in page, but that legacy page failed to load on every check made today (503s and connection failures), while the NextGen portal loaded fine — use NextGen."
+    },
+    {
+      "q": "I searched for \"CG e challan\" and found echallan.cg.nic.in — is that where I pay a traffic fine?",
+      "a": "No. That is Chhattisgarh's general government-receipts payment system for state dues like sales tax, excise and land revenue, not the vehicle traffic-challan system. Use the NextGen eChallan portal (echallan.parivahan.nic.in) for a traffic fine instead."
+    },
+    {
+      "q": "My CG challan has disappeared from the e-challan portal — where did it go?",
+      "a": "It has most likely been forwarded to court. Open vcourts.gov.in/virtualcourt, choose \"Chhattisgarh(Traffic Department)\" for a police-issued challan or \"Chhattisgarh(Transport Department)\" for an RTO/transport one, then search by Mobile Number, CNR Number, Party Name or Challan/Vehicle No."
+    },
+    {
+      "q": "Does Chhattisgarh have its own traffic fine amounts, different from the rest of India?",
+      "a": "No official Chhattisgarh-specific fine schedule could be found published on a government website. Until one surfaces, treat the central Motor Vehicles (Amendment) Act, 2019 figures as the applicable amounts, and rely on the amount printed on your own e-challan, which reflects what you actually owe."
+    },
+    {
+      "q": "Can a pending Chhattisgarh traffic case be settled at a Lok Adalat?",
+      "a": "Yes, if it is compoundable. The Chhattisgarh State Legal Services Authority took part in all three 2026 National Lok Adalats held so far (14 March, 9 May and 12 September), and the next national sitting is scheduled for 12 December 2026. Offences that are not legally compoundable, such as drunken driving, cannot be settled this way."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://echallan.parivahan.nic.in/challan",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/grievance",
+    "https://echallan.parivahan.gov.in/index/accused-challan",
+    "https://cgtransport.gov.in",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://chhattisgarh.nalsa.gov.in/",
+    "https://chhattisgarh.nalsa.gov.in/?p=9190",
+    "https://chhattisgarh.nalsa.gov.in/national-lok-adalat-14th-march-2026/",
+    "https://dslsa.org/notification-regarding-national-lok-adalat-to-be-held-on-12-12-2026/"
+  ],
+  "last_verified": "2026-11-23"
+}
