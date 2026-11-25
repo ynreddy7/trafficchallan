@@ -343,16 +343,16 @@
       "hedged": false
     },
     {
-      "fact": "PIB Fact Check — as reported by Outlook Money, 10 July 2026 — advises not to click traffic-challan links received by SMS or WhatsApp at all, however official the sender looks, and to check challan status only on the official Parivahan e-challan website. The underlying PIB post sits on X and was not directly fetchable, so this is cited as reported.",
-      "hedged": true
+      "fact": "DoT's Sanchar Saathi advisory, 'Fake Traffic Challan Scam', advises against tapping any link in an unpaid-challan message at all, however official the sender looks, and to verify only through the official e-Challan portal or mParivahan — advice that holds regardless of what the sender ID shows.",
+      "hedged": false
     }
   ],
   "scam_signals": [
     {
       "slug": "apk-attachment",
       "name": "The 'challan' arrives as an APK file to install",
-      "detail": "PIB Fact Check (as reported by Outlook Money) warned citizens to avoid installing APK files shared over SMS or WhatsApp: fake 'RTO' and 'e-challan' APKs are malware built to read OTPs and trigger unauthorised bank or UPI transactions. No government challan is delivered as an app file — apps come only from official app stores, and a challan is checked on the portal, never installed.",
-      "source": "https://www.outlookmoney.com/news/fake-traffic-e-challan-messages-can-expose-otps-trigger-unauthorised-bank-transactions-pib-warns"
+      "detail": "The Department of Telecommunications' own Sanchar Saathi advisory, 'Fake Traffic Challan Scam', shows this exact pattern and warns plainly: 'Do Not Download APKs and click on suspicious links.' It states 'Traffic Police NEVER send direct payment links via SMS, WhatsApp, or Email' and tells users to verify only through the official e-Challan portal or mParivahan. No government challan is delivered as an app file — apps come only from official app stores, and a challan is checked on the portal, never installed.",
+      "source": "https://sancharsaathi.gov.in/SancharSaathiDocuments/KeepYourselfAwareDocuments/FakeTrafficChallan.pdf"
     },
     {
       "slug": "lookalike-website",
@@ -363,14 +363,14 @@
     {
       "slug": "urgency-threat",
       "name": "Pressure to pay immediately",
-      "detail": "The reported PIB warning describes the pattern: a message claims a traffic fine is pending and urges immediate payment through its link. A genuine challan never needs the message's link — it can always be verified independently by typing the official portal address yourself and entering your vehicle number; if the challan exists, it shows there.",
-      "source": "https://www.outlookmoney.com/news/fake-traffic-e-challan-messages-can-expose-otps-trigger-unauthorised-bank-transactions-pib-warns"
+      "detail": "DoT's Sanchar Saathi advisory illustrates this exact lure — a fake message reading 'Unpaid Challan? Pay immediately', captioned 'IT'S A SCAM!!' — and breaks the pattern into five steps: a fake message arrives, it impersonates traffic police, it pushes an urgent 'Pay Now' link, the victim enters personal details, and money and data are stolen. A genuine challan never needs the message's link — it can always be verified independently by typing the official portal address yourself and entering your vehicle number; if the challan exists, it shows there.",
+      "source": "https://sancharsaathi.gov.in/SancharSaathiDocuments/KeepYourselfAwareDocuments/FakeTrafficChallan.pdf"
     },
     {
       "slug": "whatsapp-delivery",
       "name": "A 'challan notice' arriving on WhatsApp",
-      "detail": "PIB Fact Check (as reported) flagged fake RTO and e-challan notices arriving over WhatsApp as a scam channel, and DoT's Chakshu page treats WhatsApp alongside calls and SMS as a vector for fraud communications and impersonation. Treat a WhatsApp challan message as unverified until the challan itself shows up on an official portal you typed yourself.",
-      "source": "https://sancharsaathi.gov.in/"
+      "detail": "DoT's Sanchar Saathi advisory, 'Fake Traffic Challan Scam', states directly: 'Traffic Police NEVER send direct payment links via SMS, WhatsApp, or Email.' Treat a WhatsApp challan message as unverified until the challan itself shows up on an official portal you typed yourself, and report a suspected fraud message via Chakshu on sancharsaathi.gov.in.",
+      "source": "https://sancharsaathi.gov.in/SancharSaathiDocuments/KeepYourselfAwareDocuments/FakeTrafficChallan.pdf"
     },
     {
       "slug": "otp-upi-drain",
@@ -422,11 +422,11 @@
   ],
   "official_app": {
     "name": "mParivahan",
-    "fact": "MoRTH's own Parivahan Sewa site lists the mParivahan application under its \"Other Products & Services\" block and links exactly two addresses for it: the web address mparivahan.parivahan.gov.in, and one Google Play listing whose package name is com.nic.mparivahan. Those are the app addresses the ministry's site itself points to. The eChallan portal separately warns that fraudulent mobile apps impersonate its echallan services, so an app found by searching a store — rather than reached from the ministry's own site — is worth checking against the package name above before you download or install it.",
+    "fact": "MoRTH's own Parivahan Sewa site has listed the mParivahan application under its \"Other Products & Services\" block, linking the web address mparivahan.parivahan.gov.in and a Google Play listing with package name com.nic.mparivahan. parivahan.gov.in itself could not be refetched today — part of the same ongoing outage affecting the national echallan.parivahan.gov.in/parivahan.gov.in cluster since September 2026 — but both downstream addresses it points to still resolve: mparivahan.parivahan.gov.in is live, and the Play Store listing for com.nic.mparivahan is live today under developer \"National Informatics Centre\", now titled \"NextGen mParivahan\". The eChallan portal separately warns that fraudulent mobile apps impersonate its echallan services, so an app found by searching a store — rather than reached from the ministry's own site — is worth checking against the package name above before you download or install it.",
     "site": "mparivahan.parivahan.gov.in",
     "play_package": "com.nic.mparivahan",
     "source": "https://parivahan.gov.in/",
-    "verified_on": "2026-08-14"
+    "verified_on": "2026-11-25"
   },
   "sources": [
     "https://parivahan.gov.in/",
@@ -444,7 +444,8 @@
     "https://sancharsaathi.gov.in/",
     "https://i4c.mha.gov.in/",
     "https://cybercrime.gov.in/",
-    "https://www.outlookmoney.com/news/fake-traffic-e-challan-messages-can-expose-otps-trigger-unauthorised-bank-transactions-pib-warns"
+    "https://sancharsaathi.gov.in/SancharSaathiDocuments/KeepYourselfAwareDocuments/FakeTrafficChallan.pdf",
+    "https://play.google.com/store/apps/details?id=com.nic.mparivahan"
   ],
-  "last_verified": "2026-08-13"
+  "last_verified": "2026-11-25"
 }

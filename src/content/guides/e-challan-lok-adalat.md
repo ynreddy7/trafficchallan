@@ -4,20 +4,20 @@ description: >-
   National Lok Adalat for traffic challans: 2026 dates, how the Delhi token
   booking works, and what discount you actually get at the sitting.
 target_keyword: e challan lok adalat
-last_verified: '2026-08-12'
+last_verified: '2026-11-25'
 sources:
   - 'https://nalsa.gov.in/lok-adalats/'
   - 'https://haryana.nalsa.gov.in/lok-adalat/'
   - 'https://andhrapradesh.nalsa.gov.in/lok-adalat/'
   - 'https://traffic.delhipolice.gov.in/lokadalat/assets/Instructions.pdf'
   - 'https://traffic.delhipolice.gov.in/lokadalat/'
-  - >-
-    https://digilawyer.ai/latest-announcements/national-lok-adalat-challan-settlement-dates
   - 'https://delhi.nalsa.gov.in/notifications/'
   - 'https://www.wbtrafficpolice.com/loke-adalat.php'
   - 'https://traffic.delhipolice.gov.in/en/traffic-violations-penalties'
   - 'https://btp.karnataka.gov.in/'
   - 'https://ksp.karnataka.gov.in/page/FAQ/Traffic/en'
+  - 'https://dslsa.org/notice-for-national-lok-adalat-for-the-year-2026/'
+  - 'https://karnataka.nalsa.gov.in/notifications/'
   - >-
     https://indiacode.gov.in/handle/123456789/523307
 faqs:
@@ -82,7 +82,7 @@ National Lok Adalats follow one NALSA calendar, and every state legal services a
 | 3rd | 12 September 2026 | Second Saturday |
 | 4th | 12 December 2026 | Second Saturday |
 
-Haryana SLSA records these as being held "on all subject matters", which is why traffic matters are taken up alongside everything else. As at 12 August 2026, two sittings remain: 12 September and 12 December.
+Haryana SLSA records these as being held "on all subject matters", which is why traffic matters are taken up alongside everything else. The December sitting is the only one still ahead: the national calendar's third sitting was held on 12 September 2026 as scheduled in most states, but Delhi and Karnataka's own District/State Legal Services Authorities rescheduled their local sittings — Karnataka's to 19 September 2026 and Delhi's, after two postponements, to 25 October 2026. If your challan is in either state, your local DSLSA/KSLSA date is the one that applies, not the national calendar date; see the [challan discount tracker](/challan-discount/) for the current status of every sitting and the next one's token window.
 
 The national date tells you when courts across India sit; the local arrangement is notified by your State or District Legal Services Authority, and is not always a single day. Delhi's DSLSA notified the May sitting for 09.05.2026 but stretched the March one across 14.03.2026 to 22.03.2026, including Sundays. States also add sittings outside the national calendar — DSLSA has notified Special Lok Adalats on 18.07.2026 and 21.11.2026 for Negotiable Instruments Act cases, and the West Bengal Traffic Police Branch Headquarters separately organises traffic Lok Adalats "for disposal of long pending cases/prosecutions", arranged in consultation with the District and Sessions Judges and covering the MV Act 1988, the CMVR 1989 and the West Bengal Motor Vehicles Rules. See [West Bengal](/west-bengal-e-challan/).
 

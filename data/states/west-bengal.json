@@ -3,7 +3,7 @@
   "name": "West Bengal",
   "abbr": "WB",
   "target_keyword": "west bengal e challan",
-  "last_verified": "2026-09-01",
+  "last_verified": "2026-11-25",
   "portals": [
     {
       "label": "Sanjog - West Bengal unified pending challan portal (Kolkata Traffic Police + WB Traffic Police + Transport Dept)",
@@ -192,7 +192,6 @@
     "https://echallan.parivahan.nic.in/challan",
     "https://echallan.parivahan.nic.in/challan/challan-services",
     "https://echallan.parivahan.nic.in/assets/i18n/en.json",
-    "https://echallan.parivahan.nic.in/main.db63879fb0a70e64.js",
     "https://sanjog.wb.gov.in/",
     "https://sanjog.wb.gov.in/payFine",
     "https://sanjog.wb.gov.in/activateaccount",

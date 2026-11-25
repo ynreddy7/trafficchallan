@@ -6,7 +6,7 @@ description: >-
   contacts.
 target_keyword: traffic challan surat
 state_slug: gujarat
-last_verified: '2026-08-21'
+last_verified: '2026-11-25'
 sources:
   - 'https://suratcitypolice.org/'
   - 'https://surat.nic.in/district-court/'

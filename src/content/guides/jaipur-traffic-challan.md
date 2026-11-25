@@ -5,7 +5,7 @@ description: >-
   challan is heard, and what's officially published for towing and cameras.
 target_keyword: e challan jaipur
 state_slug: rajasthan
-last_verified: '2026-08-24'
+last_verified: '2026-11-25'
 sources:
   - 'https://echallan.parivahan.nic.in/challan/challan-services'
   - 'https://vcourts.gov.in/virtualcourt/'

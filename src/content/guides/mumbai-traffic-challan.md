@@ -5,7 +5,7 @@ description: >-
   is traced, which court hears a Mumbai challan, and the city's own helplines.
 target_keyword: traffic challan mumbai
 state_slug: maharashtra
-last_verified: '2026-08-18'
+last_verified: '2026-11-25'
 sources:
   - 'https://trafficpolicemumbai.maharashtra.gov.in/en/initiative/'
   - 'https://trafficpolicemumbai.maharashtra.gov.in/en/contact/'
@@ -13,7 +13,7 @@ sources:
   - 'https://mahatrafficechallan.gov.in/payechallan/PaymentService.htm'
   - 'https://echallan.parivahan.nic.in/challan/challan-services'
   - 'https://vcourts.gov.in/virtualcourt/'
-  - 'https://legalservices.maharashtra.gov.in/'
+  - 'https://maharashtra.nalsa.gov.in/contact-us/'
   - >-
     https://cdnbbsr.s3waas.gov.in/s3ec04e945de21a1bb5714a0bc8a897ed3/uploads/2026/03/2026030422.pdf
 faqs:
@@ -87,6 +87,6 @@ For settlement outside a full trial, National Lok Adalat sittings apply in Mumba
 - **WhatsApp Helpline**: 8454999999 — towed vehicles and general queries.
 - **Twitter/X**: @MTPHereToHelp
 - **Zone offices** (for grievances tied to a specific area): Mumbai Traffic Police is split into four Deputy Commissioner zones — East, South, West, and HQ & Central — each with its own office under Mumbai Traffic Police Headquarters, Sir Pochkhanwala Road, Worli, Mumbai 400030. The full list of zone and division addresses and direct numbers is published on the department's [Contact page](https://trafficpolicemumbai.maharashtra.gov.in/en/contact/).
-- **MSLSA (Lok Adalat queries)**: 022-22691395, legalservices.maharashtra.gov.in.
+- **MSLSA (Lok Adalat queries)**: 022-22691395, maharashtra.nalsa.gov.in.
 
 For everything else — checking a challan, paying it, notified fine amounts, and disputing one — go to the [Maharashtra e-Challan guide](/maharashtra-e-challan/), the [fines list](/fines/), or [disputing a wrong e-challan](/wrong-e-challan-dispute/).

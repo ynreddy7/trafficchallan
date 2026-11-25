@@ -4,7 +4,7 @@ description: >-
   Every official route to pay an Indian e-challan online — Parivahan, NextGen,
   state portals, Virtual Court ePay — plus receipts and stuck payments.
 target_keyword: how to pay e challan online
-last_verified: '2026-08-12'
+last_verified: '2026-11-25'
 sources:
   - 'https://echallan.parivahan.gov.in/index/accused-challan'
   - 'https://echallan.parivahan.gov.in/payment-verification'

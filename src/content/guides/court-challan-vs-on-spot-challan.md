@@ -4,7 +4,7 @@ description: >-
   Court challan vs on spot challan in India: which offences are compoundable,
   which go to court, what "sent to Virtual Court" means, and what happens next.
 target_keyword: court challan vs on spot challan
-last_verified: '2026-08-12'
+last_verified: '2026-11-25'
 sources:
   - 'https://vcourts.gov.in/virtualcourt/'
   - 'https://traffic.delhipolice.gov.in/en/traffic-violations-penalties'

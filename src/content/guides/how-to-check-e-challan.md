@@ -4,7 +4,7 @@ description: >-
   Online challan check, every official way: which national portal serves your
   state, plus state portals, mParivahan, Virtual Courts and the helpline number.
 target_keyword: how to check e challan
-last_verified: '2026-08-13'
+last_verified: '2026-11-25'
 sources:
   - 'https://echallan.parivahan.gov.in/index/accused-challan'
   - 'https://echallan.parivahan.gov.in/payment-verification'

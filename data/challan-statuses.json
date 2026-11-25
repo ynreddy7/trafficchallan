@@ -227,7 +227,8 @@
       "Odisha's coverage is limited to the 'Odisha Traffic CTC-BBSR Commissionerate' (Cuttack–Bhubaneswar).",
       "Telangana and Andhra Pradesh are absent entirely, as are Bihar, Jharkhand, Goa, Sikkim, Nagaland, Mizoram, Arunachal Pradesh, and union territories other than Chandigarh, Delhi and Jammu & Kashmir.",
       "Delhi has a distinct 'Notice Department' in addition to its 'Traffic Department'; Jammu & Kashmir is split into Jammu Traffic and Kashmir Traffic; Kerala appears as Transport Department + Police Department, with no entry labelled 'Traffic'.",
-      "The vcourts site describes its own process as: 'The case proceedings are completed online and the case is disposed immediately after online payment of the fine.' Site content last reviewed 24 April 2026 per its footer."
+      "The vcourts site describes its own process as: 'The case proceedings are completed online and the case is disposed immediately after online payment of the fine.' Site content last reviewed 24 April 2026 per its footer.",
+      "Re-verified 25 November 2026: vcourts.gov.in/virtualcourt/index.php and faq.php both still resolve (footer now shows 'Last Updated: 08 Oct 2026'), the 'disposed immediately after online payment of the fine' line is still present (in the page's meta description, not its visible body text — confirmed by fetching the raw HTML directly after an AI-summarised read of the rendered page missed it), and the FAQ's Paid-status, reprint-via-OTP and view-summon text are all unchanged. All four cited indiacode.gov.in statute handles (523307, 523316, 546328, 522639) still resolve. echallan.parivahan.gov.in — the source for every status term above except paid-virtual-court and contested-transferred — could not be refetched today: it is part of the same national outage documented across this site since 2026-09-14 (see data/schemes/bihar.json and the keyword queue for the ongoing detail). Those entries' application-string facts (scraped from lang_en.js and the challan-status page itself) are carried forward unchanged from their last direct reading; this is static UI copy rather than time-sensitive data, and nothing found today suggests the portal's status vocabulary has changed."
     ],
     "source": "https://vcourts.gov.in/virtualcourt/index.php"
   },
@@ -241,5 +242,5 @@
     "https://indiacode.gov.in/handle/123456789/523316",
     "https://indiacode.gov.in/handle/123456789/546328"
   ],
-  "last_verified": "2026-08-13"
+  "last_verified": "2026-11-25"
 }

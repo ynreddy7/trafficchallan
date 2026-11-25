@@ -4,7 +4,7 @@ description: >-
   How to find your traffic challan on vcourts.gov.in, verify it by OTP or by
   chassis and engine number, and choose to pay online or contest the case.
 target_keyword: virtual court challan
-last_verified: '2026-08-26'
+last_verified: '2026-11-25'
 sources:
   - 'https://vcourts.gov.in/virtualcourt/'
   - 'https://vcourts.gov.in/virtualcourt/faq.php'
