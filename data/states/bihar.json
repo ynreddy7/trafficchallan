@@ -1,0 +1,105 @@
+{
+  "slug": "bihar",
+  "name": "Bihar",
+  "abbr": "BR",
+  "target_keyword": "traffic challan bihar",
+  "portals": [
+    {
+      "label": "NextGen eChallan – Check Pending Challan Status / Pay Challan (confirmed today to carry Bihar's own challan records)",
+      "url": "https://echallan.parivahan.nic.in/challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – E-Challan Payment Services hub (all citizen services)",
+      "url": "https://echallan.parivahan.nic.in/challan/challan-services",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – state-wise enforcement dashboard (shows Bihar's own challan, disposal and collection figures)",
+      "url": "https://echallan.parivahan.nic.in/echallanreport/",
+      "scope": "check"
+    },
+    {
+      "label": "MoRTH eChallan (legacy national portal) – unreachable on every check since 14 September 2026; kept here only because some third-party guides still point to it",
+      "url": "https://echallan.parivahan.gov.in/index/accused-challan",
+      "scope": "both"
+    },
+    {
+      "label": "NextGen eChallan – Grievance Entry Form (wrong / disputed challan)",
+      "url": "https://echallan.parivahan.nic.in/grievance",
+      "scope": "check"
+    }
+  ],
+  "check_steps": [
+    "Bihar has no working state-run e-challan check site today: e-receipt.bihar.gov.in and transport.bihar.gov.in both fail to resolve, and biharpolice.bih.nic.in / patnatraffic.bih.nic.in both fail to connect, consistent with an outage first observed on 14 September 2026 and still present on every check since, including today. Use the national NextGen eChallan portal instead.",
+    "Go to https://echallan.parivahan.nic.in/challan/challan-services and open the \"Check Pending Challan Status\" tile. A direct check of the portal's own state-wise dashboard today (echallanreport) confirms Bihar is one of its implemented states, with Bihar's own live totals showing (1.31 crore total challans, 58.3% disposal rate) — so this portal genuinely holds Bihar's records, not just a generic form.",
+    "On the \"CHECK PENDING CHALLAN STATUS\" screen pick one of three tabs: \"Challan Number\", \"Vehicle Number\" or \"DL Number\".",
+    "\"Challan Number\" needs only the challan number. \"Vehicle Number\" needs the vehicle number plus its Registration Date (DD/MM/YYYY). \"DL Number\" needs the DL number plus Date of Birth.",
+    "Type the code shown in the captcha box (use the refresh icon or audio option if unclear), then click \"GET DETAILS\".",
+    "Read the result rows: Violator Name, DL/RC Number, Challan No, Transaction ID, State (BR), Department, Challan Date, Amount, Status and Payment Source.",
+    "If a challan does not show up on the e-challan portal at all, it may have gone to a Lok Adalat settlement camp or a physical court rather than an online Virtual Court — Bihar is not listed on vcourts.gov.in's own department dropdown as of this check (checked today: the page loaded, but neither \"Bihar(Traffic Department)\" nor \"Bihar(Transport Department)\" appears among its ~30 state/department entries), so do not expect to find a Bihar challan there."
+  ],
+  "pay_steps": [
+    "From https://echallan.parivahan.nic.in/challan/challan-services click the \"Pay Challan\" tile — the same three-tab search screen (Challan Number / Vehicle Number / DL Number) opens, headed \"PAY CHALLAN\".",
+    "Enter your identifier plus whichever second field the tab demands, fill the captcha box and click \"GET DETAILS\".",
+    "Check the offence description and the compounding amount shown against the challan before paying — Bihar also runs a One Time Traffic Challan Settlement Scheme, 2026 offering a discount on compoundable challans; see /challan-discount/ for its current, separately-sourced terms and window, and confirm the discounted amount shown matches what you expect before paying in full.",
+    "Select the pending challan and proceed to the integrated payment gateway to pay online (card, net banking or UPI).",
+    "Download and save the payment receipt immediately once the payment confirms.",
+    "If a payment was deducted but the challan still shows pending, do not pay again — use NextGen's \"Check Pending Transaction\" service first, then file a grievance at https://echallan.parivahan.nic.in/grievance if it stays unresolved.",
+    "Offences the Motor Vehicles Act does not allow to be compounded online (for example drunken driving under section 185) cannot be paid this way and must go through a court or a Lok Adalat sitting instead.",
+    "Watch for the periodic National Lok Adalat sittings, where Bihar has run dedicated traffic-challan benches offering the same scheme discount in person — the next national sitting is scheduled for 12 December 2026 (DSLSA Ref. No. 12/DSLSA/ADRW/NLAs/2026/13439, dated 3 November 2026)."
+  ],
+  "sms_app_methods": [
+    "mParivahan — the official MoRTH/NIC citizen app (confirmed live today at mparivahan.parivahan.gov.in, Play Store package com.nic.mparivahan under developer \"National Informatics Centre\"), which carries challan history linked to a vehicle's RC/DL and links through to online payment.",
+    "No Bihar-specific SMS short code or state challan-enquiry SMS service could be confirmed on any official Bihar government page as of 27 November 2026 — both biharpolice.bih.nic.in and transport.bihar.gov.in, the pages that would normally publish one, have been unreachable for over 10 weeks. Treat any SMS number quoted on third-party sites as unverified."
+  ],
+  "court_challan_process": "Bihar does not appear on the national Virtual Courts (vcourts.gov.in) department dropdown as of this check — neither a \"Bihar(Traffic Department)\" nor a \"Bihar(Transport Department)\" listing exists among its roughly 30 state/department entries, unlike Delhi, Gujarat, Karnataka and most other NextGen states. So a Bihar traffic challan that has gone to court is not something you can search or pay online the way you could in those states. Instead, Bihar settles many compoundable traffic challans through periodic National Lok Adalat sittings: DSLSA's own notification for the next national sitting (Ref. No. 12/DSLSA/ADRW/NLAs/2026/13439, dated 3 November 2026) sets 12 December 2026 as the date, and Bihar's District Legal Services Authorities typically run parallel sittings on the same national dates alongside the regular courts. On top of the normal Lok Adalat process, Bihar has also run a state-specific one-time discount scheme on pending compoundable challans — tracked separately, with its own official and court-record sourcing, on /challan-discount/; check there for the current percentage and window. Offences the Motor Vehicles Act does not allow to be compounded (drunken driving under section 185 is the clear example) cannot be settled this way and must go before the concerned Judicial Magistrate in person. This is general information, not legal advice. For your specific case, consult an advocate.",
+  "payment_methods": [
+    "Online on the NextGen eChallan portal (echallan.parivahan.nic.in) through its integrated payment gateway — the only working online route for Bihar challans confirmed today",
+    "Online through the mParivahan app, the official MoRTH/NIC citizen app that carries challan history and payment",
+    "In person at a National Lok Adalat sitting or a District Transport Office advance-filing camp, where Bihar's One Time Traffic Challan Settlement Scheme discount applies to eligible compoundable challans",
+    "In person, before the issuing traffic police unit, RTO or a Judicial Magistrate's court, for offences the Motor Vehicles Act does not allow to be compounded online"
+  ],
+  "contacts": [
+    {
+      "label": "National police / traffic emergency helpline",
+      "value": "112"
+    }
+  ],
+  "quirks": [
+    "Bihar's own transactional government portals — e-receipt.bihar.gov.in, transport.bihar.gov.in, biharpolice.bih.nic.in and patnatraffic.bih.nic.in — have all been unreachable on every check made since this outage was first observed on 14 September 2026, now over 10 weeks, and remain down as of today (27 November 2026: DNS failures and connection resets on every host). This is part of a wider outage that also took down the legacy national echallan.parivahan.gov.in portal; it has not affected the newer NextGen eChallan portal (echallan.parivahan.nic.in), which loaded successfully today and is the one that actually works for a Bihar vehicle right now.",
+    "Bihar is confirmed as a live state on the NextGen eChallan portal's own public enforcement dashboard (echallan.parivahan.nic.in/echallanreport/), checked today: selecting \"Bihar\" from the State filter returns real, non-zero figures (1.31 crore total challans, ₹3,877.18 crore total challan amount, ₹1,616.15 crore pending, 58.3% collection rate) rather than an empty result — direct evidence the portal actually holds Bihar's own enforcement data, not just a name in a list.",
+    "Bihar has no listing at all on vcourts.gov.in's Virtual Courts department dropdown (checked today), unlike most other NextGen-migrated states. Do not expect to find or pay a Bihar court-referred challan there — Bihar channels court-stage traffic cases through physical courts and periodic Lok Adalat sittings instead.",
+    "No Bihar-specific traffic fine schedule could be found published on any official .gov.in domain as of this check (biharpolice.bih.nic.in itself has been down throughout this outage). Treat the central Motor Vehicles (Amendment) Act, 2019 amounts as the applicable figures unless your own e-challan states otherwise, and confirm the exact payable amount on the e-challan itself before paying.",
+    "A separate, time-limited discount exists on top of the normal fine: Bihar's One Time Traffic Challan Settlement Scheme, 2026 offers relief on compoundable challans through the financial year 2026-27 (ends 31 March 2027). This is tracked in full, with its own official and court-record sourcing and re-verification history, on /challan-discount/ — confirm the exact amount shown against your own challan before paying rather than assuming the discount applies automatically."
+  ],
+  "faqs": [
+    {
+      "q": "Which website actually works to check or pay a Bihar e-challan right now?",
+      "a": "The NextGen eChallan portal at echallan.parivahan.nic.in/challan. Bihar's own state portals (e-receipt.bihar.gov.in, transport.bihar.gov.in) and the older national echallan.parivahan.gov.in page have all been unreachable since 14 September 2026, but NextGen loaded successfully today, and its own dashboard confirms it holds Bihar's real enforcement data."
+    },
+    {
+      "q": "Why can't I find my Bihar challan on vcourts.gov.in the way I can for some other states?",
+      "a": "Because Bihar is not one of the states listed on the Virtual Courts department dropdown — checked today, its roughly 30 entries cover states like Delhi, Gujarat and Karnataka but include no Bihar(Traffic Department) or Bihar(Transport Department) option. A Bihar court-stage challan has to be handled through a physical court or a Lok Adalat sitting instead."
+    },
+    {
+      "q": "Is there a discount on pending Bihar traffic challans?",
+      "a": "Yes — Bihar's One Time Traffic Challan Settlement Scheme, 2026 offers relief on compoundable challans through the 2026-27 financial year. See /challan-discount/ for the current, officially and court-sourced terms and window before paying."
+    },
+    {
+      "q": "Can I still use e-receipt.bihar.gov.in or transport.bihar.gov.in to pay my Bihar challan?",
+      "a": "Not today. Both have been unreachable on every check since 14 September 2026 (now over 10 weeks), along with biharpolice.bih.nic.in and patnatraffic.bih.nic.in. Use the NextGen eChallan portal (echallan.parivahan.nic.in) instead until these recover."
+    }
+  ],
+  "fine_overrides": {},
+  "sources": [
+    "https://echallan.parivahan.nic.in/challan",
+    "https://echallan.parivahan.nic.in/challan/challan-services",
+    "https://echallan.parivahan.nic.in/grievance",
+    "https://echallan.parivahan.nic.in/echallanreport/",
+    "https://vcourts.gov.in/virtualcourt/",
+    "https://dslsa.org/notification-regarding-national-lok-adalat-to-be-held-on-12-12-2026/",
+    "https://mparivahan.parivahan.gov.in"
+  ],
+  "last_verified": "2026-11-27"
+}

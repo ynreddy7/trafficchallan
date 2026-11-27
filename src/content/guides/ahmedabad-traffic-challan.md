@@ -5,7 +5,7 @@ description: >-
   traffic-court benches, official towing charges, and camera enforcement.
 target_keyword: traffic challan ahmedabad
 state_slug: gujarat
-last_verified: '2026-08-28'
+last_verified: '2026-11-27'
 sources:
   - 'https://payahmedabadechallan.org/'
   - 'https://payahmedabadechallan.org/pdfs/TowingCharges.pdf'
